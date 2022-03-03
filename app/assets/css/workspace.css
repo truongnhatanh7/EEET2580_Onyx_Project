@@ -1,0 +1,98 @@
+.workspace-root {
+
+}
+
+.workspace__navbar {
+    height: 48px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100vw;
+    background-color: var(--blue);
+    display: flex;
+    justify-content: space-between;
+}
+
+.workspace__navbar-left-wrapper {
+    padding-left: 48px;
+    
+}
+.workspace__navbar-link {
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 48px;
+    color: var(--black);
+    margin-right: 32px;
+}
+
+.workspace__navbar-create-btn {
+
+}
+.workspace__navbar-right-wrapper {
+    padding-right: 48px;
+}
+.workspace__navbar-right-avatar-wrapper {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 6px 0;    
+}
+.workspace__navbar-right-avatar-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+
+}
+
+.workspace__board {
+    background-color: var(--tan);
+    height: calc(100vh - 48px);
+    overflow-x: scroll;
+    display: flex;
+
+}
+
+.workspace__board-info-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 48px;
+    padding: 0 48px;
+    background-color: var(--tan);
+}
+
+.workspace__board-name {
+    font-size: 3rem;
+    line-height: 48px;
+    margin-right: 48px;
+    margin-top: 16px;
+}
+
+
+
+.workspace__board-list {
+    padding: 32px;
+    min-width: 360px;
+    height: fit-content;
+    margin: 16px 24px;
+    background-color: var(--white);
+}
+
+.workspace__board-list-header {
+    font-size: 2.4rem;
+    padding: 8px 0;
+    margin-bottom: 16px;
+}
+
+.workspace__board-list-task {
+    font-size: 1.8rem;
+    background-color: var(--grey);
+    padding: 8px;
+    border-radius: 4px;
+}
+
+.workspace__board-list-task-content {
+
+}
