@@ -47,6 +47,8 @@
 }
 
 .workspace__board {
+    
+
     background-color: var(--tan);
     height: calc(100vh - 48px);
     overflow-x: scroll;
@@ -54,7 +56,7 @@
 
 }
 
-.workspace__board-info-wrapper {
+/* .workspace__board-info-wrapper {
     display: flex;
     align-items: center;
     width: 100%;
@@ -69,30 +71,44 @@
     margin-right: 48px;
     margin-top: 16px;
 }
-
+ */
 
 
 .workspace__board-list {
-    padding: 32px;
+    padding: 24px;
+    max-width: 360px;
     min-width: 360px;
-    height: fit-content;
-    margin: 16px 24px;
+    height:min-content;
+    overflow-y: scroll;
+    max-height: 90vh;
+    margin: 16px 16px;
     background-color: var(--white);
+    border-radius: 16px;
 }
 
 .workspace__board-list-header {
-    font-size: 2.4rem;
+    font-size: 2rem;
     padding: 8px 0;
+    margin-bottom: 16px;
+    margin-left: 16px;
+}
+
+
+.workspace__board-list-task {
+    font-size: 1.6rem;
+    background-color: var(--grey);
+    padding: 16px;
+    border-radius: 4px;
     margin-bottom: 16px;
 }
 
-.workspace__board-list-task {
-    font-size: 1.8rem;
-    background-color: var(--grey);
-    padding: 8px;
-    border-radius: 4px;
+.workspace__board-list-task:hover {
+    background-color: var(--focus-grey);
+}
+
+.workspace__board-list-task:hover {
+    cursor: pointer;
 }
 
 .workspace__board-list-task-content {
-
 }

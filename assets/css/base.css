@@ -8,7 +8,8 @@
     --blue: #ecfdff;
     --black: #000;
     --white: #fff;
-    --grey: #ccc;
+    --grey: rgb(233, 233, 233);
+    --focus-grey: #ccc;
     --red: #f81755;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
