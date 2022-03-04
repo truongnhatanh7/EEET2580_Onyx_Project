@@ -93,15 +93,17 @@
     padding: 8px 0;
     margin-bottom: 16px;
     margin-left: 16px;
+    outline: none;
 }
 
 
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--grey);
-    padding: 16px;
     border-radius: 4px;
     margin-bottom: 16px;
+    padding: 14px;
+
 }
 
 .workspace__board-list-task:hover {
@@ -113,6 +115,12 @@
 }
 
 .workspace__board-list-task-content {
+    padding: 2px;
+    outline: none;
+}
+
+.workspace__board-list-task-content:hover {
+    cursor: text;
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {

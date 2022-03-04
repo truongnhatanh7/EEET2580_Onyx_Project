@@ -12,19 +12,6 @@ addListBtn.addEventListener("click", () => {
   <h1 class="workspace__board-list-header" contenteditable="true">
     List 1
   </h1>
-  <div
-    class="workspace__board-list-task"
-    draggable="true"
-    ondragstart="handleDragStart(event)"
-    ondragend="handleDragEnd(event)"
-  >
-    <p
-      class="workspace__board-list-task-content"
-      contenteditable="true"
-    >
-      Do something
-    </p>
-  </div>
 
   <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
 </div>
@@ -46,7 +33,7 @@ function handleAddTask(event) {
       class="workspace__board-list-task-content"
       contenteditable="true"
     >
-      Do something
+      
     </p>
     </div>
     `;
