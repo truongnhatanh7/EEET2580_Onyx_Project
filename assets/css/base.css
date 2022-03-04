@@ -5,11 +5,13 @@
 }
 
 :root {
-    --blue: #ecfdff;
+    --blue: #1b73e7;
     --black: #000;
     --white: #fff;
-    --grey: rgb(233, 233, 233);
-    --focus-grey: #ccc;
+    --light-blue: #C4DBFA;
+    --gray: #F7F7F7;
+    --focus-gray: #ccc;
+    --dark-gray: #757575;
     --red: #f81755;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
@@ -25,7 +27,7 @@ html {
     border-radius: 32px;
     font-size: 1.6rem;
     color: var(--white);
-    background-color: var(--red);
+    background-color: var(--blue);
     font-family: 'Montserrat', sans-serif;
     padding: 6px 16px;
 }

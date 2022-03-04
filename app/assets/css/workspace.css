@@ -1,85 +1,94 @@
 .workspace-root {
-
+    min-height: 100vh;
 }
 
 .workspace__navbar {
-    height: 48px;
-    position: sticky;
+    height: 64px;
+    position: relative;
     top: 0;
     right: 0;
     left: 0;
     width: 100vw;
-    background-color: var(--blue);
+    background-color: var(--white);
     display: flex;
     justify-content: space-between;
 }
 
 .workspace__navbar-left-wrapper {
+    width: 100%;
     padding-left: 48px;
     
 }
 .workspace__navbar-link {
     text-decoration: none;
     font-size: 1.6rem;
-    line-height: 48px;
+    line-height: 64px;
     color: var(--black);
     margin-right: 32px;
-}
-
-.workspace__navbar-create-btn {
 
 }
+.workspace__navbar-link:hover {
+    opacity: 0.7;
+}
+
+.workspace__navbar-project-name {
+    display: block;
+}
+
 .workspace__navbar-right-wrapper {
     padding-right: 48px;
 }
 .workspace__navbar-right-avatar-wrapper {
     object-fit: contain;
-    width: 36px;
-    
-    overflow: hidden;
-    padding: 6px 0;    
+    width: 64px;
+    display: grid;
+    height: 64px;
+    place-items: center;
 }
+
+.workspace__navbar-right-avatar-wrapper:hover {
+    cursor: pointer;
+}
+
 .workspace__navbar-right-avatar-img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
+    height: 70%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 50%;
 
 }
 
+.workspace__info {
+    width: 100%;
+    height: 64px;
+    background-color: var(--gray);
+    padding-left: 48px;
+    display: flex;
+    align-items: center;
+}
+
+.workspace__info-name {
+    font-size: 3rem;
+    outline: none;
+    font-weight: 500;
+}
+
 .workspace__board {
     
-
-    background-color: var(--tan);
-    height: calc(100vh - 48px);
+    background-color: var(--gray);
+    height: calc(100vh - 64px);
+    /* height: 100vh; */
     overflow-x: scroll;
     display: flex;
 
 }
 
-/* .workspace__board-info-wrapper {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    height: 48px;
-    padding: 0 48px;
-    background-color: var(--tan);
-}
-
-.workspace__board-name {
-    font-size: 3rem;
-    line-height: 48px;
-    margin-right: 48px;
-    margin-top: 16px;
-}
- */
-
-
 .workspace__board-list {
     padding: 24px;
     max-width: 360px;
     min-width: 360px;
+
     height: fit-content;
     overflow-y: scroll;
     max-height: 90vh;
@@ -89,6 +98,7 @@
 }
 
 .workspace__board-list-header {
+    font-weight: 500;
     font-size: 2rem;
     padding: 8px 0;
     margin-bottom: 16px;
@@ -99,7 +109,7 @@
 
 .workspace__board-list-task {
     font-size: 1.6rem;
-    background-color: var(--grey);
+    background-color: var(--gray);
     border-radius: 4px;
     margin-bottom: 16px;
     padding: 14px;
@@ -107,7 +117,7 @@
 }
 
 .workspace__board-list-task:hover {
-    background-color: var(--focus-grey);
+    background-color: var(--focus-gray);
 }
 
 .workspace__board-list-task:hover {
@@ -138,14 +148,15 @@
 
 .workspace__add-list-btn {
     background-color: transparent;
-    border: 1px solid var(--focus-grey);
-    color: var(--focus-grey);
+    border: 1px solid var(--dark-gray);
+    color: var(--dark-gray);
     margin: 16px;
     min-width: 360px;
+    border-radius: 8px;
 }
 
 .workspace__add-list-btn:hover {
-    background-color: var(--focus-grey);
+    background-color: var(--dark-gray);
     color: var(--white);
 }
 

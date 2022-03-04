@@ -10,7 +10,7 @@ addListBtn.addEventListener("click", () => {
   let html = `  
   <div class="workspace__board-list" ondragover="handleDragOver(event)">
   <h1 class="workspace__board-list-header" contenteditable="true">
-    List 1
+    List
   </h1>
 
   <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>

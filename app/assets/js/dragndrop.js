@@ -4,20 +4,6 @@ const $$ = document.querySelectorAll.bind(document);
 const draggables = $$(".workspace__board-list-task");
 const containers = $$(".workspace__board-list");
 
-// draggables.forEach((draggable) => {
-//   draggable.addEventListener("dragstart", () => {
-//     // handleDragStart(draggable);
-//     draggable.classList.add("workspace__board-list-task--dragging");
-//   });
-
-//   draggable.addEventListener("dragend", () => {
-//     //   handleDragEnd(draggable);
-//     draggable.classList.remove("workspace__board-list-task--dragging");
-//   });
-
-  
-// });
-
 function handleDragStart(event) {
     event.target.classList.add("workspace__board-list-task--dragging");
     console.log("start")
@@ -42,38 +28,6 @@ function handleDragOver(event) {
         }
     }
 }
-
-
-
-// function handleDragStart(event) {
-//     console.log(typeof event.target)
-// }
-
-// containers.forEach((container) => {
-//   container.addEventListener("dragover", (e) => {
-//     e.preventDefault();
-//     const afterElement = getDragAfterElement(container, e.clientY);
-//     const draggable = $(".workspace__board-list-task--dragging");
-    
-//     if (afterElement == null) {
-//       container.appendChild(draggable);
-//     } else {
-//       container.insertBefore(draggable, afterElement);
-//     }
-//   });
-// });
-
-// function handleDragOver(event) {
-//     event.preventDefault();
-//     const afterElement = getDragAfterElement(event.currentTarget, event.clientY);
-//     console.log(typeof event.currentTarget) 
-//     const draggable = $(".workspace__board-list-task--dragging");
-//     if (afterElement == null) {
-//       event.target.appendChild(draggable);
-//     } else {
-//       event.target.insertBefore(draggable, afterElement);
-//     }
-// }
 
 function getDragAfterElement(container, yMousePos) {
   // Use y because the boundaries are in current container
