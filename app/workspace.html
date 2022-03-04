@@ -44,23 +44,13 @@
 
 
       <section class="workspace__board">
-        <div class="workspace__board-list">
-            <h1 class="workspace__board-list-header" contenteditable="true">List 1</h1>
-            <div class="workspace__board-list-task" draggable="true">
-                <p class="workspace__board-list-task-content">velit 1</p>
-            </div>
-            <div class="workspace__board-list-task" draggable="true">
-                <p class="workspace__board-list-task-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque illum ex ab suscipit veniam veritatis recusandae aspernatur asperiores ipsa nostrum! Similique cupiditate tempora inventore alias quae. Voluptatibus tempore eum ea?</p>
-            </div>
-
+        <div class="workspace__board-list" ondragover="handleDragOver(event)">
+          <h1 class="workspace__board-list-header" contenteditable="true">List 1</h1>
+          <div class="workspace__board-list-task" draggable="true" ondragstart="handleDragStart(event)" ondragend="handleDragEnd(event)">
+              <p class="workspace__board-list-task-content">velit3 </p>
+          </div>
         </div>
 
-        <div class="workspace__board-list">
-            <h1 class="workspace__board-list-header" contenteditable="true">List 1</h1>
-            <div class="workspace__board-list-task" draggable="true">
-                <p class="workspace__board-list-task-content">velit3 </p>
-            </div>
-        </div>
 
         <div class="workspace__add-list-wrapper">
           <button class="workspace__add-list-btn btn">Create new list</button>
