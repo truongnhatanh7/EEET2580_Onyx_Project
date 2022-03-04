@@ -33,8 +33,10 @@ function handleDragOver(event) {
     if ((container.classList['0'] === 'workspace__board-list')) {
         const afterElement = getDragAfterElement(container, event.clientY);
         const draggable = $(".workspace__board-list-task--dragging");
+        const addTaskBtn = container.children[container.children.length - 1]
+        console.log(typeof addTaskBtn)
         if (afterElement == null) {
-          container.appendChild(draggable);
+          container.insertBefore(draggable, addTaskBtn);
         } else {
           container.insertBefore(draggable, afterElement);
         }

@@ -123,6 +123,11 @@
 
 }
 
+.workspace__add-task-btn {
+    padding: 16px;
+    border-radius: 4px;
+}
+
 .workspace__add-list-btn {
     background-color: transparent;
     border: 1px solid var(--focus-grey);

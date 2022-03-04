@@ -22,7 +22,7 @@ html {
 
 .btn {
     border: none;
-    border-radius: 8px;
+    border-radius: 32px;
     font-size: 1.6rem;
     color: var(--white);
     background-color: var(--red);
