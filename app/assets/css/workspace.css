@@ -35,6 +35,8 @@
 
 .workspace__navbar-create-btn {
     color: var(--white) !important;
+    height: 4rem;
+
 }
 
 .workspace__navbar-project-name {
@@ -155,6 +157,8 @@
     margin: 16px 16px;
     background-color: var(--white);
     border-radius: 16px;
+    /* border-top: 1px solid var(--dark-light-white);
+    border-right: 1px solid var(--dark-light-white); */
 }
 
 .workspace__board-list-header {
@@ -175,6 +179,7 @@
     padding: 14px;
     position: relative;
     border: 1px solid var(--lm-only-gray);
+
 }
 
 .workspace__board-list-task:hover {
