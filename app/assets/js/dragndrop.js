@@ -6,7 +6,6 @@ const containers = $$(".workspace__board-list");
 
 function handleDragStart(event) {
     event.target.classList.add("workspace__board-list-task--dragging");
-    console.log("start")
 }
 
 function handleDragEnd(event) {

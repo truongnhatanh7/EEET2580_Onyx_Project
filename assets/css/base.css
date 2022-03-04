@@ -15,6 +15,13 @@
     --red: #f81755;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
+    --yellow: #f4b500;
+}
+[data-theme="dark"] {
+    --white: #000;
+    --black: #fff;
+    --gray: #000;
+    --dark-gray: #fff;
 }
 
 html {
@@ -30,6 +37,7 @@ html {
     background-color: var(--blue);
     font-family: 'Montserrat', sans-serif;
     padding: 6px 16px;
+    transition: 0.2s;
 }
 
 .btn:hover {

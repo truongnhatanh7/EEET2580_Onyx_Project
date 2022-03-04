@@ -3,8 +3,11 @@ const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
 const board = $(".workspace__board");
-
-console.log(addTaskBtn);
+const darkModeSwitch = $(".workspace__switch-input");
+const darkModeBtn = $('.workspace__navbar-darkmode-wrapper')
+const currentTheme = localStorage.getItem('theme');
+const tasks = $$('.workspace__board-list-task');
+const lists = $$('.workspace__board-list');
 
 addListBtn.addEventListener("click", () => {
   let html = `  
@@ -41,3 +44,24 @@ function handleAddTask(event) {
   let para = document.createRange().createContextualFragment(html);
   event.target.parentNode.insertBefore(para, event.target);
 };
+
+if (currentTheme) {
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    if (currentTheme === 'dark') {
+        darkModeSwitch.checked = true;
+    }
+}
+
+function switchTheme(e) {
+    if (e.target.checked) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+    }
+
+
+}
+darkModeSwitch.addEventListener('change', switchTheme);
