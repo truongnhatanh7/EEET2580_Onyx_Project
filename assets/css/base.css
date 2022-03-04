@@ -28,7 +28,6 @@ html {
     background-color: var(--red);
     font-family: 'Montserrat', sans-serif;
     padding: 6px 16px;
-    transition: all 0.1s ease-in-out 0.1s;
 }
 
 .btn:hover {

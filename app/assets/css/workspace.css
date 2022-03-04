@@ -118,3 +118,22 @@
 .workspace__board-list-task.workspace__board-list-task--dragging {
     opacity: 0.3;
 }
+
+.workspace__add-list-wrapper {
+
+}
+
+.workspace__add-list-btn {
+    background-color: transparent;
+    border: 1px solid var(--focus-grey);
+    color: var(--focus-grey);
+    margin: 16px;
+    min-width: 360px;
+}
+
+.workspace__add-list-btn:hover {
+    background-color: var(--focus-grey);
+    color: var(--white);
+}
+
+
