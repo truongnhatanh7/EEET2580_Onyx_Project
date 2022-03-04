@@ -10,6 +10,7 @@
     --white: #fff;
     --light-blue: #C4DBFA;
     --gray: #F7F7F7;
+    --lm-only-gray: #F7F7F7;
     --focus-gray: #ccc;
     --dark-gray: #757575;
     --red: #f81755;
@@ -22,6 +23,8 @@
     --black: #fff;
     --gray: #000;
     --dark-gray: #fff;
+    --lm-only-gray: #fff;
+    --blue: #fff;
 }
 
 html {
@@ -33,7 +36,6 @@ html {
     border: none;
     border-radius: 32px;
     font-size: 1.6rem;
-    color: var(--white);
     background-color: var(--blue);
     font-family: 'Montserrat', sans-serif;
     padding: 6px 16px;
