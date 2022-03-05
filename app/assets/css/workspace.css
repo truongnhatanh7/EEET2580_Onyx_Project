@@ -153,8 +153,8 @@
     min-width: 360px;
     height: fit-content;
     overflow-y: scroll;
-    max-height: 90vh;
-    margin: 16px 16px;
+    max-height: 85vh;
+    margin: 0 16px;
     background-color: var(--white);
     border-radius: 16px;
     /* border-top: 1px solid var(--dark-light-white);
