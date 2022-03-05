@@ -204,6 +204,7 @@
 }
 
 .workspace__add-task-btn {
+    color: var(--white);
     padding: 16px;
     border-radius: 4px;
 }
