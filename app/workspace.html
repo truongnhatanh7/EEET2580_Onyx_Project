@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="./assets/css/workspace.css" />
     <script src="./assets/js/dragndrop.js" defer></script>
     <script src="./assets/js/controller.js" defer></script>
-    <script type="module" src="./assets/js/render.js" defer></script>
+    <script type="module" src="./assets/js/render.js?version=1" defer></script>
   </head>
   <body>
     <main id="workspace-root">
@@ -51,26 +51,7 @@
 	  </section>
 
       <section class="workspace__board">
-        <div class="workspace__board-list" ondragover="handleDragOver(event)">
-          <h1 class="workspace__board-list-header" contenteditable="true">
-            List
-          </h1>
-          <div
-            class="workspace__board-list-task"
-            draggable="true"
-            ondragstart="handleDragStart(event)"
-            ondragend="handleDragEnd(event)"
-          >
-            <p
-              class="workspace__board-list-task-content"
-              contenteditable="true"
-            >
-              Do something
-            </p>
-          </div>
 
-          <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
-        </div>
 
         <div class="workspace__add-list-wrapper">
           <button class="workspace__add-list-btn btn">Create new list</button>

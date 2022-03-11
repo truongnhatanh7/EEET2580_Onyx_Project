@@ -6,6 +6,8 @@ const projectList = $(".dashboard__project-list");
 let userId = 1;
 main()
 
+let workspaceIds = []
+
 function main() {
     getWorkspace(renderWorkspace)
 }
@@ -19,15 +21,16 @@ function getWorkspace(callback) {
 }
 
 function renderWorkspace(workspaces) {
+    workspaceIds = []
     for (const workspace of workspaces) {
-        console.log(workspace.users)
-        // if (workspace.u)
+        console.log(workspace)
         workspace.users.forEach(user => {
             if (user.userId == userId) {
+                workspaceIds.push(workspace.workspaceId)
                 let html = `
-                <div class="dashboard__project-card">
-                    <a href="workspace.html" class="dashboard__project-card-link">
-                        <h2 class="dashboard__project-card-name">${workspace.workspaceTitle}</h2>
+                <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                    <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                        <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
                     </a>
                 </div>
                 `;
@@ -35,6 +38,10 @@ function renderWorkspace(workspaces) {
                 projectList.appendChild(para);
             }
         })
-
     }
+    console.log(workspaceIds)
+}
+
+function handleCardClick(event) {
+    localStorage.setItem("currentBoardId", event.target.id);
 }
