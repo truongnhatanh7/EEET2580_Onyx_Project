@@ -1,4 +1,7 @@
 "use strict";
+
+// const workspaceController = require("./workspace_controller.js");
+
 const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
@@ -8,6 +11,8 @@ const darkModeBtn = $('.workspace__navbar-darkmode-wrapper')
 const currentTheme = localStorage.getItem('theme');
 const tasks = $$('.workspace__board-list-task');
 const lists = $$('.workspace__board-list');
+
+
 
 addListBtn.addEventListener("click", () => {
   let html = `  
@@ -65,3 +70,9 @@ function switchTheme(e) {
 
 }
 darkModeSwitch.addEventListener('change', switchTheme);
+
+// renderWorkspace();
+// function renderWorkspace() {
+//   let currentWorkspaceId = workspaceController.getId();
+//   console.log(currentWorkspaceId);
+// }

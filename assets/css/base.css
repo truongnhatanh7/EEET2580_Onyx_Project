@@ -18,6 +18,7 @@
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
     --yellow: #f4b500;
+    --purple: #6c6cff;
 }
 [data-theme="dark"] {
     --white: #000;
@@ -37,7 +38,7 @@ html {
     border: none;
     border-radius: 32px;
     font-size: 1.6rem;
-    background-color: var(--blue);
+    background-color: var(--purple);
     font-family: 'Montserrat', sans-serif;
     padding: 6px 16px;
     transition: 0.2s;

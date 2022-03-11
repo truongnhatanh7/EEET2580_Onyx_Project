@@ -1,0 +1,84 @@
+#dashboard-root {
+    padding: 64px 360px;
+}
+
+.dashboard__header {
+    color: black;
+}
+
+.dashboard__return {
+    text-decoration: none;
+    color: black;
+    font-size: 2rem;
+    display: block;
+    width: fit-content;
+    transition: 0.2s;
+    padding: 4px;
+
+}
+
+.dashboard__return:hover {
+    transform: translateX(-16px);
+}
+
+.dashboard__return-arrow {
+    padding-right: 8px;
+}
+
+.dashboard__title {
+    font-size: 5rem;
+    padding: 48px 0;
+}
+
+.dashboard__project-list {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: max-content;
+    gap: 16px;
+}
+
+.dashboard__project-card {
+    width: 100%;
+    height: 200px;
+    background-color: var(--purple);
+    border-radius: 16px;
+    display: grid;
+    place-items: center;
+}
+
+.dashboard__project-card:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.dashboard__project-add-btn {
+    padding: 16px;
+    border: none;
+    border-radius: 16px;
+}
+
+.dashboard__project-create {
+    font-size: 3rem;
+}
+
+.dashboard__project-card-link {
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    display: grid;
+    place-items: center;
+}
+
+
+.dashboard__project-card-name {
+    color: var(--white);
+    font-size: 1.8rem;
+    font-weight: 400;
+    max-width: 70%;
+    max-height: 70%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

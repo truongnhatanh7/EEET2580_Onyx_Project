@@ -33,7 +33,7 @@
     opacity: 0.7;
 }
 
-.workspace__navbar-create-btn {
+.workspace__navbar-progress-btn {
     color: var(--white) !important;
     height: 4rem;
 
