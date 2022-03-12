@@ -19,6 +19,15 @@
     --tan: #fffbf1;
     --yellow: #f4b500;
     --purple: #6c6cff;
+
+    /* Default color */
+    --white-color: #f3effd;
+    --pink-color: #4834d4;
+    --hard-pink: #4e589c;
+    --soft-pink: #6371ea;
+    --dark: #202f53;
+    --yellow: #f1cc00;
+    --red: #ed0613;
 }
 [data-theme="dark"] {
     --white: #000;
