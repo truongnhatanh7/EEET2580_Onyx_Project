@@ -28,10 +28,12 @@
     --dark: #202f53;
     --yellow: #f1cc00;
     --red: #ed0613;
+/* <<<<<<< nhung */
 
     /* size */
     --nav-height: 4.5rem;
     --feature-bar-width: 20.6rem;
+/* >>>>>>> main */
 }
 [data-theme="dark"] {
     --white: #000;
