@@ -28,6 +28,12 @@
     --dark: #202f53;
     --yellow: #f1cc00;
     --red: #ed0613;
+/* <<<<<<< nhung */
+
+    /* size */
+    --nav-height: 4.5rem;
+    --feature-bar-width: 20.6rem;
+/* >>>>>>> main */
 }
 [data-theme="dark"] {
     --white: #000;
@@ -43,6 +49,13 @@ html {
     font-family: 'Montserrat', sans-serif;
 }
 
+.logo-font {
+    font-family: 'Poppins', sans-serif;  
+    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+}
+
+.clearer { clear: both; }
+
 .btn {
     border: none;
     border-radius: 32px;
@@ -57,4 +70,3 @@ html {
     opacity: 0.7;
     cursor: pointer;
 }
-
