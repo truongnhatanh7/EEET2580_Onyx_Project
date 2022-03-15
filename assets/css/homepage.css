@@ -32,14 +32,17 @@
     box-shadow: #6371ea7e 0px 25px 50px -12px;
     border-radius: 4rem;
 }.slider-img__wrapper{
+    border-radius: 25px;
     overflow: hidden;
+    box-shadow: #6d76c438 0px 22px 70px 4px;
 }
 .slider-display-img {
     position: relative;
     /* position: absolute; */
-    border-radius: 4rem;
+    border-radius: 25px;
     overflow: hidden;
     z-index: 2;
+    
 }
 /* end of content main */
 
