@@ -48,8 +48,8 @@ html {
 }
 
 .logo-font {
-    font-family: 'Poppins', sans-serif;  
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
 }
 
 .clearer { clear: both; }
