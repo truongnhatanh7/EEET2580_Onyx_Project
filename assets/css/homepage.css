@@ -9,7 +9,7 @@
 /* start of slider */
 #slider {
     position: relative;
-    padding: 5rem 20.6rem;
+    padding: 5rem 20.6rem 0;
     background-color: var(--white);
 }
 .slider-logo {
@@ -88,15 +88,47 @@
 }
 /* end of content feature */
 
+/* start of drag drop feature */
+.feature__dragdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: 100%;
+    background-color: var(--pink-color);
+}
+/* end of drag drop feature */
+
 /* start of collab feature */
-.feature__collab {
+/* .feature__collab {
     position: absolute;
     top: 0;
     width: 100%;
     background: var(--pink-color);
+} */
+.card-content {
+    /* display: inline-block; */
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    width: 50%;
+    height: 60%;
+    background-color: var(--white);
+    border-radius: 2rem;
+}
+.card-content::after {
+    content: "";
+    display: block;
+    clear: both;
 }
 .card {
-    padding-top: 3rem;
+    /* padding-top: 20rem; */
+    /* position: absolute;
+    top: 0;
+    left: 0;
+    right: 0; */
 }
 
 /* end of collab feature */
