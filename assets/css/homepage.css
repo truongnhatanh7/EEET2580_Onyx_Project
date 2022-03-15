@@ -2,7 +2,7 @@
 .col-half { width: 50%; }
 .card {
     --position-vertical: 16rem;
-    margin-top: var(--position-vertical);
+    padding-top: var(--position-vertical);
     height: calc(100vh - var(--position-vertical) * 2);
 
 }
@@ -10,28 +10,26 @@
 /* start of content */
 #content {
     /* margin-top: var(--nav-height); */
-    --position-horizontal: 10rem;
     box-sizing: border-box;
-    width: calc(100vw - var(--position-horizontal * 2));
-
+    
 }
 /* start of content main */
-#content__main {
+#slider {
+    --position-horizontal: 10rem;
     position: relative;
-    margin-top: 5rem;
+    padding-top: 5rem;
+    padding-left: var(--position-horizontal);
+    padding-right: var(--position-horizontal);
+    width: 100vw;
 
-    margin-left: var(--position-horizontal);
-    margin-right: var(--position-horizontal);
-    
-    width: 100%;
     /* height: calc(100vh - var(--nav-height) - var(--position-top)); */
 }
-.content__main-display {
+.slider-display {
     /* box-shadow: 0rem 0.4rem 0.7rem rgba(0, 0, 0, 0.25);   */
     border-top-right-radius: 4rem;
     border-top-left-radius: 4rem;
 }
-.content__main-display-logo {
+.slider-display-logo {
     /* text-align: center; */
 
     padding: 0 0 2rem 0;
@@ -45,7 +43,7 @@
     font-weight: bolder;
 
 }
-.content__main-design-img {
+.slider-design-img {
     /* height = 50% width */
     padding: 50%;
     object-fit: cover;
@@ -80,36 +78,7 @@
     color: var(--white);
     /* color not ok */
     background-color: var(--soft-pink);
-
-    /* display: none; */
     
-}
-.feature-bar-ani-appear {
-    /* animation: feature-bar-appear 1s ease infinite alternate; */
-    animation: feature-bar-appear 0.6s ease-out;
-}
-.feature-bar-ani-disappear {
-    animation: feature-bar-disappear 0.6s ease-out;
-
-}
-/* animation */
-@keyframes feature-bar-appear {
-    from {
-        top: 100vh;
-    }
-    to {
-        top: 0;
-    }
-}
-@keyframes feature-bar-disappear {
-    from {
-        top: 0;
-        background-color: red;
-    }
-    to {
-        /* top: 100vh; */
-        background-color: blue;
-    }
 }
 /* end of content feature */
 /* end of content */
