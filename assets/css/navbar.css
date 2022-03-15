@@ -29,22 +29,25 @@
     display: inline-block;
     padding: 0 var(--position-horizon);
     color: var(--white);
+    width: 15rem;
 }
 .navbar__menu {
     height: 100%;
     font-size: 2rem;
+    display: inline-block;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
+    gap: 3rem;
 }
 
+.navbar__icon{
+    color: var(--white);
+}
 .navbar__menu-element-link {
     /* make <a> become block */
     display: inline-block;
-    height: 100%;
-
-    /* center text vertically */
-    padding: 0 var(--position-horizon);
+    height: auto;
 
     text-decoration: none;
     color: var(--color-font);
@@ -52,12 +55,12 @@
     letter-spacing: 0.2rem;
 }
 .navbar__workspace {
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
-    
-    margin: auto var(--position-horizon);
+    width: 15rem;
     background-color: var(--yellow);
     /* color not ok */
     color: var(--dark);
+    padding: 10px 0;
+    margin: 0;
+    border: 0;
 }
 /* end of header or navbar */
