@@ -1,47 +1,49 @@
 /* start of header or navbar */
-.header__navbar {
-    --position-horizon: 1.6rem;
-    --color-font: var(--white);
+.header {
     /* Position */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    z-index: 100;
+        
+}
+.header__navbar {
+    --position-horizon: 1.6rem;
+    --color-font: var(--white);
+
+    backdrop-filter: blur(28px);
+    background-color: var(--soft-pink);
 
     /* size */
-    height: var(--nav-height);
-    width: 100vw;
-
-    /* design */
-    background: var(--soft-pink);
-    color: var(--color-font);
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+    height: 10rem;
+    width: 100%;
+    padding: 5px 20px;
 
     /* display element on same line */
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
-.navbar__icon {
+.navbar__name {
     display: inline-block;
     padding: 0 var(--position-horizon);
-    font-size: 3rem;
+    color: var(--white);
 }
 .navbar__menu {
     height: 100%;
     font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.navbar__menu-element {
-    /* all elements in list on same line */
-    display: inline-block;
-    height: 100%;
-}
+
 .navbar__menu-element-link {
     /* make <a> become block */
     display: inline-block;
     height: 100%;
 
     /* center text vertically */
-    line-height: var(--nav-height);
     padding: 0 var(--position-horizon);
 
     text-decoration: none;
