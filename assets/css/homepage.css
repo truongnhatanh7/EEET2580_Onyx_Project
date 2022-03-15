@@ -11,6 +11,7 @@
     position: relative;
     padding: 5rem 20.6rem 0;
     background-color: var(--white);
+    overflow: hidden;
 }
 .slider-logo {
     font-size: larger;
@@ -30,9 +31,12 @@
 .slider__wrapper {
     box-shadow: #6371ea7e 0px 25px 50px -12px;
     border-radius: 4rem;
+}.slider-img__wrapper{
+    overflow: hidden;
 }
 .slider-display-img {
     position: relative;
+    /* position: absolute; */
     border-radius: 4rem;
     overflow: hidden;
     z-index: 2;
@@ -45,8 +49,9 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 39%;
+    height: 30rem;
 }
+
 
 /* start of content */
 #content {
