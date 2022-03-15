@@ -101,7 +101,7 @@
     position: absolute;
     top: 0;
     right: 0;
-    bottom: 0;
+    height: 100vh;
 
     width: 100%;
     background-color: var(--pink-color);
@@ -109,32 +109,47 @@
 /* end of drag drop feature */
 
 /* start of collab feature */
-/* .feature__collab {
+.feature__collab {
     position: absolute;
-    top: 0;
+    top: 100vh;
+    right: 0;
+    height: 100vh;
+
     width: 100%;
     background: var(--pink-color);
-} */
+}
 .card-content {
     /* display: inline-block; */
-    position: absolute;
-    right: 0;
-    top: 0;
-
+    
     margin-top: 15rem;
-
+    
     width: 70%;
-    height: 60%;
+    height: 80%;
     background-color: var(--white);
-    --border-radius: 5rem;
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
     /* border-radius: 2rem; */
 }
 .card-content::after {
     content: "";
     display: block;
     clear: both;
+}
+.feature__dragdrop-content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    
+    --border-radius: 5rem;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+}
+.feature__collab-content {
+    position: absolute;
+    left: 0;
+    bottem: 0;
+    
+    --border-radius: 5rem;
+    border-top-right-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
 }
 .card {
     /* padding-top: 20rem; */
