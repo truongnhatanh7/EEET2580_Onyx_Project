@@ -32,34 +32,44 @@
                     <a class="navbar__menu-element-link" href="#">Pricing</a>
                 </div>
 
-            <button class="btn navbar__workspace">Workspace</button>
+            <button class="btn navbar__workspace">
+                Workspace
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
+                    <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
+                  </svg>
+            </button>
             </div>
         </div>
         <!-- End of the header -->
 
         <!-- start of slider -->
-        <div id="slider">
+        <div class="slider">
             <p class="slider-logo">
                 OnyX
             </p>
-            <div class="slider-img__wrapper">
-                <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="slider-display-img">
+            <div class="slider-content logo-font">
+                The best collaboration tool for your team
             </div>
-            <!-- <h1 class="logo-font content__main-display-logo">OnyX</h1>
-            <div class="content__main-display">
-                <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
-            </div> -->
-            <div class="slider-curve">
-                <!-- display: block: get rid of extra space on div -->
-                <svg style="display: block;" id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-                            <stop stop-color="rgba(72, 52, 212, 1)" offset="0%"></stop>
-                            <stop stop-color="rgba(187, 193, 250, 1)" offset="100%"></stop>
-                        </linearGradient></defs>
-                        <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L60,65.3C120,82,240,114,360,130.7C480,147,600,147,720,155.2C840,163,960,180,1080,155.2C1200,131,1320,65,1440,73.5C1560,82,1680,163,1800,196C1920,229,2040,212,2160,196C2280,180,2400,163,2520,130.7C2640,98,2760,49,2880,57.2C3000,65,3120,131,3240,155.2C3360,180,3480,163,3600,187.8C3720,212,3840,278,3960,310.3C4080,343,4200,343,4320,343C4440,343,4560,343,4680,334.8C4800,327,4920,310,5040,302.2C5160,294,5280,294,5400,261.3C5520,229,5640,163,5760,147C5880,131,6000,163,6120,155.2C6240,147,6360,98,6480,81.7C6600,65,6720,82,6840,98C6960,114,7080,131,7200,179.7C7320,229,7440,310,7560,310.3C7680,310,7800,229,7920,196C8040,163,8160,180,8280,171.5C8400,163,8520,131,8580,114.3L8640,98L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z">
-                        </path>
-                </svg>
+            <div id="slider-img">
+                <div class="slider-img__wrapper">
+                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="slider-display-img">
+                </div>
+                <!-- <h1 class="logo-font content__main-display-logo">OnyX</h1>
+                <div class="content__main-display">
+                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
+                </div> -->
+                <div class="slider-curve">
+                    <!-- display: block: get rid of extra space on div -->
+                    <svg style="display: block;" id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
+                                <stop stop-color="rgba(72, 52, 212, 1)" offset="0%"></stop>
+                                <stop stop-color="rgba(187, 193, 250, 1)" offset="100%"></stop>
+                            </linearGradient></defs>
+                            <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L60,65.3C120,82,240,114,360,130.7C480,147,600,147,720,155.2C840,163,960,180,1080,155.2C1200,131,1320,65,1440,73.5C1560,82,1680,163,1800,196C1920,229,2040,212,2160,196C2280,180,2400,163,2520,130.7C2640,98,2760,49,2880,57.2C3000,65,3120,131,3240,155.2C3360,180,3480,163,3600,187.8C3720,212,3840,278,3960,310.3C4080,343,4200,343,4320,343C4440,343,4560,343,4680,334.8C4800,327,4920,310,5040,302.2C5160,294,5280,294,5400,261.3C5520,229,5640,163,5760,147C5880,131,6000,163,6120,155.2C6240,147,6360,98,6480,81.7C6600,65,6720,82,6840,98C6960,114,7080,131,7200,179.7C7320,229,7440,310,7560,310.3C7680,310,7800,229,7920,196C8040,163,8160,180,8280,171.5C8400,163,8520,131,8580,114.3L8640,98L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z">
+                            </path>
+                    </svg>
+                </div>
             </div>
         </div>
         <!-- end of slider -->
