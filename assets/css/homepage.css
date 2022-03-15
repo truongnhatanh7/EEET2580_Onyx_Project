@@ -4,14 +4,7 @@
 
 /* start of content main */
 #slider {
-    --position-horizontal: 10rem;
-    position: relative;
-    padding-top: 5rem;
-    padding-left: var(--position-horizontal);
-    padding-right: var(--position-horizontal);
-    width: 100vw;
-    
-    /* height: calc(100vh - var(--nav-height) - var(--position-top)); */
+    padding: 5rem 20.6rem;
 }
 .slider-logo {
     font-size: larger;
