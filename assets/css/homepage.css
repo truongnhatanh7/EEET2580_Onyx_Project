@@ -1,22 +1,27 @@
 /* general */
-.col-half { width: 50%; }
+.col-half { 
+    width: 50%; 
+    display: inline-block;
+}
 /* end genaral */
 
-/* start of content main */
+
+/* start of slider */
 #slider {
+    position: relative;
     padding: 5rem 20.6rem;
 }
 .slider-logo {
     font-size: larger;
     font-family: 'poppins', sans-serif;
     text-transform: uppercase;
-
+    
     /* center text */
     margin-left: auto;
     margin-right: auto;
-
+    
     padding-top: 15rem;
-
+    
     font-size: 14rem;
     font-weight: bolder;
     text-align: center;
@@ -30,6 +35,15 @@
     overflow: hidden;
 }
 /* end of content main */
+
+.slider-curve {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10rem;
+    fill: var(--pink-color);
+}
 
 /* start of content */
 #content {
@@ -79,7 +93,6 @@
 .card {
     padding-top: 3rem;
 }
-
 
 /* end of collab feature */
 /* end of content */
