@@ -75,19 +75,12 @@
     position: absolute;
     top: 0;
     width: 100%;
-
     background: var(--pink-color);
-    
 }
 .card {
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    transform: translate(-50%);
-
-    width: 100%;
-    height: 100%;
+    padding-top: 3rem;
 }
+
 
 /* end of collab feature */
 /* end of content */
