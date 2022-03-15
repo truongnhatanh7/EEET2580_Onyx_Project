@@ -21,7 +21,7 @@
     margin-left: auto;
     margin-right: auto;
     
-    padding-top: 15rem;
+    padding-top: 25rem;
     
     font-size: 14rem;
     font-weight: bolder;
@@ -82,8 +82,9 @@
     font-size: 7rem;
     font-weight: 600;
     color: var(--white);
-    /* color not ok */
-    background-color: var(--soft-pink);
+    
+    background-color: var(--pink-color);
+
 }
 /* end of content feature */
 
