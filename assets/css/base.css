@@ -30,9 +30,8 @@
     --red: #ed0613;
 
     /* size */
-    --nav-height: 4.5rem;
+    --nav-height: 7rem;
     --feature-bar-width: 20.6rem;
-    --feature-bar-height: 102.4rem;
 }
 [data-theme="dark"] {
     --white: #000;

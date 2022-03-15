@@ -1,3 +1,13 @@
+/* general */
+.col-half { width: 50%; }
+.card {
+    --position-vertical: 16rem;
+    margin-top: var(--position-vertical);
+    margin-bottom: var(--position-vertical);
+    height: calc(100vh - var(--position-vertical) * 2);
+
+}
+
 /* start of content */
 #content {
     /* margin-top: var(--nav-height); */
@@ -18,7 +28,6 @@
 }
 .content__main-display {
     /* box-shadow: 0rem 0.4rem 0.7rem rgba(0, 0, 0, 0.25);   */
-
     border-top-right-radius: 4rem;
     border-top-left-radius: 4rem;
 }
@@ -40,26 +49,68 @@
     /* height = 50% width */
     padding: 50%;
     object-fit: cover;
-
-    /* box-shadow: 0rem 0.4rem 10rem rgba(0, 0, 0, 0.25);   */
 }
 /* end of content main */
 
 /* start of content feature */
 .feature__bar {
-    /* position: fixed; */
-    /* left: 0; */
+    display: absolute;
+    
+
+    --position-vertical: 8rem;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    left: 0;
+    bottom: 0;
     z-index: 1;
 
     width: var(--feature-bar-width);
-    height: var(--feature-bar-height);
+    height: 100vh;
 
     /* text displayed vertically */
     writing-mode: vertical-lr;
     text-orientation: upright;
+    
 
+    /* center horizontally */
+    /* text-align: center; */
+    padding: var(--position-vertical) 5rem;
+
+    font-family: 'Poppins', sans-serif;
     font-size: 7rem;
-    background-color: ;
+    color: var(--white);
+    /* color not ok */
+    background-color: var(--soft-pink);
+
+    /* display: none; */
+    
+}
+.feature-bar-ani-appear {
+    /* animation: feature-bar-appear 1s ease infinite alternate; */
+    animation: feature-bar-appear 0.6s ease-out;
+}
+.feature-bar-ani-disappear {
+    animation: feature-bar-disappear 0.6s ease-out;
+
+}
+/* animation */
+@keyframes feature-bar-appear {
+    from {
+        top: 100vh;
+    }
+    to {
+        top: 0;
+    }
+}
+@keyframes feature-bar-disappear {
+    from {
+        top: 0;
+        background-color: red;
+    }
+    to {
+        /* top: 100vh; */
+        background-color: blue;
+    }
 }
 /* end of content feature */
 /* end of content */
