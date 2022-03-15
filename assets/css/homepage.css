@@ -88,9 +88,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-
-    backdrop-filter: blur(28px);
-    background-color: var(--soft-pink);
+    background: var(--pink-color);
 }
 .card {
     padding-top: 3rem;
