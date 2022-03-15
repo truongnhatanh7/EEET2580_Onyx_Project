@@ -28,12 +28,10 @@
     --dark: #202f53;
     --yellow: #f1cc00;
     --red: #ed0613;
-/* <<<<<<< nhung */
 
     /* size */
-    --nav-height: 4.5rem;
+    --nav-height: 7rem;
     --feature-bar-width: 20.6rem;
-/* >>>>>>> main */
 }
 [data-theme="dark"] {
     --white: #000;
@@ -50,8 +48,8 @@ html {
 }
 
 .logo-font {
-    font-family: 'Poppins', sans-serif;  
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
 }
 
 .clearer { clear: both; }

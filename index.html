@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- <<<<<<< nhung -->
 
     <!-- Link Css file -->
     <link rel="stylesheet" href="/assets/css/base.css">
@@ -23,46 +22,93 @@
         <!-- Start of the header -->
         <div class="header">
             <div class="header__navbar">
-                <div class="navbar__icon logo-font">
+                <div class="navbar__name logo-font">
                     OnyX
                 </div>
 
                 <div class="navbar__menu">
-                    <div class="navbar__menu-element"><a class="navbar__menu-element-link" href="#">Home</a></div>
-                    <div class="navbar__menu-element"><a class="navbar__menu-element-link" href="#">About</a></div>
-                    <div class="navbar__menu-element"><a class="navbar__menu-element-link" href="#">Pricing</a></div>
+                  <a class="navbar__menu-element-link " href="#">Home</a>
+                    <a class="navbar__menu-element-link" href="#">About</a>
+                    <a class="navbar__menu-element-link" href="#">Pricing</a>
                 </div>
 
             <button class="btn navbar__workspace">Workspace</button>
             </div>
         </div>
         <!-- End of the header -->
+        
+        <!-- start of slider -->
+        <div id="slider">
+            <legend class="slider-logo">
+                OnyX
+            </legend>
+            <fieldset class="slider__wrapper">
+                
+                <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="slider-display-img">
+            </fieldset>
+            <!-- <h1 class="logo-font content__main-display-logo">OnyX</h1>
+            <div class="content__main-display">
+                <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
+            </div> -->
+        </div>
+        <!-- end of slider -->
 
         <!-- Start of content -->
         <div id="content">
-            <!-- start of main content -->
-            <div id="content__main">
-                <fieldset class="content__main-display">
-                    <legend class="logo-font content__main-display-logo">OnyX</legend>
-                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
-                </fieldset>
-                <!-- <h1 class="logo-font content__main-display-logo">OnyX</h1>
-                <div class="content__main-display">
-                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
-                </div> -->
-            </div>
-            <!-- end of main content -->
             
             <!-- start of feature -->
             <div id="content__feature">
                 <!-- start of feature bar -->
-                <div class="feature__bar">Feature</div>
+                <div class="feature__bar js__scrolling">Feature</div>
                 <!-- end of feature bar -->
 
                 <!-- start of collab -->
+                <div class="feature__collab">
+                    <svg class="card" viewBox="0 0 1134 692" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1134 622C1134 660.66 1102.66 692 1064 692L0 692V0L1064 0C1102.66 0 1134 31.3401 1134 70V622Z" fill="white"/>
+                    </svg>
+                    
+                    <div class="card-content feature__collab-content">
+                        <div class="col-half">
+                            Collaboration made easy
+                        </div>
+                        <div class="col-half">
+                            <svg width="668" height="535" viewBox="0 0 668 535" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <g filter="url(#filter0_d_22_179)">
+                                <rect x="19" y="19" width="616" height="483" rx="7" fill="white"/>
+                                <rect x="18.5" y="18.5" width="617" height="484" rx="7.5" stroke="black" stroke-linejoin="bevel"/>
+                                </g>
+                                <defs>
+                                <filter id="filter0_d_22_179" x="0" y="0" width="668" height="535" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                <feOffset dx="7" dy="7"/>
+                                <feGaussianBlur stdDeviation="12.5"/>
+                                <feComposite in2="hardAlpha" operator="out"/>
+                                <feColorMatrix type="matrix" values="0 0 0 0 0.282353 0 0 0 0 0.203922 0 0 0 0 0.831373 0 0 0 0.25 0"/>
+                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_22_179"/>
+                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_22_179" result="shape"/>
+                                </filter>
+                                </defs>
+                            </svg>
+                                
+                        </div>
+                    </div>
+                </div>
                 <!-- end of collab -->
-    
+                
                 <!-- start of drag and drop -->
+                <div class="feature__dragdrop">
+                    <div class="card-content feature__dragdrop-content">
+                        <div class="col-half">
+                            Drag Drop
+                        </div>
+                        <div class="col-half">
+                        
+                                
+                        </div>
+                    </div>
+                </div>
                 <!-- end of drag and drop -->
     
             </div>
@@ -78,11 +124,6 @@
         </div>
         <!-- end of footer -->
     </div>
-<!-- ======= -->
-    <title>Document</title>
-</head>
-<body>
-    
-<!-- >>>>>>> main -->
+    <!-- <script src="/assets/css/scrolling.js"></script> -->
 </body>
 </html>
