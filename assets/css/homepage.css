@@ -10,6 +10,7 @@
 #slider {
     position: relative;
     padding: 5rem 20.6rem;
+    background-color: var(--white);
 }
 .slider-logo {
     font-size: larger;
@@ -77,6 +78,7 @@
 
     font-family: 'Poppins', sans-serif;
     font-size: 7rem;
+    font-weight: 600;
     color: var(--white);
     /* color not ok */
     background-color: var(--soft-pink);
