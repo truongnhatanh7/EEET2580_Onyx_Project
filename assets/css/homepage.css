@@ -52,7 +52,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: auto;
+    /* height: auto; */
 }
 
 
@@ -126,6 +126,9 @@
     width: 70%;
     height: 60%;
     background-color: var(--white);
+    --border-radius: 5rem;
+    border-top-left-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
     /* border-radius: 2rem; */
 }
 .card-content::after {
