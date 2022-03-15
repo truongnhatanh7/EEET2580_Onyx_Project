@@ -37,12 +37,12 @@
 /* end of content main */
 
 .slider-curve {
+    z-index: -1;
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10rem;
-    fill: var(--pink-color);
+    height: 39%;
 }
 
 /* start of content */
