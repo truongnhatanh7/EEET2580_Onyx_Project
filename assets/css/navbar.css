@@ -6,7 +6,7 @@
     left: 0;
     right: 0;
     z-index: 100;
-        
+    overflow: hidden;
 }
 .header__navbar {
     --position-horizon: 1.6rem;
@@ -16,15 +16,17 @@
     background-color: #ffffff4b;
     
     /* size */
+    border-radius: 25px;
+    box-sizing: border-box;
     height: 10rem;
-    width: 100%;
     padding: 5px 20px;
+    margin: 20px 60px;
 
     /* display element on same line */
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: rgba(33, 24, 83, 0.15) 0px 48px 100px 0px;
+    box-shadow: rgba(68, 48, 156, 0.274) -4px 9px 25px -6px;
 }
 .navbar__name {
     display: inline-block;
@@ -53,7 +55,7 @@
     color: black;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
-    font-weight: 600;
+    font-weight: 400;
 }
 .navbar__workspace {
     width: 15rem;
