@@ -3,7 +3,6 @@
 .card {
     --position-vertical: 16rem;
     margin-top: var(--position-vertical);
-    margin-bottom: var(--position-vertical);
     height: calc(100vh - var(--position-vertical) * 2);
 
 }
@@ -13,8 +12,6 @@
     /* margin-top: var(--nav-height); */
     --position-horizontal: 10rem;
     box-sizing: border-box;
-    margin-left: var(--position-horizontal);
-    margin-right: var(--position-horizontal);
     width: calc(100vw - var(--position-horizontal * 2));
 
 }
@@ -23,6 +20,9 @@
     position: relative;
     margin-top: 5rem;
 
+    margin-left: var(--position-horizontal);
+    margin-right: var(--position-horizontal);
+    
     width: 100%;
     /* height: calc(100vh - var(--nav-height) - var(--position-top)); */
 }
@@ -54,14 +54,13 @@
 
 /* start of content feature */
 .feature__bar {
-    display: absolute;
-    
 
     --position-vertical: 8rem;
-    position: -webkit-sticky; /* Safari */
+    /* Safari */
+    position: -webkit-sticky; 
     position: sticky;
     left: 0;
-    bottom: 0;
+    top: 0;
     z-index: 1;
 
     width: var(--feature-bar-width);
