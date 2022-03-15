@@ -82,10 +82,9 @@
     font-size: 7rem;
     font-weight: 600;
     color: var(--white);
-    /* color not ok */
+    
+    background-color: var(--pink-color);
 
-    backdrop-filter: blur(28px);
-    background-color: #6371eabd;
 }
 /* end of content feature */
 
