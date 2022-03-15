@@ -22,9 +22,8 @@
     text-align: center;
 }
 .slider__wrapper {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    box-shadow: #6371ea7e 0px 25px 50px -12px;
     border-radius: 4rem;
-    
 }
 .slider-display-img {
     border-radius: 4rem;
@@ -75,7 +74,9 @@
     position: absolute;
     top: 0;
     width: 100%;
-    background: var(--pink-color);
+
+    backdrop-filter: blur(28px);
+    background-color: var(--soft-pink);
 }
 .card {
     padding-top: 3rem;

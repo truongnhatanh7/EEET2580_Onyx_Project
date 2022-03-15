@@ -13,8 +13,8 @@
     --color-font: var(--white);
 
     backdrop-filter: blur(28px);
-    background-color: var(--soft-pink);
-
+    background-color: #ffffff4b;
+    
     /* size */
     height: 10rem;
     width: 100%;
@@ -24,11 +24,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: rgba(33, 24, 83, 0.15) 0px 48px 100px 0px;
 }
 .navbar__name {
     display: inline-block;
     padding: 0 var(--position-horizon);
-    color: var(--white);
     width: 15rem;
 }
 .navbar__menu {
@@ -50,17 +50,16 @@
     height: auto;
 
     text-decoration: none;
-    color: var(--color-font);
+    color: black;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
 }
 .navbar__workspace {
     width: 15rem;
     background-color: var(--yellow);
-    /* color not ok */
+
     color: var(--dark);
     padding: 10px 0;
-    margin: 0;
-    border: 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 /* end of header or navbar */
