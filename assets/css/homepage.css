@@ -75,7 +75,8 @@
     top: 0;
     width: 100%;
 
-    background: var(--pink-color);
+    backdrop-filter: blur(28px);
+    background-color: var(--soft-pink);
     
 }
 .card {
