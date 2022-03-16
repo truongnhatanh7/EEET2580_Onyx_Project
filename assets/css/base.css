@@ -17,7 +17,6 @@
     --red: #f81755;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
-    --yellow: #f4b500;
     --purple: #6c6cff;
 
     /* Default color */
@@ -28,12 +27,10 @@
     --dark: #202f53;
     --yellow: #f1cc00;
     --red: #ed0613;
-/* <<<<<<< nhung */
 
     /* size */
-    --nav-height: 4.5rem;
+    --nav-height: 7rem;
     --feature-bar-width: 20.6rem;
-/* >>>>>>> main */
 }
 [data-theme="dark"] {
     --white: #000;
@@ -43,26 +40,40 @@
     --lm-only-gray: #fff;
     --blue: #fff;
 }
-
+.white{
+    color: var(--white) !important;
+}
+.black{
+    color: var(--black) !important;
+}
 html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
 }
 
 .logo-font {
-    font-family: 'Poppins', sans-serif;  
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: bolder;
+    color: black;
+    text-transform: uppercase;
 }
-
-.clearer { clear: both; }
-
+.input-box{
+    height: 100%;
+    width: 30rem;
+    padding: 2.25rem 2.5rem;
+    margin: 0;
+    border-radius: 25px;
+    border: none;
+}
 .btn {
     border: none;
-    border-radius: 32px;
+    border-radius: 25px;
     font-size: 1.6rem;
-    background-color: var(--purple);
-    font-family: 'Montserrat', sans-serif;
-    padding: 6px 16px;
+    font-weight: 400;
+    font-family: 'poppins', sans-serif;
+    text-align: center;
+    
     transition: 0.2s;
 }
 
