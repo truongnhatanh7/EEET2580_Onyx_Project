@@ -44,6 +44,9 @@
 .white{
     color: var(--white) !important;
 }
+.black{
+    color: var(--black) !important;
+}
 html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;
@@ -56,11 +59,17 @@ html {
     color: black;
     text-transform: uppercase;
 }
-.clearer { clear: both; }
-
+.input-box{
+    height: 100%;
+    width: 30rem;
+    padding: 2.25rem 2.5rem;
+    margin: 0;
+    border-radius: 25px;
+    border: none;
+}
 .btn {
     border: none;
-    border-radius: 32px;
+    border-radius: 25px;
     font-size: 1.6rem;
     font-weight: 400;
     font-family: 'poppins', sans-serif;
