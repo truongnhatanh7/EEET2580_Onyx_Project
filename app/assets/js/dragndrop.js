@@ -6,6 +6,7 @@ const containers = $$(".workspace__board-list");
 
 function handleDragStart(event) {
     event.target.classList.add("workspace__board-list-task--dragging");
+    
 }
 
 function handleDragEnd(event) {
@@ -15,11 +16,11 @@ function handleDragEnd(event) {
 function handleDragOver(event) {
     const container = event.target
     event.preventDefault();
+    console.log("yes")
     if ((container.classList['0'] === 'workspace__board-list')) {
         const afterElement = getDragAfterElement(container, event.clientY);
         const draggable = $(".workspace__board-list-task--dragging");
-        const addTaskBtn = container.children[container.children.length - 1]
-        console.log(typeof addTaskBtn)
+        const addTaskBtn = container.children[container.children.length - 2]
         if (afterElement == null) {
           container.insertBefore(draggable, addTaskBtn);
         } else {

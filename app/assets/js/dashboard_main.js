@@ -35,8 +35,7 @@ function getWorkspace(callback) {
 }
 
 function renderWorkspace(workspaces) {
-    // projectList.remove($$('.dashboard__project-card'))
-    console.log("render func: ", workspaces)
+
     for (const workspace of workspaces) {
 
         let html = `
@@ -54,7 +53,7 @@ function renderWorkspace(workspaces) {
 }
 
 function handleCardClick(event) {
-    localStorage.setItem("currentBoardId", event.target.id);
+    sessionStorage.setItem("currentBoardId", event.target.id);
 }
 
 ////////////////////////////////////////////////////////////////////////

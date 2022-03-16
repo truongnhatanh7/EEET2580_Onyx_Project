@@ -223,5 +223,61 @@
     color: var(--white);
 }
 
+.workspace__add-wrapper {
+    margin: 0 16px;
+    display: none;
+}
 
+.workspace__add-input {
+    margin-top: 16px;
+    min-width: 360px;
+    padding: 8px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid var(--purple);
+}
 
+.workspace__submit-btn {
+    color: var(--white);
+    margin-top: 16px;
+    padding: 8px 32px;
+    display: block;
+}
+
+.workspace__submit-title {
+    font-weight: 400;
+    
+}
+
+.enable {
+    display: block !important;
+}
+
+.disable {
+    display: none !important;
+}
+
+.workspace__add-task-wrapper {
+    min-width: 100%;
+    display: none;
+}
+
+.workspace__submit-title {
+    margin-top: 16px;
+    font-weight: 400;
+}
+
+.workspace__add-input-task {
+    margin-top: 16px;
+    width: 100%;
+    padding: 8px;
+    border-radius: 8px;
+    outline: none;
+    border: 1px solid var(--purple);
+}
+
+.workspace__submit-task-btn {
+    color: var(--white);
+    margin-top: 16px;
+    padding: 8px 32px;
+}
