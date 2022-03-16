@@ -1,5 +1,5 @@
-let currentBoardId = localStorage.getItem("currentBoardId");
-let url = "http://localhost:8080/api/v1/list/" + currentBoardId;
+let currentBoardId = sessionStorage.getItem("currentBoardId");
+let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
 let board;
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -10,7 +10,7 @@ const addListBtnWrapper = $(".workspace__add-list-wrapper");
 getBoardInfo();
 
 function renderBoard(board) {
-
+    console.log(board)
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
 
@@ -24,6 +24,7 @@ function renderBoard(board) {
                     draggable="true"
                     ondragstart="handleDragStart(event)"
                     ondragend="handleDragEnd(event)"
+                    id="${"task_" + task.taskId}"
                     >
                     <p
                       class="workspace__board-list-task-content"
@@ -34,15 +35,21 @@ function renderBoard(board) {
                     </div>
                     `;
                     listHTML += taskHTML;
+
                 }
             });
             let html = `  
-            <div class="workspace__board-list" ondragover="handleDragOver(event)">
+            <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
             <h1 class="workspace__board-list-header" contenteditable="true">
               ${list.listName}
             </h1>
-                ${listHTML}
+            ${listHTML}
             <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
+            <div class="workspace__add-task-wrapper">
+            <h2 class="workspace__submit-title">Enter new task:</h2>
+            <input type="text" class="workspace__add-input-task">
+            <button class="workspace__submit-task-btn btn">Create</button>
+            </div>
             </div>
               `;
 
@@ -72,27 +79,35 @@ function getBoardInfo() {
 }
 
 function createBoard(data) {
-	console.log(data);
+
     board = new Board();
 
     data.forEach(function (list) {
         let tempList = new List();
+        tempList.setListId(list.listId)
         tempList.setListName(list.name);
+
         list.tasks.forEach(function (task) {
-            let tempTask = new Task();
+            let tempTask = new Task()
+            tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
             tempList.addTask(tempTask);
         });
         board.addList(tempList);
     });
-    console.log("///dvsavas", board);
+
     return board;
 }
 
 class Board {
-    constructor(boardName, lists) {
+    constructor(boardName, lists, boardId) {
         this.lists = new Array(lists);
         this.boardName = boardName;
+        this.boardId = boardId;
+    }
+
+    setBoardId(boardId) {
+        this.boardId = boardId;
     }
 
     setBoardName(boardName) {
@@ -107,19 +122,32 @@ class Board {
         return this.boardName;
     }
 
+    getBoardId() {
+        return this.boardId;
+    }
+
     getAllList() {
         return this.lists;
     }
 }
 
 class List {
-    constructor(listName, tasks) {
+    constructor(listName, tasks, listId) {
         this.listName = listName;
         this.tasks = new Array(tasks);
+        this.listId = listId;
     }
 
     List(listName) {
         this.listName = listName;
+    }
+
+    setListId(listId) {
+        this.listId = listId;
+    }
+
+    getListId(listId) {
+        return this.listId;
     }
 
     setListName(listName) {
@@ -136,8 +164,13 @@ class List {
 }
 
 class Task {
-    constructor(taskContent) {
-        taskContent = taskContent;
+    constructor(taskContent, taskId) {
+        this.taskContent = taskContent;
+        this.taskId = taskId;
+    }
+
+    setTaskId(taskId) {
+        this.taskId = taskId;
     }
 
     setTaskContent(taskContent) {
