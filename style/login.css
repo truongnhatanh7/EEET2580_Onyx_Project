@@ -1,10 +1,17 @@
-body {
-  height: 100vh;
-  overflow: hidden;
+*{
+  margin: 0;
+  padding: 0;
 }
-
+html{
+  width: 100%;
+}
+.login-root {
+  margin: 5rem 0;
+}
 .login-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
 }
 
 /* Welcome content */
@@ -18,12 +25,8 @@ body {
 
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
-  margin-top: 20px;
-  margin-bottom: 58px;
-  margin-left: -40px;
 
-  width: 714px;
-  height: 680px;
+  height: 100%;
 }
 
 .text-container > h1 {
@@ -67,29 +70,26 @@ body {
 /* Login content */
 
 .login-container__login-board {
-  width: 852.2px;
+  padding: 7rem;
 }
 
-.wrapper {
+/* .wrapper {
   display: flex;
   flex-direction: column;
-
-  height: 93%;
   align-items: center;
   justify-content: center;
-}
+} */
 
-.wrapper .heading {
+.heading {
   margin-bottom: 49px;
   font-size: 30px;
   line-height: 55px;
   font-weight: 700, bold;
 
   position: relative;
-  left: -53px;
 }
 
-.wrapper .authentication {
+.authentication {
   font-size: 20px;
   line-height: 30px;
   font-weight: 500, lighter;
@@ -101,10 +101,10 @@ body {
   color: var(--dark);
 }
 
-.wrapper .authentication input {
-  width: 511.86px;
+.authentication input {
+  width: 100%;
   height: 50px;
-  border-radius: 10px;
+  border-radius: 25px;
   opacity: 71%;
   font-size: 20px;
   font-weight: 500;
