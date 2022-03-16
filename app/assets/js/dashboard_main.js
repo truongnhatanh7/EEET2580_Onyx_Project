@@ -78,7 +78,15 @@ modalOutter.onclick = (event) => {
 projectAddBtn.onclick = (event) => {
     modalOutter.classList.remove("dashboard__modal-create--disable")
     modalOutter.classList.add('dashboard__modal-create--enable')
+    modalInput.focus()
 }
+
+modalInput.addEventListener('keyup', (event) => {
+    if (event.keyCode == 13) {
+        event.preventDefault();
+        modalBtn.click();
+    }
+})
 
 modalBtn.onclick = (event) => {
 
@@ -120,6 +128,8 @@ modalBtn.onclick = (event) => {
             }
             );
         })
+
+        modalInput.value = ''
 }
 
 

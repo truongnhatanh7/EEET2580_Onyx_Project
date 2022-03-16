@@ -65,6 +65,7 @@ submitList.addEventListener('click', (event) => {
   addListSection.classList.add('disable')
   addListBtn.classList.remove('disable')
   addListBtn.classList.add('enable')
+  listNameInput.value = ''
 
 })
 
@@ -80,6 +81,17 @@ function handleAddTask(event) {
 
     let taskInput = taskFactory.querySelector('.workspace__add-input-task')
     let taskBtn = taskFactory.querySelector('.workspace__submit-task-btn')
+
+    taskInput.focus();
+    taskInput.addEventListener('keyup', (event) => {
+      event.preventDefault()
+      setTimeout(function() {
+        if (event.keyCode == 13) {
+          taskBtn.click();
+        }
+
+      }, 500)
+    })
 
     taskBtn.onclick = () => {
           let createTaskUrl =
