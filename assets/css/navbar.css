@@ -1,61 +1,69 @@
 /* start of header or navbar */
-.header__navbar {
-    --position-horizon: 1.6rem;
-    --color-font: var(--white);
+.header {
     /* Position */
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-
+    z-index: 100;
+    overflow: hidden;
+}
+.header__navbar {
+    backdrop-filter: blur(28px);
+    background-color: #ffffff9a;
+    
     /* size */
-    height: var(--nav-height);
-    width: 100vw;
+    border-radius: 25px;
+    box-sizing: border-box;
+    height: 10rem;
+    padding: 5px 20px;
+    margin: 20px 60px;
 
-    /* design */
-    background: var(--soft-pink);
-    color: var(--color-font);
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
-
+    /* display element on same line */
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: rgba(138, 121, 211, 0.274) 6px 10px 15px -6px;
 }
-.navbar__icon {
+.navbar__name {
     display: inline-block;
     padding: 0 var(--position-horizon);
-    font-size: 3rem;
+    width: 15rem;
 }
 .navbar__menu {
-    /* whole list become a block on the same line */
-    /* display: inline-block; */
-
     height: 100%;
-
     font-size: 2rem;
-}
-.navbar__menu-element {
-    /* all elements in list on same line */
     display: inline-block;
-    height: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 3rem;
+}
+
+.navbar__icon{
+    color: var(--white);
 }
 .navbar__menu-element-link {
     /* make <a> become block */
     display: inline-block;
-    height: 100%;
-
-    /* center text vertically */
-    line-height: var(--nav-height);
-    padding: 0 var(--position-horizon);
+    height: auto;
 
     text-decoration: none;
-    color: var(--color-font);
+    color: black;
     text-transform: uppercase;
     letter-spacing: 0.2rem;
+    font-weight: 400;
 }
 .navbar__workspace {
-    margin: auto var(--position-horizon);
+    width: 15rem;
     background-color: var(--yellow);
+
     color: var(--dark);
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+    padding: 15px 0;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+.navbar__workspace svg{
+    text-align: center;
+    height: 100%;
 }
 /* end of header or navbar */
