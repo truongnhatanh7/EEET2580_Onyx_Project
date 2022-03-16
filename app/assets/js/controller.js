@@ -21,8 +21,16 @@ addListBtn.addEventListener("click", (event) => {
   addListSection.classList.remove('disable')
   addListBtn.classList.add('disable')
   addListBtn.classList.remove('enable')
+  listNameInput.value = ''
+  listNameInput.focus();
 
 });
+
+listNameInput.addEventListener("keyup", event => {
+    if (event.keyCode == 13) {
+      submitList.click();
+    }
+})
 
 submitList.addEventListener('click', (event) => {
 
@@ -65,7 +73,7 @@ submitList.addEventListener('click', (event) => {
   addListSection.classList.add('disable')
   addListBtn.classList.remove('disable')
   addListBtn.classList.add('enable')
-  listNameInput.value = ''
+  // listNameInput.value = ''
 
 })
 
