@@ -157,8 +157,9 @@
     margin: 0 16px;
     background-color: var(--white);
     border-radius: 16px;
-    /* border-top: 1px solid var(--dark-light-white);
-    border-right: 1px solid var(--dark-light-white); */
+    position: relative;
+    border-top: 1px solid var(--dark-light-white);
+    /* border-right: 1px solid var(--dark-light-white); */
 }
 
 .workspace__board-list-header {
@@ -168,6 +169,19 @@
     margin-bottom: 16px;
     margin-left: 16px;
     outline: none;
+    width: 100%;
+}
+
+.workspace__board-list-header:hover + .workspace__board-list-delete {
+    display: block;
+    cursor: pointer;
+    color: var(--red);
+}
+
+.workspace__board-list-delete:hover {
+    display: block;
+    cursor: pointer;
+    color: var(--red);
 }
 
 
@@ -194,7 +208,7 @@
 
 }
 
-.workspace__board-list-task-delete {
+.workspace__board-list-delete-icon {
     color: var(--purple);
     opacity: 0.5;
     position: absolute;
@@ -203,7 +217,17 @@
     transform: translateY(-50%);
     display: block;
     padding: 4px;
-    
+}
+
+.workspace__board-list-delete {
+    top: 46px;
+    right: 41px;
+    font-size: 1.6rem;
+    display: none;
+}
+
+.workspace__board-list-task-delete {
+
 }
 
 .workspace__board-list-task-delete:hover {
@@ -212,7 +236,6 @@
 }
 
 .workspace__board-list-task-content:hover {
-    /* cursor: text; */
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {

@@ -42,7 +42,7 @@ function renderBoard(board) {
                     >
                       ${task.taskContent}
                     </p>
-                        <i class="fa-solid fa-xmark workspace__board-list-task-delete" onclick="handleDeleteTask(event)"></i>
+                        <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;
@@ -51,16 +51,18 @@ function renderBoard(board) {
             });
             let html = `  
             <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
-            <h1 class="workspace__board-list-header">
-              ${list.listName}
-            </h1>
-            ${listHTML}
-            <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
-            <div class="workspace__add-task-wrapper">
-            <h2 class="workspace__submit-title">Enter new task:</h2>
-            <input type="text" class="workspace__add-input-task">
-            <button class="workspace__submit-task-btn btn">Create</button>
-            </div>
+                <h1 class="workspace__board-list-header">
+                    ${list.listName}
+                </h1>
+                <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
+
+                    ${listHTML}
+                <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
+                <div class="workspace__add-task-wrapper">
+                    <h2 class="workspace__submit-title">Enter new task:</h2>
+                    <input type="text" class="workspace__add-input-task">
+                    <button class="workspace__submit-task-btn btn">Create</button>
+                </div>
             </div>
               `;
 

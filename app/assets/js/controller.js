@@ -54,6 +54,7 @@ submitList.addEventListener("click", (event) => {
                   <h1 class="workspace__board-list-header" >
                     ${listNameInput.value}
                   </h1>
+                  <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
                   <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                   <div class="workspace__add-task-wrapper">
                     <h2 class="workspace__submit-title">Enter new task:</h2>
@@ -121,7 +122,7 @@ function handleAddTask(event) {
                     >
                       ${taskInput.value}
                     </p>
-                    <i class="fa-solid fa-xmark workspace__board-list-task-delete" onclick="handleDeleteTask(event)"></i>
+                    <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
                     </div>
                 `;
 
@@ -148,9 +149,18 @@ function handleDeleteTask(event) {
       "Content-Type": "application/json"
     }
   })
-
   event.target.parentNode.remove()
-
+  
+}
+function handleDeleteList(event) {
+  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
+  fetch(deleteListUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  event.target.parentNode.remove();
 }
 
 ////////////////////////////////////////////////////////////////////////
