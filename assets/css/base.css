@@ -41,7 +41,9 @@
     --lm-only-gray: #fff;
     --blue: #fff;
 }
-
+.white{
+    color: var(--white) !important;
+}
 html {
     font-size: 62.5%;
     font-family: 'Montserrat', sans-serif;

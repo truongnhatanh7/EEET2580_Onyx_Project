@@ -112,7 +112,7 @@
     z-index: 10;
 
     width: var(--feature-bar-width);
-    height: 100vh;
+    height: auto;
 
     /* text displayed vertically */
     writing-mode: vertical-lr;
@@ -201,22 +201,26 @@
 /* end of collab feature */
 /* end of content feature */
 
+.news__container {
+    background: url("/assets/img/news/pattern.svg");
+    height: auto;
+    width: 100%;
+}
 
 /* start of footer */
 #footer {
     /* position: static; */
-    width: 100vw;
+    width: 100%;
     /* height: auto; */
     height: auto;
-    background: url("/assets/img/footer/moutain-background.svg") center / cover no-repeat,
-        url("/assets/img/footer/moutain-background2.svg") center / cover no-repeat;
-    
-    padding: 10rem 5rem 5rem;
+    /* background: url("/assets/img/footer/moutain-background.svg") center / cover no-repeat,
+        url("/assets/img/footer/moutain-background2.svg") center / cover no-repeat; */
+    /* background: url("/assets/img/footer/magicpattern-svg-chart-1647411871773.svg"); */
+    padding: 10rem 5rem;
     display: grid; 
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1.5fr;
     grid-template-rows: 1fr;
     grid-column-gap: 2rem;
-
 
     position: relative;
 }
@@ -228,11 +232,15 @@
 }
 .footer__logo {
     font-size: 6rem;
+    padding: 2rem 0rem;
 }
 .footer__contact {
     width: 80%;
     text-align: center;
     font-size: 1.7rem;
+}
+.footer__contact-addr{
+    padding-bottom: 2rem;
 }
 .footer__community {
     width: 90%;
