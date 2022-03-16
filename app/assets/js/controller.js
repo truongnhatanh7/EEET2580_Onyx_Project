@@ -36,6 +36,7 @@ function handleAddTask(event) {
     draggable="true"
     ondragstart="handleDragStart(event)"
     ondragend="handleDragEnd(event)"
+    onfocusout="handleTaskOutFocus(event)"
     >
     <p
       class="workspace__board-list-task-content"
@@ -48,7 +49,29 @@ function handleAddTask(event) {
 
   let para = document.createRange().createContextualFragment(html);
   event.target.parentNode.insertBefore(para, event.target);
+  event.target.parentNode.childNodes[event.target.parentNode.childNodes.length - 4].childNodes[1].focus()
 };
+
+function handleTaskOutFocus(event) {
+  // Procedure:
+  // Send API request to create new task
+  // Send API request to add task to current list
+
+  sessionStorage.setItem("taskContent",event.target.innerHTML);
+  sessionStorage.setItem("listId", event.target.parentNode.parentNode.id.slice(5)); 
+  
+  let createTaskUrl = "http://localhost:8080/api/v1/task/" + sessionStorage.getItem("listId").toString()
+
+  fetch(createTaskUrl, {
+    method: "POST",
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        taskContent: sessionStorage.getItem("taskContent")
+    })
+  })
+}
 
 if (currentTheme) {
     document.documentElement.setAttribute('data-theme', currentTheme);
@@ -76,3 +99,18 @@ darkModeSwitch.addEventListener('change', switchTheme);
 //   let currentWorkspaceId = workspaceController.getId();
 //   console.log(currentWorkspaceId);
 // }
+
+// const observer = new MutationObserver( mutationRecords => {
+//   mutationRecords.forEach((record) => {
+//     console.log(record.target)
+//   })
+// })
+
+// observer.observe(board, {
+//   attributes: true,
+//   characterData: true,
+//   childList: true,
+//   subtree: true,
+//   attributeOldValue: true,
+//   characterDataOldValue: true
+// })
