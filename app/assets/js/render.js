@@ -6,11 +6,22 @@ const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
 const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
+const workspaceName = $('.workspace__info-name')
 
+fetchBoardInfo();
 getBoardInfo();
 
+function fetchBoardInfo() {
+    let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
+    fetch(boardUrl)
+        .then(response => response.json())
+        .then(data => {
+            workspaceName.innerHTML = data.workspaceTitle.trim();
+        })
+}
+
 function renderBoard(board) {
-    console.log(board)
+
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
 
@@ -28,10 +39,10 @@ function renderBoard(board) {
                     >
                     <p
                       class="workspace__board-list-task-content"
-                      contenteditable="true"
                     >
                       ${task.taskContent}
                     </p>
+                        <i class="fa-solid fa-xmark workspace__board-list-task-delete" onclick="handleDeleteTask(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;
@@ -40,7 +51,7 @@ function renderBoard(board) {
             });
             let html = `  
             <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
-            <h1 class="workspace__board-list-header" contenteditable="true">
+            <h1 class="workspace__board-list-header">
               ${list.listName}
             </h1>
             ${listHTML}
@@ -71,7 +82,6 @@ function getBoardInfo() {
 	
 	)
         .then(function (response) {
-			
             return response.json();
         })
         .then(createBoard)

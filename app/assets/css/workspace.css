@@ -189,10 +189,30 @@
 .workspace__board-list-task-content {
     padding: 2px;
     outline: none;
+    max-width: 90%;
+    word-wrap: break-word;
+
+}
+
+.workspace__board-list-task-delete {
+    color: var(--purple);
+    opacity: 0.5;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: block;
+    padding: 4px;
+    
+}
+
+.workspace__board-list-task-delete:hover {
+    cursor: pointer;
+    color: var(--red);
 }
 
 .workspace__board-list-task-content:hover {
-    cursor: text;
+    /* cursor: text; */
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {
