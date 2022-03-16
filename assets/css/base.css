@@ -1,9 +1,11 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
 }
-
+html{
+    font-family: "Poppins", sans-serif !important;
+    font-size: 62.5%;
+}
 :root {
     --blue: #1b73e7;
     --black: #000;
@@ -46,11 +48,6 @@
 .black{
     color: var(--black) !important;
 }
-html {
-    font-size: 62.5%;
-    font-family: 'Montserrat', sans-serif;
-}
-
 .logo-font {
     font-family: 'Poppins', sans-serif;
     font-size: 4rem;

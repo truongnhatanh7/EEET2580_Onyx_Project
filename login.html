@@ -7,101 +7,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>OnyX | Login in</title>
 
-    <link rel="stylesheet" href="assets/css/base.css" />
-    <link rel="stylesheet" href="style/login.css" />
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./style/login.css">
+
+    <!-- Link Poppins font for logo font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="login-root">
         <div class="login-container">
             <div class="login-container__welcome-board">
-                <div class="text-container">
-                    <h1>
-                        A tool to <br />
-                        enhance team <br />
-                        productivity
-                    </h1>   
-                </div>
+            </div>
 
-                <div class="background-wrapper">
-                    <svg id="outermost-bean" width="1012" height="1224" viewBox="0 0 1112 1224" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_57_80)">
-                            <path
-                                d="M904.577 562.7C976.967 637.738 1000.46 737.026 975.068 860.563C949.671 984.099 872.446 1053.76 743.391 1069.54C614.337 1085.32 503.823 1043.53 411.851 944.165C319.879 844.801 241.394 731.994 176.396 605.744C111.398 479.493 116.991 362.495 193.174 254.75C269.358 147.004 366.639 118.983 485.017 170.685C603.394 222.387 684.818 281.888 729.288 349.19C773.757 416.491 832.187 487.661 904.577 562.7Z"
-                                fill="#6371EA" />
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_57_80" x="79.5095" y="87.5376" width="977.452" height="1051.25"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                <feColorMatrix in="SourceAlpha" type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                <feOffset dx="10" dy="4" />
-                                <feGaussianBlur stdDeviation="31" />
-                                <feComposite in2="hardAlpha" operator="out" />
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_57_80" />
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_57_80"
-                                    result="shape" />
-                            </filter>
-                        </defs>
-                    </svg>
+            <div class="text-container">
+                <p>
+                    A tool to
+                    enhance team
+                    productivity
+                </p>   
+            </div>
 
-                    <svg id="middle-bean" width="872" height="928" viewBox="0 0 872 928" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_57_82)">
-                            <path
-                                d="M751.205 425.542C799.584 482.206 800.253 557.438 753.211 651.24C706.169 745.041 624.519 798.157 508.263 810.588C392.006 823.018 303.549 791.711 242.891 716.664C182.233 641.618 136.091 556.326 104.465 460.788C72.8394 365.25 101.216 276.479 189.594 194.476C277.973 112.473 368.842 90.8696 462.202 129.667C555.562 168.465 614.975 213.311 640.439 264.205C665.904 315.099 702.826 368.878 751.205 425.542Z"
-                                fill="#A8B1FF" />
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_57_82" x="61.9634" y="69.9763" width="786.035" height="792.261"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                <feColorMatrix in="SourceAlpha" type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                <feOffset dx="15" dy="4" />
-                                <feGaussianBlur stdDeviation="22.5" />
-                                <feComposite in2="hardAlpha" operator="out" />
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_57_82" />
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_57_82"
-                                    result="shape" />
-                            </filter>
-                        </defs>
-                    </svg>
-
-                    <svg id="innermost-bean" width="900" height="730" viewBox="0 0 900 730" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g filter="url(#filter0_d_57_84)">
-                            <path
-                                d="M643.558 200.987C719.845 218.697 776.355 269.969 813.089 354.804C849.823 439.639 831.872 511.702 759.238 570.992C686.604 630.282 600.972 647.453 502.343 622.506C403.714 597.56 307.678 559.251 214.235 507.581C120.792 455.911 74.657 382.675 75.8297 287.875C77.0023 193.074 124.921 138.584 219.586 124.405C314.25 110.226 389.507 115.017 445.355 138.779C501.203 162.542 567.27 183.278 643.558 200.987Z"
-                                fill="#DBDFFF" />
-                        </g>
-                        <defs>
-                            <filter id="filter0_d_57_84" x="63.8079" y="84.4567" width="827.788" height="589.132"
-                                filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                <feColorMatrix in="SourceAlpha" type="matrix"
-                                    values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha" />
-                                <feOffset dx="24" dy="4" />
-                                <feGaussianBlur stdDeviation="18" />
-                                <feComposite in2="hardAlpha" operator="out" />
-                                <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0" />
-                                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_57_84" />
-                                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_57_84"
-                                    result="shape" />
-                            </filter>
-                        </defs>
-                    </svg>
-                </div>
+            <div class="first-blob-container">
+                <img src="/assets/img/Login/pink.svg" alt="">
+            </div>
+            <div class="second-blob-container">
+                <img src="/assets/img/Login/hard-pink.svg" alt="">
+            </div>
+            <div class="third-blob-container">
+                <img src="/assets/img/Login/soft-pink.svg" alt="">
             </div>
 
             <div class="login-container__login-board">
                 <div class="wrapper">
                     <div class="heading">
-                        <h1>Login to OnyX</h1>
+                        <p class="heading__content">Login to OnyX</p>
                     </div>
 
                     <form action="">

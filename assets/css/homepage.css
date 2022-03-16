@@ -7,6 +7,7 @@
     width: calc(100% / 3); 
     display: inline-block;
 } */
+
 .card {
     display: block;
     overflow: hidden;
@@ -40,7 +41,6 @@
 
 .slider-logo {
     font-size: larger;
-    font-family: 'poppins', sans-serif;
     text-transform: uppercase;
     
     /* center text */
@@ -123,15 +123,11 @@
     /* text-align: center; */
     padding: 18rem 5rem var(--position-vertical) 5rem;
 
-    font-family: 'Poppins', sans-serif;
     font-size: 7rem;
     font-weight: 600;
     color: var(--white);
     
     background-color: var(--pink-color);
-
-}
-.feature__dragdrop__wrapper{
 
 }
 /* start of drag drop feature */
@@ -153,7 +149,6 @@
 
     /* position: relative; */
     text-align: center;
-    font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-size: 9rem;
     color: var(--dark);
@@ -192,7 +187,6 @@
 
     /* padding-left: 2rem; */
     text-align: center;
-    font-family: "Poppins", sans-serif;
     font-weight: 700;
     font-size: 5.5rem;
     color: var(--dark);
@@ -217,13 +211,12 @@
 .news__content{
     width: 100%;
     height: 100%;
-    font-family: "poppins", sans-serif;
     font-size: 3.5rem;
     font-weight: 700;
     color: var(--white);
     text-align: center;
     backdrop-filter: blur(20px);
-    background-color: #ffffffad;
+    background-color: #ffffffde;
     border-radius: 25px;
     padding: 7rem;
 }

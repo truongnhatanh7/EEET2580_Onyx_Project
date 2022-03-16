@@ -1,55 +1,81 @@
-*{
-  margin: 0;
-  padding: 0;
-}
-html{
-  width: 100%;
-}
 .login-root {
-  margin: 5rem 0;
+  /* chua lam duoc center trong day */
 }
 .login-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr;
+  display: inline-grid;
+  height: 100%;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100vh;
+  width: 100vw;  
+  overflow: hidden;
 }
 
 /* Welcome content */
 
 .login-container__welcome-board {
   background-color: var(--pink-color);
-  color: var(--white);
-  font-weight: 600;
-  font-size: 25px;
-  line-height: 59.25px;
 
   border-top-right-radius: 25px;
   border-bottom-right-radius: 25px;
 
-  height: 100%;
-}
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
 
-.text-container > h1 {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 50px;
-  line-height: 118.5%;
-  /* or 59px */
-
-  text-align: right;
-  letter-spacing: 0.07em;
-
-  margin-right: 65px;
-  margin-top: 50px;
-}
-
-.background-wrapper {
+  margin: 5rem 0;
   position: relative;
-  height: 100vh;
+  z-index: -1;
 }
 
-#outermost-bean {
+.text-container {
+  font-weight: 500;
+  font-size: 50px;
+
+  color: var(--white);
+  text-align: right;
+
+  margin: 8rem 5rem;
+  background-color: transparent;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.second-blob-container,
+.first-blob-container,
+.third-blob-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  overflow: hidden;
+}
+.first-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -200px 200px;
+}
+.second-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -300px 400px;
+}
+.third-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -600px 400px;
+}
+.background-wrapper {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-image: url("/assets/img/Login/soft-pink.svg");
+  /* background: url("/assets/img/Login/pink.svg"); */
+}
+
+/* #outermost-bean {
   position: absolute;
   margin-left: -300px;
   margin-top: -200px;
@@ -65,12 +91,15 @@ html{
   position: absolute;
   margin-left: -510px;
   margin-top: 130px;
-}
+} */
 
 /* Login content */
 
 .login-container__login-board {
   padding: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 /* .wrapper {
@@ -85,10 +114,11 @@ html{
   font-size: 30px;
   line-height: 55px;
   font-weight: 700, bold;
-
-  position: relative;
 }
-
+.heading__content{
+  font-size: 5rem;
+  font-weight: 700;
+}
 .authentication {
   font-size: 20px;
   line-height: 30px;
