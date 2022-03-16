@@ -1,11 +1,22 @@
-
-const debounce = (func, delay) => {
-    let debounceTimer
+/**
+* Execute a function given a delay time
+* 
+* @param {type} func
+* @param {type} wait
+* @param {type} immediate
+* @returns {Function}
+*/
+let debounce = function (func, wait, immediate) {
+    var timeout;
     return function() {
-        const context = this
-        const args = arguments
-            clearTimeout(debounceTimer)
-                debounceTimer
-            = setTimeout(() => func.apply(context, args), delay)
-    }
-}
+        var context = this, args = arguments;
+        var later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+};

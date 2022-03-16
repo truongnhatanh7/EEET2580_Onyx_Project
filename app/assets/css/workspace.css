@@ -159,6 +159,7 @@
     border-radius: 16px;
     position: relative;
     border-top: 1px solid var(--dark-light-white);
+    overflow-x: hidden;
     /* border-right: 1px solid var(--dark-light-white); */
 }
 
@@ -193,6 +194,7 @@
     padding: 14px;
     position: relative;
     border: 1px solid var(--lm-only-gray);
+
 
 }
 

@@ -24,7 +24,10 @@ addListBtn.addEventListener("click", (event) => {
     listNameInput.focus();
 });
 
-listNameInput.addEventListener("keyup", (event) => {
+
+
+listNameInput.addEventListener("keyup", function(event) {
+  event.preventDefault();
     if (event.keyCode == 13) {
         submitList.click();
     }
@@ -74,6 +77,7 @@ submitList.addEventListener("click", (event) => {
 });
 
 function handleAddTask(event) {
+    
     event.target.classList.add("disable");
     event.target.classList.remove("enable");
 
@@ -85,8 +89,6 @@ function handleAddTask(event) {
 
     let taskInput = taskFactory.querySelector(".workspace__add-input-task");
     let taskBtn = taskFactory.querySelector(".workspace__submit-task-btn");
-
-    taskInput.focus();
     taskInput.addEventListener("keyup", (event) => {
         event.preventDefault();
           if (event.keyCode == 13) {
@@ -94,51 +96,54 @@ function handleAddTask(event) {
           }
     });
 
-    taskBtn.onclick = () => {
-        let createTaskUrl =
-            "http://localhost:8080/api/v1/task/" + currentListId.toString();
-        fetch(createTaskUrl, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                taskContent: taskInput.value,
-            }),
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                let html = `  
-                    <div
-                    class="workspace__board-list-task"
-                    draggable="true"
-                    ondragstart="handleDragStart(event)"
-                    ondragend="handleDragEnd(event)"
-                    id="${"task_" + data.taskId}"
-                    >
-                    <p
-                      class="workspace__board-list-task-content"
+    taskBtn.onclick = debounce(function() {
+        if (taskInput.value != "") {
+          let createTaskUrl =
+              "http://localhost:8080/api/v1/task/" + currentListId.toString();
+          fetch(createTaskUrl, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  taskContent: taskInput.value,
+              }),
+          })
+              .then((response) => response.json())
+              .then((data) => {
+                  let html = `  
+                      <div
+                      class="workspace__board-list-task"
+                      draggable="true"
+                      ondragstart="handleDragStart(event)"
+                      ondragend="handleDragEnd(event)"
+                      id="${"task_" + data.taskId}"
+                      >
+                      <p
+                        class="workspace__board-list-task-content"
+  
+                      >
+                        ${taskInput.value}
+                      </p>
+                      <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
+                      </div>
+                  `;
+  
+                  let para = document
+                      .createRange()
+                      .createContextualFragment(html);
+                  event.target.parentNode.insertBefore(para, event.target);
+              })
+              .then(() => {
+                  event.target.classList.remove("disable");
+                  event.target.classList.add("enable");
+                  taskFactory.classList.add("disable");
+                  taskFactory.classList.remove("enable");
+                  taskInput.value = "";
+              });
+        }
+    }, 100);
 
-                    >
-                      ${taskInput.value}
-                    </p>
-                    <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
-                    </div>
-                `;
-
-                let para = document
-                    .createRange()
-                    .createContextualFragment(html);
-                event.target.parentNode.insertBefore(para, event.target);
-            })
-            .then(() => {
-                event.target.classList.remove("disable");
-                event.target.classList.add("enable");
-                taskFactory.classList.add("disable");
-                taskFactory.classList.remove("enable");
-                taskInput.value = "";
-            });
-    };
 }
 
 function handleDeleteTask(event) {
