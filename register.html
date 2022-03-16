@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnyX | Create your account</title>
+
+    <link rel="stylesheet" href="assets/css/base.css" />
+    <link rel="stylesheet" href="style/register.css" />
+</head>
+
+<body>
+    <div id="signup-root">
+        <div class="signup-container">
+            <div class="signup-container__heading">
+                <h1>Create your account</h1>
+            </div>
+
+            <div class="signup-container__form">
+                <form action="">
+                    <div class="authentication" id="username">
+                        <label for="user-name" id="name-label">User name</label> <br />
+                        <input type="text" name="User name" id="username" />
+                    </div>
+
+                    <div class="authentication" id="email">
+                        <label for="user-email" id="email-label">Email</label> <br />
+                        <input type="email" name="User email" id="email" /> <br />
+                    </div>
+
+                    <div class="authentication" id="password">
+                        <label for="user-password" id="password-label">Password</label>
+                        <br />
+                        <input type="password" name="User password" id="password" />
+                        <br />
+                        <label for="" id="text">Password must include at least 8 digits</label>
+                    </div>
+
+                    <div class="authentication" id="confirm-password">
+                        <label for="confirm-password" id="confirm-label">Confirm Password</label>
+                        <br />
+                        <input type="password" name="User confirm password" id="confirm-password" />
+                        <br />
+                        <div class="authentication" id="already-sign-up">
+                            <label for="" id="text">Already sign-up?</label>
+                            <a href="login.html" class="inputBtn">Log-in</a>
+                        </div>
+                    </div>
+
+                    <div class="inputBtn">
+                        <input type="button" value="Sign Up" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
