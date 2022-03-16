@@ -94,14 +94,15 @@ function handleAddTask(event) {
             taskContent: taskInput.value,
         }),
     })
-    .then(() => {
+    .then(response => response.json())
+    .then((data) => {
           let html = `  
           <div
           class="workspace__board-list-task"
           draggable="true"
           ondragstart="handleDragStart(event)"
           ondragend="handleDragEnd(event)"
-          id="${"task_"}"
+          id="${"task_" + data.taskId}"
           >
           <p
             class="workspace__board-list-task-content"
