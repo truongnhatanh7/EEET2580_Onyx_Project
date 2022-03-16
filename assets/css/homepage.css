@@ -67,7 +67,7 @@
     box-shadow: #6371ea7e 0px 25px 50px -12px;
     border-radius: 4rem;
 }.slider-img__wrapper{
-    border-radius: 25px;
+    border-radius: 2.5;
     box-shadow: #6d76c438 0px 22px 70px 4px;
 }
 .slider-display-img {
@@ -200,3 +200,91 @@
 
 /* end of collab feature */
 /* end of content feature */
+
+
+/* start of footer */
+#footer {
+    /* position: static; */
+    width: 100vw;
+    /* height: auto; */
+    height: auto;
+    background: url("/assets/img/footer/moutain-background.svg") center / cover no-repeat,
+        url("/assets/img/footer/moutain-background2.svg") center / cover no-repeat;
+    
+    padding: 10rem 5rem 5rem;
+    display: grid; 
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 2rem;
+
+
+    position: relative;
+}
+.footer__first, .footer__second {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.footer__logo {
+    font-size: 6rem;
+}
+.footer__contact {
+    width: 80%;
+    text-align: center;
+    font-size: 1.7rem;
+}
+.footer__community {
+    width: 90%;
+    text-align: center;
+}
+.footer__community .fontawesome-icon {
+    /* transform: scale(0.25);  */
+    width: 3rem;
+    height: 5rem;
+    margin: 1rem 0.2rem 0;
+}
+.footer__community .fontawesome-icon:hover {
+    opacity: 0.5;
+}
+
+
+.footer__quote {
+    font-size: 3rem;
+}
+.footer__nav {
+    font-size: 2rem;
+}
+.footer__nav-link {
+    display: inline-block;
+    /* text-decoration: none; */
+    color: var(--black);
+    padding: 1rem 0.5rem 0;
+
+}
+.footer__nav-link:visited {
+    color: var(--black);
+}
+.footer__nav-link:hover {
+    color: var(--hard-pink);
+}
+.footer__copyrights {
+    /* child elements display on the same line */
+    display: inline-block;
+    padding-top: 1rem;
+
+}
+.footer__copyrights .fontawesome-icon {
+    display: inline-block;
+    
+    width: 1.5rem;
+    height: 2rem;
+    
+    vertical-align: middle;
+}
+.footer__copyrights-text {
+    display: inline-block;
+    font-size: 1.5rem;
+    vertical-align: bottom;
+}
+/* end of footer */

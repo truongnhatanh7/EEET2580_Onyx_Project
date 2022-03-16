@@ -52,8 +52,8 @@ html {
     font-size: 4rem;
     font-weight: bolder;
     color: black;
+    text-transform: uppercase;
 }
-
 .clearer { clear: both; }
 
 .btn {
