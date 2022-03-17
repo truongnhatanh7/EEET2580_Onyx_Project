@@ -286,6 +286,12 @@ input[type="text"] {
 
 .workspace__board-list-task.workspace__board-list-task--dragging {
     opacity: 0.3;
+    transform: rotate(5deg);
+
+}
+
+.workspace__board-list-task--dragging.workspace__board-list-task {
+    transform: rotate(5deg);
 }
 
 .workspace__add-list-wrapper {

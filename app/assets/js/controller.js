@@ -39,7 +39,7 @@ submitList.addEventListener("click", (event) => {
     if (listNameInput.value != '' && listNameInput.value.length < 25) {
       console.log("bro")
       let createListUrl =
-          "http://localhost:8080/api/v1/list/" +
+          "https://onyx2-backend.herokuapp.com/api/v1/list/" +
           sessionStorage.getItem("currentBoardId").toString();
       fetch(createListUrl, {
           method: "POST",
@@ -125,7 +125,7 @@ function handleAddTask(event) {
       taskBtn.onclick = debounce(function() {
           if (taskInput.value != "" && taskInput.value.length < 50) {
             let createTaskUrl =
-                "http://localhost:8080/api/v1/task/" + currentListId.toString();
+                "https://onyx2-backend.herokuapp.com/api/v1/task/" + currentListId.toString();
             fetch(createTaskUrl, {
                 method: "POST",
                 headers: {
@@ -204,7 +204,7 @@ function handleAddTask(event) {
 
 
 function handleDeleteTask(event) {
-  let deleteTaskUrl = "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5).toString()
+  let deleteTaskUrl = "https://onyx2-backend.herokuapp.com/api/v1/task/" + event.target.parentNode.id.slice(5).toString()
   fetch(deleteTaskUrl, {
     method: "DELETE",
     headers: {
@@ -215,7 +215,7 @@ function handleDeleteTask(event) {
   
 }
 function handleDeleteList(event) {
-  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
+  let deleteListUrl = "https://onyx2-backend.herokuapp.com/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
   fetch(deleteListUrl, {
     method: "DELETE",
     headers: {
