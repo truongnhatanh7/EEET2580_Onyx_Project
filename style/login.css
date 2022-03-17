@@ -1,0 +1,118 @@
+.login-container {
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  height: 100vh;
+}
+
+/* Welcome content */
+
+.login-container__welcome-board {
+  background-color: var(--pink-color);
+
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+
+  margin: 5rem 0;
+  position: relative;
+  z-index: -1;
+}
+
+.text-container {
+  font-weight: 500;
+  font-size: 4rem;
+
+  color: var(--white);
+  text-align: right;
+
+  margin: 10rem 7rem 5rem;
+  background-color: transparent;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+.second-blob-container,
+.first-blob-container,
+.third-blob-container {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  overflow: hidden;
+}
+.first-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -200px 200px;
+}
+.second-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -300px 400px;
+}
+.third-blob-container img{
+  width: auto;
+  height: 100%;
+  object-position: -600px 400px;
+}
+
+/* Login content */
+
+.login-container__login-board {
+  padding: 7rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.heading {
+  margin-bottom: 2rem;
+  font-size: 5rem;
+  font-weight: 700;
+}
+.form-email,
+.form-password{
+  height: 4rem;
+  border-radius: 25px;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 3rem 0 0;
+}
+.input{
+  border: var(--hard-pink) solid 2px;
+  opacity: 71%;
+}
+.authentication {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500, lighter;
+  margin-bottom: 27px;
+}
+
+#none-created-account {
+  text-align: right;
+  margin: 2rem 0 5rem;
+}
+
+.signup-btn,
+.authentication-text {
+  color: var(--dark);
+  font-size: 2rem;
+} 
+
+.sign-in-btn {
+  width: 20rem;
+  border-radius: 25px;
+  background: var(--dark);
+  color: var(--white);
+
+  font-size: 2.5rem;
+  font-weight: 400;
+
+  padding: 1rem;
+} 

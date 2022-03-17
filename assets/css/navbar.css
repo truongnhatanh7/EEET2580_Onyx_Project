@@ -9,9 +9,6 @@
     overflow: hidden;
 }
 .header__navbar {
-    --position-horizon: 1.6rem;
-    --color-font: var(--white);
-
     backdrop-filter: blur(28px);
     background-color: #ffffff9a;
     
