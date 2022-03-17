@@ -4,6 +4,11 @@
     position: relative;
 }
 
+input[type="text"] {
+    background-color: var(--white);
+    color: var(--black);
+}
+
 .workspace__navbar {
     height: 64px;
     position: relative;
@@ -291,6 +296,8 @@
     color: var(--white);
     padding: 16px;
     border-radius: 4px;
+    color: var(--constant-white);
+
 }
 
 .workspace__add-list-btn {
@@ -300,6 +307,8 @@
     margin: 16px;
     min-width: 360px;
     border-radius: 8px;
+    color: var(--constant-white);
+
 }
 
 .workspace__add-list-btn:hover {
@@ -326,6 +335,8 @@
     margin-top: 16px;
     padding: 8px 32px;
     display: block;
+    color: var(--constant-white);
+
 }
 
 .workspace__submit-title {
@@ -364,4 +375,6 @@
     color: var(--white);
     margin-top: 16px;
     padding: 8px 32px;
+    color: var(--constant-white);
+
 }
