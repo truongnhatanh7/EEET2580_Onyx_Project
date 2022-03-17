@@ -78,3 +78,15 @@ html{
     opacity: 0.7;
     cursor: pointer;
 }
+
+.input-field{
+    width: 100%;
+    box-sizing: border-box;
+    height: 4rem;
+    border-radius: 25px;
+    opacity: 71%;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 2.5rem;
+    border: var(--hard-pink) solid 2px;
+}

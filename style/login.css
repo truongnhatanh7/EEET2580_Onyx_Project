@@ -1,13 +1,7 @@
-.login-root {
-  /* chua lam duoc center trong day */
-}
 .login-container {
   display: inline-grid;
-  height: 100%;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   height: 100vh;
-  width: 100vw;  
-  overflow: hidden;
 }
 
 /* Welcome content */
@@ -30,12 +24,12 @@
 
 .text-container {
   font-weight: 500;
-  font-size: 50px;
+  font-size: 4rem;
 
   color: var(--white);
   text-align: right;
 
-  margin: 8rem 5rem;
+  margin: 10rem 7rem 5rem;
   background-color: transparent;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -66,32 +60,6 @@
   height: 100%;
   object-position: -600px 400px;
 }
-.background-wrapper {
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  background-image: url("/assets/img/Login/soft-pink.svg");
-  /* background: url("/assets/img/Login/pink.svg"); */
-}
-
-/* #outermost-bean {
-  position: absolute;
-  margin-left: -300px;
-  margin-top: -200px;
-}
-
-#middle-bean {
-  position: absolute;
-  margin-left: -360px;
-  margin-top: 30px;
-}
-
-#innermost-bean {
-  position: absolute;
-  margin-left: -510px;
-  margin-top: 130px;
-} */
 
 /* Login content */
 
@@ -101,23 +69,19 @@
   flex-direction: column;
   justify-content: center;
 }
-
-/* .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-} */
-
 .heading {
-  margin-bottom: 49px;
-  font-size: 30px;
-  line-height: 55px;
-  font-weight: 700, bold;
-}
-.heading__content{
+  margin-bottom: 2rem;
   font-size: 5rem;
   font-weight: 700;
+}
+.form-email,
+.form-password{
+  height: 4rem;
+  border-radius: 25px;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 3rem 0 0;
 }
 .authentication {
   font-size: 20px;
@@ -126,53 +90,25 @@
   margin-bottom: 27px;
 }
 
-#email-label,
-#password-label {
-  color: var(--dark);
-}
-
-.authentication input {
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  opacity: 71%;
-  font-size: 20px;
-  font-weight: 500;
-}
-
 #none-created-account {
   text-align: right;
-  font-size: 15px;
-  line-height: 22.5px;
-  margin-right: 10px;
-  margin-top: 10px;
+  margin: 2rem 0 5rem;
 }
 
-a {
+.signup-btn,
+.authentication-text {
   color: var(--dark);
-  font-weight: 600;
-}
+  font-size: 2rem;
+} 
 
-#text {
-  margin-right: 20px;
-  opacity: 0.5;
-}
-
-.inputBtn input {
-  width: 316.84px;
-  height: 66.09px;
-  border-radius: 15px;
+.sign-in-btn {
+  width: 20rem;
+  border-radius: 25px;
   background: var(--dark);
   color: var(--white);
 
-  font-size: 30px;
-  line-height: 45px;
-  font-weight: 600, bold;
+  font-size: 2.5rem;
+  font-weight: 400;
 
-  margin-top: 30px;
-  cursor: pointer;
-}
-
-.inputBtn input:hover {
-  background: var(--hard-pink);
-}
+  padding: 1rem;
+} 
