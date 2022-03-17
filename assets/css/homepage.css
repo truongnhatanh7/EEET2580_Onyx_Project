@@ -99,7 +99,8 @@
     height: auto;
     background-color: var(--pink-color);
 }
-/* start of content feature */
+
+/* start of feature bar */
 .feature__bar {
     display: inline;
     --position-vertical: 12rem;
@@ -168,6 +169,7 @@
     position: static;
     /* margin-right: auto;    */
     overflow: hidden;
+    display: flex;
 }
 
 /* .feature__collab-content {
@@ -176,12 +178,9 @@
 } */
 .feature__collab-content-illus {
     width: calc(100% / 2);
-    position: relative;
+    margin: auto;
 }
-.feature__collab-content-illus-details {
-    position: absolute;
 
-}
 .feature__collab-content-text {
     width: calc(100% / 2);
 
