@@ -1,10 +1,12 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 html{
     font-family: "Poppins", sans-serif !important;
     font-size: 62.5%;
+    width: 100%;
 }
 :root {
     --blue: #1b73e7;
@@ -84,9 +86,8 @@ html{
     box-sizing: border-box;
     height: 4rem;
     border-radius: 25px;
-    opacity: 71%;
     font-size: 20px;
     font-weight: 600;
     padding: 2.5rem;
-    border: var(--hard-pink) solid 2px;
+    
 }

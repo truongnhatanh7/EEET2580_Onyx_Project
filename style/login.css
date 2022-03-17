@@ -83,6 +83,10 @@
   font-weight: 600;
   padding: 3rem 0 0;
 }
+.input{
+  border: var(--hard-pink) solid 2px;
+  opacity: 71%;
+}
 .authentication {
   font-size: 20px;
   line-height: 30px;

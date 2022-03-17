@@ -1,17 +1,13 @@
-body {
-  height: 100vh;
-}
-
 .signup-container {
   display: flex;
   flex-direction: column;
 
-  width: 1482px;
-  height: 706px;
   background-color: var(--pink-color);
   justify-content: center;
   align-items: center;
 
+  width: 90%;
+  height: 90%;
   position: absolute;
   top: 50%;
   left: 50%;
