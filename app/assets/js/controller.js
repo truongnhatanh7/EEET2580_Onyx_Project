@@ -37,7 +37,7 @@ listNameInput.addEventListener("keyup", function(event) {
 
 submitList.addEventListener("click", (event) => {
     if (listNameInput.value != '' && listNameInput.value.length < 25) {
-      console.log("bro")
+
       let createListUrl =
           "https://onyx2-backend.herokuapp.com/api/v1/list/" +
           sessionStorage.getItem("currentBoardId").toString();
