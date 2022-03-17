@@ -14,6 +14,8 @@ const lists = $$(".workspace__board-list");
 const addListSection = $(".workspace__add-wrapper");
 const submitList = $(".workspace__submit-btn");
 const listNameInput = $(".workspace__add-input");
+const toastBox = $(".toast-wrapper");
+const toastMessage = $(".toast-message");
 
 addListBtn.addEventListener("click", (event) => {
     addListSection.classList.add("enable");
@@ -89,6 +91,7 @@ function handleAddTask(event) {
 
     let taskInput = taskFactory.querySelector(".workspace__add-input-task");
     let taskBtn = taskFactory.querySelector(".workspace__submit-task-btn");
+    taskInput.focus();
     taskInput.addEventListener("keyup", (event) => {
         event.preventDefault();
           if (event.keyCode == 13) {
@@ -97,7 +100,7 @@ function handleAddTask(event) {
     });
 
     taskBtn.onclick = debounce(function() {
-        if (taskInput.value != "") {
+        if (taskInput.value != "" && taskInput.value.length < 50) {
           let createTaskUrl =
               "http://localhost:8080/api/v1/task/" + currentListId.toString();
           fetch(createTaskUrl, {
@@ -141,6 +144,24 @@ function handleAddTask(event) {
                   taskFactory.classList.remove("enable");
                   taskInput.value = "";
               });
+        } 
+        else if (taskInput.value != "" && taskInput.value.length >= 50) {
+          toastBox.classList.add("enable");
+          toastBox.classList.remove("disable");
+          toastMessage.innerHTML = "Task content too long!"
+          setTimeout(() => {
+            toastBox.classList.remove("enable");
+            toastBox.classList.add("disable");
+          }, 2000)          
+        }
+        else {
+          toastBox.classList.add("enable");
+          toastBox.classList.remove("disable");
+          toastMessage.innerHTML = "Task content cannot be empty!"
+          setTimeout(() => {
+            toastBox.classList.remove("enable");
+            toastBox.classList.add("disable");
+          }, 2000)
         }
     }, 100);
 
@@ -188,3 +209,5 @@ function switchTheme(e) {
     }
 }
 darkModeSwitch.addEventListener("change", switchTheme);
+
+////////////////////////////////
