@@ -40,7 +40,7 @@ input[type="text"] {
 }
 
 .workspace__navbar-progress-btn {
-    color: var(--white) !important;
+    color: var(--constant-white) !important;
     height: 4rem;
 
 }
@@ -202,7 +202,7 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 16px;
     position: relative;
-    border-top: 1px solid var(--dark-light-white);
+    /* border-top: 1px solid var(--dark-light-white); */
     overflow-x: hidden;
     /* border-right: 1px solid var(--dark-light-white); */
 }
@@ -237,7 +237,7 @@ input[type="text"] {
     margin-bottom: 16px;
     padding: 14px;
     position: relative;
-    border: 1px solid var(--lm-only-gray);
+    /* border: 1px solid var(--lm-only-gray); */
 
 
 }
@@ -307,8 +307,6 @@ input[type="text"] {
     margin: 16px;
     min-width: 360px;
     border-radius: 8px;
-    color: var(--constant-white);
-
 }
 
 .workspace__add-list-btn:hover {

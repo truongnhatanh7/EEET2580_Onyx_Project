@@ -38,9 +38,9 @@
 /* >>>>>>> main */
 }
 [data-theme="dark"] {
-    --white: #000;
+    --white: #1e1e1e;
     --black: #fff;
-    --gray: #000;
+    --gray: #121212;
     --dark-gray: #fff;
     --lm-only-gray: #fff;
     --blue: #fff;
