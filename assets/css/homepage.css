@@ -1,12 +1,4 @@
-/* general */
-/* .col-illus { 
-    width: calc(100% * (2/3)); 
-    display: inline-block;
-}
-.col-text { 
-    width: calc(100% / 3); 
-    display: inline-block;
-} */
+.col-half { width: 50%; }
 
 .card {
     display: block;
@@ -26,6 +18,7 @@
 .card-content {
     /* display: inline-block; */
     background-color: var(--white);
+    /* background-color: var(--white); */
     height: 100%;
     width: 100%;
 
@@ -33,6 +26,23 @@
     align-items: center;
 
     border-radius: 25px;
+}
+.card-content-text {
+    text-align: center;
+    font-weight: 700;
+    font-size: 5.5rem;
+    color: var(--dark);
+}
+.card-content-illus {
+    margin: auto;
+    content: " ";
+    height: 100%;
+    /* background-image: url("/assets/img/homepage-content-cards/dragdrop.png"); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 2rem;
+
 }
 /* end genaral */
 
@@ -122,12 +132,12 @@
 
     /* center horizontally */
     /* text-align: center; */
-    padding: 18rem 5rem var(--position-vertical) 5rem;
+    padding: var(--position-vertical) 5rem var(--position-vertical) 5rem;
 
     font-size: 7rem;
     font-weight: 600;
     color: var(--white);
-    
+
     background-color: var(--pink-color);
 
 }
@@ -138,61 +148,20 @@
     right: 0;   
     /* margin-left: auto; */
 }
-/* .feature__dragdrop-content {
-    border-top-left-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
-} */
-.feature__dragdrop-content-illus {
-    width: calc(100% * (2/3)); 
-}
-.feature__dragdrop-content-text {
-    width: calc(100% / 3);
-
-    /* position: relative; */
-    text-align: center;
-    font-weight: 600;
-    font-size: 9rem;
-    color: var(--dark);
-
-    /* set & symbol */
-    background: url(/assets/img/feature-content/feature-dragdrop/and-symbol.svg);
-    background-repeat: no-repeat;
-    /* background-size: cover; */
-    background-position-x: 100%;
-    background-position-y: 60%;
-}
 /* end of drag drop feature */
 
 
 /* start of collab feature */
 .feature__collab {
     position: static;
-    /* margin-right: auto;    */
     overflow: hidden;
     display: flex;
 }
-
-/* .feature__collab-content {
-    border-top-right-radius: var(--border-radius);
-    border-bottom-right-radius: var(--border-radius);
-} */
-.feature__collab-content-illus {
-    width: calc(100% / 2);
-    margin: auto;
-}
-
-.feature__collab-content-text {
-    width: calc(100% / 2);
-
-    /* padding-left: 2rem; */
-    text-align: center;
-    font-weight: 700;
-    font-size: 5.5rem;
-    color: var(--dark);
-}
-
 /* end of collab feature */
 /* end of content feature */
+
+
+/* start of news */
 .news{
     margin: 60px 60px 0rem;
     border-radius: 25px;
@@ -224,6 +193,9 @@
     margin: 5rem 0 0;
     background-color: var(--yellow);
 }
+/* end of news */
+
+
 /* start of footer */
 #footer {
     /* position: static; */
