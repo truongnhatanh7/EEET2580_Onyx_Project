@@ -76,10 +76,12 @@
 }
 .form-email,
 .form-password{
-  height: 4rem;
-  border-radius: 25px;
+  /* box-sizing: border-box; */
+  /* height: 4rem; */
+  
+  border-radius: 2.5rem;
   border: none;
-  font-size: 20px;
+  font-size: 2rem;
   font-weight: 600;
   padding: 3rem 0 0;
 }
