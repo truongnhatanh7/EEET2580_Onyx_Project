@@ -153,7 +153,7 @@ html {
     place-items: center;
     background-color: var(--white);
    visibility: visible;
-    /* opacity: 1; */
+    opacity: 1;
     transition: all 0.3s linear;
 }
 
