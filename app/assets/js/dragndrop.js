@@ -14,7 +14,7 @@ function handleDragEnd(event) {
     event.target.classList.remove("workspace__board-list-task--dragging");
     if (sessionStorage.getItem("lastList") != event.target.parentNode.id) {
       let deleteTaskUrl =
-          "https://onyx2-backend.herokuapp.com/api/v1/task/" +
+          "http://localhost:8080/api/v1/task/" +
           event.target.id.slice(5).toString();
       let taskContent = event.target.textContent.trim();
       console.log(taskContent);
@@ -28,7 +28,7 @@ function handleDragEnd(event) {
       });
   
       let createTaskUrl =
-          "https://onyx2-backend.herokuapp.com/api/v1/task/" + event.target.parentNode.id.slice(5).toString();
+          "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5).toString();
       fetch(createTaskUrl, {
           method: "POST",
           headers: {
