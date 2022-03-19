@@ -187,7 +187,7 @@ function handleAddTask(event) {
               toastBox.classList.add("disable");
             }, 2000)
           }
-      }, 100);
+      }, 350);
     }
     else if (addListSection.classList.contains("enable")) {
       toastBox.classList.add("enable");
