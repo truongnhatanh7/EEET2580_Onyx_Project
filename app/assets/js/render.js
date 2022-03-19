@@ -7,6 +7,8 @@ const workspaceBoard = $(".workspace__board");
 const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
+const loading = $('.loading-wrapper');
+
 
 fetchBoardInfo();
 getBoardInfo();
@@ -72,6 +74,10 @@ function renderBoard(board) {
             workspaceBoard.insertBefore(para, addListBtnWrapper);
         }
     });
+
+    loading.style.visibility = "hidden";
+    loading.style.opacity = "0";
+    loading.remove();
 }
 
 function getBoardInfo() {
