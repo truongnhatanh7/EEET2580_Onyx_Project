@@ -162,7 +162,7 @@ html {
    height: 100px;
    background-color: var(--purple);
    border-radius: 8px;
-   animation: flip 1.2s ease-in-out infinite;
+   animation: flip 0.75s ease-in-out infinite;
 }
 
 @keyframes fadeOut {
