@@ -35,6 +35,7 @@ function renderBoard(board) {
                     draggable="true"
                     ondragstart="handleDragStart(event)"
                     ondragend="handleDragEnd(event)"
+                    ondrag="handleOnDrag(event)"
 
                     id="${"task_" + task.taskId}"
                     >

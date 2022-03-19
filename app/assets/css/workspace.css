@@ -238,7 +238,7 @@ input[type="text"] {
 }
 
 .workspace__board-list-task-delete {
-
+    
 }
 
 .workspace__board-list-task-delete:hover {
@@ -250,8 +250,11 @@ input[type="text"] {
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {
-    opacity: 0.3;
-    transform: rotate(5deg);
+    /* opacity: 0.5;
+    transform: rotateX(1deg);
+    -webkit-transform: rotateX(1deg);
+    background-color: var(--light-purple); */
+
 
 }
 

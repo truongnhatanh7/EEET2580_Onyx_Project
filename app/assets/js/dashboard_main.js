@@ -8,8 +8,7 @@ const modalWrapper = $(".dashboard__modal-wrapper");
 const modalInput = $('.dashboard__modal-input');
 const modalBtn = $('.dashboard__modal-btn');
 const projectAddBtn = $(".dashboard__project-add-btn")
-let userId = 1;
-let haveJustAdded = false;
+const dashboardTitle = $('.dashboard__title');
 let latestWorkspaceId = -1;
 let currentUser = 1;
 let linkWorkspaceUserUrl = "https://onyx2-backend.herokuapp.com/api/v1/user/add-workspace-for-user-by-id/"
@@ -19,12 +18,24 @@ let allWPUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
 let allUsers = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/"
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
+const finish = false;
+const loading = $('.loading-wrapper');
+let totalWorkspaces = 0;
 
 main()
 
 
+
 function main() {
+    // setTimeout(() => {
+    //     loading.style.visibility = "hidden";
+    //     loading.style.opacity = "0";
+    //     // loading.remove();
+
+    // }, 3000)
+      
     getWorkspace(renderWorkspace)
+    finish = true;
 }
 
 function getWorkspace(callback) {
@@ -37,7 +48,11 @@ function getWorkspace(callback) {
 }
 
 function renderWorkspace(workspaces) {
-
+    totalWorkspaces = workspaces.length;
+    if (totalWorkspaces > 1) {
+        dashboardTitle.innerHTML += 's'
+    }
+ 
     for (const workspace of workspaces) {
 
         let html = `
@@ -51,6 +66,10 @@ function renderWorkspace(workspaces) {
         projectList.appendChild(para);
         
     }
+
+    loading.style.visibility = "hidden";
+    loading.style.opacity = "0";
+    loading.remove();
 
 }
 
@@ -81,7 +100,7 @@ projectAddBtn.onclick = (event) => {
     modalOutter.classList.remove("dashboard__modal-create--disable")
     modalOutter.classList.add('dashboard__modal-create--enable')
     modalInput.focus()
-    modalInput.value = ''
+    modalInput.value = '';
 }
 
 modalInput.addEventListener('keyup', (event) => {
@@ -111,7 +130,7 @@ modalBtn.onclick = (event) => {
         fetch(createUrl, options)
             .then(response => response.json())
             .then(workspace => {
-                let url = linkWorkspaceUserUrl + workspace.workspaceId.toString() + "/" + userId.toString();
+                let url = linkWorkspaceUserUrl + workspace.workspaceId.toString() + "/" + currentUser.toString();
                 fetch(url,  {
                     method: "POST",
                     headers: {
@@ -131,6 +150,7 @@ modalBtn.onclick = (event) => {
                 }
                 );
             })
+
     
             modalInput.value = ''
     } else if (modalInput.value != '' && modalInput.value.length >= 25) {
