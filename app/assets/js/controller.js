@@ -17,6 +17,7 @@ const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
+
 addListBtn.addEventListener("click", (event) => {
     addListSection.classList.add("enable");
     addListSection.classList.remove("disable");
