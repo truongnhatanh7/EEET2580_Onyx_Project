@@ -1,5 +1,5 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
-let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
+let url = "https://onyx2-backend.herokuapp.com/api/v1/list/" + currentBoardId.toString();
 let board;
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -12,7 +12,7 @@ fetchBoardInfo();
 getBoardInfo();
 
 function fetchBoardInfo() {
-    let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
+    let boardUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
         .then(data => {

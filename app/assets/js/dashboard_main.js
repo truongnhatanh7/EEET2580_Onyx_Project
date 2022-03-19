@@ -12,11 +12,11 @@ let userId = 1;
 let haveJustAdded = false;
 let latestWorkspaceId = -1;
 let currentUser = 1;
-let linkWorkspaceUserUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/"
-let workspaceByUserId = "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();
-let createUrl = "http://localhost:8080/api/v1/workspace/";
-let allWPUrl = "http://localhost:8080/api/v1/workspace/";
-let allUsers = "http://localhost:8080/api/v1/user/all-users/"
+let linkWorkspaceUserUrl = "https://onyx2-backend.herokuapp.com/api/v1/user/add-workspace-for-user-by-id/"
+let workspaceByUserId = "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();
+let createUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
+let allWPUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
+let allUsers = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/"
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
