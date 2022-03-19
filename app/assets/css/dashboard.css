@@ -54,6 +54,9 @@
     cursor: pointer;
     opacity: 0.7;
 }
+.dashboard__project-card:hover .dashboard__project-card-name {
+    transform: scale(1.2);
+}
 
 .dashboard__project-add-btn {
     padding: 16px;
@@ -69,6 +72,11 @@
 
 .dashboard__project-create {
     font-size: 3rem;
+    transition: 0.3s;
+}
+
+.dashboard__project-add-btn:hover .dashboard__project-create {
+    transform: rotate(90deg) scale(1.5);
 }
 
 .dashboard__project-card-link {
@@ -89,6 +97,9 @@
     max-height: 70%;
     text-overflow: ellipsis;
     overflow: hidden;
+    transition: 0.3s;
+    word-wrap: break-word;
+    text-align: center;
 }
 
 .dashboard__modal-create {
@@ -129,12 +140,9 @@
 
 .dashboard__modal-input:focus {
     outline: none;
-    animation: breathingFocus 1s ease-out infinite normal;
+    /* animation: breathingFocus 1s ease-out infinite normal;
     -webkit-font-smoothing: antialiased;
-
-    animation-iteration-count: infinite;
-
-    
+    animation-iteration-count: infinite; */
 
 }
 

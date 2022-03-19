@@ -8,6 +8,7 @@ const modalWrapper = $(".dashboard__modal-wrapper");
 const modalInput = $('.dashboard__modal-input');
 const modalBtn = $('.dashboard__modal-btn');
 const projectAddBtn = $(".dashboard__project-add-btn")
+const dashboardTitle = $('.dashboard__title');
 let userId = 1;
 let haveJustAdded = false;
 let latestWorkspaceId = -1;
@@ -37,7 +38,9 @@ function getWorkspace(callback) {
 }
 
 function renderWorkspace(workspaces) {
-
+    if (workspaces.length != 1) {
+        dashboardTitle.innerHTML += 's'
+    }
     for (const workspace of workspaces) {
 
         let html = `
@@ -81,7 +84,7 @@ projectAddBtn.onclick = (event) => {
     modalOutter.classList.remove("dashboard__modal-create--disable")
     modalOutter.classList.add('dashboard__modal-create--enable')
     modalInput.focus()
-    modalInput.value = ''
+    modalInput.value = '';
 }
 
 modalInput.addEventListener('keyup', (event) => {
