@@ -9,23 +9,35 @@ const modalInput = $('.dashboard__modal-input');
 const modalBtn = $('.dashboard__modal-btn');
 const projectAddBtn = $(".dashboard__project-add-btn")
 const dashboardTitle = $('.dashboard__title');
-let userId = 1;
-let haveJustAdded = false;
 let latestWorkspaceId = -1;
-let currentUser = 1;
+//////////////////////////////
+let currentUser = 2; // Current user id
+//////////////////////////////
 let linkWorkspaceUserUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/"
 let workspaceByUserId = "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();
 let createUrl = "http://localhost:8080/api/v1/workspace/";
 let allWPUrl = "http://localhost:8080/api/v1/workspace/";
 let allUsers = "http://localhost:8080/api/v1/user/all-users/"
+let totalWorkspaces = 0;
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
+const finish = false;
+const loading = $('.loading-wrapper');
 
 main()
 
 
+
 function main() {
+    // setTimeout(() => {
+    //     loading.style.visibility = "hidden";
+    //     loading.style.opacity = "0";
+    //     // loading.remove();
+
+    // }, 3000)
+      
     getWorkspace(renderWorkspace)
+    finish = true;
 }
 
 function getWorkspace(callback) {
@@ -38,9 +50,11 @@ function getWorkspace(callback) {
 }
 
 function renderWorkspace(workspaces) {
-    if (workspaces.length != 1) {
+    totalWorkspaces = workspaces.length;
+    if (totalWorkspaces > 1) {
         dashboardTitle.innerHTML += 's'
     }
+ 
     for (const workspace of workspaces) {
 
         let html = `
@@ -54,6 +68,10 @@ function renderWorkspace(workspaces) {
         projectList.appendChild(para);
         
     }
+
+    loading.style.visibility = "hidden";
+    loading.style.opacity = "0";
+    loading.remove();
 
 }
 
@@ -114,7 +132,7 @@ modalBtn.onclick = (event) => {
         fetch(createUrl, options)
             .then(response => response.json())
             .then(workspace => {
-                let url = linkWorkspaceUserUrl + workspace.workspaceId.toString() + "/" + userId.toString();
+                let url = linkWorkspaceUserUrl + workspace.workspaceId.toString() + "/" + currentUser.toString();
                 fetch(url,  {
                     method: "POST",
                     headers: {
@@ -134,6 +152,7 @@ modalBtn.onclick = (event) => {
                 }
                 );
             })
+
     
             modalInput.value = ''
     } else if (modalInput.value != '' && modalInput.value.length >= 25) {

@@ -6,11 +6,13 @@ const containers = $$(".workspace__board-list");
 
 
 function handleDragStart(event) {
+    
     event.target.classList.add("workspace__board-list-task--dragging");
     sessionStorage.setItem("lastList", event.target.parentNode.id)
 }
 
 function handleDragEnd(event) {
+
     event.target.classList.remove("workspace__board-list-task--dragging");
     if (sessionStorage.getItem("lastList") != event.target.parentNode.id) {
       let deleteTaskUrl =
@@ -40,6 +42,10 @@ function handleDragEnd(event) {
       });
     }
 
+}
+
+function handleOnDrag(event) {
+    event.preventDefault();
 }
 
 function handleDragOver(event) {
