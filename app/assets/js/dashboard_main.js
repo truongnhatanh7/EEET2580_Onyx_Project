@@ -37,7 +37,7 @@ function main() {
     // }, 3000)
       
     getWorkspace(renderWorkspace)
-    finish = true;
+
 }
 
 function getWorkspace(callback) {

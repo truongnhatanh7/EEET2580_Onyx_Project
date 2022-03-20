@@ -66,6 +66,10 @@ function renderBoard(board) {
                     <h2 class="workspace__submit-title">Enter new task:</h2>
                     <input type="text" class="workspace__add-input-task">
                     <button class="workspace__submit-task-btn btn">Create</button>
+                    <button class="workspace__task-close-btn btn">
+                    <i class="fa-solid fa-xmark workspace__task-close"></i>
+                    </button>
+                    
                 </div>
             </div>
               `;

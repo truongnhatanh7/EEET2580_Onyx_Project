@@ -291,11 +291,14 @@ input[type="text"] {
 .workspace__add-wrapper {
     margin: 0 16px;
     display: none;
+    max-width: 360px;
+
 }
 
 .workspace__add-input {
     margin-top: 16px;
     min-width: 360px;
+    max-width: 360px;
     padding: 8px;
     border-radius: 8px;
     outline: none;
@@ -307,9 +310,26 @@ input[type="text"] {
     margin-top: 16px;
     padding: 8px 32px;
     display: block;
+    display: inline-block;
+    
     color: var(--constant-white);
 
 }
+
+
+
+.workspace__list-close {
+    color: var(--purple);
+    display: inline-block;
+    padding: 8px 16px;
+    background: var(--white);
+    margin-left: 8px;
+}
+
+.workspace__list-close-icon {
+
+}
+
 
 .workspace__submit-title {
     font-weight: 400;
@@ -344,3 +364,15 @@ input[type="text"] {
     color: var(--constant-white);
 
 }
+
+.workspace__task-close-btn {
+    color: var(--purple);
+    background-color: var(--gray);
+    padding: 8px 16px;
+    margin-left: 8px;
+}
+
+.workspace__task-close {
+    font-size: 1.6rem;
+}
+

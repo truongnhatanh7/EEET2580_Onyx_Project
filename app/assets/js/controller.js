@@ -13,10 +13,13 @@ const tasks = $$(".workspace__board-list-task");
 const lists = $$(".workspace__board-list");
 const addListSection = $(".workspace__add-wrapper");
 const submitList = $(".workspace__submit-btn");
+const closeSubmitList = $('.workspace__list-close');
 const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
+// workspace__task-close-btn
+// workspace__task-close-btn
 
 addListBtn.addEventListener("click", (event) => {
     addListSection.classList.add("enable");
@@ -25,9 +28,25 @@ addListBtn.addEventListener("click", (event) => {
     addListBtn.classList.remove("enable");
     listNameInput.value = "";
     listNameInput.focus();
+    console.log(event.target.parentNode)
 });
 
+// closeAddTaskBtn.addEventListener("click", (event) => {
+//   console.log("test")
+//   // addListSection.classList.remove("enable");
+//   // addListSection.classList.add("disable");
+//   // addListBtn.classList.remove("disable");
+//   // addListBtn.classList.add("enable");
+//   // listNameInput.value = "";
+// })
 
+closeSubmitList.addEventListener("click", (event) => {
+  addListSection.classList.remove("enable");
+  addListSection.classList.add("disable");
+  addListBtn.classList.remove("disable");
+  addListBtn.classList.add("enable");
+  listNameInput.value = "";
+})
 
 listNameInput.addEventListener("keyup", function(event) {
   event.preventDefault();
@@ -67,6 +86,9 @@ submitList.addEventListener("click", (event) => {
                       <h2 class="workspace__submit-title">Enter new task:</h2>
                       <input type="text" class="workspace__add-input-task">
                       <button class="workspace__submit-task-btn btn">Create</button>
+                      <button class="workspace__task-close-btn btn">
+                      <i class="fa-solid fa-xmark workspace__task-close"></i>
+                      </button>
                     </div>
                   </div>
                 `;
@@ -122,6 +144,15 @@ function handleAddTask(event) {
                 taskBtn.click();
             }
       });
+
+      let closeBtn = event.target.parentNode.querySelector('.workspace__task-close-btn')
+      closeBtn.addEventListener("click", () => {
+        taskFactory.classList.remove("enable");
+        taskFactory.classList.add("disable");
+        event.target.classList.remove("disable");
+        event.target.classList.add("enable");
+      })
+
   
       taskBtn.onclick = debounce(function() {
           if (taskInput.value != "" && taskInput.value.length < 50) {
