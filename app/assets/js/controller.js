@@ -31,9 +31,9 @@ addListBtn.addEventListener("click", (event) => {
     addListSection.classList.remove("disable");
     addListBtn.classList.add("disable");
     addListBtn.classList.remove("enable");
-    listNameInput.value = "";
     listNameInput.focus();
-    console.log(event.target.parentNode)
+    listNameInput.value = "";
+    addListBtn.scrollIntoView();
 });
 
 closeSubmitList.addEventListener("click", (event) => {
@@ -53,7 +53,7 @@ listNameInput.addEventListener("keyup", function(event) {
 
 submitList.addEventListener("click", (event) => {
     if (listNameInput.value != '' && listNameInput.value.length < 25) {
-
+      let listName = listNameInput.value;
       let createListUrl =
           "http://localhost:8080/api/v1/list/" +
           sessionStorage.getItem("currentBoardId").toString();
@@ -68,13 +68,12 @@ submitList.addEventListener("click", (event) => {
       })
           .then((response) => response.json())
           .then((data) => {
-              // Update list id
               let html = `  
                   <div class="workspace__board-list" ondragover="handleDragOver(event)" id="${
                       "list_" + data.listId
                   }">
                     <h1 class="workspace__board-list-header" >
-                      ${listNameInput.value}
+                      ${listName}
                     </h1>
                     <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
                     <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
@@ -90,7 +89,10 @@ submitList.addEventListener("click", (event) => {
                 `;
               let para = document.createRange().createContextualFragment(html);
               board.insertBefore(para, addListBtnWrapper);
-              addListBtn.click();
+            })
+            .then(() => {
+              addListBtn.click(); // Rapid insert
+              addListSection.scrollIntoView();
           })
       
       addListSection.classList.remove("enable");
@@ -206,6 +208,7 @@ function handleAddTask(event) {
                     taskFactory.classList.remove("enable");
                     taskInput.value = "";
                     event.target.parentNode.querySelector(".workspace__add-task-btn").click()
+                    taskFactory.scrollIntoView();
                 });
           } 
           else if (taskInput.value != "" && taskInput.value.length >= 50) {
