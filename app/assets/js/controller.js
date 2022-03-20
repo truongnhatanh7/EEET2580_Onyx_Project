@@ -20,6 +20,11 @@ const toastMessage = $(".toast-message");
 
 // workspace__task-close-btn
 // workspace__task-close-btn
+document.addEventListener("click", (event) => {
+    if (event.target.closest(".worksapce__add-list-wrapper") == null && event.target != addListBtn) {
+      closeSubmitList.click();
+    }
+})
 
 addListBtn.addEventListener("click", (event) => {
     addListSection.classList.add("enable");
@@ -36,13 +41,13 @@ closeSubmitList.addEventListener("click", (event) => {
   addListSection.classList.add("disable");
   addListBtn.classList.remove("disable");
   addListBtn.classList.add("enable");
-  listNameInput.value = "";
 })
 
 listNameInput.addEventListener("keyup", function(event) {
   event.preventDefault();
     if (event.keyCode == 13) {
         submitList.click();
+        addListBtn.click();
     }
 });
 
@@ -125,7 +130,7 @@ function handleAddTask(event) {
       taskFactory.classList.add("enable");
       taskFactory.classList.remove("disable");
   
-  
+
   
       let taskInput = taskFactory.querySelector(".workspace__add-input-task");
       let taskBtn = taskFactory.querySelector(".workspace__submit-task-btn");
@@ -144,6 +149,16 @@ function handleAddTask(event) {
         event.target.classList.remove("disable");
         event.target.classList.add("enable");
       })
+
+      // document.addEventListener("click", (event) => {
+      //   if (event.target.closest(".workspace__add-task-wrapper .enable") == null ) {
+      //     if (event.target.className != "workspace__add-task-btn btn disable" && event.target.className != "workspace__list-close btn") {
+      //       // console.log(event.target.closest(".workspace__add-task-wrapper.enable"));
+      //       closeBtn.click();
+
+      //     }
+      //   }
+      // })
 
   
       taskBtn.onclick = debounce(function() {
@@ -213,19 +228,10 @@ function handleAddTask(event) {
           }
       }, 350);
     }
-    else if (addListSection.classList.contains("enable")) {
-      toastBox.classList.add("enable");
-      toastBox.classList.remove("disable");
-      toastMessage.innerHTML = "Resolve list name first!"
-      setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000)
-    console.log(addListSection.classList)
-  }
-    
-    
 }
+    
+    
+
 
 
 function handleDeleteTask(event) {
