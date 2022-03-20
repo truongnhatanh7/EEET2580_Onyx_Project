@@ -31,15 +31,6 @@ addListBtn.addEventListener("click", (event) => {
     console.log(event.target.parentNode)
 });
 
-// closeAddTaskBtn.addEventListener("click", (event) => {
-//   console.log("test")
-//   // addListSection.classList.remove("enable");
-//   // addListSection.classList.add("disable");
-//   // addListBtn.classList.remove("disable");
-//   // addListBtn.classList.add("enable");
-//   // listNameInput.value = "";
-// })
-
 closeSubmitList.addEventListener("click", (event) => {
   addListSection.classList.remove("enable");
   addListSection.classList.add("disable");
@@ -94,6 +85,7 @@ submitList.addEventListener("click", (event) => {
                 `;
               let para = document.createRange().createContextualFragment(html);
               board.insertBefore(para, addListBtnWrapper);
+              addListBtn.click();
           })
       
       addListSection.classList.remove("enable");
@@ -198,6 +190,7 @@ function handleAddTask(event) {
                     taskFactory.classList.add("disable");
                     taskFactory.classList.remove("enable");
                     taskInput.value = "";
+                    event.target.parentNode.querySelector(".workspace__add-task-btn").click()
                 });
           } 
           else if (taskInput.value != "" && taskInput.value.length >= 50) {
