@@ -18,7 +18,6 @@ let allWPUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
 let allUsers = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/"
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
-const finish = false;
 const loading = $('.loading-wrapper');
 let totalWorkspaces = 0;
 
