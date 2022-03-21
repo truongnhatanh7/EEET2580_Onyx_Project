@@ -8,7 +8,7 @@
     <!-- Link Css file -->
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/navbar.css">
-    <link rel="stylesheet" href="/assets/css/homepage.css">\
+    <link rel="stylesheet" href="/assets/css/homepage.css">
 
     <!-- jquery hosted by google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -21,172 +21,30 @@
     <title>OnyX</title>
 </head>
 <body>
-    <div id="main">
-        <!-- Start of the header -->
-        <div class="header">
-            <div class="header__navbar">
-                <div class="navbar__name logo-font">
-                    ONYX
-                </div>
-
-                <div class="navbar__menu">
-                  <a class="navbar__menu-element-link " href="#">Home</a>
-                    <a class="navbar__menu-element-link" href="#">About</a>
-                    <a class="navbar__menu-element-link" href="#">Pricing</a>
-                </div>
-
+    <!-- Start of the header -->
+    <header>
+        <nav>
+            <div class="navbar__name logo-font">
+                ONYX
+            </div>
+    
+            <div class="navbar__menu">
+              <a class="navbar__menu-element-link " href="#">Home</a>
+                <a class="navbar__menu-element-link" href="#">About</a>
+                <a class="navbar__menu-element-link" href="#">Pricing</a>
+            </div>
             <button class="btn navbar__workspace">
                 <a href="/login.html">Login</a>
                 <!-- add Workspace button later -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
                     <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                  </svg>
+                </svg>
             </button>
-            </div>
-        </div>
-        <!-- End of the header -->
 
-        <!-- start of slider -->
-        <div class="slider">
-            <p class="slider-logo">
-                OnyX
-            </p>
-            <div class="slider-content logo-font">
-                The best collaboration tool EVER!!
-            </div>
-            <div id="slider-img">
-                <div class="slider-img__wrapper">
-                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="slider-display-img">
-                </div>
-                <!-- <h1 class="logo-font content__main-display-logo">OnyX</h1>
-                <div class="content__main-display">
-                    <img src="/assets/img/main-content.png" alt="Main Image" width="100%" class="contain__main-display-img">
-                </div> -->
-                <div class="slider-curve">
-                    <!-- display: block: get rid of extra space on div -->
-                    <svg style="display: block;" id="wave" style="transform:rotate(0deg); transition: 0.3s" viewBox="0 0 1440 490" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <linearGradient id="sw-gradient-0" x1="0" x2="0" y1="1" y2="0">
-                                <stop stop-color="rgba(72, 52, 212, 1)" offset="0%"></stop>
-                                <stop stop-color="rgba(187, 193, 250, 1)" offset="100%"></stop>
-                            </linearGradient></defs>
-                            <path style="transform:translate(0, 0px); opacity:1" fill="url(#sw-gradient-0)" d="M0,49L60,65.3C120,82,240,114,360,130.7C480,147,600,147,720,155.2C840,163,960,180,1080,155.2C1200,131,1320,65,1440,73.5C1560,82,1680,163,1800,196C1920,229,2040,212,2160,196C2280,180,2400,163,2520,130.7C2640,98,2760,49,2880,57.2C3000,65,3120,131,3240,155.2C3360,180,3480,163,3600,187.8C3720,212,3840,278,3960,310.3C4080,343,4200,343,4320,343C4440,343,4560,343,4680,334.8C4800,327,4920,310,5040,302.2C5160,294,5280,294,5400,261.3C5520,229,5640,163,5760,147C5880,131,6000,163,6120,155.2C6240,147,6360,98,6480,81.7C6600,65,6720,82,6840,98C6960,114,7080,131,7200,179.7C7320,229,7440,310,7560,310.3C7680,310,7800,229,7920,196C8040,163,8160,180,8280,171.5C8400,163,8520,131,8580,114.3L8640,98L8640,490L8580,490C8520,490,8400,490,8280,490C8160,490,8040,490,7920,490C7800,490,7680,490,7560,490C7440,490,7320,490,7200,490C7080,490,6960,490,6840,490C6720,490,6600,490,6480,490C6360,490,6240,490,6120,490C6000,490,5880,490,5760,490C5640,490,5520,490,5400,490C5280,490,5160,490,5040,490C4920,490,4800,490,4680,490C4560,490,4440,490,4320,490C4200,490,4080,490,3960,490C3840,490,3720,490,3600,490C3480,490,3360,490,3240,490C3120,490,3000,490,2880,490C2760,490,2640,490,2520,490C2400,490,2280,490,2160,490C2040,490,1920,490,1800,490C1680,490,1560,490,1440,490C1320,490,1200,490,1080,490C960,490,840,490,720,490C600,490,480,490,360,490C240,490,120,490,60,490L0,490Z">
-                            </path>
-                    </svg>
-                </div>
-            </div>
-        </div>
-        <!-- end of slider -->
-
-        <!-- Start of content -->
-        <div id="content">
-            <!-- start of feature bar -->
-            <div class="feature__bar js__scrolling">Feature</div>
-            <!-- end of feature bar -->
-
-            
-            <!-- start of drag and drop -->
-            <div class="feature__dragdrop card">
-                <div class="card-content feature__dragdrop-content">
-                    <div class="card-content-illus col-half"></div>
-                    <div class="card-content-text col-half">Drag & Drop</div>
-                </div>
-            </div>
-            <!-- end of drag and drop -->
-            
-            <!-- start of collab -->
-            <div class="feature__collab card">
-                <div class="card-content feature__collab-content">
-                    <div class="card-content-illus col-half"></div>
-                    <div class="card-content-text col-half">Collaboration made easy</div>
-                </div>
-            </div> 
-            <!-- end of collab -->
-        </div>
-        <!-- End of content -->
-
-        <!-- Start of news -->
-        <div class="news">
-            <div class="news__container">
-                <div class="news__content black">
-                    <span>
-                        Register your email today for more news about ONYX project today!
-                    </span>
-                    <br>
-                    <input type="email" class="input-box" placeholder="Email">
-                    <button class="btn register__button">
-                        Register
-                    </button>
-                </div>
-            </div>
-        </div>
-        <!-- End of news -->
-
-
-
-        <!-- start of footer -->
-        <div id="footer">
-            <div class="footer__first">
-                <div class="footer__logo logo-font">Onyx</div> 
-                <div class="footer__contact ">
-                    <p class="footer__contact-addr"> 702 Nguyen Van Linh street, Tan Hung ward, District 7, Ho Chi Minh city 700000</p>
-                    <p class="footer__contact-phone">Or call us: (+84) 28 3776 1300</p>
-                </div>
-                <div class="footer__community">
-                    <!-- fb icon -->
-                    <a href="#"><svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/>
-                    </svg></a>
+        </nav>        
+    </header>
+    <!-- End of the header -->
     
-                    <!-- ig icon -->
-                    <a href="#"><svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M224,202.66A53.34,53.34,0,1,0,277.36,256,53.38,53.38,0,0,0,224,202.66Zm124.71-41a54,54,0,0,0-30.41-30.41c-21-8.29-71-6.43-94.3-6.43s-73.25-1.93-94.31,6.43a54,54,0,0,0-30.41,30.41c-8.28,21-6.43,71.05-6.43,94.33S91,329.26,99.32,350.33a54,54,0,0,0,30.41,30.41c21,8.29,71,6.43,94.31,6.43s73.24,1.93,94.3-6.43a54,54,0,0,0,30.41-30.41c8.35-21,6.43-71.05,6.43-94.33S357.1,182.74,348.75,161.67ZM224,338a82,82,0,1,1,82-82A81.9,81.9,0,0,1,224,338Zm85.38-148.3a19.14,19.14,0,1,1,19.13-19.14A19.1,19.1,0,0,1,309.42,189.74ZM400,32H48A48,48,0,0,0,0,80V432a48,48,0,0,0,48,48H400a48,48,0,0,0,48-48V80A48,48,0,0,0,400,32ZM382.88,322c-1.29,25.63-7.14,48.34-25.85,67s-41.4,24.63-67,25.85c-26.41,1.49-105.59,1.49-132,0-25.63-1.29-48.26-7.15-67-25.85s-24.63-41.42-25.85-67c-1.49-26.42-1.49-105.61,0-132,1.29-25.63,7.07-48.34,25.85-67s41.47-24.56,67-25.78c26.41-1.49,105.59-1.49,132,0,25.63,1.29,48.33,7.15,67,25.85s24.63,41.42,25.85,67.05C384.37,216.44,384.37,295.56,382.88,322Z"/>
-                    </svg></a>
-    
-                    <!-- twitter -->
-                    <a href="#"><svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zm-48.9 158.8c.2 2.8.2 5.7.2 8.5 0 86.7-66 186.6-186.6 186.6-37.2 0-71.7-10.8-100.7-29.4 5.3.6 10.4.8 15.8.8 30.7 0 58.9-10.4 81.4-28-28.8-.6-53-19.5-61.3-45.5 10.1 1.5 19.2 1.5 29.6-1.2-30-6.1-52.5-32.5-52.5-64.4v-.8c8.7 4.9 18.9 7.9 29.6 8.3a65.447 65.447 0 0 1-29.2-54.6c0-12.2 3.2-23.4 8.9-33.1 32.3 39.8 80.8 65.8 135.2 68.6-9.3-44.5 24-80.6 64-80.6 18.9 0 35.9 7.9 47.9 20.7 14.8-2.8 29-8.3 41.6-15.8-4.9 15.2-15.2 28-28.8 36.1 13.2-1.4 26-5.1 37.8-10.2-8.9 13.1-20.1 24.7-32.9 34z"/>
-                    </svg></a>
-    
-                    <!-- discord -->
-                    <a href="#"><svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M524.531,69.836a1.5,1.5,0,0,0-.764-.7A485.065,485.065,0,0,0,404.081,32.03a1.816,1.816,0,0,0-1.923.91,337.461,337.461,0,0,0-14.9,30.6,447.848,447.848,0,0,0-134.426,0,309.541,309.541,0,0,0-15.135-30.6,1.89,1.89,0,0,0-1.924-.91A483.689,483.689,0,0,0,116.085,69.137a1.712,1.712,0,0,0-.788.676C39.068,183.651,18.186,294.69,28.43,404.354a2.016,2.016,0,0,0,.765,1.375A487.666,487.666,0,0,0,176.02,479.918a1.9,1.9,0,0,0,2.063-.676A348.2,348.2,0,0,0,208.12,430.4a1.86,1.86,0,0,0-1.019-2.588,321.173,321.173,0,0,1-45.868-21.853,1.885,1.885,0,0,1-.185-3.126c3.082-2.309,6.166-4.711,9.109-7.137a1.819,1.819,0,0,1,1.9-.256c96.229,43.917,200.41,43.917,295.5,0a1.812,1.812,0,0,1,1.924.233c2.944,2.426,6.027,4.851,9.132,7.16a1.884,1.884,0,0,1-.162,3.126,301.407,301.407,0,0,1-45.89,21.83,1.875,1.875,0,0,0-1,2.611,391.055,391.055,0,0,0,30.014,48.815,1.864,1.864,0,0,0,2.063.7A486.048,486.048,0,0,0,610.7,405.729a1.882,1.882,0,0,0,.765-1.352C623.729,277.594,590.933,167.465,524.531,69.836ZM222.491,337.58c-28.972,0-52.844-26.587-52.844-59.239S193.056,219.1,222.491,219.1c29.665,0,53.306,26.82,52.843,59.239C275.334,310.993,251.924,337.58,222.491,337.58Zm195.38,0c-28.971,0-52.843-26.587-52.843-59.239S388.437,219.1,417.871,219.1c29.667,0,53.307,26.82,52.844,59.239C470.715,310.993,447.538,337.58,417.871,337.58Z"/>
-                    </svg></a>
-    
-                    <!-- youtube -->
-                    <a href="#"><svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M186.8 202.1l95.2 54.1-95.2 54.1V202.1zM448 80v352c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V80c0-26.5 21.5-48 48-48h352c26.5 0 48 21.5 48 48zm-42 176.3s0-59.6-7.6-88.2c-4.2-15.8-16.5-28.2-32.2-32.4C337.9 128 224 128 224 128s-113.9 0-142.2 7.7c-15.7 4.2-28 16.6-32.2 32.4-7.6 28.5-7.6 88.2-7.6 88.2s0 59.6 7.6 88.2c4.2 15.8 16.5 27.7 32.2 31.9C110.1 384 224 384 224 384s113.9 0 142.2-7.7c15.7-4.2 28-16.1 32.2-31.9 7.6-28.5 7.6-88.1 7.6-88.1z"/>
-                    </svg></a>
-                </div>
-
-            </div>
-            <div class="footer__second">
-                <h3 class="footer__quote">Our Team Quote</h3>
-                <div class="footer__nav">
-                    <a href="" class="footer__nav-link">Home</a>
-                    <a href="" class="footer__nav-link">About</a>
-                    <a href="" class="footer__nav-link">Pricing</a>
-                    <a href="" class="footer__nav-link">FAQ</a>
-                </div>
-                <p class="footer__copyrights">
-                    <svg class="fontawesome-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                        <!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-                        <path d="M256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-114.7 0-208-93.31-208-208S141.3 48 256 48s208 93.31 208 208S370.7 464 256 464zM255.1 176C255.1 176 255.1 176 255.1 176c21.06 0 40.92 8.312 55.83 23.38c9.375 9.344 24.53 9.5 33.97 .1562c9.406-9.344 9.469-24.53 .1562-33.97c-24-24.22-55.95-37.56-89.95-37.56c0 0 .0313 0 0 0c-33.97 0-65.95 13.34-89.95 37.56c-49.44 49.88-49.44 131 0 180.9c24 24.22 55.98 37.56 89.95 37.56c.0313 0 0 0 0 0c34 0 65.95-13.34 89.95-37.56c9.312-9.438 9.25-24.62-.1562-33.97c-9.438-9.312-24.59-9.219-33.97 .1562c-14.91 15.06-34.77 23.38-55.83 23.38c0 0 .0313 0 0 0c-21.09 0-40.95-8.312-55.89-23.38c-30.94-31.22-30.94-82.03 0-113.3C214.2 184.3 234 176 255.1 176z"/>
-                    </svg>
-                    <span class="footer__copyrights-text">ONYX 2022 - All rights reserved</span>
-                </p>
-            </div>
-
-        </div>
-        <!-- end of footer -->
-    </div>
-    <!-- <script src="/assets/css/scrolling.js"></script> -->
-    <script src="/assets/css/scrolling-card.js"></script>
-
+ 
 </body>
 </html>

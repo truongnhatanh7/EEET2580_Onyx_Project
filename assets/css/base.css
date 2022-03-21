@@ -52,7 +52,7 @@ html{
 }
 .logo-font {
     font-family: 'Poppins', sans-serif;
-    font-size: 4rem;
+    /* font-size: 4rem; */
     font-weight: bolder;
     color: black;
     text-transform: uppercase;
