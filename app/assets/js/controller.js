@@ -21,8 +21,25 @@ const toastMessage = $(".toast-message");
 // workspace__task-close-btn
 // workspace__task-close-btn
 document.addEventListener("click", (event) => {
-    if (event.target.closest(".worksapce__add-list-wrapper") == null && event.target != addListBtn) {
+    if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) {
       closeSubmitList.click();
+    }
+    let currentList = board.querySelector('.modifying');
+    let outsideClick = false;
+    let lists = board.querySelectorAll('.workspace__board-list:not(.modifying)')
+
+    lists.forEach((element) => {
+      if (element == event.target) {
+        outsideClick = true;
+      }
+    })
+    console.log(event.target)
+    if (event.target == board) {
+      handleCloseTaskAdd()
+    } else if (outsideClick) {
+      handleCloseTaskAdd()
+    } else if (event.target == addListBtn) {
+      handleCloseTaskAdd()
     }
 })
 
@@ -119,10 +136,26 @@ submitList.addEventListener("click", (event) => {
     }
 });
 
+function handleCloseTaskAdd() {
+    
+    let currentModifier = board.querySelector('.workspace__board-list.modifying')
+    if (currentModifier) {
+      console.log("Close called")
+      let taskFactory = currentModifier.querySelector('.workspace__add-task-wrapper')
+      taskFactory.classList.remove("enable");
+      taskFactory.classList.add("disable");
+      let addTaskBtn = currentModifier.querySelector('.workspace__add-task-btn.disable.btn')
+      addTaskBtn.classList.add('enable')
+      addTaskBtn.classList.remove('disable')
+      currentModifier.classList.remove("modifying")
+    }
 
+}
 
 function handleAddTask(event) {
-    if (addListSection.classList.contains("disable")) {
+    if (!board.querySelector(".modifying") && addListSection.classList.contains('disable')) {
+      event.stopPropagation();
+      event.target.parentNode.classList.add('modifying');
       event.target.classList.add("disable");
       event.target.classList.remove("enable");
   
@@ -132,12 +165,11 @@ function handleAddTask(event) {
       taskFactory.classList.add("enable");
       taskFactory.classList.remove("disable");
   
-
-  
       let taskInput = taskFactory.querySelector(".workspace__add-input-task");
       let taskBtn = taskFactory.querySelector(".workspace__submit-task-btn");
       taskInput.focus();
       taskInput.addEventListener("keyup", (event) => {
+          event.stopPropagation();
           event.preventDefault();
             if (event.keyCode == 13) {
                 taskBtn.click();
@@ -145,23 +177,8 @@ function handleAddTask(event) {
       });
 
       let closeBtn = event.target.parentNode.querySelector('.workspace__task-close-btn')
-      closeBtn.addEventListener("click", () => {
-        taskFactory.classList.remove("enable");
-        taskFactory.classList.add("disable");
-        event.target.classList.remove("disable");
-        event.target.classList.add("enable");
-      })
-
-      // document.addEventListener("click", (event) => {
-      //   if (event.target.closest(".workspace__add-task-wrapper .enable") == null ) {
-      //     if (event.target.className != "workspace__add-task-btn btn disable" && event.target.className != "workspace__list-close btn") {
-      //       // console.log(event.target.closest(".workspace__add-task-wrapper.enable"));
-      //       closeBtn.click();
-
-      //     }
-      //   }
-      // })
-
+      closeBtn.addEventListener("click", handleCloseTaskAdd)
+    
   
       taskBtn.onclick = debounce(function() {
           if (taskInput.value != "" && taskInput.value.length < 50) {
@@ -207,7 +224,8 @@ function handleAddTask(event) {
                     taskFactory.classList.add("disable");
                     taskFactory.classList.remove("enable");
                     taskInput.value = "";
-                    event.target.parentNode.querySelector(".workspace__add-task-btn").click()
+                    event.target.parentNode.classList.remove("modifying")
+                    event.target.parentNode.querySelector(".workspace__add-task-btn").click();
                     taskFactory.scrollIntoView();
                 });
           } 
@@ -230,6 +248,9 @@ function handleAddTask(event) {
             }, 2000)
           }
       }, 350);
+
+    } else {
+      handleCloseTaskAdd();
     }
 }
     

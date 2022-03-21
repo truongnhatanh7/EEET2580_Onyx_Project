@@ -263,7 +263,7 @@ input[type="text"] {
 }
 
 .workspace__add-list-wrapper {
-
+    height: fit-content;
 }
 
 .workspace__add-task-btn {
