@@ -26,18 +26,8 @@ const loading = $('.loading-wrapper');
 
 main()
 
-
-
 function main() {
-    // setTimeout(() => {
-    //     loading.style.visibility = "hidden";
-    //     loading.style.opacity = "0";
-    //     // loading.remove();
-
-    // }, 3000)
-      
     getWorkspace(renderWorkspace)
-
 }
 
 function getWorkspace(callback) {
@@ -139,7 +129,7 @@ modalBtn.onclick = (event) => {
                         'Content-Type': 'application/json'
                     }
                 })
-                .then(response => {
+                .then(() => {
                     let html = `
                     <div class="dashboard__project-card" onclick="handleCardClick(event)" >
                         <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">

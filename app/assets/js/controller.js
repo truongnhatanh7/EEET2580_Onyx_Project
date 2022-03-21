@@ -109,7 +109,7 @@ submitList.addEventListener("click", (event) => {
             })
             .then(() => {
               addListBtn.click(); // Rapid insert
-              addListSection.scrollIntoView();
+              addListSection.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
           })
       
       addListSection.classList.remove("enable");
@@ -178,7 +178,7 @@ function handleAddTask(event) {
 
       let closeBtn = event.target.parentNode.querySelector('.workspace__task-close-btn')
       closeBtn.addEventListener("click", handleCloseTaskAdd)
-    
+      closeBtn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
   
       taskBtn.onclick = debounce(function() {
           if (taskInput.value != "" && taskInput.value.length < 50) {
@@ -226,7 +226,6 @@ function handleAddTask(event) {
                     taskInput.value = "";
                     event.target.parentNode.classList.remove("modifying")
                     event.target.parentNode.querySelector(".workspace__add-task-btn").click();
-                    taskFactory.scrollIntoView();
                 });
           } 
           else if (taskInput.value != "" && taskInput.value.length >= 50) {
@@ -282,6 +281,7 @@ function handleDeleteList(event) {
 
 ////////////////////////////////////////////////////////////////////////
 // Dark mode section
+////////////////////////////////////////////////////////////////////////
 
 if (currentTheme) {
     document.documentElement.setAttribute("data-theme", currentTheme);
