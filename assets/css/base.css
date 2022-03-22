@@ -18,19 +18,18 @@ html{
     --lm-only-gray: #F7F7F7;
     --focus-gray: #ccc;
     --dark-gray: #757575;
-    --red: #f81755;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
     --purple: #6c6cff;
 
     /* Default color */
     --white-color: #F1F1F1;
-    --pink-color: #4834d4;
-    --hard-pink: #4e589c;
-    --soft-pink: #6371ea;
-    --dark: #202f53;
-    --yellow: #f1cc00;
-    --red: #ed0613;
+    --pink-color: #21209C;
+    --hard-pink: #4E589C;
+    --soft-pink: #6371EA;
+    --dark: #282937;
+    --yellow: #FDB827;
+    --red: #D45B4A;
 
     /* size */
     --nav-height: 10rem;
