@@ -1,7 +1,14 @@
+@import url("./register.css");
+html{
+  overflow: hidden;
+}
 .login-container {
   display: inline-grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   height: 100vh;
+  overflow: hidden;
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(0%);
 }
 
 /* Welcome content */
@@ -9,21 +16,22 @@
 .login-container__welcome-board {
   background-color: var(--pink-color);
 
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
+  border-radius: 25px;
 
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
   margin: 5rem 0;
-  position: relative;
+  transition: transform 0.5s ease-in-out;
+  transform: translate(-50%);
+  position: fixed;
   z-index: -1;
 }
 
 .text-container {
-  font-weight: 500;
+  font-weight: 600;
   font-size: 4rem;
 
   color: var(--white);
@@ -48,17 +56,17 @@
 .first-blob-container img{
   width: auto;
   height: 100%;
-  object-position: -200px 200px;
+  object-position: -20rem 20rem;
 }
 .second-blob-container img{
   width: auto;
   height: 100%;
-  object-position: -300px 400px;
+  object-position: -30rem 40rem;
 }
 .third-blob-container img{
   width: auto;
   height: 100%;
-  object-position: -600px 400px;
+  object-position: -70rem 40rem;
 }
 
 /* Login content */
@@ -70,51 +78,100 @@
   justify-content: center;
 }
 .heading {
-  margin-bottom: 2rem;
   font-size: 5rem;
   font-weight: 700;
 }
-.form-email,
-.form-password{
+.form__wrapper{
+  width: 100%;
+}
+.form-label{
   /* box-sizing: border-box; */
   /* height: 4rem; */
-  
-  border-radius: 2.5rem;
+  display: block;
+  margin: 2rem 2rem 1rem 0;
   border: none;
   font-size: 2rem;
   font-weight: 600;
-  padding: 3rem 0 0;
+}
+.form-label-sub{
+  display: block;
+  margin: 0 0 1rem 0;
+  font-size: 2rem;
+  font-weight: 400;
+  opacity: 0.6;
 }
 .input{
   border: var(--hard-pink) solid 2px;
-  opacity: 71%;
 }
-.authentication {
+
+.authentication{
+  margin: 2rem 0 ;
+}
+
+.authentication-content {
+  color: black;
+  font-size: 2rem;
   font-size: 20px;
   line-height: 30px;
-  font-weight: 500, lighter;
-  margin-bottom: 27px;
-}
-
-#none-created-account {
-  text-align: right;
-  margin: 2rem 0 5rem;
-}
-
-.signup-btn,
-.authentication-text {
-  color: var(--dark);
-  font-size: 2rem;
+  margin: 2rem 0;
 } 
 
 .sign-in-btn {
   width: 20rem;
-  border-radius: 25px;
   background: var(--dark);
   color: var(--white);
 
   font-size: 2.5rem;
-  font-weight: 400;
-
   padding: 1rem;
 } 
+
+.signup-container{
+  visibility: hidden;
+  position: fixed;
+  top: 5rem;
+  bottom: 5rem;
+  right: 5rem;
+  left: -3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.login-btn,
+.signup-btn{
+  display: inline-block;
+  margin-left: 1rem;
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 700;
+}
+
+/* Animation */
+
+/* Move panel to the right */
+.right-panel-active {
+  margin-right: 5rem;
+  margin-left: 5rem;
+  display: block;
+  transition: transform 0.5s ease-in-out;
+  transform: translate(0);
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.form-container-active {
+  transition: transform 0.5s ease-in-out;
+  transform: translateY(100%);
+  opacity: 0.5;
+}
+
+.signup-form-active{
+  transition: transform 0.5s ease-in-out;
+  transform: translateX(20%);
+  visibility: visible;
+  width: 75%;
+}

@@ -72,8 +72,6 @@ html{
     font-weight: 400;
     font-family: 'poppins', sans-serif;
     text-align: center;
-    
-    transition: 0.2s;
 }
 
 .btn:hover {
@@ -89,5 +87,4 @@ html{
     font-size: 20px;
     font-weight: 600;
     padding: 2.5rem;
-    
 }
