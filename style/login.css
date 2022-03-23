@@ -120,7 +120,7 @@ html{
   margin: 2rem 2rem 1rem 0;
   border: none;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 500;
 }
 .input{
   border: var(--hard-pink) solid 2px;
@@ -174,6 +174,15 @@ html{
 .signup-container .input__field-passicon {
   margin-top: 1.4rem;
 }
+
+.login-btn:hover {
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  cursor: pointer;
+}
+
 /* Animation */
 
 /* Move panel to the right */
