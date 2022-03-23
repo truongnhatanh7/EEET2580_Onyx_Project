@@ -18,8 +18,8 @@ const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
-// workspace__task-close-btn
-// workspace__task-close-btn
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 document.addEventListener("click", (event) => {
     if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) {
       closeSubmitList.click();
@@ -42,6 +42,8 @@ document.addEventListener("click", (event) => {
       handleCloseTaskAdd()
     }
 })
+
+////////////////////////////////////////////////////////////////////////////////////////////////
 
 addListBtn.addEventListener("click", (event) => {
     addListSection.classList.add("enable");
@@ -111,30 +113,55 @@ submitList.addEventListener("click", (event) => {
               addListBtn.click(); // Rapid insert
               addListSection.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
           })
-      
-      addListSection.classList.remove("enable");
-      addListSection.classList.add("disable");
-      addListBtn.classList.remove("disable");
-      addListBtn.classList.add("enable");
+          resetAddListBtn();
 
     } else if (listNameInput.value != '' && listNameInput.value.length >= 25) {
-      toastBox.classList.add("enable");
-      toastBox.classList.remove("disable");
-      toastMessage.innerHTML = "List name is too long!"
-      setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-      }, 2000)
+      throwToastLongListName();
     } else {
-      toastBox.classList.add("enable");
-      toastBox.classList.remove("disable");
-      toastMessage.innerHTML = "List name cannot be empty"
-      setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-      }, 2000)
+      throwToastEmptyListName();
     }
 });
+
+function resetAddListBtn() {
+  addListSection.classList.remove("enable");
+  addListSection.classList.add("disable");
+  addListBtn.classList.remove("disable");
+  addListBtn.classList.add("enable");
+}
+
+function throwToastLongListName() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "List name is too long!"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
+function throwToastEmptyListName() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "List name cannot be empty"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
+function handleDeleteList(event) {
+  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
+  fetch(deleteListUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  event.target.parentNode.remove();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function handleCloseTaskAdd() {
     
@@ -236,13 +263,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                   event.target.parentNode.insertBefore(para, event.target);
               })
               .then(() => {
-                  event.target.classList.remove("disable");
-                  event.target.classList.add("enable");
-                  taskFactory.classList.add("disable");
-                  taskFactory.classList.remove("enable");
-                  taskInput.value = "";
-                  event.target.parentNode.classList.remove("modifying")
-                  event.target.parentNode.querySelector(".workspace__add-task-btn").click();
+                rapidInputTask(event, taskFactory, taskInput)
               });
         } 
         else if (taskInput.value != "" && taskInput.value.length >= 50) {
@@ -252,6 +273,16 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
           throwToastEmptyTaskName();
         }
     }, 350);
+}
+
+function rapidInputTask(event, taskFactory, taskInput) {
+  event.target.classList.remove("disable");
+  event.target.classList.add("enable");
+  taskFactory.classList.add("disable");
+  taskFactory.classList.remove("enable");
+  taskInput.value = "";
+  event.target.parentNode.classList.remove("modifying")
+  event.target.parentNode.querySelector(".workspace__add-task-btn").click();
 }
 
 function throwToastLongTaskName() {
@@ -273,10 +304,6 @@ function throwToastEmptyTaskName() {
     toastBox.classList.add("disable");
   }, 2000)
 }
-    
-    
-
-
 
 function handleDeleteTask(event) {
   let deleteTaskUrl = "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5).toString()
@@ -289,16 +316,7 @@ function handleDeleteTask(event) {
   event.target.parentNode.remove()
   
 }
-function handleDeleteList(event) {
-  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
-  fetch(deleteListUrl, {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    }
-  })
-  event.target.parentNode.remove();
-}
+
 
 ////////////////////////////////////////////////////////////////////////
 // Dark mode section
@@ -322,4 +340,4 @@ function switchTheme(e) {
 }
 darkModeSwitch.addEventListener("change", switchTheme);
 
-/////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////
