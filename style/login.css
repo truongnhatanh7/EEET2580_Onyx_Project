@@ -92,7 +92,7 @@ html{
   margin: 2rem 2rem 1rem 0;
   border: none;
   font-size: 2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .form-label-sub{
   display: block;
@@ -147,6 +147,14 @@ html{
   font-size: 20px;
   line-height: 30px;
   font-weight: 700;
+}
+
+.login-btn:hover {
+  cursor: pointer;
+}
+
+.signup-btn:hover {
+  cursor: pointer;
 }
 
 /* Animation */
