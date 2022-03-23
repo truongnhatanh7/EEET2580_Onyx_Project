@@ -74,6 +74,7 @@ function renderBoard(board) {
             </div>
               `;
 
+            
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
         }

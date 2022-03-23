@@ -12,12 +12,10 @@ function handleDragStart(event) {
 }
 
 function handleDragEnd(event) {
-
     event.target.classList.remove("workspace__board-list-task--dragging");
     if (sessionStorage.getItem("currentTask") != event.target.parentNode.id) { // Avoid same list
       let deleteTaskUrl =
-          "http://localhost:8080/api/v1/task/" + sessionStorage.getItem("currentTask")
-        //   event.target.id.slice(5).toString();
+          "http://localhost:8080/api/v1/task/" + event.target.id.slice(5)
     console.log(sessionStorage.getItem("currentTask"))
       let taskContent = event.target.textContent.trim();
 
@@ -32,7 +30,7 @@ function handleDragEnd(event) {
   
       let createTaskUrl =
           "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5);
-      fetch(createTaskUrl, {
+            fetch(createTaskUrl, {
           method: "POST",
           headers: {
               "Content-Type": "application/json",
@@ -42,7 +40,7 @@ function handleDragEnd(event) {
           }),
       }).then(response => response.json())
       .then(data => {
-
+        console.log("invoke")
         event.target.id = "task_" + data.taskId.toString();
       })
     }

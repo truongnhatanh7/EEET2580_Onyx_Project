@@ -223,6 +223,7 @@ function handleAddTask(event) {
 function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(
       function() {
+        console.log("DB Task add called")
         if (taskInput.value != "" && taskInput.value.length < 50) {
           let createTaskUrl =
               "http://localhost:8080/api/v1/task/" + currentListId.toString();
@@ -306,32 +307,57 @@ function throwToastEmptyTaskName() {
 
 ////////////////////////////////
 const taskSetting = $('.workspace__task-setting')
+const taskSettingInner = $('.workspace__task-setting-wrapper')
 const taskSave = $('.workspace__task-setting-btn')
 const taskDelete = $('.workspace__task-delete-btn')
 const taskInput = $('.workspace__task-setting-input')
 const taskSettingClose = $('.workspace__task-setting-close')
 let currentTask = null;
 let currentTaskNode = null;
+
+taskSetting.addEventListener('click', (event) => {
+
+  taskSettingClose.click();
+})
+
+taskSettingInner.addEventListener('click', (event) => {
+  event.stopPropagation();
+})
+
+taskInput.addEventListener('keyup', (event) => {
+
+  event.preventDefault();
+  if (event.keyCode == 13) {
+    taskSave.click();
+  }
+})
+
 function handleTaskSetting(event) {
   currentTask = event.target.parentNode.id.slice(5)
   currentTaskNode = event.target.parentNode;
+  console.log(currentTaskNode.getBoundingClientRect())
+  let boundingClientRect = currentTaskNode.getBoundingClientRect()
+  console.log("Click: " , currentTask)
   sessionStorage.setItem("currentTask", currentTask);
   taskSetting.classList.add("enable")
   taskSetting.classList.remove("disable")
+  taskSettingInner.style.top = boundingClientRect.top + "px";
+  taskSettingInner.style.left = boundingClientRect.left + "px";
+  taskSettingInner.style.transform = "translateX(0)";
   taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').textContent.trim();
   taskInput.focus();
-  console.log(sessionStorage.getItem("currentTask"))
+  console.log("Open: ", sessionStorage.getItem("currentTask"))
 
 }
 
-taskSettingClose.addEventListener("click", () => {
+taskSettingClose.addEventListener("click", (event) => {
   taskInput.value = "";
   taskSetting.classList.add('disable')
   taskSetting.classList.remove('enable')
   currentTaskNode = null;
 }) 
 
-taskSave.addEventListener("click", () => {
+taskSave.addEventListener("click", (event) => {
   let editTaskUrl = "http://localhost:8080/api/v1/task/"
   let newTaskContent = taskInput.value
   if (newTaskContent == '') {

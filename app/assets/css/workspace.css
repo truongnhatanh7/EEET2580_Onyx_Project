@@ -168,7 +168,7 @@ input[type="text"] {
     max-height: 82vh;
     margin: 0 16px;
     background-color: var(--white);
-    border-radius: 16px;
+    border-radius: 20px;
     position: relative;
     /* border-top: 1px solid var(--dark-light-white); */
     overflow-x: hidden;
@@ -201,7 +201,7 @@ input[type="text"] {
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--gray);
-    border-radius: 4px;
+    border-radius: 20px;
     margin-bottom: 16px;
     padding: 14px;
     position: relative;
@@ -252,10 +252,7 @@ input[type="text"] {
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {
-    /* opacity: 0.5;
-    transform: rotateX(1deg);
-    -webkit-transform: rotateX(1deg);
-    background-color: var(--light-purple); */
+
 
 
 }
@@ -388,9 +385,21 @@ input[type="text"] {
     font-size: 1.6rem;
 }
 
+.workspace__task-setting {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    
+}
+
 .workspace__task-setting-wrapper {
     position: absolute;
-    width: 500px;
+    width: 312px;
     height: fit-content;
     top: 50%;
     left: 50%;
@@ -415,13 +424,14 @@ input[type="text"] {
 
 .workspace__task-setting-title {
     font-size: 1.8rem;
-    vertical-align: center;
-    display: block;
+    font-weight: 400;
+    display: block; 
     margin-top: 8px;
+    margin-left: 16px;
 }
 
 .workspace__task-setting-input {
-    padding: 8px 32px;
+    padding: 8px 16px;
     border: solid 1px var(--purple);
     border-radius: 32px;
     outline: var(--purple);
@@ -435,11 +445,13 @@ input[type="text"] {
     padding: 8px 0;
     background-color: var(--purple);
     color: var(--constant-white);
+    
+
 }
 
 .workspace__task-delete-btn {
     margin-top: 8px;
-    padding: 8px 0;
+    padding: 8px 0;   
     background-color: var(--red);
     color: var(--constant-white);
 }
