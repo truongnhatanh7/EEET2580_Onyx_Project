@@ -1,9 +1,13 @@
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+html{
+    font-family: "Poppins", sans-serif !important;
+    font-size: 62.5%;
+    width: 100%;
+}
 :root {
     --blue: #1b73e7;
     --black: #000;
@@ -20,24 +24,21 @@
     --light-red: #f87ea1;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
-    --yellow: #f4b500;
     --purple: #6c6cff;
 
     /* Default color */
-    --white-color: #f3effd;
-    --pink-color: #4834d4;
-    --hard-pink: #4e589c;
-    --soft-pink: #6371ea;
-    --light-purple:#acacff;
-    --dark: #202f53;
-    --yellow: #f1cc00;
-    --red: #ed0613;
-/* <<<<<<< nhung */
+    --white-color: #F1F1F1;
+    --pink-color: #21209C;
+    --hard-pink: #4E589C;
+    --soft-pink: #6371EA;
+    --dark: #282937;
+    --yellow: #FDB827;
+    --red: #D45B4A;
 
     /* size */
-    --nav-height: 4.5rem;
+    --nav-height: 10rem;
+    --nav-position-top: 0rem;
     --feature-bar-width: 20.6rem;
-/* >>>>>>> main */
 }
 [data-theme="dark"] {
     --white: #1e1e1e;
@@ -53,22 +54,34 @@ html {
     font-family: 'Montserrat', sans-serif;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
-
-.logo-font {
-    font-family: 'Poppins', sans-serif;  
-    text-shadow: 0rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);  
+.white{
+    color: var(--white) !important;
 }
-
-.clearer { clear: both; }
-
+.black{
+    color: var(--black) !important;
+}
+.logo-font {
+    font-family: 'Poppins', sans-serif;
+    font-size: 4rem;
+    font-weight: bolder;
+    color: black;
+    text-transform: uppercase;
+}
+.input-box{
+    height: 100%;
+    width: 30rem;
+    padding: 2.25rem 2.5rem;
+    margin: 0;
+    border-radius: 25px;
+    border: none;
+}
 .btn {
     border: none;
-    border-radius: 32px;
+    border-radius: 25px;
     font-size: 1.6rem;
-    background-color: var(--purple);
-    font-family: 'Montserrat', sans-serif;
-    padding: 6px 16px;
-    transition: 0.2s;
+    font-weight: 400;
+    font-family: 'poppins', sans-serif;
+    text-align: center;
 }
 
 .btn:hover {
@@ -187,4 +200,13 @@ html {
    100% {
       transform: perspective(200px) rotateX(180deg) rotateY(180deg);
    }
+}
+.input-field{
+    width: 100%;
+    box-sizing: border-box;
+    height: 4rem;
+    border-radius: 25px;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 2.5rem;
 }

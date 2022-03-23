@@ -1,60 +1,225 @@
-/* start of content */
-#content {
-    /* margin-top: var(--nav-height); */
-    --position-horizontal: 10rem;
-    box-sizing: border-box;
-    margin-left: var(--position-horizontal);
-    margin-right: var(--position-horizontal);
-    width: calc(100vw - var(--position-horizontal * 2));
-
+:root {
+    --position-left: 5rem;
 }
-/* start of content main */
-#content__main {
-    position: relative;
-    margin-top: 5rem;
-
+main {
+    width: 100vw;
+    /* height: 100vh; */
+}
+.container {
+    /* margin-top: calc(var(--nav-height) + var(--nav-position-top)); */
     width: 100%;
-    height: 100vh - var(--nav-height);
+    height: 100%;
 }
-.content__main-display {
-    /* box-shadow: 0rem 0.4rem 0.7rem rgba(0, 0, 0, 0.25);   */
 
-    border-top-right-radius: 4rem;
-    border-top-left-radius: 4rem;
+/* start of general */
+.align-left { text-align: left !important;}
+.align-right { text-align: right !important;}
+/* end of general */
+
+
+/* start of main text */
+.main__slider-wrapper {
+    /* position: relative; */
+    width: 100%;
+    /* height: calc(100vh - var(--nav-height)); */
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    /* gap: 2em; */
+
+    /* box-sizing: border-box; */
+    padding: 0 var(--position-left) 0;
+
+    background-color: var(--white-color);
+
+
 }
-.content__main-display-logo {
-    /* text-align: center; */
+/* .main__text {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
 
-    padding: 0 0 2rem 0;
-
-    /* center text */
-    margin-left: auto;
-    margin-right: auto;
-
-
-    font-size: 14rem;
-    font-weight: bolder;
-
+} */
+/* .main__text-padding {
+    content: " ";
+    width: 3%;
+    height: 100%;
+} */
+.main__slider-text-wrapper {
+    content: " ";
+    width: 64%;
+    height: 70em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: column;
 }
-.content__main-design-img {
-    /* height = 50% width */
-    padding: 50%;
-    object-fit: cover;
+.main__slider-text {
+    display: block;
+    content: " ";
+    width: 100%;
+    height: 90%;
+    background-image: url("../img/homepage/main-slider/main-text.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    /* background-size: 100% 85%; */
+    background-size: contain;
+    /* padding-bottom: -50em; */
+    /* padding-top: 100%; */
 
-    /* box-shadow: 0rem 0.4rem 10rem rgba(0, 0, 0, 0.25);   */
-}
-/* end of content main */
+    -webkit-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    transform: translateY(20%);
 
-/* start of content feature */
-.feature__bar {
-    position: fixed;
+    /* position: sticky;
+    -webkit-position: sticky;
+    top: 0;
     left: 0;
-
-    width: var(--feature-bar-width);
-    height: ;
-    /* text displayed vertically */
-    writing-mode: vertical-lr;
-    text-orientation: upright;
+    bottom: 0; */
 }
-/* end of content feature */
-/* end of content */
+/* .main__slider-img-wrapper {
+    content: " ";
+    width: 100%;
+    height: 80em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+} */
+.main__slider-img {
+    align-self: flex-end;
+    content: " ";
+    width: 60%;
+    height: 60em;
+    background-image: url("../img/homepage/main-slider/main-slider-img.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    -webkit-transform: scale(1.1, 1.1);
+    -ms-transform: scale(1.1, 1.1);
+    transform: scale(1.1, 1.1);
+}
+/* end of main text */
+
+/* start of main feature */
+.main__feature {
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 7em;
+
+    padding: 20em 7em;
+    background-color: var(--pink-color);
+}
+.feature__header {
+    align-self: flex-start;
+    color: var(--yellow);
+    font-weight: 600;
+    font-size: clamp(12rem, 50%, 14rem);
+}
+.feature__content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 30em;
+}
+/* start of feature general */
+.feature__card {
+    width: 100%;
+    height: 50em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6em 6em;
+}
+.feature__card-img-wrapper {
+    width: 50%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--white-color);
+    border-radius: 3em;
+}
+.feature__card-img {
+    content: " ";
+    width: 90%;
+    height: 90%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.feature__card-text-wrapper {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2em;
+    
+    color: var(--white);
+}
+.feature__card-text-title {
+    width: 100%;
+    font-size: clamp(7rem, 50%, 8rem);
+}
+.feature__card-text-descri {
+    font-size: clamp(3rem, 50%, 4rem);
+    line-height: 1.8em;
+    word-spacing: 0.1em;
+    letter-spacing: 0.1em;
+
+}
+/* end of feature general */ 
+/* start of dragdrop card */
+.feature__dragdrop .feature__card-img {
+    background-image: url("../img/homepage/features/dragdrop.png");
+}
+/* end of dragdrop card */
+
+/* start of collab card */
+.feature__collab .feature__card-img {
+    background-image: url("../img/homepage/features/collab.png");
+}
+/* end of collab card */
+
+/* start of dark mode card */
+.feature__darkmode .feature__card-img {
+    width: 50%;
+    height: 100%;
+    background-image: url("../img/homepage/features/darkmode.png");
+}
+/* end of dark mode card */
+/* end of main feature */
+
+
+/* start of the footer */
+footer {
+    width: 100%;
+    height: 23em;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--white-color);
+}
+.footer__logo {
+    width: 50%;
+    font-size: clamp(7rem, 50%, 8rem);
+}
+.footer__copyrights {
+    font-size: clamp(2rem, 50%, 3rem);
+}
+/* end of the footer */
