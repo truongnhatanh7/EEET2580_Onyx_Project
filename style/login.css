@@ -32,13 +32,13 @@ html{
 }
 
 .text-container {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 4rem;
 
   color: var(--white);
   text-align: right;
 
-  margin: 10rem 7rem 5rem;
+  margin: 12rem 7rem 5rem 2rem;
   background-color: transparent;
   grid-column-start: 1;
   grid-column-end: 2;
@@ -80,7 +80,7 @@ html{
 }
 .heading {
   font-size: 5rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 .form__wrapper{
   width: 100%;
@@ -92,38 +92,34 @@ html{
   margin: 2rem 2rem 1rem 0;
   border: none;
   font-size: 2rem;
-  font-weight: 600;
-}
-.form-label-sub{
-  display: block;
-  margin: 0 0 1rem 0;
-  font-size: 2rem;
   font-weight: 400;
-  opacity: 0.6;
 }
 .input{
   border: var(--hard-pink) solid 2px;
+  opacity:  0.85;
+  background-color: var(--white-color);
 }
 
 .authentication{
-  margin: 2rem 0 ;
+  margin: 1rem 0 ;
 }
 
 .authentication-content {
   color: black;
-  font-size: 2rem;
-  font-size: 20px;
-  line-height: 30px;
-  margin: 2rem 0;
+  font-size: 17px;
+  margin: 1.5rem 0;
 } 
 
 .sign-in-btn {
+  margin-top: 2rem;
   width: 20rem;
   background: var(--dark);
   color: var(--white);
 
   font-size: 2.5rem;
   padding: 1rem;
+
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
 } 
 
 .signup-container{
@@ -137,15 +133,14 @@ html{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  padding: 0rem 12rem;
 }
 
 .login-btn,
 .signup-btn{
   display: inline-block;
-  margin-left: 1rem;
-  font-size: 20px;
-  line-height: 30px;
+  margin-left: 0.5rem;
+  font-size: 17px;
   font-weight: 700;
 }
 
@@ -156,7 +151,7 @@ html{
   margin-right: 5rem;
   margin-left: 5rem;
   display: block;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   transform: translate(0);
 
   top: 0;
@@ -165,13 +160,13 @@ html{
   right: 0;
 }
 .form-container-active {
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   transform: translateY(100%);
   opacity: 0.5;
 }
 
 .signup-form-active{
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.4s ease-in-out;
   transform: translateX(20%);
   visibility: visible;
   width: 75%;
