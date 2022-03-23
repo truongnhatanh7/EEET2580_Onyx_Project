@@ -42,6 +42,9 @@ input[type="text"] {
 .workspace__navbar-progress-btn {
     color: var(--constant-white) !important;
     height: 4rem;
+    padding: 8px 20px;
+    background-color: var(--purple);
+    
 
 }
 
@@ -267,10 +270,11 @@ input[type="text"] {
 }
 
 .workspace__add-task-btn {
-    color: var(--white);
+
     padding: 16px;
     border-radius: 4px;
     color: var(--constant-white);
+    background-color: var(--purple);
 
 }
 
@@ -280,7 +284,12 @@ input[type="text"] {
     color: var(--dark-gray);
     margin: 16px;
     min-width: 360px;
-    border-radius: 8px;
+    border-radius: 120px;
+    margin-top: 0;
+    padding: 4px 0;
+
+
+
 }
 
 .workspace__add-list-btn:hover {
@@ -313,6 +322,8 @@ input[type="text"] {
     display: inline-block;
     
     color: var(--constant-white);
+    background-color: var(--purple);
+
 
 }
 
@@ -362,6 +373,8 @@ input[type="text"] {
     margin-top: 16px;
     padding: 8px 32px;
     color: var(--constant-white);
+    background-color: var(--purple);
+
 
 }
 
