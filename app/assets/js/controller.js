@@ -152,105 +152,126 @@ function handleCloseTaskAdd() {
 
 }
 
+function triggerModifying(event) {
+  event.stopPropagation();
+  event.target.parentNode.classList.add('modifying');
+  event.target.classList.add("disable");
+  event.target.classList.remove("enable");
+}
+
+function submitTaskByKeyboard(event, taskBtn) {
+  event.stopPropagation();
+  event.preventDefault();
+    if (event.keyCode == 13) {
+        taskBtn.click();
+    }
+}
+
 function handleAddTask(event) {
     if (!board.querySelector(".modifying") && addListSection.classList.contains('disable')) {
-      event.stopPropagation();
-      event.target.parentNode.classList.add('modifying');
-      event.target.classList.add("disable");
-      event.target.classList.remove("enable");
+      triggerModifying(event)
   
       let currentListId = event.target.parentNode.id.slice(5);
       let tempArray = event.target.parentNode.childNodes;
       let taskFactory = tempArray[tempArray.length - 2];
       taskFactory.classList.add("enable");
       taskFactory.classList.remove("disable");
+      
   
       let taskInput = taskFactory.querySelector(".workspace__add-input-task");
       let taskBtn = taskFactory.querySelector(".workspace__submit-task-btn");
       taskInput.focus();
       taskInput.addEventListener("keyup", (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-            if (event.keyCode == 13) {
-                taskBtn.click();
-            }
+        submitTaskByKeyboard(event, taskBtn)
       });
 
       let closeBtn = event.target.parentNode.querySelector('.workspace__task-close-btn')
       closeBtn.addEventListener("click", handleCloseTaskAdd)
       closeBtn.scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"})
   
-      taskBtn.onclick = debounce(function() {
-          if (taskInput.value != "" && taskInput.value.length < 50) {
-            let createTaskUrl =
-                "http://localhost:8080/api/v1/task/" + currentListId.toString();
-            fetch(createTaskUrl, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    taskContent: taskInput.value,
-                }),
-            })
-                .then((response) => response.json())
-                .then((data) => {
-                    let html = `  
-                        <div
-                        class="workspace__board-list-task"
-                        draggable="true"
-                        ondragstart="handleDragStart(event)"
-                        ondragend="handleDragEnd(event)"
-                        id="${"task_" + data.taskId}"
-                        >
-                        <p
-                          class="workspace__board-list-task-content"
-    
-                        >
-                          ${taskInput.value}
-                        </p>
-                        <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
-                        </div>
-                    `;
-    
-                    let para = document
-                        .createRange()
-                        .createContextualFragment(html);
-                    event.target.parentNode.insertBefore(para, event.target);
-                })
-                .then(() => {
-                    event.target.classList.remove("disable");
-                    event.target.classList.add("enable");
-                    taskFactory.classList.add("disable");
-                    taskFactory.classList.remove("enable");
-                    taskInput.value = "";
-                    event.target.parentNode.classList.remove("modifying")
-                    event.target.parentNode.querySelector(".workspace__add-task-btn").click();
-                });
-          } 
-          else if (taskInput.value != "" && taskInput.value.length >= 50) {
-            toastBox.classList.add("enable");
-            toastBox.classList.remove("disable");
-            toastMessage.innerHTML = "Task content too long!"
-            setTimeout(() => {
-              toastBox.classList.remove("enable");
-              toastBox.classList.add("disable");
-            }, 2000)          
-          }
-          else {
-            toastBox.classList.add("enable");
-            toastBox.classList.remove("disable");
-            toastMessage.innerHTML = "Task content cannot be empty!"
-            setTimeout(() => {
-              toastBox.classList.remove("enable");
-              toastBox.classList.add("disable");
-            }, 2000)
-          }
-      }, 350);
-
+      taskBtn.onclick = debounceTaskAdd(event, taskFactory, taskInput, currentListId);
     } else {
       handleCloseTaskAdd();
     }
+}
+
+function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
+    return debounce(
+      function() {
+        if (taskInput.value != "" && taskInput.value.length < 50) {
+          let createTaskUrl =
+              "http://localhost:8080/api/v1/task/" + currentListId.toString();
+          fetch(createTaskUrl, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  taskContent: taskInput.value,
+              }),
+          })
+              .then((response) => response.json())
+              .then((data) => {
+                  let html = `  
+                      <div
+                      class="workspace__board-list-task"
+                      draggable="true"
+                      ondragstart="handleDragStart(event)"
+                      ondragend="handleDragEnd(event)"
+                      id="${"task_" + data.taskId}"
+                      >
+                      <p
+                        class="workspace__board-list-task-content"
+
+                      >
+                        ${taskInput.value}
+                      </p>
+                      <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
+                      </div>
+                  `;
+
+                  let para = document
+                      .createRange()
+                      .createContextualFragment(html);
+                  event.target.parentNode.insertBefore(para, event.target);
+              })
+              .then(() => {
+                  event.target.classList.remove("disable");
+                  event.target.classList.add("enable");
+                  taskFactory.classList.add("disable");
+                  taskFactory.classList.remove("enable");
+                  taskInput.value = "";
+                  event.target.parentNode.classList.remove("modifying")
+                  event.target.parentNode.querySelector(".workspace__add-task-btn").click();
+              });
+        } 
+        else if (taskInput.value != "" && taskInput.value.length >= 50) {
+          throwToastLongTaskName();
+        }
+        else {
+          throwToastEmptyTaskName();
+        }
+    }, 350);
+}
+
+function throwToastLongTaskName() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Task content too long!"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)    
+}
+
+function throwToastEmptyTaskName() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Task content cannot be empty!"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
 }
     
     
