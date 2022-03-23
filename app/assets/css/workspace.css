@@ -25,7 +25,6 @@ input[type="text"] {
 .workspace__navbar-left-wrapper {
     width: 100%;
     padding-left: 48px;
-    
 }
 .workspace__navbar-link {
     text-decoration: none;
@@ -33,7 +32,6 @@ input[type="text"] {
     line-height: 64px;
     color: var(--black);
     margin-right: 32px;
-
 }
 .workspace__navbar-link:hover {
     opacity: 0.7;
@@ -44,8 +42,6 @@ input[type="text"] {
     height: 4rem;
     padding: 8px 20px;
     background-color: var(--purple);
-    
-
 }
 
 .workspace__navbar-project-name {
@@ -69,12 +65,11 @@ input[type="text"] {
     align-items: center;
 }
 
- /* //// */
+/* //// */
 
- /* ///// */
+/* ///// */
 
 .workspace__navbar-darkmode-wrapper {
-    
 }
 
 .workspace__switch {
@@ -90,9 +85,9 @@ input[type="text"] {
     border-radius: 100rem;
     transition: background-color 0.25s linear;
     margin-right: 8px;
- }
- 
- .workspace__switch:after {
+}
+
+.workspace__switch:after {
     content: "";
     position: absolute;
     width: 3rem;
@@ -102,22 +97,22 @@ input[type="text"] {
     top: 5px;
     left: 5px;
     transition: background-color 0.25s linear, transform 0.25s linear;
- }
- 
- .workspace__switch-input {
+}
+
+.workspace__switch-input {
     display: none;
- }
- 
- .workspace__switch-input:checked + .workspace__switch {
+}
+
+.workspace__switch-input:checked + .workspace__switch {
     background-color: var(--black);
- }
- 
- .workspace__switch-input:checked + .workspace__switch:after {
+}
+
+.workspace__switch-input:checked + .workspace__switch:after {
     transform: translateX(4rem);
     background-color: black;
- }
+}
 
- /* ///// */
+/* ///// */
 
 .workspace__navbar-right-avatar-wrapper:hover {
     cursor: pointer;
@@ -150,13 +145,12 @@ input[type="text"] {
 
 .workspace__board {
     color: var(--black);
-    
+
     background-color: var(--gray);
     height: calc(100vh - 128px);
     overflow-x: scroll;
     display: flex;
     overflow-y: hidden;
-
 }
 
 .workspace__board-list {
@@ -171,11 +165,21 @@ input[type="text"] {
     border-radius: 20px;
     position: relative;
     overflow-x: hidden;
-    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
+    /* box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3),
+        -1px -1px 2px rgba(217, 217, 217, 0.5),
+        inset -15px 15px 30px rgba(217, 217, 217, 0.2),
+        inset 15px -15px 30px rgba(217, 217, 217, 0.2),
+        inset -15px -15px 30px rgba(255, 255, 255, 0.9),
+        inset 15px 15px 38px rgba(217, 217, 217, 0.9); */
 }
 
 .workspace__board-list.modifying {
-    box-shadow: -15px 15px 30px rgba(224, 224, 224, 0.2), 15px -15px 30px rgba(224, 224, 224, 0.2), -15px -15px 30px rgba(255, 255, 255, 0.9), 15px 15px 38px rgba(224, 224, 224, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(224, 224, 224, 0.5);
+    /* box-shadow: -15px 15px 30px rgba(224, 224, 224, 0.2),
+        15px -15px 30px rgba(224, 224, 224, 0.2),
+        -15px -15px 30px rgba(255, 255, 255, 0.9),
+        15px 15px 38px rgba(224, 224, 224, 0.9),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+        inset -1px -1px 2px rgba(224, 224, 224, 0.5); */
 }
 
 .workspace__board-list-header {
@@ -200,19 +204,21 @@ input[type="text"] {
     color: var(--red);
 }
 
-
 .workspace__board-list-task {
     font-size: 1.6rem;
-    background-color: var(--white);
+    background-color: var(--gray);
     border-radius: 20px;
     margin-bottom: 16px;
     padding: 14px;
     position: relative;
-    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
+    /* box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3),
+        -1px -1px 2px rgba(217, 217, 217, 0.5),
+        inset -15px 15px 30px rgba(217, 217, 217, 0.2),
+        inset 15px -15px 30px rgba(217, 217, 217, 0.2),
+        inset -15px -15px 30px rgba(255, 255, 255, 0.9),
+        inset 15px 15px 38px rgba(217, 217, 217, 0.9); */
 
     /* border: 1px solid var(--lm-only-gray); */
-
-
 }
 
 .workspace__board-list-task:hover {
@@ -224,7 +230,6 @@ input[type="text"] {
     outline: none;
     max-width: 90%;
     word-wrap: break-word;
-
 }
 
 .workspace__board-list-delete-icon {
@@ -246,7 +251,6 @@ input[type="text"] {
 }
 
 .workspace__board-list-task-delete {
-    
 }
 
 .workspace__board-list-task:hover .workspace__board-list-task-edit {
@@ -257,9 +261,6 @@ input[type="text"] {
 }
 
 .workspace__board-list-task.workspace__board-list-task--dragging {
-
-
-
 }
 
 .workspace__board-list-task--dragging.workspace__board-list-task {
@@ -268,17 +269,14 @@ input[type="text"] {
 
 .workspace__add-list-wrapper {
     height: fit-content;
-    
 }
 
 .workspace__add-task-btn {
-
     padding: 16px;
-    border-radius: 4px;
+    border-radius: 20px;
     color: var(--constant-white);
     background-color: var(--purple);
 
-    
 }
 
 .workspace__add-list-btn {
@@ -290,8 +288,6 @@ input[type="text"] {
     border-radius: 120px;
     margin-top: 0;
     padding: 4px 0;
-
-
 }
 
 .workspace__add-list-btn:hover {
@@ -303,7 +299,6 @@ input[type="text"] {
     margin: 0 16px;
     display: none;
     max-width: 360px;
-
 }
 
 .workspace__add-input {
@@ -322,14 +317,9 @@ input[type="text"] {
     padding: 8px 32px;
     display: block;
     display: inline-block;
-    
     color: var(--constant-white);
     background-color: var(--purple);
-
-
 }
-
-
 
 .workspace__list-close {
     color: var(--purple);
@@ -340,16 +330,11 @@ input[type="text"] {
 }
 
 .workspace__list-close-icon {
-
 }
-
 
 .workspace__submit-title {
     font-weight: 400;
-    
 }
-
-
 
 .workspace__add-task-wrapper {
     min-width: 100%;
@@ -376,8 +361,7 @@ input[type="text"] {
     padding: 8px 32px;
     color: var(--constant-white);
     background-color: var(--purple);
-
-
+    
 }
 
 .workspace__task-close-btn {
@@ -394,13 +378,12 @@ input[type="text"] {
 .workspace__task-setting {
     height: 100%;
     width: 100%;
-    background-color: rgba(0,0,0,0.3);
+    background-color: rgba(0, 0, 0, 0.3);
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
-    
 }
 
 .workspace__task-setting-wrapper {
@@ -410,15 +393,18 @@ input[type="text"] {
     top: 50%;
     left: 50%;
 
-    transform: translateY(-50%) translateX(-50%);    
+    transform: translateY(-50%) translateX(-50%);
     background-color: var(--white);
     display: flex;
     flex-direction: column;
     padding: 32px;
     border-radius: 20px;
-    box-shadow: -15px 15px 30px rgba(224, 224, 224, 0.2), 15px -15px 30px rgba(224, 224, 224, 0.2), -15px -15px 30px rgba(134, 134, 134, 0.9), 15px 15px 38px rgba(105, 105, 105, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(224, 224, 224, 0.5);
-
-
+    /* box-shadow: -15px 15px 30px rgba(224, 224, 224, 0.2),
+        15px -15px 30px rgba(224, 224, 224, 0.2),
+        -15px -15px 30px rgba(134, 134, 134, 0.9),
+        15px 15px 38px rgba(105, 105, 105, 0.9),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.3),
+        inset -1px -1px 2px rgba(224, 224, 224, 0.5); */
 }
 
 .workspace__task-setting-close {
@@ -433,7 +419,7 @@ input[type="text"] {
 .workspace__task-setting-title {
     font-size: 1.8rem;
     font-weight: 400;
-    display: block; 
+    display: block;
     margin-top: 8px;
     margin-left: 16px;
 }
@@ -444,8 +430,6 @@ input[type="text"] {
     border-radius: 32px;
     outline: var(--purple);
     margin-top: 32px;
-
-
 }
 
 .workspace__task-setting-btn {
@@ -453,13 +437,11 @@ input[type="text"] {
     padding: 8px 0;
     background-color: var(--purple);
     color: var(--constant-white);
-    
-
 }
 
 .workspace__task-delete-btn {
     margin-top: 8px;
-    padding: 8px 0;   
+    padding: 8px 0;
     background-color: var(--red);
     color: var(--constant-white);
 }
