@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Link Css file -->
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/homepage.css">\
+    <link rel="stylesheet" href="/assets/css/base.css">
+    <link rel="stylesheet" href="/assets/css/navbar.css">
+    <link rel="stylesheet" href="/assets/css/homepage.css">
 
     <!-- jquery hosted by google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -38,7 +38,7 @@
                         <a class="navbar__menu-element-link" href="#">Pricing</a>
                     </div>
                     <div class="navbar__btnwrapper">
-                        <button src="./login.html" class="btn navbar__btn">Login
+                        <button OnClick="location.href='./login.html'" class="btn navbar__btn">Login
                             <!-- add Workspace button later -->
                             <svg class="navbar__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
                                 <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
@@ -53,12 +53,18 @@
         
         <div class="container">
             <div class="main__slider-wrapper">
-                <div class="main__slider-text-wrapper">
-                    <div class="main__slider-text"></div>
+                
+                <div class="main__slider-text-parent">
+                    <div class="main__slider-text-container">
+                        <div class="main__slider-text"></div>
+                    </div>
                 </div>
-                <!-- <div class="main__slider-img-wrapper"> -->
-                    <div class="main__slider-img"></div>
-                <!-- </div> -->
+
+                <div class="main__slider-img-parent">
+                    <div class="main__slider-img-container">
+                        <div class="main__slider-img"></div>
+                    </div>
+                </div>
             </div>
             <div class="main__feature">
                 <h2 class="feature__header">Feature</h2>
