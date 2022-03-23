@@ -1,7 +1,5 @@
 "use strict";
 
-
-
 const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
@@ -272,7 +270,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
         else {
           throwToastEmptyTaskName();
         }
-    }, 350);
+    }, 150);
 }
 
 function rapidInputTask(event, taskFactory, taskInput) {
