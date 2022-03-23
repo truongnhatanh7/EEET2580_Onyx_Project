@@ -32,14 +32,14 @@ main {
     /* gap: 2em; */
 
     /* box-sizing: border-box; */
-    padding: 0 0 0 3rem;
+    padding: 0 0 0 7rem;
     z-index: 1;
 
 }
 .main__slider-text-parent {
     width: 50%;
     /* height: calc(100vh - var(--nav-height)); */
-    padding-top: 12%;
+    padding-top: 8%;
 
 }
 
