@@ -1,6 +1,3 @@
-:root {
-    --position-left: 5rem;
-}
 main {
     width: 100vw;
     /* height: 100vh; */
@@ -19,10 +16,14 @@ main {
 
 /* start of main text */
 .main__slider-wrapper {
+    /* pos relative for z-index working after using transform */
     /* position: relative; */
+
     width: 100%;
     /* height: calc(100vh - var(--nav-height)); */
     height: auto;
+    margin-top: var(--nav-height);
+
 
     display: flex;
     justify-content: center;
@@ -31,80 +32,80 @@ main {
     /* gap: 2em; */
 
     /* box-sizing: border-box; */
-    padding: 0 var(--position-left) 0;
-
-    background-color: var(--white-color);
-
+    padding: 0 0 0 3rem;
+    z-index: 1;
 
 }
-/* .main__text {
+.main__slider-text-parent {
+    width: 50%;
+    /* height: calc(100vh - var(--nav-height)); */
+    padding-top: 12%;
+
+}
+
+.main__slider-text-container {
+    display: inline-block;
+    position: relative;
     width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-
-} */
-/* .main__text-padding {
-    content: " ";
-    width: 3%;
-    height: 100%;
-} */
-.main__slider-text-wrapper {
-    content: " ";
-    width: 64%;
-    height: 70em;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    flex-direction: column;
+    padding-bottom: 70%;
+    vertical-align: middle;
+    /* overflow: hidden; */
+    background-color: transparent;
 }
+
 .main__slider-text {
-    display: block;
-    content: " ";
     width: 100%;
-    height: 90%;
-    background-image: url("../img/homepage/main-slider/main-text.png");
-    background-position: left center;
-    background-repeat: no-repeat;
-    /* background-size: 100% 85%; */
-    background-size: contain;
-    /* padding-bottom: -50em; */
-    /* padding-top: 100%; */
-
-    -webkit-transform: translateY(20%);
-    -ms-transform: translateY(20%);
-    transform: translateY(20%);
-
-    /* position: sticky;
-    -webkit-position: sticky;
-    top: 0;
-    left: 0;
-    bottom: 0; */
-}
-/* .main__slider-img-wrapper {
-    content: " ";
-    width: 100%;
-    height: 80em;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-} */
-.main__slider-img {
-    align-self: flex-end;
-    content: " ";
-    width: 60%;
-    height: 60em;
-    background-image: url("../img/homepage/main-slider/main-slider-img.svg");
+    height: 100%;
+    display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+    /* height: 60em; */
+    
+    background-image: url("../img/homepage/main-slider/main-text.svg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 
-    -webkit-transform: scale(1.1, 1.1);
-    -ms-transform: scale(1.1, 1.1);
-    transform: scale(1.1, 1.1);
+    /* -webkit-transform: translateY(20%) scale(0.8, 0.8);
+    -ms-transform: translateY(20%) scale(0.8, 0.8);
+    transform: translateY(20%) scale(0.8, 0.8); */
+}
+.main__slider-img-parent {
+    align-self: flex-end;
+    width: 80%;
+    /* position: absolute; */
+
+}
+.main__slider-img-container {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    padding-bottom: 70%;
+    vertical-align:text-top;
+}
+.main__slider-img {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+    /* height: 60em; */
+    
+    background-image: url("../img/homepage/main-slider/main-slider-img.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    /* -webkit-transform: translateX(-15%) scale(1.3, 1.3);
+    -ms-transform: translateX(-15%) scale(1.3, 1.3);
+    transform: translateX(-15%) scale(1.3, 1.3); */
 }
 /* end of main text */
+
+
+
 
 /* start of main feature */
 .main__feature {
@@ -117,7 +118,7 @@ main {
     flex-direction: column;
     gap: 7em;
 
-    padding: 20em 7em;
+    padding: 20em 15em;
     background-color: var(--pink-color);
 }
 .feature__header {
@@ -132,6 +133,7 @@ main {
     flex-direction: column;
     gap: 30em;
 }
+
 /* start of feature general */
 .feature__card {
     width: 100%;
@@ -139,7 +141,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 6em 6em;
+    gap: 10em;
 }
 .feature__card-img-wrapper {
     width: 50%;
