@@ -21,9 +21,9 @@
         <div class="login-container__welcome-board" id="pink-panel">
         </div>
         <div class="signup-container">
-            <span class="heading white">
+            <p class="heading white">
                 Create your account
-            </span>
+            </p>
 
             <form action="" class="form__wrapper">
                 <label for="user-name" class="form-label form-label white" >Username</label>
@@ -33,12 +33,19 @@
                 <input type="email" id="user-email" class="input-field input">
 
                 <label for="user-password" class="form-label form-label white" >Password</label>
+
+                <div class="input__field-pass-wrapper">
+                    <input type="password" required="Please input password" id="user-password" class="input-field input">
+                    <img class="input__field-passicon" src="./assets/img/Login/eye-password.png" alt="eye icon">
+                </div>
                 <input type="password"  id="user-password" class="input-field input">
 
+
                 <label for="confirm-password" class="form-label white" >Confirm Password</label>
-                <input type="password" id="confirm-password" class="input-field input">
-
-
+                <div class="input__field-pass-wrapper">
+                    <input type="password" id="confirm-password" class="input-field input">
+                    <img class="input__field-passicon" src="./assets/img/Login/eye-password.png" alt="eye icon">
+                </div>
                 
                 <div class="authentication white" id="already-sign-up">
                     <label for="" class="authentication-content white">
@@ -52,9 +59,7 @@
         </div>
         <div class="login-container">
             <p class="text-container">
-                A tool to
-                enhance team
-                productivity
+                A tool to enhance team productivity
             </p>
 
             <div class="first-blob-container">
@@ -78,7 +83,11 @@
                         <input type="email" id="login-email" name="User email" class="input-field input">
 
                         <label for="login-password" class="form-label">Password</label>
-                        <input type="password" id="login-password" name="User password" class="input-field input" />
+                        <div class="input__field-pass-wrapper">
+                            <input type="password" id="login-password" name="User password" class="input-field input" />
+                            <img class="input__field-passicon" src="./assets/img/Login/eye-password.png" alt="eye icon">
+                        </div>
+
 
                         <div class="authentication">
                             <label for="" class="authentication-content">Not on OnyX yet?</label>
@@ -88,7 +97,7 @@
                         </div>
 
                         <div class="inputBtn__wrapper">
-                            <input type="button" value="Sign in" class="btn sign-in-btn">
+                            <input type="submit" value="Sign in" class="btn sign-in-btn">
                         </div>
                     </form>
                 </div>
