@@ -46,7 +46,7 @@ function renderBoard(board) {
                     >
                       ${task.taskContent}
                     </p>
-                        <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
+                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;

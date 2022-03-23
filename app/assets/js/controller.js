@@ -16,6 +16,7 @@ const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener("click", (event) => {
@@ -31,7 +32,7 @@ document.addEventListener("click", (event) => {
         outsideClick = true;
       }
     })
-    console.log(event.target)
+    
     if (event.target == board) {
       handleCloseTaskAdd()
     } else if (outsideClick) {
@@ -165,7 +166,6 @@ function handleCloseTaskAdd() {
     
     let currentModifier = board.querySelector('.workspace__board-list.modifying')
     if (currentModifier) {
-      console.log("Close called")
       let taskFactory = currentModifier.querySelector('.workspace__add-task-wrapper')
       taskFactory.classList.remove("enable");
       taskFactory.classList.add("disable");
@@ -251,7 +251,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                       >
                         ${taskInput.value}
                       </p>
-                      <i class="fa-solid fa-xmark workspace__board-list-task-delete workspace__board-list-delete-icon" onclick="handleDeleteTask(event)"></i>
+                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                       </div>
                   `;
 
@@ -283,6 +283,7 @@ function rapidInputTask(event, taskFactory, taskInput) {
   event.target.parentNode.querySelector(".workspace__add-task-btn").click();
 }
 
+
 function throwToastLongTaskName() {
   toastBox.classList.add("enable");
   toastBox.classList.remove("disable");
@@ -302,6 +303,73 @@ function throwToastEmptyTaskName() {
     toastBox.classList.add("disable");
   }, 2000)
 }
+
+////////////////////////////////
+const taskSetting = $('.workspace__task-setting')
+const taskSave = $('.workspace__task-setting-btn')
+const taskDelete = $('.workspace__task-delete-btn')
+const taskInput = $('.workspace__task-setting-input')
+const taskSettingClose = $('.workspace__task-setting-close')
+let currentTask = null;
+let currentTaskNode = null;
+function handleTaskSetting(event) {
+  currentTask = event.target.parentNode.id.slice(5)
+  currentTaskNode = event.target.parentNode;
+  sessionStorage.setItem("currentTask", currentTask);
+  taskSetting.classList.add("enable")
+  taskSetting.classList.remove("disable")
+  taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').textContent.trim();
+  taskInput.focus();
+  console.log(sessionStorage.getItem("currentTask"))
+
+}
+
+taskSettingClose.addEventListener("click", () => {
+  taskInput.value = "";
+  taskSetting.classList.add('disable')
+  taskSetting.classList.remove('enable')
+  currentTaskNode = null;
+}) 
+
+taskSave.addEventListener("click", () => {
+  let editTaskUrl = "http://localhost:8080/api/v1/task/"
+  let newTaskContent = taskInput.value
+  if (newTaskContent == '') {
+    throwToastEmptyTaskName();
+  } else if (newTaskContent != '' && newTaskContent.length > 25) {
+    throwToastLongTaskName();
+  } else {
+    sessionStorage.setItem("currentTaskContent", newTaskContent.trim())
+    fetch(editTaskUrl ,{
+      method: "PUT",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+          taskId: sessionStorage.getItem("currentTask"),
+          taskContent: newTaskContent,
+      })})
+      .then(() => {
+        console.log("sole: ", currentTaskNode)
+        currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
+        taskSettingClose.click();
+      })
+  }
+})
+
+taskDelete.addEventListener("click", () => {
+  console.log(sessionStorage.getItem("currentTask"))
+    let deleteTaskUrl = "http://localhost:8080/api/v1/task/" + sessionStorage.getItem("currentTask")
+  fetch(deleteTaskUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }
+  })
+  currentTaskNode.remove()
+  taskSettingClose.click();
+})
+
 
 function handleDeleteTask(event) {
   let deleteTaskUrl = "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5).toString()

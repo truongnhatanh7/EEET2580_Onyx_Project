@@ -32,9 +32,9 @@
     </head>
     <body>
         <main id="workspace-root">
-          <div class="loading-wrapper">
-            <div class="square-loading"></div>
-        </div>
+            <div class="loading-wrapper">
+                <div class="square-loading"></div>
+            </div>
             <nav class="workspace__navbar">
                 <div class="workspace__navbar-left-wrapper">
                     <a href="#" class="workspace__navbar-link">Home</a>
@@ -95,6 +95,20 @@
                           <i class="fa-solid fa-xmark workspace__list-close-icon"></i>
                         </button>
                     </div>
+                </div>
+            </section>
+
+            <section class="workspace__task-setting disable">
+                <div class="workspace__task-setting-wrapper">
+                    <button class="workspace__task-setting-close btn">
+                        <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
+                      </button>
+                    <h1 class="workspace__task-setting-title">Task setting</h1>
+                    <input type="text" class="workspace__task-setting-input"/>
+    
+                    <button class="workspace__task-setting-btn btn">Save</button>
+                    <button class="workspace__task-delete-btn btn">Delete task</button>
+
                 </div>
             </section>
         </main>
