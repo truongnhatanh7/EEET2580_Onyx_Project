@@ -5,12 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
@@ -19,33 +16,41 @@
 
 </head>
 <body>
+    <div class="loading-wrapper">
+        <div class="square-loading"></div>
+    </div>
     <main id="dashboard-root">
-        <header class="dashboard__header">
-            <a href="../index.html" class="dashboard__return"><i class="fa-solid fa-arrow-left dashboard__return-arrow"></i>Return to homepage</a>
-            <h1 class="dashboard__title">Your project</h1>
-        </header>
-
-        <section class="dashboard__project-list">
-            <div class="dashboard__project-card" id="dashboard__add-card">
-                <button class="dashboard__project-add-btn"><i class="fa-solid fa-plus dashboard__project-create"></i></button>
+        <div class="dashboard-wrapper">
+            <header class="dashboard__header">
+                <a href="../index.html" class="dashboard__return"><i class="fa-solid fa-arrow-left dashboard__return-arrow"></i>Return to homepage</a>
+                <h1 class="dashboard__title">Your project</h1>
+            </header>
+    
+            <section class="dashboard__project-list">
+                <div class="dashboard__project-card" id="dashboard__add-card">
+                    <button class="dashboard__project-add-btn"><i class="fa-solid fa-plus dashboard__project-create"></i></button>
+                </div>
+    
+    
+            </section>
+    
+            <section class="dashboard__modal-create dashboard__modal-create--disable">
+                <div class="dashboard__modal-wrapper">
+                    <label class="dashboard__modal-title">
+                        Your project name?
+                    </label>
+                    <input type="text" class="dashboard__modal-input"/>
+                    <button class="dashboard__modal-btn btn">Create</button>
+                </div>
+            </section>
+        </div>
+        
+        <section class="toast-wrapper disable">
+            <div class="toast">
+                <h2 class="toast-message">Toast message</h2>
             </div>
-            <div class="dashboard__project-card">
-                <a href="workspace.html" class="dashboard__project-card-link">
-                    <h2 class="dashboard__project-card-name">Project X</h2>
-                </a>
-            </div>
-
         </section>
 
-        <section class="dashboard__modal-create dashboard__modal-create--disable">
-            <div class="dashboard__modal-wrapper">
-                <label class="dashboard__modal-title">
-                    Your project name?
-                </label>
-                <input type="text" class="dashboard__modal-input"/>
-                <button class="dashboard__modal-btn btn">Create</button>
-            </div>
-        </section>
     </main>
 </body>
 </html>

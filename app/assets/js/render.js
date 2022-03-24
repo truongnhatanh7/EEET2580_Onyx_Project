@@ -6,11 +6,24 @@ const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
 const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
+const workspaceName = $('.workspace__info-name')
+const loading = $('.loading-wrapper');
 
+
+fetchBoardInfo();
 getBoardInfo();
 
+function fetchBoardInfo() {
+    let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
+    fetch(boardUrl)
+        .then(response => response.json())
+        .then(data => {
+            workspaceName.innerHTML = data.workspaceTitle.trim();
+        })
+}
+
 function renderBoard(board) {
-    console.log(board)
+
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
 
@@ -24,14 +37,16 @@ function renderBoard(board) {
                     draggable="true"
                     ondragstart="handleDragStart(event)"
                     ondragend="handleDragEnd(event)"
+                    ondrag="handleOnDrag(event)"
+
                     id="${"task_" + task.taskId}"
                     >
                     <p
                       class="workspace__board-list-task-content"
-                      contenteditable="true"
                     >
                       ${task.taskContent}
                     </p>
+                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;
@@ -40,23 +55,34 @@ function renderBoard(board) {
             });
             let html = `  
             <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
-            <h1 class="workspace__board-list-header" contenteditable="true">
-              ${list.listName}
-            </h1>
-            ${listHTML}
-            <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
-            <div class="workspace__add-task-wrapper">
-            <h2 class="workspace__submit-title">Enter new task:</h2>
-            <input type="text" class="workspace__add-input-task">
-            <button class="workspace__submit-task-btn btn">Create</button>
-            </div>
+                <h1 class="workspace__board-list-header">
+                    ${list.listName}
+                </h1>
+                <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
+
+                    ${listHTML}
+                <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
+                <div class="workspace__add-task-wrapper">
+                    <h2 class="workspace__submit-title">Enter new task:</h2>
+                    <input type="text" class="workspace__add-input-task">
+                    <button class="workspace__submit-task-btn btn">Create</button>
+                    <button class="workspace__task-close-btn btn">
+                    <i class="fa-solid fa-xmark workspace__task-close"></i>
+                    </button>
+                    
+                </div>
             </div>
               `;
 
+            
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
         }
     });
+
+    loading.style.visibility = "hidden";
+    loading.style.opacity = "0";
+    loading.remove();
 }
 
 function getBoardInfo() {
@@ -71,7 +97,6 @@ function getBoardInfo() {
 	
 	)
         .then(function (response) {
-			
             return response.json();
         })
         .then(createBoard)
