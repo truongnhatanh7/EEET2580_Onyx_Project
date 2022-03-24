@@ -7,6 +7,10 @@ html{
     font-family: "Poppins", sans-serif !important;
     font-size: 62.5%;
     width: 100%;
+    overflow: auto;
+}
+body{
+    overflow: auto;
 }
 :root {
     --blue: #1b73e7;
