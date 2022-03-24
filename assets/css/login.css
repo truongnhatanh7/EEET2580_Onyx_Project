@@ -1,5 +1,5 @@
 
-html{
+html {
   overflow: hidden;
 }
 .login-container {
@@ -23,7 +23,8 @@ html{
   left: 0;
   right: 5rem;
   bottom: 0;
-
+  min-height: 879px;
+  max-height: auto;
   margin: 5rem 0;
   transition: transform 0.5s ease-in-out;
   transform: translate(-50%);
@@ -32,15 +33,16 @@ html{
 }
 .login__back-to-home-parent {
   display: inline-block;
-  width: 20em;
+  width: fit-content;
+  padding: 0 16px;
   height: 3.7rem;
   min-height: 3.7rem;
-
   position: relative;
   top: 7em;
 
   background-color: var(--yellow);
   display: flex;
+  justify-content: flex-end;
   align-items: center;
   /* gap: 0.5em; */
   border-top-right-radius: 2rem;
@@ -72,13 +74,13 @@ html{
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-mask: url("../assets/img/Login/left-arrow.svg") center / contain no-repeat;
-  mask: url("../assets/img/Login/left-arrow.svg") center / contain no-repeat;
   background: var(--pink-color);
 }
 .login__back-to-home-text {
-  font-size: clamp(1.4rem, 2.5vw, 1.6rem);
+  /* font-size: clamp(1.4rem, 2.5vw, 1.6rem); */
+  font-size: 1.6rem;
   flex-grow: 1;
+  margin-left: 8px;
 }
 
 .login__back-to-home-parent:hover {
@@ -115,16 +117,6 @@ html{
 
 .input__field-passicon {
   position: absolute;
-  
-  /* transform: translate(-190%, 40%); */
-  /* margin-left: -5.3rem;
-  margin-top: 1.2rem;
-  opacity: 0.2;
-  display: inline-block;
-  width: 2.5%;
-  height: 3.7%;
-  min-width: 2.8rem;
-  max-width: 3.2rem; */
   top: 50%;
   font-size: 1.8rem;
   transform: translateY(-50%);
@@ -134,7 +126,6 @@ html{
 }
 .input__field-passicon:hover {
   cursor: pointer;
-  /* opacity: 0.7; */
 }
 
 .second-blob-container,
@@ -176,19 +167,22 @@ html{
 }
 .form__wrapper{
   width: 100%;
+  height: 879px;
 }
 .form-label{
-  /* box-sizing: border-box; */
-  /* height: 4rem; */
   display: block;
-  margin: 2rem 2rem 1rem 0;
-  border: none;
   font-size: 2rem;
   font-weight: 500;
 }
-.input{
+
+.form-section {
+  display: block;
+  width: 60%;
+  margin: 12px auto;
+}
+
+.input.input-field{
   border: var(--hard-pink) solid 2px;
-  opacity:  0.85;
   background-color: var(--white-color);
 }
 
@@ -227,7 +221,6 @@ html{
 }
 
 .signup-container{
-  visibility: hidden;
   position: fixed;
   top: 5rem;
   bottom: 5rem;
@@ -238,6 +231,11 @@ html{
   justify-content: center;
   align-items: center;
   padding: 0rem 12rem;
+
+  transition: transform 0.4s ease-in-out;
+  transform: translate(50);
+  visibility: hidden;
+
 }
 
 .login-btn,
@@ -291,10 +289,14 @@ html{
   opacity: 0.5;
 }
 
-.signup-form-active{
+/* Dont touch this */
+.signup-form-active{ 
   transition: transform 0.35s linear;
-  transform: translateX(20%);
+  transform: translateX(20%); 
   visibility: visible;
   width: 75%;
 }
 
+.login-return-arrow {
+  font-size: 1.6rem;
+}

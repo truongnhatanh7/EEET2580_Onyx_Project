@@ -1,14 +1,14 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const username = $('#login-username')
-const password = $('#login-password')
+const username = $('#sign-in-username')
+const password = $('#sign-in-password')
 const toast = $('.toast-wrapper')
 const toastMessage = $('.toast-message')
-const signInBtn = $('#sign-in')
+const signInBtn = $('#sign-in-btn')
 const allUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
 const createNewUser = "http://localhost:8080/api/v1/user"
-const showPassword = $('.input__field-passicon')
+const showPassword = $('.show-password')
 let isShownPassword = false;
 
 showPassword.addEventListener("click", () => {
@@ -74,11 +74,11 @@ function throwToastWrongUsernameOrPassword() {
 }
 
 ////////////////////////////////////////////////////////////////////////
-const signUpName = $('#name')
-const signUpUsername = $('#user-name');
-const signUpPassword = $('#user-password');
-const signUpPasswordConfirm = $('#confirm-password')
-const signUpBtn = $('#sign-up')
+const signUpName = $('#sign-up-name')
+const signUpUsername = $('#sign-up-username');
+const signUpPassword = $('#sign-up-password');
+const signUpPasswordConfirm = $('#sign-up-password-retype')
+const signUpBtn = $('#sign-up-btn')
 console.log(signUpBtn)
 signUpBtn.addEventListener('click', () => {
     console.log(signUpPassword.value)
