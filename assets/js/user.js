@@ -8,9 +8,23 @@ const toastMessage = $('.toast-message')
 const signInBtn = $('#sign-in')
 const allUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
 const createNewUser = "http://localhost:8080/api/v1/user"
+const showPassword = $('.input__field-passicon')
+let isShownPassword = false;
+
+showPassword.addEventListener("click", () => {
+    showPassword.classList.toggle('show-password-icon')
+    if (isShownPassword) {
+        password.type = "password"
+        isShownPassword = false
+    } else {
+        password.type = "text"
+        isShownPassword = true
+    }
+})
 
 signInBtn.addEventListener('click', (event) => {
     event.preventDefault()
+    let canLogin = false;
     if (username.value == '' || password.value == '') {
         throwToastEmptyFieldLogin()
     } else {
@@ -20,17 +34,19 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         localStorage.setItem("userId", user.userId.toString().trim());
-    
                         location.assign("./app/dashboard.html")
+                        canLogin = true;
                         return false;
                     } else {
                         return true;
                     }
                 })
+                
+                if (!canLogin) {
+                    throwToastWrongUsernameOrPassword();
+                }
             })
-            .then(() => {
-                throwToastWrongUsernameOrPassword();
-            })
+
     }
 })
 
