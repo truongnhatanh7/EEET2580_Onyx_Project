@@ -1,67 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-      name="viewport"
-      content="width=device-width
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta
+            name="viewport"
+            content="width=device-width
     , initial-scale=1.0"
-    />
-    <title>Workspace</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="../assets/css/base.css" />
-    <link rel="stylesheet" href="./assets/css/workspace.css" />
-    <script src="./assets/js/dragndrop.js" defer></script>
-    <script src="./assets/js/controller.js" defer></script>
-    <script type="module" src="./assets/js/render.js?version=1" defer></script>
-  </head>
-  <body>
-    <main id="workspace-root">
-      <nav class="workspace__navbar">
-        <div class="workspace__navbar-left-wrapper">
-          <a href="#" class="workspace__navbar-link">Home</a>
-          <a href="#" class="workspace__navbar-link">Dashboard</a>
-          <button class="workspace__navbar-progress-btn btn">Project status</button>
-        </div>
+        />
+        <title>Workspace</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"
+            integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../assets/css/base.css" />
+        <link rel="stylesheet" href="./assets/css/workspace.css" />
+        <script src="./assets/js/dragndrop.js" defer></script>
+        <script src="./assets/js/controller.js" defer></script>
+        <script
+            type="module"
+            src="./assets/js/render.js?version=1"
+            defer
+        ></script>
+        <script src="./assets/js/debounce.js" defer></script>
+    </head>
+    <body>
+        <main id="workspace-root">
+            <div class="loading-wrapper">
+                <div class="square-loading"></div>
+            </div>
+            <nav class="workspace__navbar">
+                <div class="workspace__navbar-left-wrapper">
+                    <a href="#" class="workspace__navbar-link">Home</a>
+                    <a href="dashboard.html" class="workspace__navbar-link"
+                        >Dashboard</a
+                    >
+                    <button class="workspace__navbar-progress-btn btn">
+                        Project status
+                    </button>
+                </div>
 
-        <div class="workspace__navbar-right-wrapper">
-			<div class="workspace__navbar-darkmode-wrapper">
-				<input type="checkbox" id="darkmode-switch" class="workspace__switch-input"/>
-        		<label for="darkmode-switch" class="workspace__switch"></label>
-			</div>
-          <div class="workspace__navbar-right-avatar-wrapper">
-            <img
-              src="../assets/img/default-avatar.jpeg"
-              alt="User Avatar"
-              class="workspace__navbar-right-avatar-img"
-            />
-          </div>
-        </div>
-      </nav>
+                <div class="workspace__navbar-right-wrapper">
+                    <div class="workspace__navbar-darkmode-wrapper">
+                        <input
+                            type="checkbox"
+                            id="darkmode-switch"
+                            class="workspace__switch-input"
+                        />
+                        <label
+                            for="darkmode-switch"
+                            class="workspace__switch"
+                        ></label>
+                    </div>
+                    <div class="workspace__navbar-right-avatar-wrapper">
+                        <img
+                            src="../assets/img/default-avatar.jpeg"
+                            alt="User Avatar"
+                            class="workspace__navbar-right-avatar-img"
+                        />
+                    </div>
+                </div>
+            </nav>
 
-	  <section class="workspace__info">
-		  <h1 class="workspace__info-name" contenteditable="true">Project Onyx</h1>
+            <section class="toast-wrapper disable">
+                <div class="toast">
+                    <h2 class="toast-message">Toast message</h2>
+                </div>
+            </section>
 
-	  </section>
+            <section class="workspace__info">
+                <h1 class="workspace__info-name"></h1>
+            </section>
 
-      <section class="workspace__board">
+            <section class="workspace__board">
+                <div class="workspace__add-list-wrapper">
+                    <button class="workspace__add-list-btn btn">
+                        Create new list
+                    </button>
+                    <div class="workspace__add-wrapper disable">
+                        <h2 class="workspace__submit-title">
+                            Enter new list name:
+                        </h2>
+                        <input type="text" class="workspace__add-input" />
+                        <button class="workspace__submit-btn btn">
+                            Create
+                        </button>
+                        <button class="workspace__list-close btn">
+                          <i class="fa-solid fa-xmark workspace__list-close-icon"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
 
+            <section class="workspace__task-setting disable">
+                <div class="workspace__task-setting-wrapper">
+                    <button class="workspace__task-setting-close btn">
+                        <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
+                      </button>
+                    <h1 class="workspace__task-setting-title">Task setting</h1>
+                    <input type="text" class="workspace__task-setting-input"/>
+    
+                    <button class="workspace__task-setting-btn btn">Save</button>
+                    <button class="workspace__task-delete-btn btn">Delete task</button>
 
-        <div class="workspace__add-list-wrapper">
-          <button class="workspace__add-list-btn btn">Create new list</button>
-          <div class="workspace__add-wrapper">
-            <h2 class="workspace__submit-title">Enter new list name:</h2>
-            <input type="text" class="workspace__add-input">
-            <button class="workspace__submit-btn btn">Create</button>
-          </div>
-        </div>
-      </section>
-    </main>
-  </body>
+                </div>
+            </section>
+        </main>
+    </body>
 </html>
