@@ -173,6 +173,8 @@
     padding: 16px;
     font-size: 1.8rem;
     color: var(--white);
+    background-color: var(--purple);
+    border-radius: 120px;
 }
 
 .dashboard__modal-create.dashboard__modal-create--disable {

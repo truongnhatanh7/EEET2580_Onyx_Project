@@ -11,6 +11,9 @@ html{
 }
 body{
     overflow: auto;
+    /* width: 100%; */
+    transition: 0.3s;
+
 }
 :root {
     --blue: #1b73e7;
@@ -86,6 +89,7 @@ html {
     font-weight: 400;
     font-family: 'poppins', sans-serif;
     text-align: center;
+    transition: 0.3s;
 }
 
 .btn:hover {
