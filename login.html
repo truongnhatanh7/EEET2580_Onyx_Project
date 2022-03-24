@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="./assets/js/user.js" defer></script>
 </head>
 
 <body>
@@ -27,12 +28,12 @@
             </p>
             
             <form action="" class="form__wrapper">
+
+                <label for="name" class="form-label form-label white" >Name</label>
+                <input type="text" id="name" class="input-field input">
+
                 <label for="user-name" class="form-label form-label white" >Username</label>
                 <input type="text" id="user-name" class="input-field input">
-                
-                <label for="user-email" class="form-label form-label white" >Email</label>
-                <input type="email" id="user-email" class="input-field input">
-                
                 <label for="user-password" class="form-label form-label white" >Password</label>
 
                 <div class="input__field-pass-wrapper">
@@ -52,8 +53,8 @@
                     </label>
                     <a class="login-btn">Log-in</a>
                 </div>
-                
-                <input type="button" value="Sign Up" class="sign-in-btn btn">
+
+                <button type="button" value="Sign Up" class="sign-up-btn btn" id="sign-up">Sign up</button>
             </form>
         </div>
         <div class="login-container">
@@ -86,15 +87,16 @@
                     </div>
 
                     <form action="" class="form__wrapper">
-                        <label for="login-email" class="form-label">Email</label>
-                        <input type="email" id="login-email" name="User email" class="input-field input">
+                        <label for="login-username" class="form-label">Username</label>
+                        <input type="text" id="login-username" name="username" class="input-field input">
 
                         <label for="login-password" class="form-label">Password</label>
                         <div class="input__field-pass-wrapper">
-                            <input type="password" id="login-password" name="User password" class="input-field input" />
+                            <input type="password" id="login-password" name="password" class="input-field input" />
                             <img class="input__field-passicon" src="./assets/img/Login/eye-password.png" alt="eye icon">
                         </div>
 
+                
 
                         <div class="authentication">
                             <label for="" class="authentication-content">Not on OnyX yet?</label>
@@ -104,12 +106,17 @@
                         </div>
 
                         <div class="inputBtn__wrapper">
-                            <input type="submit" value="Sign in" class="btn sign-in-btn">
+                            <button class="btn sign-in-btn" id="sign-in">Sign in</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+        <section class="toast-wrapper disable">
+            <div class="toast">
+                <h2 class="toast-message">Toast message</h2>
+            </div>
+        </section>
     </div>
 
     <script src="./login.js"></script>
