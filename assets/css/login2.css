@@ -69,13 +69,21 @@
 
 .sign-up-wrapper {
     animation: slideIn 0.5s;
+    position: relative;
 
 }
 
 .sign-in-wrapper {
 
     animation: slideIn 0.5s;
+    position: relative;
 
+}
+
+.form-title-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form-title {
@@ -144,8 +152,6 @@
     padding: 16px 32px;
     margin-top: 16px;
     animation: slideIn 0.7s;
-
-
 }
 
 .show-password {
@@ -172,6 +178,8 @@
 .toast-wrapper {
     z-index: 9999;
 }
+
+
 
 @keyframes hovering {
     from {
@@ -221,3 +229,39 @@
     transform: translateX(-100%);
     opacity: 0;
 }
+
+.return-home {
+    padding: 16px;
+    width: fit-content;
+    height: fit-content;
+    display: grid;
+    background-color: var(--gray);
+
+    place-items: center;
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.return-home:hover {
+    cursor: pointer;
+
+}
+
+
+.return-home:hover {
+    padding: 24px;
+
+}
+
+.return-home-icon {
+    font-size: 2rem;
+    color: var(--dark);
+}
+
+.return-home-text {
+    display: none;
+    font-size: 1.6rem;
+    margin-top: 8px;
+    font-weight: 400;
+}
+

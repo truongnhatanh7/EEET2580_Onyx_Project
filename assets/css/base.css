@@ -213,3 +213,8 @@ html {
     font-weight: 300;
     padding: 2.5rem;
 }
+
+input {
+    font-family: "Poppins", sans-serif !important;
+
+}
