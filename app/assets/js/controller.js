@@ -433,3 +433,21 @@ function switchTheme(e) {
 darkModeSwitch.addEventListener("change", switchTheme);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Workspace status 
+
+const statusBtn = $('.workspace__navbar-progress-btn');
+const workspaceStatus = $('.workspace__status')
+const closeWorkspaceStatus = $('.workspace__status-close-icon')
+const preDeleteBtn = $('.workspace__delete-workspace-btn-pre');
+const preDeleteInput = $('.workspace__delete-instruction');
+const postDeleteBtn = $('.workspace__delete-workspace-btn-post')
+
+statusBtn.addEventListener('click', () => {
+  workspaceStatus.style.display = "grid";
+})
+
+closeWorkspaceStatus.addEventListener('click', () => {
+  workspaceStatus.style.display = "none";
+
+})

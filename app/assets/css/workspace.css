@@ -451,3 +451,170 @@ input[type="text"] {
     padding: 4px;
     display: none;
 }
+
+
+.workspace__status {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: var(--white);
+    display: none;
+    place-items: center;
+    color: var(--black);
+    box-sizing: border-box;
+    padding: 5% 20%;
+
+}
+
+.workspace__status-title {
+    font-size: 5rem;
+    font-weight: 500;
+    outline: var(--purple);
+    padding: 16px;
+
+}
+
+.workspace__status-title:focus {
+    padding: 16px;
+    border-radius: 20px;
+    background-color: var(--soft-pink);
+}
+
+.workspace__status-close-icon {
+    position: absolute;
+    font-size: 4rem;
+    right: 32px;
+    top: 32px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--gray);
+    transition: 0.3s;
+
+}
+
+.workspace__status-close-icon:hover {
+    padding: 12px 20px;
+    cursor: pointer;
+    background-color: var(--purple);
+}
+
+.workspace__invite-icon {
+    margin-right: 8px;
+}
+
+.workspace__invite-btn:hover .workspace__invite-icon {
+    animation: shaking 0.2s infinite alternate;
+}
+
+@keyframes shaking {
+    from {
+        transform: rotate(-25deg);
+    } to {
+        transform: rotate(25deg);
+
+    }
+}
+
+.workspace__invite-btn {
+    padding: 16px 32px;
+    color: var(--black);
+    background-color: var(--dark);
+}
+
+.workspace__collaborator-title {
+    font-size: 3rem;
+    width: 100%;
+    text-align: center;
+    font-weight: 500;
+
+
+}
+
+.workspace__collaborator-section {
+    width: 50%;
+}
+
+.workspace__collaborator-list {
+    max-height: 200px;
+    overflow: auto;
+    border: 1px solid var(--purple);
+    padding: 32px;
+    border-radius: 20px;
+    margin-top: 16px;
+}
+
+.workspace__collaborator {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+}
+
+.workspace__collaborator-name {
+    font-weight: 400;
+}
+
+.workspace__collaborator-delete {
+    transition: 0.3s;
+    height: fit-content;
+    width: fit-content;
+    padding: 8px;
+}
+
+.workspace__collaborator-delete:hover {
+    color: var(--red);
+    transform: rotate(90deg);
+    cursor: pointer;
+}
+
+.workspace__delete-section {
+
+}
+
+.workspace__delete-title {
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 16px;
+
+}
+
+.workspace__delete-workspace-btn {
+    background: transparent;
+    border: 1px solid var(--red);
+    padding: 8px 16px;
+    color: var(--red);
+    margin-top: 16px;
+}
+
+.workspace__delete-instruction {
+    font-size: 1.6rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.workspace__delete-confirmation {
+    display: flex;
+    flex-direction: column;
+}
+
+.workspace__delete-confirmation-input {
+    padding: 8px 16px;
+    outline: var(--purple);
+    font-size: 1.6rem;
+    border-radius: 20px;
+    margin-top: 8px;
+
+}
+
+.workspace__delete-confirmation-input:hover {
+
+}
+
+

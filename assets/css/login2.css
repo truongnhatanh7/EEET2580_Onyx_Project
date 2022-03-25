@@ -29,7 +29,7 @@
     letter-spacing: 2px;
     line-height: 80px;
     color: var(--constant-white);
-    animation: flyIn 0.5s;
+    animation: hovering 5s infinite alternate;
     
 
 }
@@ -53,7 +53,7 @@
     bottom: -400px;
     z-index: 4;
     /* animation: flyIn 0.5s; */
-    animation: hovering 5s infinite alternate;
+    animation: hovering 4.5s infinite alternate;
 
 
 }
@@ -63,7 +63,7 @@
     bottom: -400px;
     z-index: 3;
     /* animation: flyIn 0.6s; */
-    animation: hovering 6s infinite alternate;
+    animation: hovering 5.5s infinite alternate;
 
 }
 
@@ -125,14 +125,14 @@
 .form-link {
     font-weight: 600;
     text-decoration: underline;
-}
-
-.form-link:hover {
-    color: var(--yellow);
+    transition: 0.3s;
+    
 }
 
 .form-link:hover {
     cursor: pointer;
+    color: var(--yellow);
+
 }
 
 .form-input {
@@ -164,6 +164,7 @@
     height: fit-content;
     transform: translateY(25%);
     font-size: 1.8rem;
+    transition: 0.3s;
 }
 
 .show-password:hover {
@@ -264,4 +265,3 @@
     margin-top: 8px;
     font-weight: 400;
 }
-

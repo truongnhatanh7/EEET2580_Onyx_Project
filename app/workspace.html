@@ -103,13 +103,50 @@
                     <button class="workspace__task-setting-close btn">
                         <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
                       </button>
-                    <!-- <h1 class="workspace__task-setting-title">Task setting</h1> -->
                     <input type="text" class="workspace__task-setting-input"/>
     
                     <button class="workspace__task-setting-btn btn">Save</button>
                     <button class="workspace__task-delete-btn btn">Delete task</button>
-
                 </div>
+            </section>
+
+            <section class="workspace__status">
+                <div class="workspace__status-wrapper">
+                    <h1 class="workspace__status-title" contenteditable="true">Workspace</h1>
+                    <i class="fa-solid fa-xmark workspace__status-close-icon"></i>
+                </div>
+
+                <div class="workspace__invite-wrapper">
+                    <button class="workspace__invite-btn btn"><i class="fa-solid fa-link workspace__invite-icon"></i>Copy invite link</button>
+                </div>
+
+                <div class="workspace__collaborator-section">
+                    <h1 class="workspace__collaborator-title">Collaborators</h1>
+                    <div class="workspace__collaborator-list">
+                        <div class="workspace__collaborator">
+                            <h3 class="workspace__collaborator-name">Truong Nhat Anh</h3>
+                            <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+                        </div>
+                        <div class="workspace__collaborator">
+                            <h3 class="workspace__collaborator-name">Truong Nhat Anh</h3>
+                            <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="workspace__delete-section">
+                    <h1 class="workspace__delete-title">Danger Zone</h1>
+                    <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-pre">Delete this workspace</button>
+                </div>
+
+                <div class="workspace__delete-confirmation disable">
+                    <h3 class="workspace__delete-instruction">Type "delete this workspace" to confirm</h3>
+                    <input type="text" class="workspace__delete-confirmation-input">
+                    <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-post">Delete this workspace</button>
+                </div>
+
+
             </section>
         </main>
     </body>
