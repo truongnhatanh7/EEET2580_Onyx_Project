@@ -440,6 +440,7 @@ const statusBtn = $('.workspace__navbar-progress-btn');
 const workspaceStatus = $('.workspace__status')
 const closeWorkspaceStatus = $('.workspace__status-close-icon')
 const preDeleteBtn = $('.workspace__delete-workspace-btn-pre');
+const preDeleteWrapper = $('.workspace__delete-confirmation')
 const preDeleteInput = $('.workspace__delete-instruction');
 const postDeleteBtn = $('.workspace__delete-workspace-btn-post')
 
@@ -449,5 +450,9 @@ statusBtn.addEventListener('click', () => {
 
 closeWorkspaceStatus.addEventListener('click', () => {
   workspaceStatus.style.display = "none";
+})
 
+preDeleteBtn.addEventListener('click', () => {
+  preDeleteWrapper.style.display = "flex";
+  preDeleteBtn.style.display = "none";
 })
