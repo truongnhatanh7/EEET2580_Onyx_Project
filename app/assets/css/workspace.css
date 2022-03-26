@@ -32,9 +32,20 @@ input[type="text"] {
     line-height: 64px;
     color: var(--black);
     margin-right: 32px;
+    display: inline-block;
 }
 .workspace__navbar-link:hover {
     opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+    .workspace__navbar-right-wrapper {
+        display: none !important;
+    }
+
+    .workspace__navbar-link:nth-child(1) {
+        display: none !important;
+    }
 }
 
 .workspace__navbar-progress-btn {
@@ -42,6 +53,7 @@ input[type="text"] {
     height: 4rem;
     padding: 8px 20px;
     background-color: var(--purple);
+    display: inline-block;
 }
 
 .workspace__navbar-project-name {
@@ -150,6 +162,7 @@ input[type="text"] {
     overflow-x: scroll;
     display: flex;
     overflow-y: hidden;
+
 }
 
 .workspace__board-list {
@@ -377,7 +390,7 @@ input[type="text"] {
 .workspace__task-setting {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     right: 0;
@@ -394,7 +407,6 @@ input[type="text"] {
 
     transform: translateY(-50%) translateX(-50%);
     background-color: transparent;
-    /* opacity: 0.5; */
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -482,6 +494,7 @@ input[type="text"] {
     padding: 16px;
     border-radius: 20px;
     background-color: var(--soft-pink);
+    position: relative;
 }
 
 .workspace__status-close-icon {
@@ -589,8 +602,37 @@ input[type="text"] {
     background: transparent;
     border: 1px solid var(--red);
     padding: 8px 16px;
-    color: var(--red);
+    color: var(--black);
     margin-top: 16px;
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    
+}
+
+.workspace__delete-workspace-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--red);
+    border-radius: 120px;
+    width: 0;
+    transition: width 0.3s;
+    z-index: -1;
+}
+
+.workspace__delete-workspace-btn:hover::before {
+    width: 100%;
+    
+}
+
+.workspace__delete-workspace-btn:hover {
+    opacity: 1;
+    color: var(--black);
 }
 
 .workspace__delete-instruction {
@@ -600,8 +642,9 @@ input[type="text"] {
 }
 
 .workspace__delete-confirmation {
-    display: flex;
+    display: none;
     flex-direction: column;
+
 }
 
 .workspace__delete-confirmation-input {

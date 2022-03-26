@@ -1,5 +1,5 @@
 #dashboard-root {
-    padding: 64px 360px;
+    padding: 64px 240px;
     width: 100%;
     height: 100vh;
     position: relative;
@@ -39,6 +39,39 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: max-content;
     gap: 16px;
+}
+
+@media (max-width: 1200px) {
+    #dashboard-root {
+        padding: 64px 140px;
+
+    }
+
+    .dashboard__project-list {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 768px) {
+    #dashboard-root {
+        padding: 64px 16px;
+
+    }
+
+    .dashboard__project-list {
+        grid-template-columns: 1fr;
+
+    }
+
+    .dashboard__modal-title {
+        font-size: 2.2rem !important;
+        padding: 0 8px;
+    }
+
+    .dashboard__modal-wrapper {
+        width: 90% !important;
+    }
 }
 
 .dashboard__project-card {
