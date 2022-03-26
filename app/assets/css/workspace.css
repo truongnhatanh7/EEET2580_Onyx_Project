@@ -493,7 +493,8 @@ input[type="text"] {
 .workspace__status-title:focus {
     padding: 16px;
     border-radius: 20px;
-    background-color: var(--soft-pink);
+    /* background-color: var(--soft-pink); */
+    border: 1px solid var(--purple);
     position: relative;
 }
 
@@ -536,8 +537,8 @@ input[type="text"] {
 
 .workspace__invite-btn {
     padding: 16px 32px;
-    color: var(--black);
-    background-color: var(--dark);
+    color: var(--constant-white);
+    background-color: var(--purple);
 }
 
 .workspace__collaborator-title {

@@ -256,6 +256,7 @@
     place-items: center;
     border-radius: 20px;
     transition: 0.3s;
+    animation: slideIn 0.2s;
 }
 
 .return-home:hover {
@@ -307,13 +308,13 @@
         background: var(--constant-white);
         padding: 32px;
         border-radius: 20px;
-        animation:none !important;
+        animation: none !important;
 
     }
 
 
     .form-title {
-        animation: flyBottomToTop 0.3s;
+        /* animation: flyBottomToTop 0.3s; */
 
     }
 
@@ -340,7 +341,7 @@
     .sign-up-wrapper,
     .sign-in-wrapper {
         margin: auto auto;
-        width: fit-content;
+        width: 95vw;
         max-width: 100vw;
     }
 
