@@ -438,21 +438,178 @@ darkModeSwitch.addEventListener("change", switchTheme);
 
 const statusBtn = $('.workspace__navbar-progress-btn');
 const workspaceStatus = $('.workspace__status')
+const workspaceStatusTitle = $('.workspace__status-title')
 const closeWorkspaceStatus = $('.workspace__status-close-icon')
 const preDeleteBtn = $('.workspace__delete-workspace-btn-pre');
 const preDeleteWrapper = $('.workspace__delete-confirmation')
-const preDeleteInput = $('.workspace__delete-instruction');
+const preDeleteInput = $('.workspace__delete-confirmation-input');
 const postDeleteBtn = $('.workspace__delete-workspace-btn-post')
+const deleteWorkspaceUrl = "http://localhost:8080/api/v1/workspace/delete-workspace/"
 
 statusBtn.addEventListener('click', () => {
-  workspaceStatus.style.display = "grid";
+  workspaceStatus.classList.add("enable");
+  workspaceStatus.classList.remove("disable");
+  workspaceStatusTitle.focus();
+
+
 })
 
 closeWorkspaceStatus.addEventListener('click', () => {
-  workspaceStatus.style.display = "none";
+  workspaceStatus.classList.remove("enable");
+  workspaceStatus.classList.add("disable");
+
+  preDeleteWrapper.classList.remove('enable');
+  preDeleteWrapper.classList.add('disable')
+  preDeleteBtn.classList.remove('disable');
+  preDeleteBtn.classList.add('enable');
+  preDeleteInput.value = '';
 })
 
 preDeleteBtn.addEventListener('click', () => {
-  preDeleteWrapper.style.display = "flex";
-  preDeleteBtn.style.display = "none";
+  preDeleteWrapper.classList.add('enable');
+  preDeleteWrapper.classList.remove('disable')
+  preDeleteBtn.classList.add('disable');
+  preDeleteBtn.classList.remove('enable');
 })
+
+postDeleteBtn.addEventListener('click', () => {
+  console.log(preDeleteInput)
+  if (preDeleteInput.value == 'delete this workspace') {
+    let url = deleteWorkspaceUrl + sessionStorage.getItem('currentBoardId');
+
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }})
+      .then(
+        location.assign("./dashboard.html")
+      )
+  } else {
+    throwInvalidInput();
+  }
+
+})
+
+function throwInvalidInput() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Invalid input"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
+function throwUnknownError() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Unknown error"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+////////////////////////////////
+const collaboratorList = $('.workspace__collaborator-list');
+const addCollaboratorBtn = $('.workspace__add-collaborator-btn')
+const addCollaboratorInput = $('.workspace__add-collaborator-input')
+
+fetchUserInWorkspace()
+
+function fetchUserInWorkspace() {
+  let workspaceUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + sessionStorage.getItem("currentBoardId")
+  fetch(workspaceUrl)
+  .then(response => response.json())
+  .then(workspace => {
+    workspaceStatusTitle.textContent = workspace.workspaceTitle
+    return workspace.users
+  })
+  .then(users => {
+    console.log(users)
+    renderUserInWorkspace(users)
+  })
+}
+
+function renderUserInWorkspace(users) {
+  if (users.length == 0) {
+    collaboratorList.innerHTML = ""
+    // Warning to delete workspace
+  } else {
+    collaboratorList.innerHTML = ""
+    users.forEach(user => {
+      let tempHtml = `
+      <div class="workspace__collaborator" id="user_${user.userId} ">
+        <h3 class="workspace__collaborator-name" >${user.name}</h3>
+        <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+      </div>
+      `
+      let para = document.createRange().createContextualFragment(tempHtml);
+      collaboratorList.appendChild(para)
+    })
+  }
+}
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('workspace__collaborator-delete')) {
+    handleRemoveCollaborator(event.target.parentNode.id.slice(5))
+  }
+})
+
+function handleRemoveCollaborator(id) {
+  let removeCollaboratorUrl = "http://localhost:8080/api/v1/user/remove-user-from-workspace/" 
+                              + sessionStorage.getItem("currentBoardId") + "/" + id
+  fetch(removeCollaboratorUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }})
+  .then(() => {
+    fetchUserInWorkspace()
+  })
+}
+
+addCollaboratorBtn.addEventListener('click', () => {
+  if (addCollaboratorInput.value == '') {
+    throwInvalidInput();
+  } else {
+    let getAllUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
+    fetch(getAllUsersUrl)
+    .then(response => response.json())
+    .then(users => {
+      let found = false;
+      users.forEach(user => {
+        if (user.username == addCollaboratorInput.value) {
+          found = true;
+          handleAddToWorkspace(user)
+        }
+      })
+      if (!found) {
+        throwUserNotFound()
+      }
+    })
+  }
+})
+
+function handleAddToWorkspace(user) {
+  let addCollaboratorUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/" + sessionStorage.getItem("currentBoardId") + "/" + user.userId
+  fetch(addCollaboratorUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }})
+    .then(() => {
+      fetchUserInWorkspace()
+    })
+}
+
+function throwUserNotFound(username) {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Username: " + username + " not found!";
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
