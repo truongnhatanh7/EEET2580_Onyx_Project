@@ -15,6 +15,7 @@ fetchBoardInfo();
 getBoardInfo();
 
 setInterval(function() {
+    console.log($('#list_122').scrollTop)
     if (sessionStorage.getItem("isEditing") == '0') {
         fetchBoardInfo();
         getBoardInfo();
@@ -32,9 +33,15 @@ function fetchBoardInfo() {
 
 function renderBoard(board) {
     let oldBoardLists = $$('.workspace__board-list')
+    let scrollRule = {}
+    let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
+
     oldBoardLists.forEach((element) => {
+        scrollRule[element.id] = element.scrollTop
         element.remove();
     })
+
+    console.log(scrollRule)
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
@@ -88,12 +95,25 @@ function renderBoard(board) {
             
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
+            workspaceBoard.scrollLeft = horizontalBoardScrollRule;
+            setScrollRule(scrollRule)
         }
     });
 
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
     loading.remove();
+}
+
+function setScrollRule(scrollRule) {
+
+    for (const [key, value] of Object.entries(scrollRule)) {
+    
+        let list = workspaceBoard.querySelector('#' + key)
+        if (list != null) {
+            list.scrollTop = value
+        }
+    }
 }
 
 function getBoardInfo() {
@@ -168,10 +188,11 @@ class Board {
 }
 
 class List {
-    constructor(listName, tasks, listId) {
+    constructor(listName, tasks, listId, scrollTop) {
         this.listName = listName;
         this.tasks = new Array(tasks);
         this.listId = listId;
+        this.scrollTop = scrollTop
     }
 
     List(listName) {
@@ -196,6 +217,14 @@ class List {
 
     getAllTasks() {
         return this.tasks;
+    }
+
+    setScrollTop() {
+        this.scrollTop = scrollTop
+    }
+
+    getScrollTop() {
+        return this.scrollTop;
     }
 }
 
