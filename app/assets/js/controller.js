@@ -19,6 +19,14 @@ const toastMessage = $(".toast-message");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+document.addEventListener('onmousedown', (event) => {
+  sessionStorage.setItem('isEditing', '1')
+})
+
+document.addEventListener('onmouseup', (event) => {
+  sessionStorage.setItem('isEditing', '0')
+})
+
 document.addEventListener("click", (event) => {
     if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) {
       closeSubmitList.click();
@@ -173,6 +181,8 @@ function handleCloseTaskAdd() {
       addTaskBtn.classList.add('enable')
       addTaskBtn.classList.remove('disable')
       currentModifier.classList.remove("modifying")
+      sessionStorage.setItem('isEditing', '0')
+
     }
 
 }
@@ -182,6 +192,7 @@ function triggerModifying(event) {
   event.target.parentNode.classList.add('modifying');
   event.target.classList.add("disable");
   event.target.classList.remove("enable");
+  sessionStorage.setItem('isEditing', '1')
 }
 
 function submitTaskByKeyboard(event, taskBtn) {
@@ -195,7 +206,7 @@ function submitTaskByKeyboard(event, taskBtn) {
 function handleAddTask(event) {
     if (!board.querySelector(".modifying") && addListSection.classList.contains('disable')) {
       triggerModifying(event)
-  
+      
       let currentListId = event.target.parentNode.id.slice(5);
       let tempArray = event.target.parentNode.childNodes;
       let taskFactory = tempArray[tempArray.length - 2];
@@ -510,7 +521,9 @@ function throwUnknownError() {
     toastBox.classList.add("disable");
   }, 2000)
 }
+
 ////////////////////////////////
+
 const collaboratorList = $('.workspace__collaborator-list');
 const addCollaboratorBtn = $('.workspace__add-collaborator-btn')
 const addCollaboratorInput = $('.workspace__add-collaborator-input')

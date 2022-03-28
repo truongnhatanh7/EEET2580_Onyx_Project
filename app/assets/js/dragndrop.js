@@ -9,9 +9,13 @@ function handleDragStart(event) {
     
     event.target.classList.add("workspace__board-list-task--dragging");
     sessionStorage.setItem("currentTask", event.target.id.slice(5))
+  sessionStorage.setItem('isEditing', '1')
+
 }
 
 function handleDragEnd(event) {
+  sessionStorage.setItem('isEditing', '0')
+
     event.target.classList.remove("workspace__board-list-task--dragging");
     if (sessionStorage.getItem("currentTask") != event.target.parentNode.id) { // Avoid same list
       let deleteTaskUrl =

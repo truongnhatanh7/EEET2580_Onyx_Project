@@ -8,10 +8,16 @@ const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
+sessionStorage.setItem('isEditing', '0')
 
 
-fetchBoardInfo();
-getBoardInfo();
+
+setInterval(function() {
+    if (sessionStorage.getItem("isEditing") == '0') {
+        fetchBoardInfo();
+        getBoardInfo();
+    }
+}, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -23,12 +29,15 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
+    let oldBoardLists = $$('.workspace__board-list')
+    oldBoardLists.forEach((element) => {
+        element.remove();
+    })
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
 
         if (list !== undefined) {
-
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
                     let taskHTML = `  
