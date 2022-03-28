@@ -323,27 +323,7 @@ input[type="text"] {
     transition: 0.3s;
 }
 
-@keyframes appearMagic {
-    from {
-        opacity: 0.2;
 
-        transform: scale(0.2) translateY(-100%);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-@keyframes disappearMagic {
-    from {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    } to {
-        opacity: 0;
-        transform: scale(0.2) translateY(-100%);
-    }
-}
 
 .workspace__add-input {
     margin-top: 16px;
@@ -431,6 +411,7 @@ input[type="text"] {
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 3;
 }
 
 .workspace__task-setting-wrapper {
@@ -507,7 +488,7 @@ input[type="text"] {
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
+    z-index: 3;
     background-color: rgba(0, 0, 0, 0.8);
     display: block;
 
@@ -745,6 +726,28 @@ input[type="text"] {
 
 .workspace__delete-confirmation-input:hover {
 
+}
+
+@keyframes appearMagic {
+    from {
+        opacity: 0.2;
+
+        transform: translateY(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes disappearMagic {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    } to {
+        opacity: 0;
+        transform: translateY(-100%);
+    }
 }
 
 
