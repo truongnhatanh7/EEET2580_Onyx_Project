@@ -11,13 +11,15 @@ const loading = $('.loading-wrapper');
 sessionStorage.setItem('isEditing', '0')
 
 
+fetchBoardInfo();
+getBoardInfo();
 
 setInterval(function() {
     if (sessionStorage.getItem("isEditing") == '0') {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 1000)
+}, 2000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
