@@ -15,7 +15,6 @@ fetchBoardInfo();
 getBoardInfo();
 
 setInterval(function() {
-    console.log($('#list_122').scrollTop)
     if (sessionStorage.getItem("isEditing") == '0') {
         fetchBoardInfo();
         getBoardInfo();
@@ -40,8 +39,6 @@ function renderBoard(board) {
         scrollRule[element.id] = element.scrollTop
         element.remove();
     })
-
-    console.log(scrollRule)
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
@@ -106,9 +103,7 @@ function renderBoard(board) {
 }
 
 function setScrollRule(scrollRule) {
-
     for (const [key, value] of Object.entries(scrollRule)) {
-    
         let list = workspaceBoard.querySelector('#' + key)
         if (list != null) {
             list.scrollTop = value
@@ -188,11 +183,10 @@ class Board {
 }
 
 class List {
-    constructor(listName, tasks, listId, scrollTop) {
+    constructor(listName, tasks, listId) {
         this.listName = listName;
         this.tasks = new Array(tasks);
         this.listId = listId;
-        this.scrollTop = scrollTop
     }
 
     List(listName) {
@@ -217,14 +211,6 @@ class List {
 
     getAllTasks() {
         return this.tasks;
-    }
-
-    setScrollTop() {
-        this.scrollTop = scrollTop
-    }
-
-    getScrollTop() {
-        return this.scrollTop;
     }
 }
 

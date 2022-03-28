@@ -34,6 +34,8 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         localStorage.setItem("userId", user.userId.toString().trim());
+                        sessionStorage.setItem("userId", user.userId.toString().trim());
+
                         location.assign("./app/dashboard.html")
                         canLogin = true;
                         return false;
@@ -81,8 +83,6 @@ const signUpPasswordConfirm = $('#sign-up-password-retype')
 const signUpBtn = $('#sign-up-btn')
 console.log(signUpBtn)
 signUpBtn.addEventListener('click', () => {
-    console.log(signUpPassword.value)
-    console.log(signUpPasswordConfirm.value)
 
     let validCreateUser = true;
     if (signUpPassword.value != signUpPasswordConfirm.value) {
@@ -135,7 +135,9 @@ function createNewUserAPI() {
     })
     .then(data => {
         localStorage.setItem("userId", data.userId.toString().trim());  
+        sessionStorage.setItem("userId", data.userId.toString().trim());
         location.assign("./app/dashboard.html")
+
     })
 }
 

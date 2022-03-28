@@ -11,7 +11,7 @@ const projectAddBtn = $(".dashboard__project-add-btn")
 const dashboardTitle = $('.dashboard__title');
 let latestWorkspaceId = -1;
 //////////////////////////////
-let currentUser = localStorage.getItem("userId"); // Current user id
+let currentUser = sessionStorage.getItem("userId"); // Current user id
 //////////////////////////////
 let linkWorkspaceUserUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/"
 let workspaceByUserId = "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();

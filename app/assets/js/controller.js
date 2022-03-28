@@ -539,7 +539,6 @@ function fetchUserInWorkspace() {
     return workspace.users
   })
   .then(users => {
-    console.log(users)
     renderUserInWorkspace(users)
   })
 }
