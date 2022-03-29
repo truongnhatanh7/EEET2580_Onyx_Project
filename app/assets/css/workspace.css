@@ -143,7 +143,7 @@ input[type="text"] {
     width: 100%;
     height: 80px;
     background-color: transparent;
-    padding-left: 48px;
+    padding-left: 56px;
     display: flex;
     align-items: center;
     position: absolute;
@@ -183,7 +183,7 @@ input[type="text"] {
     height: fit-content;
     overflow-y: auto;
     max-height: 82vh;
-    margin: 0 16px;
+    margin-left: 32px;
     background-color: var(--white);
     border-radius: 25px;
     position: relative;
@@ -290,8 +290,10 @@ input[type="text"] {
     height: fit-content;
     background-color: var(--white);
     border-radius: 25px;
-    margin-right: 16px;
+
     min-width: 360px;
+    margin-left: 32px;
+
 }
 
 .workspace__add-task-btn,
