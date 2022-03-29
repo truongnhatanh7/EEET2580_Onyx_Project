@@ -484,7 +484,7 @@ preDeleteBtn.addEventListener('click', () => {
 })
 
 postDeleteBtn.addEventListener('click', () => {
-  console.log(preDeleteInput)
+
   if (preDeleteInput.value == 'delete this workspace') {
     let url = deleteWorkspaceUrl + sessionStorage.getItem('currentBoardId');
 
@@ -547,6 +547,10 @@ function renderUserInWorkspace(users) {
   if (users.length == 0) {
     collaboratorList.innerHTML = ""
     // Warning to delete workspace
+    preDeleteInput.value = 'delete this workspace';
+    postDeleteBtn.click();
+    location.assign('./dashboard.html')
+    
   } else {
     collaboratorList.innerHTML = ""
     users.forEach(user => {
