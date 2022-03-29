@@ -449,6 +449,7 @@ darkModeSwitch.addEventListener("change", switchTheme);
 
 const statusBtn = $('.workspace__navbar-progress-btn');
 const workspaceStatus = $('.workspace__status')
+const workspaceStatusWrapper = $('.workspace__status-wrapper')
 const workspaceStatusTitle = $('.workspace__status-title')
 const closeWorkspaceStatus = $('.workspace__status-close-icon')
 const preDeleteBtn = $('.workspace__delete-workspace-btn-pre');
@@ -463,6 +464,14 @@ statusBtn.addEventListener('click', () => {
   workspaceStatusTitle.focus();
 
 
+})
+
+workspaceStatusWrapper.addEventListener('click', (event) => {
+  event.stopPropagation();
+})
+
+workspaceStatus.addEventListener('click', (event) => {
+  closeWorkspaceStatus.click();
 })
 
 closeWorkspaceStatus.addEventListener('click', () => {

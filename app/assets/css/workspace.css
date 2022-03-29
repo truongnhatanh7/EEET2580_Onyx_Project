@@ -52,7 +52,7 @@ input[type="text"] {
     color: var(--constant-white) !important;
     height: 4rem;
     padding: 8px 20px;
-    background-color: var(--pink-color);
+    background-color: var(--soft-pink);
     display: inline-block;
 }
 
@@ -172,7 +172,6 @@ input[type="text"] {
     z-index: 1;
     width: 100%;
     padding-top: 80px;
-    /* margin-top: -64px; */
     box-shadow: var(--box-shadow-engrave)
 
 }
@@ -213,7 +212,7 @@ input[type="text"] {
     font-size: 2.5rem;
     padding: 8px 0;
     margin-bottom: 16px;
-    margin-left: 16px;
+    margin-left: 0;
     outline: none;
 }
 
@@ -477,8 +476,8 @@ input[type="text"] {
     border-radius: 25px;
     display: block;
     color: var(--black);
-    padding: 5% 10%;
-    width: 60%;
+    padding: 5% 5%;
+    width: 45%;
     height: fit-content;
     position: absolute;
     top: 50%;
