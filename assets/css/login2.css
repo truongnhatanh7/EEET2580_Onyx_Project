@@ -147,6 +147,14 @@
     margin-top: 4px;
     animation: slideIn 0.4s;
     position: relative;
+    border: none;
+    outline: solid var(--dark);
+
+}
+
+.form-input:focus {
+    outline: solid var(--soft-pink);
+
 }
 
 .form-btn {

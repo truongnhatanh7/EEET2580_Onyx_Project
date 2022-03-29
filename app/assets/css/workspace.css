@@ -477,7 +477,7 @@ input[type="text"] {
     display: block;
     color: var(--black);
     padding: 5% 5%;
-    width: 45%;
+    width: 55%;
     height: fit-content;
     position: absolute;
     top: 50%;
@@ -508,8 +508,8 @@ input[type="text"] {
 .workspace__status-close-icon {
     position: absolute;
     font-size: 3rem;
-    right: 32px;
-    top: 32px;
+    right: 16px;
+    top: 16px;
     padding: 8px 16px;
     border-radius: 20px;
     width: fit-content;
