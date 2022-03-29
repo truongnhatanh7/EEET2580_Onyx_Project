@@ -52,7 +52,7 @@ input[type="text"] {
     color: var(--constant-white) !important;
     height: 4rem;
     padding: 8px 20px;
-    background-color: var(--purple);
+    background-color: var(--pink-color);
     display: inline-block;
 }
 
@@ -141,7 +141,7 @@ input[type="text"] {
 .workspace__info {
     color: var(--black);
     width: 100%;
-    height: 64px;
+    height: 80px;
     background-color: transparent;
     padding-left: 48px;
     display: flex;
@@ -162,7 +162,7 @@ input[type="text"] {
 
 .workspace__board {
     color: var(--black);
-    background-color: var(--gray);
+    background-color: var(--white-color);
     height: calc(100vh - 64px);
     overflow-x: scroll;
     display: flex;
@@ -171,8 +171,9 @@ input[type="text"] {
     top: 64px;
     z-index: 1;
     width: 100%;
-    padding-top: 64px;
+    padding-top: 80px;
     /* margin-top: -64px; */
+    box-shadow: var(--box-shadow-engrave)
 
 }
 
@@ -185,10 +186,14 @@ input[type="text"] {
     max-height: 82vh;
     margin: 0 16px;
     background-color: var(--white);
-    border-radius: 20px;
+    border-radius: 25px;
     position: relative;
     overflow-x: hidden;
     transition: 0.3s;
+}
+
+.workspace__board-list:hover{
+    box-shadow: var(--box-shadow);
 }
 
 .workspace__board-list ~ .workspace__add-task-wrapper {
@@ -204,13 +209,12 @@ input[type="text"] {
 }
 
 .workspace__board-list-header {
-    font-weight: 500;
-    font-size: 2rem;
+    font-weight: 700;
+    font-size: 2.5rem;
     padding: 8px 0;
     margin-bottom: 16px;
     margin-left: 16px;
     outline: none;
-    width: 100%;
 }
 
 .workspace__board-list-header:hover + .workspace__board-list-delete {
@@ -227,19 +231,13 @@ input[type="text"] {
 
 .workspace__board-list-task {
     font-size: 1.6rem;
-    background-color: var(--gray);
-    border-radius: 20px;
+    background-color: var(--task-color);
+    border-radius: 15px;
     margin-bottom: 16px;
+    width: 310px;
     padding: 14px;
     position: relative;
-    /* box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3),
-        -1px -1px 2px rgba(217, 217, 217, 0.5),
-        inset -15px 15px 30px rgba(217, 217, 217, 0.2),
-        inset 15px -15px 30px rgba(217, 217, 217, 0.2),
-        inset -15px -15px 30px rgba(255, 255, 255, 0.9),
-        inset 15px 15px 38px rgba(217, 217, 217, 0.9); */
-
-    /* border: 1px solid var(--lm-only-gray); */
+    box-shadow: var(--task-shadow);
 }
 
 .workspace__board-list-task:hover {
@@ -254,7 +252,7 @@ input[type="text"] {
 }
 
 .workspace__board-list-delete-icon {
-    color: var(--purple);
+    color: var(--soft-pink);
     opacity: 0.5;
     position: absolute;
     right: 16px;
@@ -285,72 +283,52 @@ input[type="text"] {
 }
 
 .workspace__board-list-task--dragging.workspace__board-list-task {
-    transform: rotate(5deg);
+    transform: rotate(2deg);
+    opacity: 0.5;
 }
 
 .workspace__add-list-wrapper {
     height: fit-content;
+    background-color: var(--white);
+    border-radius: 25px;
+    margin-right: 16px;
+    min-width: 360px;
 }
 
-.workspace__add-task-btn {
-    padding: 16px;
-    border-radius: 20px;
+.workspace__add-task-btn,
+.workspace__submit-task-btn,
+.workspace__submit-btn {
+    /* margin-top: 12px; */
+    padding: 12px 20px;
     color: var(--constant-white);
-    background-color: var(--purple);
-
+    background-color: var(--soft-pink);
+}
+.workspace__submit-btn {
+    margin-bottom: 20px;
 }
 
 .workspace__add-list-btn {
-    background-color: transparent;
-    border: 1px solid var(--dark-gray);
+    background-color: var(--white);
     color: var(--dark-gray);
-    margin: 16px;
     min-width: 360px;
-    border-radius: 120px;
     margin-top: 0;
-    padding: 4px 0;
+    padding: 16px 20px;
 }
 
 .workspace__add-list-btn:hover {
-    background-color: var(--dark-gray);
+    background-color: var(--yellow);
     color: var(--white);
+    font-size: large;
+    font-weight: 700;
+    box-shadow: var(--box-shadow);
 }
 
 .workspace__add-wrapper {
-    margin: 0 16px;
+    margin:  20px 28px 0 28px;
     display: none;
-    max-width: 360px;
+    max-width: 305px;
     transition: 0.3s;
-}
-
-
-
-.workspace__add-input {
-    margin-top: 16px;
-    min-width: 360px;
-    max-width: 360px;
-    padding: 8px;
-    border-radius: 8px;
-    outline: none;
-    border: 1px solid var(--purple);
-}
-
-.workspace__submit-btn {
-    color: var(--white);
-    margin-top: 16px;
-    padding: 8px 32px;
-    display: block;
-    display: inline-block;
-    color: var(--constant-white);
-    background-color: var(--purple);
-}
-
-.workspace__list-close {
-    color: var(--purple);
-    display: inline-block;
-    padding: 8px 16px;
-    background: var(--white);
-    margin-left: 8px;
+    animation: appearMagic 0.3s;
 }
 
 .workspace__list-close-icon {
@@ -361,41 +339,37 @@ input[type="text"] {
 }
 
 .workspace__add-task-wrapper {
+    margin-top: 40px;
     min-width: 100%;
     display: none;
     transition: 0.3s;
     animation: appearMagic 0.3s;
-
 }
 
 .workspace__submit-title {
-    margin-top: 16px;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 700;
 }
 
-.workspace__add-input-task {
-    margin-top: 16px;
+.workspace__add-input-task,
+.workspace__add-input {
+    background-color: var(--gray) !important;
+    margin-top: 8px;
+    margin-bottom: 16px;
     width: 100%;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 14px;
+    border-radius: 16px;
     outline: none;
-    border: 1px solid var(--purple);
+    border: none;
 }
 
-.workspace__submit-task-btn {
-    color: var(--white);
-    margin-top: 16px;
-    padding: 8px 32px;
-    color: var(--constant-white);
-    background-color: var(--purple);
-    
-}
-
-.workspace__task-close-btn {
-    color: var(--purple);
-    background-color: var(--gray);
-    padding: 8px 16px;
-    margin-left: 8px;
+.workspace__task-close-btn,
+.workspace__list-close {
+    color: var(--white-color);
+    background-color: var(--red);
+    opacity: 0.7;
+    padding: 12px 20px;
+    margin-left: 12px;
 }
 
 .workspace__task-close {
@@ -405,7 +379,7 @@ input[type="text"] {
 .workspace__task-setting {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.801);
     position: absolute;
     top: 0;
     right: 0;
@@ -429,36 +403,41 @@ input[type="text"] {
 }
 
 .workspace__task-setting-close {
+    background-color: var(--white);
+    color: var(--black);
     width: fit-content;
-    height: fit-content;
-    padding: 8px 16px;
+    height: 58.2px;
+    padding: 0 24px;
     position: absolute;
-    right: -64px;
-    top: 8px;
+    right: -68px;
+    border-radius: 20px;
+    /* For animation placeholder */
 }
 
-.workspace__task-setting-title {
+/* .workspace__task-setting-title {
     font-size: 1.8rem;
     font-weight: 400;
     display: block;
     margin-top: 8px;
     margin-left: 16px;
-}
+} */
 
 .workspace__task-setting-input {
     padding: 16px 16px;
-    border: solid 1px var(--purple);
+    border: none;
     border-radius: 20px;
-    outline: var(--purple);
+    outline: var(--soft-pink);
     font-size: 1.6rem;
 }
 
 .workspace__task-setting-btn {
+    z-index: -1;
     margin-top: 8px;
     width: 50%;
     padding: 8px 0;
-    background-color: var(--purple);
+    background-color: var(--soft-pink);
     color: var(--constant-white);
+    animation: appearMagic 0.3s;
 }
 
 .workspace__task-delete-btn {
@@ -467,7 +446,7 @@ input[type="text"] {
     background-color: var(--red);
     color: var(--constant-white);
     width: 50%;
-
+    animation: appearMagic 0.3s;
 }
 
 .workspace__board-list-task-edit {
@@ -475,7 +454,7 @@ input[type="text"] {
     right: 14px;
     top: 50%;
     transform: translateY(-50%);
-    color: var(--purple);
+    color: var(--soft-pink);
     padding: 4px;
     display: none;
 }
@@ -489,16 +468,13 @@ input[type="text"] {
     right: 0;
     bottom: 0;
     z-index: 3;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.87);
     display: block;
-
 }
 
 .workspace__status-wrapper {
-
-
     background-color: var(--white);
-    border-radius: 20px;
+    border-radius: 25px;
     display: block;
     color: var(--black);
     padding: 5% 10%;
@@ -512,39 +488,41 @@ input[type="text"] {
 
 .workspace__status-title {
     font-size: 3rem;
-    font-weight: 500;
-    outline: var(--purple);
+    font-weight: 600;
     padding: 16px;
     width: 100%;
     text-align: center;
-
-
+    margin-bottom: 28px;
+    border: none;
+    outline: none;
+    background-color: var(--gray);
+    border-radius: 25px;
 }
 
-.workspace__status-title:focus {
+/* .workspace__status-title:focus {
     padding: 16px;
     border-radius: 20px;
-    border: 1px solid var(--purple);
     position: relative;
-}
+    border: none;
+} */
 
 .workspace__status-close-icon {
     position: absolute;
-    font-size: 4rem;
+    font-size: 3rem;
     right: 32px;
     top: 32px;
     padding: 8px 16px;
     border-radius: 20px;
     width: fit-content;
     height: fit-content;
-    background-color: var(--gray);
     transition: 0.3s;
 }
 
 .workspace__status-close-icon:hover {
-    padding: 12px 20px;
+    /* padding: 8px 0 -8px 0 ; */
     cursor: pointer;
-    background-color: var(--purple);
+    /* background-color: var(--soft-pink); */
+    color: var(--red)
 }
 
 /* .workspace__invite-icon {
@@ -570,46 +548,41 @@ input[type="text"] {
     background-color: var(--purple);
 } */
 
-.workspace__collaborator-title {
-    font-size: 2rem;
-    width: 100%;
-    text-align: center;
-    font-weight: 500;
-    position: relative;
-}
-
 .workspace__add-collaborator-wrapper {
     display: grid;
     grid-template-columns: 4fr 1fr;
-    margin-top: 16px;
+    margin-top: 20px;
 }
 
-.workspace__collaborator-section {
+/* .workspace__collaborator-section {
     width: 100%;
-}
+} */
 
+.workspace__add-collaborator-input {
+    padding: 8px 20px;
+    border-radius: 20px;
+    border: var(--soft-pink) solid 2px;
+    margin-right:8px;
+    outline: none;
+    font-size: 1.6rem;
+    box-sizing: border-box;
+}
 .workspace__add-collaborator-btn {
-    background-color: var(--purple);
+    background-color: var(--soft-pink);
     color: var(--constant-white)
 }
 
-.workspace__add-collaborator-input {
-    padding: 8px 16px;
-    border-radius: 20px;
-    border: 1px solid var(--purple);
-    margin-right: 8px;
-    outline: none;
-    font-size: 1.6rem;
-
+.workspace__collaborator-title{
+    color: var(--hard-pink)
 }
-
 .workspace__collaborator-list {
     max-height: 200px;
     overflow: auto;
-    border: 1px solid var(--purple);
+    background-color: var(--gray);
     padding: 32px;
     border-radius: 20px;
-    margin-top: 16px;
+    margin-top: 28px;
+    box-shadow: var(--task-shadow);
 
 }
 
@@ -623,6 +596,10 @@ input[type="text"] {
     font-weight: 400;
 }
 
+.workspace__delete-title{
+    color: var(--red)
+}
+
 .workspace__collaborator-delete {
     transition: 0.3s;
     height: fit-content;
@@ -632,7 +609,6 @@ input[type="text"] {
 
 .workspace__collaborator-delete:hover {
     color: var(--red);
-    transform: rotate(90deg);
     cursor: pointer;
 }
 
@@ -640,24 +616,29 @@ input[type="text"] {
 
 }
 
+.workspace__collaborator-title,
 .workspace__delete-title {
-    font-weight: 500;
+    font-size: 3rem !important;
+    font-weight: 600;
     width: 100%;
-    text-align: center;
+    padding-left: 20px;
+    /* text-align: center; */
     font-size: 2rem;
     margin-top: 48px;
     position: relative;
 }
 
+/* .workspace__collaborator-title::before,
 .workspace__delete-title:before {
     content: '';
     position: absolute;
-    width: 90%;
+    width: 50%;
     border: 0.2px solid var(--black);
     right: 50%;
     transform: translateX(50%);
     top: -16px;
-}
+    opacity: 0.4;
+} */
 
 .workspace__delete-workspace-btn {
     background: transparent;
@@ -699,18 +680,21 @@ input[type="text"] {
     font-size: 1.6rem;
     font-weight: 500;
     margin-top: 8px;
+    padding: 0 16px;
 }
 
 .workspace__delete-confirmation {
+    margin-top: 20px;
     display: none;
     flex-direction: column;
-
+    transition: 0.3s;
+    animation: appearMagic 0.3s;
 }
 
 .workspace__delete-confirmation-input {
     padding: 8px 16px;
-    border: 1px solid var(--red);
-    outline: var(--purple);
+    border: 2px solid var(--red);
+    outline: var(--soft-pink);
     font-size: 1.6rem;
     border-radius: 20px;
     margin-top: 8px;
@@ -720,7 +704,7 @@ input[type="text"] {
 }
 
 .workspace__delete-confirmation-input:focus {
-    outline: var(--purple);
+    outline: var(--soft-pink);
     
 }
 
