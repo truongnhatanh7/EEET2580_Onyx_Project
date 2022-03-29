@@ -167,7 +167,7 @@ input[type="text"] {
     overflow-x: scroll;
     display: flex;
     overflow-y: hidden;
-    position: absolute;
+    position: fixed;
     top: 64px;
     z-index: 1;
     width: 100%;
@@ -182,13 +182,15 @@ input[type="text"] {
     min-width: 360px;
     height: fit-content;
     overflow-y: auto;
-    max-height: 82vh;
+    max-height: 98%;
     margin-left: 32px;
+    margin-bottom: 32px;
     background-color: var(--white);
     border-radius: 25px;
     position: relative;
     overflow-x: hidden;
     transition: 0.3s;
+
 }
 
 .workspace__board-list:hover{
@@ -210,10 +212,18 @@ input[type="text"] {
 .workspace__board-list-header {
     font-weight: 700;
     font-size: 2.5rem;
-    padding: 8px 0;
+    padding: 16px 12px;
     margin-bottom: 16px;
     margin-left: 0;
     outline: none;
+    min-height: fit-content;
+    position: sticky;
+    z-index: 30;
+    top: -24px;
+    min-width: 310px;
+    background-color: var(--white);
+    opacity: 1;
+    box-shadow: none;
 }
 
 .workspace__board-list-header:hover + .workspace__board-list-delete {
@@ -236,7 +246,7 @@ input[type="text"] {
     width: 310px;
     padding: 14px;
     position: relative;
-    box-shadow: var(--task-shadow);
+    /* box-shadow: var(--task-shadow); */
 }
 
 .workspace__board-list-task:hover {
@@ -304,6 +314,14 @@ input[type="text"] {
     color: var(--constant-white);
     background-color: var(--soft-pink);
 }
+
+/* uncomment to see magic */
+/* .workspace__add-task-btn { 
+    position: sticky;
+    z-index: 40;
+    bottom: 8px;
+    left: 0px;
+} */
 .workspace__submit-btn {
     margin-bottom: 20px;
 }
@@ -345,6 +363,7 @@ input[type="text"] {
     display: none;
     transition: 0.3s;
     animation: appearMagic 0.3s;
+
 }
 
 .workspace__submit-title {
