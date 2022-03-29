@@ -16,8 +16,9 @@
     display: block;
     width: fit-content;
     transition: 0.2s;
-    padding: 4px;
-
+    padding: 12px 24px;
+    background-color: var(--yellow);
+    border-radius: 25px;
 }
 
 .dashboard__return:hover {
@@ -38,7 +39,7 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: max-content;
-    gap: 16px;
+    gap: 40px;
 }
 
 @media (max-width: 1200px) {
@@ -65,7 +66,7 @@
     }
 
     .dashboard__modal-title {
-        font-size: 2.2rem !important;
+        font-size: 3rem !important;
         padding: 0 8px;
     }
 
@@ -77,15 +78,20 @@
 .dashboard__project-card {
     width: 100%;
     height: 200px;
-    background-color: var(--purple);
+    margin-bottom: 4px;
+    background-color: var(--soft-pink);
     border-radius: 16px;
     display: grid;
     place-items: center;
+    transition: 0.3s;
 }
 
 .dashboard__project-card:hover {
     cursor: pointer;
-    opacity: 0.7;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    box-shadow: rgba(50, 50, 93, 0.335) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: 0.3s;
 }
 .dashboard__project-card:hover .dashboard__project-card-name {
     transform: scale(1.2);
@@ -97,6 +103,7 @@
     border-radius: 16px;
     width: 100%;
     height: 100%;
+    background-color: var(--gray);
 }
 
 .dashboard__project-add-btn:hover {
@@ -124,8 +131,8 @@
 
 .dashboard__project-card-name {
     color: var(--white);
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
     max-width: 70%;
     max-height: 70%;
     text-overflow: ellipsis;
@@ -137,7 +144,7 @@
 
 .dashboard__modal-create {
     position: absolute;
-    background-color: rgba(149, 149, 149, 0.856);
+    background-color: rgba(39, 39, 39, 0.952);
     width: 100%;
     height: 100%;
     top: 0;
@@ -149,10 +156,10 @@
 }
 
 .dashboard__modal-wrapper {
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
+    background-color: var(--white-color);
     padding: 64px 8px;
     border-radius: 32px;
     align-items: center;
@@ -160,15 +167,17 @@
 
 .dashboard__modal-title {
     font-size: 3rem;
+    font-weight: 700;
 }
 
 .dashboard__modal-input {
     width: 60%;
-    border-radius: 60px;
-    padding: 16px;
+    border-radius: 15px;
+    padding: 20px;
     margin-top: 32px;
     border: 1px solid var(--purple);
     transition: 0.3s;
+    background-color: var(--gray);
 }
 
 .dashboard__modal-input:focus {
@@ -201,12 +210,12 @@
 }
 
 .dashboard__modal-btn {
-    width: 60%;
-    margin-top: 16px;
-    padding: 16px;
+    width: 30%;
+    margin-top: 32px;
+    padding: 12px;
     font-size: 1.8rem;
     color: var(--white);
-    background-color: var(--purple);
+    background-color: var(--soft-pink);
     border-radius: 120px;
 }
 
