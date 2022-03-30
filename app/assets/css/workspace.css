@@ -2,6 +2,7 @@
     min-height: 100vh;
     color: var(--black);
     position: relative;
+    
 }
 
 input[type="text"] {
@@ -233,6 +234,7 @@ input[type="text"] {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
 }
 
 .workspace__board-list-header {
@@ -241,7 +243,7 @@ input[type="text"] {
     padding: 16px 12px;
     min-height: fit-content;
     min-width: 310px;
-    background-color: var(--white);
+    background-color: transparent;
 }
 
 
