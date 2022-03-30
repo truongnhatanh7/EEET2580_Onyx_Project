@@ -17,6 +17,8 @@ const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
 ////////////////////////////////////////////////////////////////////////////////
+// Board 
+
 board.addEventListener('wheel', event => {
   if (!event.deltaY) {
     return;
@@ -25,13 +27,7 @@ board.addEventListener('wheel', event => {
     event.target.scrollLeft += event.deltaY + event.deltaX;
     event.preventDefault();
   }
-
 })
-
-// board.addEventListener("mousemove", event => {
-//   console.log(event.target)
-// })
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,10 +40,11 @@ document.addEventListener('onmouseup', (event) => {
 })
 
 document.addEventListener("click", (event) => {
-    if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) {
+    if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) { // Escape add list
       closeSubmitList.click();
     }
-    let currentList = board.querySelector('.modifying');
+
+    // let currentList = board.querySelector('.modifying');
     let outsideClick = false;
     let lists = board.querySelectorAll('.workspace__board-list:not(.modifying)')
 
