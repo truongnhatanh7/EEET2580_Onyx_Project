@@ -21,6 +21,7 @@ input[type="text"] {
     display: flex;
     justify-content: space-between;
     color: var(--black);
+    z-index: 200;
 }
 
 .workspace__navbar-left-wrapper {
@@ -125,6 +126,76 @@ input[type="text"] {
     background-color: black;
 }
 
+
+.dashboard-task__wrapper{
+    position: relative;
+    z-index: 200;
+}
+.dashboard__img-active,
+.dashboard__img{
+    width: 54px;
+    height: 54px;
+    object-fit: cover;
+    border-radius: 25px;
+    box-shadow: var(--task-shadow);
+    position: relative;
+}
+
+.dashboard__img-active{
+    margin-top: 8px;
+    margin-right: 8px;
+}
+/* 
+.dashboard__img:hover{
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
+    transition: 0.3s;
+} */
+.dashboard-task__wrapper:hover .dashboard-list__wrapper {
+    display: block;
+    transition: 0.3s;
+    animation: slideIn 0.3s;
+}
+@keyframes slideIn {
+    0%{
+        opacity: 0.5;
+        transform: translateX(0) translateY(0);
+      }
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.dashboard-list__wrapper{
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background-color: white;
+    /* padding: 8px 8px 20px 20px; */
+    border-radius: 20px;
+    width: auto;
+    height: 1000px;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
+}
+.dashboard-list-img__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 20px;
+}
+.dashboard-list-img__wrapper span{
+    margin-top: 8px;
+    margin-left: 24px;
+    font-size: 20px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+.dashboard-list-table{
+    width: 100%;
+    margin-top: 12px;
+}
+
 /* ///// */
 
 .workspace__navbar-right-avatar-wrapper:hover {
@@ -173,7 +244,7 @@ input[type="text"] {
     z-index: 1;
     width: 100%;
     padding-top: 80px;
-    box-shadow: var(--box-shadow-engrave)
+    /* box-shadow: var(--box-shadow-engrave) */
 
 }
 
