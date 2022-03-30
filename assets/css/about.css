@@ -1,0 +1,122 @@
+@import "./base.css";
+@import "./navbar.css";
+@import "./homepage.css";
+main{
+    height: 100vh;
+}
+.empty-path{
+    height: 100vh;
+}
+.first-member{
+    position: sticky;
+    top: 150px;
+    bottom: -600px;
+    background-color: var(--gray);
+    border-radius: 20px 20px 0 0;
+}
+.first-member-tag{
+    height: 250px;
+}
+.second-member-tag{
+    height: 200px;
+}
+.third-member-tag{
+    height: 150px;
+}
+.fourth-member-tag{
+    height: 100px;
+}
+.fifth-member-tag{
+    height: 50px;
+}
+.first-member-tag-content{
+    padding-top: 10px;
+    padding-left: 30px;
+    font-size: 30px;
+}
+.first-member-content__wrapper{
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.member-content{
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    grid-template-rows: 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.first-member-img{
+    width: 200px;
+    height: auto;
+    border-radius: 100000px;
+}
+.member-name{
+    font-size: 40px;
+    font-weight: 700;
+}
+.member-bio{
+    font-size: 20px;
+    font-weight: 400;
+}
+.second-member-content__wrapper{
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.third-member-content__wrapper{
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.fourth-member-content__wrapper{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.fifth-member-content__wrapper{
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+.second-member{
+    position: sticky;
+    top: 200px;
+    bottom: -500px;
+    background-color: var(--soft-pink);
+    border-radius: 20px 20px 0 0;
+}
+.third-member{
+    position: sticky;
+    top: 250px;
+    bottom: -400px;
+    background-color: var(--hard-pink);
+    border-radius: 20px 20px 0 0;
+}
+.fourth-member{
+    position: sticky;
+    top: 300px;
+    bottom: -300px;
+    background-color: var(--pink-color);
+    border-radius: 20px 20px 0 0;
+}
+.fifth-member{
+    position: sticky;
+    top: 350px;
+    bottom: -800px;
+    background-color: var(--gray);
+    border-radius: 20px 20px 0 0;
+}
+footer{
+    position: absolute;
+}
