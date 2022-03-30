@@ -12,7 +12,7 @@ input[type="text"] {
 
 .workspace__navbar {
     height: 64px;
-    position: relative;
+    position: fixed;
     top: 0; 
     right: 0;
     left: 0;
@@ -171,11 +171,10 @@ input[type="text"] {
     position: absolute;
     top: -8px;
     right: -8px;
-    background-color: white;
+    background-color: var(--white);
     /* padding: 8px 8px 20px 20px; */
     border-radius: 20px;
     width: auto;
-    height: 1000px;
     box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
 }
 .dashboard-list-img__wrapper{
@@ -194,6 +193,25 @@ input[type="text"] {
 .dashboard-list-table{
     width: 100%;
     margin-top: 12px;
+}
+.list-content_wrapper{
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: block;
+    padding: 12px 20px;
+}
+.list-content_wrapper:hover{
+    background-color: var(--white-color);
+    color: var(--white);
+    cursor: pointer;
+    border-radius: 20px;
+}
+.list-content{
+    text-decoration: none;
+    color: black;
+    font-size: 1.75rem;
+    font-weight: 400;
 }
 
 /* ///// */
