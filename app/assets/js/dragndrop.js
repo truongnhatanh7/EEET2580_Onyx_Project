@@ -20,7 +20,7 @@ function handleDragEnd(event) {
     if (sessionStorage.getItem("currentTask") != event.target.parentNode.id) { // Avoid same list
       let deleteTaskUrl =
           "http://localhost:8080/api/v1/task/" + event.target.id.slice(5)
-    console.log(sessionStorage.getItem("currentTask"))
+
       let taskContent = event.target.textContent.trim();
 
       fetch(deleteTaskUrl, {
@@ -31,22 +31,30 @@ function handleDragEnd(event) {
               "Cache-Control": "no-cache",
           },
       });
-  
-      let createTaskUrl =
-          "http://localhost:8080/api/v1/task/" + event.target.parentNode.id.slice(5);
-            fetch(createTaskUrl, {
-          method: "POST",
-          headers: {
-              "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-              taskContent: taskContent,
-          }),
-      }).then(response => response.json())
-      .then(data => {
-        console.log("invoke")
-        event.target.id = "task_" + data.taskId.toString();
-      })
+      console.log("\n///////MOVE//////\n")
+      console.log("delete task invoked")
+
+      let listId = event.target.parentNode.id.slice(5)
+      if (event.target.parentNode.id.slice(5) == '') { // If event.target return board-list-scrollable
+            listId = event.target.parentNode.parentNode.id.slice(5) // Change it to the outer parent
+      }
+          let createTaskUrl =
+              "http://localhost:8080/api/v1/task/" + listId;
+                fetch(createTaskUrl, {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                  taskContent: taskContent,
+              }),
+          }).then(response => response.json())
+          .then(data => {
+            console.log("create task invoked\n/////////\n")
+            event.target.id = "task_" + data.taskId.toString();
+          })
+ 
+
     }
 
 }
@@ -56,16 +64,25 @@ function handleOnDrag(event) {
 }
 
 function handleDragOver(event) {
-    const container = event.target;
+    // const containerFake = $('.workspace__board-list.modifying');
+    // const container = containerFake.querySelector(".workspace__board-list-scrollable")
+    let container = event.target.parentNode
     event.preventDefault();
-    if (container.classList["0"] === "workspace__board-list") {
+    if (container.classList["0"] === "workspace__board-list-scrollable") {
         const afterElement = getDragAfterElement(container, event.clientY);
-        const draggable = $(".workspace__board-list-task--dragging");
-        const addTaskBtn = container.children[container.children.length - 2];
+        let draggable = $(".workspace__board-list-task--dragging");
+        const addTaskBtn = container.parentNode.querySelector('.workspace__add-task-btn');
         if (afterElement == null) {
-            container.insertBefore(draggable, addTaskBtn);
+            container.parentNode.insertBefore(draggable, addTaskBtn);
         } else {
             container.insertBefore(draggable, afterElement);
+        }
+
+    } else {
+        let draggable = $(".workspace__board-list-task--dragging");
+        container = event.target.querySelector('.workspace__board-list-scrollable')
+        if (draggable != null && container != null) {
+            container.appendChild(draggable)
         }
 
     }

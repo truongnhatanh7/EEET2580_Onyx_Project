@@ -95,13 +95,20 @@ submitList.addEventListener("click", (event) => {
           .then((response) => response.json())
           .then((data) => {
               let html = `  
-                  <div class="workspace__board-list" ondragover="handleDragOver(event)" id="${
+                  <div class="workspace__board-list" id="${
                       "list_" + data.listId
                   }">
+                  <div class="workspace__board-list-header-wrapper">
                     <h1 class="workspace__board-list-header" >
                       ${listName}
                     </h1>
                     <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
+                  </div>
+
+                  <div class="workspace__board-list-scrollable" ondragover="handleDragOver(event)">
+                  
+                  </div>
+
                     <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                     <div class="workspace__add-task-wrapper">
                       <h2 class="workspace__submit-title">Enter new task:</h2>
@@ -115,6 +122,7 @@ submitList.addEventListener("click", (event) => {
                 `;
               let para = document.createRange().createContextualFragment(html);
               board.insertBefore(para, addListBtnWrapper);
+
             })
             .then(() => {
               addListBtn.click(); // Rapid insert
@@ -157,14 +165,14 @@ function throwToastEmptyListName() {
 }
 
 function handleDeleteList(event) {
-  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
+  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.parentNode.id.slice(5).toString();
   fetch(deleteListUrl, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
     }
   })
-  event.target.parentNode.remove();
+  event.target.parentNode.parentNode.remove();
 }
 
 
@@ -196,7 +204,6 @@ function triggerModifying(event) {
 }
 
 function submitTaskByKeyboard(event, taskBtn) {
-  event.stopPropagation();
   event.preventDefault();
     if (event.keyCode == 13) {
         taskBtn.click();
@@ -208,6 +215,8 @@ function handleAddTask(event) {
       triggerModifying(event)
       
       let currentListId = event.target.parentNode.id.slice(5);
+      // console.log(event.target.parentNode);
+      // console.log(event.target.parentNode.id.slice(5))
       let tempArray = event.target.parentNode.childNodes;
       let taskFactory = tempArray[tempArray.length - 2];
       taskFactory.classList.add("enable");
@@ -235,6 +244,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(
       function() {
         console.log("DB Task add called")
+
         if (taskInput.value != "" && taskInput.value.length < 50) {
           let createTaskUrl =
               "http://localhost:8080/api/v1/task/" + currentListId.toString();
@@ -270,7 +280,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                   let para = document
                       .createRange()
                       .createContextualFragment(html);
-                  event.target.parentNode.insertBefore(para, event.target);
+                  event.target.parentNode.querySelector('.workspace__board-list-scrollable').appendChild(para);
               })
               .then(() => {
                 rapidInputTask(event, taskFactory, taskInput)
@@ -317,6 +327,9 @@ function throwToastEmptyTaskName() {
 }
 
 ////////////////////////////////
+// Task setting
+
+
 const taskSetting = $('.workspace__task-setting')
 const taskSettingInner = $('.workspace__task-setting-wrapper')
 const taskSave = $('.workspace__task-setting-btn')
@@ -346,18 +359,18 @@ taskInput.addEventListener('keyup', (event) => {
 function handleTaskSetting(event) {
   currentTask = event.target.parentNode.id.slice(5)
   currentTaskNode = event.target.parentNode;
-  console.log(currentTaskNode.getBoundingClientRect())
   let boundingClientRect = currentTaskNode.getBoundingClientRect()
-  console.log("Click: " , currentTask)
-  sessionStorage.setItem("currentTask", currentTask);
+  sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
+  sessionStorage.setItem('isEditing', '1')
+
   taskSetting.classList.add("enable")
   taskSetting.classList.remove("disable")
   taskSettingInner.style.top = boundingClientRect.top + "px";
   taskSettingInner.style.left = boundingClientRect.left + "px";
   taskSettingInner.style.transform = "translateX(0)";
+
   taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').textContent.trim();
   taskInput.focus();
-  console.log("Open: ", sessionStorage.getItem("currentTask"))
 
 }
 
@@ -371,6 +384,7 @@ taskSettingClose.addEventListener("click", (event) => {
 taskSave.addEventListener("click", (event) => {
   let editTaskUrl = "http://localhost:8080/api/v1/task/"
   let newTaskContent = taskInput.value
+  console.log("ysuo", newTaskContent)
   if (newTaskContent == '') {
     throwToastEmptyTaskName();
   } else if (newTaskContent != '' && newTaskContent.length > 25) {
@@ -387,11 +401,15 @@ taskSave.addEventListener("click", (event) => {
           taskContent: newTaskContent,
       })})
       .then(() => {
-        console.log("sole: ", currentTaskNode)
-        currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
-        taskSettingClose.click();
       })
-  }
+    }
+
+    currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
+    taskSettingClose.click();
+
+  sessionStorage.setItem('isEditing', '0')
+
+
 })
 
 taskDelete.addEventListener("click", () => {
@@ -531,7 +549,9 @@ function throwUnknownError() {
   }, 2000)
 }
 
-////////////////////////////////
+
+///////////////////////////////////////////////////////////////
+// Collab
 
 const collaboratorList = $('.workspace__collaborator-list');
 const addCollaboratorBtn = $('.workspace__add-collaborator-btn')

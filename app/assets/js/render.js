@@ -19,7 +19,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 3000)
+}, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -31,13 +31,13 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
-    let oldBoardLists = $$('.workspace__board-list')
+    let oldBoardLists = $$('.workspace__board-list-scrollable')
     let scrollRule = {}
     let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
 
     oldBoardLists.forEach((element) => {
-        scrollRule[element.id] = element.scrollTop
-        element.remove();
+        scrollRule[element.parentNode.id] = element.scrollTop
+        element.parentNode.remove();
     })
 
     board.getAllList().forEach(function (list) {
@@ -70,12 +70,16 @@ function renderBoard(board) {
             });
             let html = `  
             <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
+                <div class="workspace__board-list-header-wrapper">
                 <h1 class="workspace__board-list-header">
                     ${list.listName}
                 </h1>
                 <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
-
+                </div>
+                <div class="workspace__board-list-scrollable">
                     ${listHTML}
+                </div>
+
                 <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                 <div class="workspace__add-task-wrapper">
                     <h2 class="workspace__submit-title">Enter new task:</h2>
@@ -86,7 +90,7 @@ function renderBoard(board) {
                     </button>
                     
                 </div>
-            </div>
+            </>
               `;
 
             
@@ -104,8 +108,9 @@ function renderBoard(board) {
 
 function setScrollRule(scrollRule) {
     for (const [key, value] of Object.entries(scrollRule)) {
-        let list = workspaceBoard.querySelector('#' + key)
-        if (list != null) {
+        let temp = workspaceBoard.querySelector('#' + key)
+        if (temp != null) {
+            let list = temp.querySelector('.workspace__board-list-scrollable')
             list.scrollTop = value
         }
     }

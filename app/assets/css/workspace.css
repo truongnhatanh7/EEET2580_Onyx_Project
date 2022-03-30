@@ -181,7 +181,8 @@ input[type="text"] {
     max-width: 360px;
     min-width: 360px;
     height: fit-content;
-    overflow-y: auto;
+    
+    overflow-y: hidden;
     max-height: 98%;
     margin-left: 32px;
     margin-bottom: 32px;
@@ -190,11 +191,29 @@ input[type="text"] {
     position: relative;
     overflow-x: hidden;
     transition: 0.3s;
+    display: flex;
+    flex-direction: column;
 
 }
 
+.workspace__board-list-scrollable {
+    overflow-y: auto;
+    height: 70%;
+    position: relative;
+    overflow-x: hidden;
+    margin-bottom: 16px;
+    border-radius: 16px;
+
+}
+
+.workspace__add-task-btn {
+    width: fit-content;
+}
+
+
+
 .workspace__board-list:hover{
-    box-shadow: var(--box-shadow);
+    /* box-shadow: var(--box-shadow); */
 }
 
 .workspace__board-list ~ .workspace__add-task-wrapper {
@@ -209,22 +228,23 @@ input[type="text"] {
     box-shadow: var(--box-shadow);
 }
 
+.workspace__board-list-header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .workspace__board-list-header {
-    font-weight: 700;
+    font-weight: 600;
     font-size: 2.5rem;
     padding: 16px 12px;
-    margin-bottom: 16px;
-    margin-left: 0;
-    outline: none;
     min-height: fit-content;
-    position: sticky;
-    z-index: 30;
-    top: -24px;
     min-width: 310px;
     background-color: var(--white);
-    opacity: 1;
-    box-shadow: none;
 }
+
+
 
 .workspace__board-list-header:hover + .workspace__board-list-delete {
     display: block;
@@ -263,18 +283,15 @@ input[type="text"] {
 .workspace__board-list-delete-icon {
     color: var(--soft-pink);
     opacity: 0.5;
-    position: absolute;
-    right: 16px;
-    top: 50%;
-    transform: translateY(-50%);
+    transform: translateX(-32px);
+    font-size: 1.6rem;
     display: block;
-    padding: 4px;
+    padding: 8px;
+
+  
 }
 
 .workspace__board-list-delete {
-    top: 46px;
-    right: 41px;
-    font-size: 1.6rem;
     display: none;
 }
 
@@ -305,6 +322,7 @@ input[type="text"] {
     margin-left: 32px;
 
 }
+
 
 .workspace__add-task-btn,
 .workspace__submit-task-btn,
