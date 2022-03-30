@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/css/base.css">
     <link rel="stylesheet" href="/assets/css/navbar.css">
     <link rel="stylesheet" href="/assets/css/homepage.css">
+    <link rel="stylesheet" href="./assets/css/homepage-animation.css">
 
     <!-- jquery hosted by google -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -17,6 +18,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- link font awesome  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>OnyX</title>
 </head>
@@ -24,26 +27,24 @@
     
     
     <!-- Start of the header -->
-    <header>
-        <div class="nav-wrapper">
-            <nav>
-                <div class="navbar__name logo-font">
-                    ONYX
-                </div>            
-                <div class="navbar__menu">
-                    <a class="navbar__menu-element-link " href="#">Home</a>
-                    <a class="navbar__menu-element-link" href="#">About</a>
-                    <a class="navbar__menu-element-link" href="#">Pricing</a>
+    <header class="flex">
+        <div class="nav-wrapper flex">
+            <nav class="flex flex-align-row">
+                <div class="navbar__name">
+                    <a href="#" class="navbar__name-text">ONYX</a>            
                 </div>
-                <div class="navbar__btnwrapper">
-                    <button OnClick="location.href='./login.html'" class="btn navbar__btn">Login
-                        <!-- add Workspace button later -->
-                        <svg class="navbar__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                            <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                        </svg>
+                <div class="navbar__menu flex flex-align-row">
+                    <a class="navbar__menu-element black" href="#">Home</a>
+                    <a class="navbar__menu-element black" href="#">About</a>
+                    <a class="navbar__menu-element black" href="#">Pricing</a>
+                    <a class="navbar__menu-element black" href="#">Contact</a>
+                </div>
+                <div class="navbar__btn-wrapper flex flex-align-row">
+                    <button OnClick="location.href='./login.html'" class="btn navbar__btn white flex flex-align-row">
+                        Login
+                        <i class="navbar__btn-icon fa-solid fa-caret-right"></i>
                     </button>
-                </div>
-                
+                </div>     
             </nav>        
         </div>
     </header>
@@ -51,68 +52,61 @@
     
     <!-- Start of the main -->
     <main>
-            <div class="main__slider-wrapper">
+        <!-- main text -->
+        <div class="main__slider-wrapper flex">       
+            <!-- <div > -->
+                <img class="main__slider-first" src="./assets/img/homepage/main-slider/main-slider-text.svg" alt="Welcome img">
+            <!-- </div> -->
+            <!-- <div class="main__slider-second"> -->
+                <img class="main__slider-second" src="./assets/img/homepage/main-slider/main-slider-img.svg" alt="Illustration Image">
+            <!-- </div> -->
+        </div>
+
+        <!-- main feature -->
+        <div class="main__feature flex flex-center">
+            <h2 class="feature__header">Feature</h2>
+            <div class="feature__content flex">
+                <!-- start of drag drop card -->
+                <div class="feature__card flex flex-center feature__dragdrop">
+                    <div class="feature__card-img"></div>
+                    <div class="feature__card-text-wrapper flex flex-center align-left">
+                        <h4 class="feature__card-text-title">Drag and Drop</h4>
+                        <p class="feature__card-text-descri">Reallocate Task With Ease saving you the hazzel of repeated deleting and creating!</p>
+                    </div>
+                </div>
+                <!-- end of drag drop card -->
                 
-                <div class="main__slider-text-parent">
-                    <div class="main__slider-text-container">
-                        <div class="main__slider-text"></div>
+                <!-- start of collab card -->
+                <div class="feature__card flex flex-center feature__collab">
+                    <div class="feature__card-text-wrapper flex flex-center align-right">
+                        <h4 class="feature__card-text-title">Collaboration</h4>
+                        <p class="feature__card-text-descri">Real-time sync enable better collaboration and boost productivity</p>
+                    </div>
+                    <div class="feature__card-img"></div>
+                </div>
+                <!-- end of collab card -->
+                
+                <!-- start of darkmode card -->
+                <div class="feature__card flex flex-center feature__darkmode">
+                    <div class="feature__card-img"></div>
+                    <div class="feature__card-text-wrapper flex flex-center align-left">
+                        <h4 class="feature__card-text-title">Dark Mode</h4>
+                        <p class="feature__card-text-descri">Brings comfort to your eyes in the dark</p>
                     </div>
                 </div>
+                <!-- end of darkmode card -->
 
-                <div class="main__slider-img-parent">
-                    <div class="main__slider-img-container">
-                        <div class="main__slider-img"></div>
-                    </div>
-                </div>
             </div>
-            <div class="main__feature">
-                <h2 class="feature__header">Feature</h2>
-                <div class="feature__content">
-                    <!-- start of drag drop card -->
-                    <div class="feature__card feature__dragdrop">
-                        <div class="feature__card-img-wrapper">
-                            <div class="feature__card-img"></div>
-                        </div>
-                        <div class="feature__card-text-wrapper align-left">
-                            <h4 class="feature__card-text-title">Drag and Drop</h4>
-                            <p class="feature__card-text-descri">Reallocate Task With Ease saving you the hazzel of repeated deleting and creating!</p>
-                        </div>
-                    </div>
-                    <!-- end of drag drop card -->
-                    
-                    <!-- start of collab card -->
-                    <div class="feature__card feature__collab">
-                        <div class="feature__card-text-wrapper align-right">
-                            <h4 class="feature__card-text-title">Collaboration</h4>
-                            <p class="feature__card-text-descri">Real-time sync enable better collaboration and boost productivity</p>
-                        </div>
-                        <div class="feature__card-img-wrapper">
-                            <div class="feature__card-img"></div>
-                        </div>
-                    </div>
-                    <!-- end of collab card -->
-                    
-                    <!-- start of darkmode card -->
-                    <div class="feature__card feature__darkmode">
-                        <div class="feature__card-img"></div>
-                        <div class="feature__card-text-wrapper align-left">
-                            <h4 class="feature__card-text-title">Dark Mode</h4>
-                            <p class="feature__card-text-descri">Brings comfort to your eyes in the dark</p>
-                        </div>
-                    </div>
-                    <!-- end of darkmode card -->
-
-                </div>
-            </div>
-        </main>
-        <!-- End of the main -->
+        </div>
+    </main>
+    <!-- End of the main -->
         
-        <!-- Start of the footer -->
-        <footer>
-            <div class="footer__logo logo-font">ONYX</div>
-            <div class="footer__copyrights">@ reserved 2020</div>
-        </footer>
-        <!-- End of the footer -->
+    <!-- Start of the footer -->
+    <footer class="flex flex-align-row">
+        <div class="footer__logo logo-font">ONYX</div>
+        <div class="footer__copyrights">@ reserved 2020</div>
+    </footer>
+    <!-- End of the footer -->
 
  
  

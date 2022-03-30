@@ -54,12 +54,29 @@ html {
     font-family: 'Montserrat', sans-serif;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+/* colors class*/
 .white{
     color: var(--white) !important;
 }
 .black{
     color: var(--black) !important;
 }
+
+
+/* flex */
+.flex {
+    display: flex;
+    gap: var(--gap, 0);
+}
+.flex-align-row {
+    align-items: center;
+}
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+/* end flex */
+
 .logo-font {
     font-family: 'Poppins', sans-serif;
     font-size: 4rem;
