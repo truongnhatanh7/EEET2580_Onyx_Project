@@ -2,11 +2,14 @@
 @import "workspace_status.css";
 @import "workspace_task_setting.css";
 
+html {
+    overflow: hidden;
+}
+
 .workspace-root {
     min-height: 100vh;
     color: var(--black);
     position: relative;
-    
 }
 
 input[type="text"] {
