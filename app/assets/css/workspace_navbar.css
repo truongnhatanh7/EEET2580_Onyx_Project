@@ -12,6 +12,7 @@
     justify-content: space-between;
     color: var(--black);
     z-index: 3;
+    box-shadow: var(--box-shadow);
 }
 
 .workspace__navbar-left-wrapper {

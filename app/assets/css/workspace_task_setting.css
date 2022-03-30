@@ -1,4 +1,4 @@
-
+@import "./workspace_navbar_user.css";
 .workspace__task-setting {
     height: 100%;
     width: 100%;
@@ -9,6 +9,7 @@
     bottom: 0;
     left: 0;
     z-index: 3;
+    animation: slideIn 0.3s;
 }
 
 .workspace__task-setting-wrapper {
@@ -23,6 +24,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 20px;
+    align-items: flex-end;
 }
 
 .workspace__task-setting-close {
@@ -34,7 +36,7 @@
     position: absolute;
     right: -68px;
     border-radius: 20px;
-    /* For animation placeholder */
+    /* animation: slideIn 0.3s; */
 }
 
 /* .workspace__task-setting-title {
@@ -51,6 +53,7 @@
     border-radius: 20px;
     outline: var(--soft-pink);
     font-size: 1.6rem;
+    width: 100%;
 }
 
 .workspace__task-setting-btn {
