@@ -119,10 +119,12 @@
     padding: 12px 20px;
 }
 .list-content_wrapper:hover{
-    background-color: var(--white-color);
-    color: var(--white);
+    background-color: var(--soft-pink);
     cursor: pointer;
     border-radius: 20px;
+}
+.list-content_wrapper:hover .list-content{
+    color: var(--constant-white);
 }
 .list-content{
     text-decoration: none;
