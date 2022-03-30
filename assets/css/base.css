@@ -7,16 +7,23 @@ html{
     font-family: "Poppins", sans-serif !important;
     font-size: 62.5%;
     width: 100%;
+    overflow: auto;
+}
+body{
+    overflow: auto;
+    /* width: 100%; */
+    transition: 0.3s;
+
 }
 :root {
     --blue: #1b73e7;
     --black: #000;
-    --white: #fff;
-    --dark-light-white: #fff;
-    --constant-white: #fff;
+    --white: #e9e9e9;
+    --dark-light-white: #f1f1f1;
+    --constant-white: #f1f1f1;
     --light-blue: #C4DBFA;
     --figma-gray: #f1f1f1;
-    --gray: #F7F7F7;
+    --gray: #dddddd;
     --lm-only-gray: #F7F7F7;
     --focus-gray: #ccc;
     --dark-gray: #757575;
@@ -24,7 +31,10 @@ html{
     --light-red: #f87ea1;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
-    --purple: #6c6cff;
+    --task-color: #f1f1f1;
+    --box-shadow: -24px 24px 48px rgba(217, 217, 217, 0.2), 24px -24px 48px rgba(217, 217, 217, 0.2), -24px -24px 48px rgba(255, 255, 255, 0.9), 24px 24px 60px rgba(217, 217, 217, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(217, 217, 217, 0.5);
+    --box-shadow-engrave: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
+    --task-shadow: rgba(0, 0, 0, 0.034) 0px 3px 12px;
 
     /* Default color */
     --white-color: #F1F1F1;
@@ -41,12 +51,17 @@ html{
     --feature-bar-width: 20.6rem;
 }
 [data-theme="dark"] {
-    --white: #1e1e1e;
+    --task-color: #282937;
+    --white: #30313E;
+    --white-color: #282937;
     --black: #fff;
-    --gray: #121212;
+    --gray: #282937;
     --dark-gray: #fff;
     --lm-only-gray: #fff;
     --blue: #fff;
+    --box-shadow: -15px 15px 30px rgba(28, 29, 39, 0.2), 15px -15px 30px rgba(28, 29, 39, 0.2), -15px -15px 30px rgba(52, 53, 72, 0.9), 15px 15px 38px rgba(28, 29, 39, 0.9), inset 1px 1px 2px rgba(52, 53, 72, 0.3), inset -1px -1px 2px rgba(28, 29, 39, 0.5);
+    --box-shadow-engrave: 0;
+    --task-shadow: rgba(0, 0, 0, 0.103) 0px 5px 15px 0px;
 }
 
 html {
@@ -82,6 +97,7 @@ html {
     font-weight: 400;
     font-family: 'poppins', sans-serif;
     text-align: center;
+    transition: 0.3s;
 }
 
 .btn:hover {
@@ -100,7 +116,7 @@ html {
     position: absolute;
     background-color: transparent;
     bottom: 0px;
-    z-index: 2;
+    z-index: 9999;
     left: 0;
     right: 0;
 }
@@ -132,16 +148,19 @@ html {
 
 .enable {
     display: block !important;
+    transition: 0.3s;
 }
 
 .disable {
     display: none !important;
+    transition: 1s !important;
 }
 
 ::-webkit-scrollbar {
     width: 8px;
     border-radius: 16px;
     height: 8px;
+    display: none;
   }
 
 ::-webkit-scrollbar-track {
@@ -149,7 +168,7 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: transparent !important;
+    background: var(--gray);
     border-radius: 16px;
     
 }
@@ -209,4 +228,9 @@ html {
     font-size: 17px;
     font-weight: 300;
     padding: 2.5rem;
+}
+
+input {
+    font-family: "Poppins", sans-serif !important;
+
 }

@@ -23,23 +23,48 @@
         <div class="dashboard-wrapper">
             <header class="dashboard__header">
                 <a href="../index.html" class="dashboard__return"><i class="fa-solid fa-arrow-left dashboard__return-arrow"></i>Return to homepage</a>
-                <h1 class="dashboard__title">Your project</h1>
+                <div class="dashboard-task__wrapper">
+                    <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img">
+                
+                    <div class="dashboard-list__wrapper">
+                        <div class="dashboard-list-img__wrapper">
+                            <span>"Thai Manh Phi"</span>
+                            <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img-active">
+                        </div>
+                        <table class="dashboard-list-table">
+                            <tr class="list-content_wrapper">
+                                <td>
+                                    <a href="" class="list-content">
+                                        Your Profile
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr class="list-content_wrapper">
+                                <td>
+                                    <a href="" class="list-content"> 
+                                        Settings 
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
             </header>
     
+            <h1 class="dashboard__title">Your project</h1>
+
             <section class="dashboard__project-list">
                 <div class="dashboard__project-card" id="dashboard__add-card">
                     <button class="dashboard__project-add-btn"><i class="fa-solid fa-plus dashboard__project-create"></i></button>
                 </div>
-    
-    
             </section>
     
             <section class="dashboard__modal-create dashboard__modal-create--disable">
                 <div class="dashboard__modal-wrapper">
                     <label class="dashboard__modal-title">
-                        Your project name?
+                        Create new workspace
                     </label>
-                    <input type="text" class="dashboard__modal-input"/>
+                    <input type="text" class="dashboard__modal-input" placeholder="Enter your workspace's name"/>
                     <button class="dashboard__modal-btn btn">Create</button>
                 </div>
             </section>

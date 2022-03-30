@@ -16,14 +16,35 @@ const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
+////////////////////////////////////////////////////////////////////////////////
+// Board 
+
+board.addEventListener('wheel', event => {
+  if (!event.deltaY) {
+    return;
+  }
+  if (event.target.classList.contains('workspace__board')) {
+    event.target.scrollLeft += event.deltaY + event.deltaX;
+    event.preventDefault();
+  }
+})
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+document.addEventListener('onmousedown', (event) => {
+  sessionStorage.setItem('isEditing', '1')
+})
+
+document.addEventListener('onmouseup', (event) => {
+  sessionStorage.setItem('isEditing', '0')
+})
+
 document.addEventListener("click", (event) => {
-    if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) {
+    if (event.target.closest(".workspace__add-list-wrapper") == null && event.target != addListBtn) { // Escape add list
       closeSubmitList.click();
     }
-    let currentList = board.querySelector('.modifying');
+
+    // let currentList = board.querySelector('.modifying');
     let outsideClick = false;
     let lists = board.querySelectorAll('.workspace__board-list:not(.modifying)')
 
@@ -87,13 +108,20 @@ submitList.addEventListener("click", (event) => {
           .then((response) => response.json())
           .then((data) => {
               let html = `  
-                  <div class="workspace__board-list" ondragover="handleDragOver(event)" id="${
+                  <div class="workspace__board-list" id="${
                       "list_" + data.listId
                   }">
+                  <div class="workspace__board-list-header-wrapper">
                     <h1 class="workspace__board-list-header" >
                       ${listName}
                     </h1>
                     <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
+                  </div>
+
+                  <div class="workspace__board-list-scrollable" ondragover="handleDragOver(event)">
+                  
+                  </div>
+
                     <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                     <div class="workspace__add-task-wrapper">
                       <h2 class="workspace__submit-title">Enter new task:</h2>
@@ -107,6 +135,7 @@ submitList.addEventListener("click", (event) => {
                 `;
               let para = document.createRange().createContextualFragment(html);
               board.insertBefore(para, addListBtnWrapper);
+
             })
             .then(() => {
               addListBtn.click(); // Rapid insert
@@ -149,14 +178,14 @@ function throwToastEmptyListName() {
 }
 
 function handleDeleteList(event) {
-  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.id.slice(5).toString();
+  let deleteListUrl = "http://localhost:8080/api/v1/list/" + event.target.parentNode.parentNode.id.slice(5).toString();
   fetch(deleteListUrl, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json"
     }
   })
-  event.target.parentNode.remove();
+  event.target.parentNode.parentNode.remove();
 }
 
 
@@ -173,6 +202,8 @@ function handleCloseTaskAdd() {
       addTaskBtn.classList.add('enable')
       addTaskBtn.classList.remove('disable')
       currentModifier.classList.remove("modifying")
+      sessionStorage.setItem('isEditing', '0')
+
     }
 
 }
@@ -182,10 +213,10 @@ function triggerModifying(event) {
   event.target.parentNode.classList.add('modifying');
   event.target.classList.add("disable");
   event.target.classList.remove("enable");
+  sessionStorage.setItem('isEditing', '1')
 }
 
 function submitTaskByKeyboard(event, taskBtn) {
-  event.stopPropagation();
   event.preventDefault();
     if (event.keyCode == 13) {
         taskBtn.click();
@@ -195,8 +226,10 @@ function submitTaskByKeyboard(event, taskBtn) {
 function handleAddTask(event) {
     if (!board.querySelector(".modifying") && addListSection.classList.contains('disable')) {
       triggerModifying(event)
-  
+      
       let currentListId = event.target.parentNode.id.slice(5);
+      // console.log(event.target.parentNode);
+      // console.log(event.target.parentNode.id.slice(5))
       let tempArray = event.target.parentNode.childNodes;
       let taskFactory = tempArray[tempArray.length - 2];
       taskFactory.classList.add("enable");
@@ -224,6 +257,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(
       function() {
         console.log("DB Task add called")
+
         if (taskInput.value != "" && taskInput.value.length < 50) {
           let createTaskUrl =
               "http://localhost:8080/api/v1/task/" + currentListId.toString();
@@ -259,7 +293,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                   let para = document
                       .createRange()
                       .createContextualFragment(html);
-                  event.target.parentNode.insertBefore(para, event.target);
+                  event.target.parentNode.querySelector('.workspace__board-list-scrollable').appendChild(para);
               })
               .then(() => {
                 rapidInputTask(event, taskFactory, taskInput)
@@ -306,6 +340,9 @@ function throwToastEmptyTaskName() {
 }
 
 ////////////////////////////////
+// Task setting
+
+
 const taskSetting = $('.workspace__task-setting')
 const taskSettingInner = $('.workspace__task-setting-wrapper')
 const taskSave = $('.workspace__task-setting-btn')
@@ -335,18 +372,18 @@ taskInput.addEventListener('keyup', (event) => {
 function handleTaskSetting(event) {
   currentTask = event.target.parentNode.id.slice(5)
   currentTaskNode = event.target.parentNode;
-  console.log(currentTaskNode.getBoundingClientRect())
   let boundingClientRect = currentTaskNode.getBoundingClientRect()
-  console.log("Click: " , currentTask)
-  sessionStorage.setItem("currentTask", currentTask);
+  sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
+  sessionStorage.setItem('isEditing', '1')
+
   taskSetting.classList.add("enable")
   taskSetting.classList.remove("disable")
   taskSettingInner.style.top = boundingClientRect.top + "px";
   taskSettingInner.style.left = boundingClientRect.left + "px";
   taskSettingInner.style.transform = "translateX(0)";
+
   taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').textContent.trim();
   taskInput.focus();
-  console.log("Open: ", sessionStorage.getItem("currentTask"))
 
 }
 
@@ -376,11 +413,11 @@ taskSave.addEventListener("click", (event) => {
           taskContent: newTaskContent,
       })})
       .then(() => {
-        console.log("sole: ", currentTaskNode)
         currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
         taskSettingClose.click();
       })
-  }
+    }
+  sessionStorage.setItem('isEditing', '0')
 })
 
 taskDelete.addEventListener("click", () => {
@@ -433,3 +470,199 @@ function switchTheme(e) {
 darkModeSwitch.addEventListener("change", switchTheme);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Workspace status 
+
+const statusBtn = $('.workspace__navbar-progress-btn');
+const workspaceStatus = $('.workspace__status')
+const workspaceStatusWrapper = $('.workspace__status-wrapper')
+const workspaceStatusTitle = $('.workspace__status-title')
+const closeWorkspaceStatus = $('.workspace__status-close-icon')
+const preDeleteBtn = $('.workspace__delete-workspace-btn-pre');
+const preDeleteWrapper = $('.workspace__delete-confirmation')
+const preDeleteInput = $('.workspace__delete-confirmation-input');
+const postDeleteBtn = $('.workspace__delete-workspace-btn-post')
+const deleteWorkspaceUrl = "http://localhost:8080/api/v1/workspace/delete-workspace/"
+
+statusBtn.addEventListener('click', () => {
+  workspaceStatus.classList.add("enable");
+  workspaceStatus.classList.remove("disable");
+  workspaceStatusTitle.focus();
+
+
+})
+
+workspaceStatusWrapper.addEventListener('click', (event) => {
+  event.stopPropagation();
+})
+
+workspaceStatus.addEventListener('click', (event) => {
+  closeWorkspaceStatus.click();
+})
+
+closeWorkspaceStatus.addEventListener('click', () => {
+  workspaceStatus.classList.remove("enable");
+  workspaceStatus.classList.add("disable");
+
+  preDeleteWrapper.classList.remove('enable');
+  preDeleteWrapper.classList.add('disable')
+  preDeleteBtn.classList.remove('disable');
+  preDeleteBtn.classList.add('enable');
+  preDeleteInput.value = '';
+})
+
+preDeleteBtn.addEventListener('click', () => {
+  preDeleteWrapper.classList.add('enable');
+  preDeleteWrapper.classList.remove('disable')
+  preDeleteBtn.classList.add('disable');
+  preDeleteBtn.classList.remove('enable');
+})
+
+postDeleteBtn.addEventListener('click', () => {
+
+  if (preDeleteInput.value == 'delete this workspace') {
+    let url = deleteWorkspaceUrl + sessionStorage.getItem('currentBoardId');
+
+    fetch(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }})
+      .then(
+        location.assign("./dashboard.html")
+      )
+  } else {
+    throwInvalidInput();
+  }
+
+})
+
+function throwInvalidInput() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Invalid input"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
+function throwUnknownError() {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Unknown error"
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
+
+///////////////////////////////////////////////////////////////
+// Collab
+
+const collaboratorList = $('.workspace__collaborator-list');
+const addCollaboratorBtn = $('.workspace__add-collaborator-btn')
+const addCollaboratorInput = $('.workspace__add-collaborator-input')
+
+fetchUserInWorkspace()
+
+function fetchUserInWorkspace() {
+  let workspaceUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + sessionStorage.getItem("currentBoardId")
+  fetch(workspaceUrl)
+  .then(response => response.json())
+  .then(workspace => {
+    workspaceStatusTitle.textContent = workspace.workspaceTitle
+    return workspace.users
+  })
+  .then(users => {
+    renderUserInWorkspace(users)
+  })
+}
+
+function renderUserInWorkspace(users) {
+  if (users.length == 0) {
+    collaboratorList.innerHTML = ""
+    // Warning to delete workspace
+    preDeleteInput.value = 'delete this workspace';
+    postDeleteBtn.click();
+    location.assign('./dashboard.html')
+    
+  } else {
+    collaboratorList.innerHTML = ""
+    users.forEach(user => {
+      let tempHtml = `
+      <div class="workspace__collaborator" id="user_${user.userId} ">
+        <h3 class="workspace__collaborator-name" >${user.name}</h3>
+        <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+      </div>
+      `
+      let para = document.createRange().createContextualFragment(tempHtml);
+      collaboratorList.appendChild(para)
+    })
+  }
+}
+
+document.addEventListener('click', (event) => {
+  if (event.target.classList.contains('workspace__collaborator-delete')) {
+    handleRemoveCollaborator(event.target.parentNode.id.slice(5))
+  }
+})
+
+function handleRemoveCollaborator(id) {
+  let removeCollaboratorUrl = "http://localhost:8080/api/v1/user/remove-user-from-workspace/" 
+                              + sessionStorage.getItem("currentBoardId") + "/" + id
+  fetch(removeCollaboratorUrl, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json"
+    }})
+  .then(() => {
+    fetchUserInWorkspace()
+  })
+}
+
+addCollaboratorBtn.addEventListener('click', () => {
+  if (addCollaboratorInput.value == '') {
+    throwInvalidInput();
+  } else {
+    let getAllUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
+    fetch(getAllUsersUrl)
+    .then(response => response.json())
+    .then(users => {
+      let found = false;
+      users.forEach(user => {
+        if (user.username == addCollaboratorInput.value) {
+          found = true;
+          handleAddToWorkspace(user)
+        }
+      })
+      if (!found) {
+        throwUserNotFound()
+      }
+    })
+  }
+})
+
+function handleAddToWorkspace(user) {
+  let addCollaboratorUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/" + sessionStorage.getItem("currentBoardId") + "/" + user.userId
+  fetch(addCollaboratorUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    }})
+    .then(() => {
+      fetchUserInWorkspace()
+    })
+}
+
+function throwUserNotFound(username) {
+  toastBox.classList.add("enable");
+  toastBox.classList.remove("disable");
+  toastMessage.innerHTML = "Username: " + username + " not found!";
+  setTimeout(() => {
+    toastBox.classList.remove("enable");
+    toastBox.classList.add("disable");
+  }, 2000)
+}
+
