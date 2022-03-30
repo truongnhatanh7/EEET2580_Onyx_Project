@@ -202,7 +202,7 @@ input[type="text"] {
     position: relative;
     overflow-x: hidden;
     margin-bottom: 16px;
-    border-radius: 16px;
+    /* border-radius: 18px; */
 
 }
 

@@ -408,7 +408,7 @@ taskSave.addEventListener("click", (event) => {
     taskSettingClose.click();
 
   sessionStorage.setItem('isEditing', '0')
-
+    
 
 })
 

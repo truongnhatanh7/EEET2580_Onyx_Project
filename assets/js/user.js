@@ -77,6 +77,8 @@ function throwToastWrongUsernameOrPassword() {
 
 ////////////////////////////////////////////////////////////////////////
 const signUpName = $('#sign-up-name')
+const signUpFirstName = $('#sign-up-first')
+const signUpLastName = $('#sign-up-last')
 const signUpUsername = $('#sign-up-username');
 const signUpPassword = $('#sign-up-password');
 const signUpPasswordConfirm = $('#sign-up-password-retype')
@@ -88,7 +90,7 @@ signUpBtn.addEventListener('click', () => {
     if (signUpPassword.value != signUpPasswordConfirm.value) {
         throwToastMismatchPassowrd()
 
-    } else if (signUpName == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
+    } else if (signUpFirstName == '' || signUpLastName == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
         throwToastEmptyField();
     }
     
@@ -108,7 +110,6 @@ signUpBtn.addEventListener('click', () => {
             })
             .then(() => {
                 if (validCreateUser) {
-
                     createNewUserAPI()
                 }
             })
@@ -119,14 +120,13 @@ signUpBtn.addEventListener('click', () => {
 })
 
 function createNewUserAPI() {
-    console.log("create new user...")
     fetch(createNewUser, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            name:  signUpName.value,
+            name:  signUpFirstName.value + " " + signUpLastName.value,
             username: signUpUsername.value,
             password: signUpPassword.value
         }),
