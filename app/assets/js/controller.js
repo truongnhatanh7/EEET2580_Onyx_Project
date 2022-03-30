@@ -384,7 +384,6 @@ taskSettingClose.addEventListener("click", (event) => {
 taskSave.addEventListener("click", (event) => {
   let editTaskUrl = "http://localhost:8080/api/v1/task/"
   let newTaskContent = taskInput.value
-  console.log("ysuo", newTaskContent)
   if (newTaskContent == '') {
     throwToastEmptyTaskName();
   } else if (newTaskContent != '' && newTaskContent.length > 25) {
@@ -401,15 +400,11 @@ taskSave.addEventListener("click", (event) => {
           taskContent: newTaskContent,
       })})
       .then(() => {
+        currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
+        taskSettingClose.click();
       })
     }
-
-    currentTaskNode.querySelector('.workspace__board-list-task-content').textContent = sessionStorage.getItem("currentTaskContent")
-    taskSettingClose.click();
-
   sessionStorage.setItem('isEditing', '0')
-    
-
 })
 
 taskDelete.addEventListener("click", () => {
