@@ -16,6 +16,22 @@ const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 
+////////////////////////////////////////////////////////////////////////////////
+board.addEventListener('wheel', event => {
+  if (!event.deltaY) {
+    return;
+  }
+  if (event.target.classList.contains('workspace__board')) {
+    event.target.scrollLeft += event.deltaY + event.deltaX;
+    event.preventDefault();
+  }
+
+})
+
+// board.addEventListener("mousemove", event => {
+//   console.log(event.target)
+// })
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
