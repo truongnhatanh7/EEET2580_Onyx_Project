@@ -18,7 +18,7 @@ body{
 :root {
     --blue: #1b73e7;
     --black: #000;
-    --white: #e9e9e9;
+    --white: #f0f0f0;
     --dark-light-white: #f1f1f1;
     --constant-white: #f1f1f1;
     --light-blue: #C4DBFA;
@@ -31,13 +31,14 @@ body{
     --light-red: #f87ea1;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
-    --task-color: #f1f1f1;
+    --task-color: #ffffff;
     --box-shadow: -24px 24px 48px rgba(217, 217, 217, 0.2), 24px -24px 48px rgba(217, 217, 217, 0.2), -24px -24px 48px rgba(255, 255, 255, 0.9), 24px 24px 60px rgba(217, 217, 217, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(217, 217, 217, 0.5);
     --box-shadow-engrave: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
     --task-shadow: rgba(0, 0, 0, 0.034) 0px 3px 12px;
+    --nav-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
 
     /* Default color */
-    --white-color: #F1F1F1;
+    --white-color: #ffffff;
     --pink-color: #21209C;
     --hard-pink: #4E589C;
     --soft-pink: #6371EA;

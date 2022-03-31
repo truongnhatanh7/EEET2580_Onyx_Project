@@ -5,14 +5,13 @@
     width: 100%;
     height: 100vh;
     position: relative;
-    background-color: white;
 }
 
 .dashboard__header {
     color: black;
     backdrop-filter: blur(28px);
     background-color: #ffffff9a;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: var(--nav-shadow);
     position: fixed;
     top: 0;
     left: 240px;

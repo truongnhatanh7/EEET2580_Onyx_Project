@@ -127,7 +127,7 @@
     margin: 0 auto;
     overflow: hidden;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    background: var(--dark-gray);
+    background: var(--soft-pink);
     border-radius: 100rem;
     transition: background-color 0.25s linear;
     margin-right: 8px;
@@ -150,11 +150,11 @@
 }
 
 .workspace__switch-input:checked + .workspace__switch {
-    background-color: var(--black);
+    background-color: var(--hard-pink);
 }
 
 .workspace__switch-input:checked + .workspace__switch:after {
     transform: translateX(2.6rem);
-    background-color: black;
+    background-color: var(--constant-white);
 }
 
