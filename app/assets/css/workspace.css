@@ -80,9 +80,6 @@ input[type="text"] {
     height: 70%;
     position: relative;
     overflow-x: hidden;
-    margin-bottom: 16px;
-    /* border-radius: 18px; */
-
 }
 
 .workspace__add-task-btn {
@@ -141,7 +138,7 @@ input[type="text"] {
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--task-color);
-    border-radius: 15px;
+    border-radius: 20px;
     margin-bottom: 16px;
     width: 310px;
     padding: 14px;
