@@ -50,14 +50,14 @@ main{
     border-radius: 25%;
     background-color: black;
     animation-name: scroll;
-    animation-duration: 1.8s;
+    animation-duration: 2s;
     animation-timing-function: cubic-bezier(.15,.41,.69,.94);
     animation-iteration-count: infinite;
   }
   @keyframes scroll {
-    0% { opacity: 0; }
-    10% { transform: translateY(5px); opacity: 0.8; }
-    100% { transform: translateY(8px); opacity: 0.5;}
+    0% { opacity: 1; }
+    50% { transform: translateY(5px); opacity: 0.8; }
+    100% { transform: translateY(6px); opacity: 0.5;}
   }
 
 .member__wrapper{
