@@ -91,8 +91,13 @@ listNameInput.addEventListener("keyup", function(event) {
 });
 
 submitList.addEventListener("click", (event) => {
+
     if (listNameInput.value != '' && listNameInput.value.length < 25) {
       let listName = listNameInput.value;
+      if (listName.includes("<") || listName.includes(">")) {
+        throwInvalidInput();
+        return;
+      }
       let createListUrl =
           "http://localhost:8080/api/v1/list/" +
           sessionStorage.getItem("currentBoardId").toString();
@@ -382,7 +387,7 @@ function handleTaskSetting(event) {
   taskSettingInner.style.left = boundingClientRect.left + "px";
   taskSettingInner.style.transform = "translateX(0)";
 
-  taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').textContent.trim();
+  taskInput.value = currentTaskNode.querySelector('.workspace__board-list-task-content').innerText.trim();
   taskInput.focus();
 
 }
@@ -397,6 +402,10 @@ taskSettingClose.addEventListener("click", (event) => {
 taskSave.addEventListener("click", (event) => {
   let editTaskUrl = "http://localhost:8080/api/v1/task/"
   let newTaskContent = taskInput.value
+  if (newTaskContent.includes('<') || newTaskContent.includes('>')) {
+    throwInvalidInput();
+    return;
+  }
   if (newTaskContent == '') {
     throwToastEmptyTaskName();
   } else if (newTaskContent != '' && newTaskContent.length > 25) {
