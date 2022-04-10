@@ -70,7 +70,7 @@ main{
 .fourth-member,
 .fifth-member{
     position: sticky;
-    border-radius: 20px 20px 0 0;
+    border-radius: 20px;
 }
 .first-member{
     top: 150px;
@@ -94,7 +94,7 @@ main{
 }
 .fifth-member{
     top: 560px;
-    bottom: -1310px;
+    bottom: -141rem;
 }
 
 .first-member-tag{
@@ -197,7 +197,7 @@ main{
 
 .footer {
     width: 100%;
-    height: 900px;
+    height: 100rem;
 
     padding-top: 700px;
     padding-bottom: 20px;
@@ -208,7 +208,9 @@ main{
 }
 
 @media (max-width: 1350px) {
-
+    main{
+        height: auto;
+    }
     .phone-hidden{
         display: none;
     }
@@ -233,7 +235,6 @@ main{
     .fourth-member,
     .fifth-member{
         position: static;
-        border-radius: 20px;
         margin: 40px 0;
     }
     .first-member{
