@@ -11,50 +11,47 @@ function handleDragStart(event) {
 }
 
 function handleDragEnd(event) {
-
     event.target.classList.remove("workspace__board-list-task--dragging");
-        let taskContent = event.target.textContent.trim();
 
+    let parent = event.target.parentNode;
+    let listId = parent.id.slice(5);
+    if (event.target.parentNode.id.slice(5) == "") {
+        // If event.target return board-list-scrollable
+        parent = parent.parentNode;
+        listId = parent.id.slice(5); // Change it to the outer parent
+    }
 
-        console.log("\n///////MOVE//////\n");
-        let parent = event.target.parentNode;
-        let listId = parent.id.slice(5);
-        if (event.target.parentNode.id.slice(5) == "") {
-            // If event.target return board-list-scrollable
-            parent = parent.parentNode;
-            listId = parent.id.slice(5); // Change it to the outer parent
-        }
-        
-        let moveTaskUrl = "http://localhost:8080/api/v1/task/switchList/" + listId;
-        fetch(moveTaskUrl, {
-            method: "PUT",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                taskId: event.target.id.slice(5)
-            })
-        })
-        
-        let allTasks = parent.querySelectorAll('.workspace__board-list-task');
-        let cur = 0;
-        let setPosUrl = "http://localhost:8080/api/v1/task/setPos/"
-        allTasks.forEach(task => {
-            fetch(setPosUrl + task.id.slice(5) + "/" + cur, {
-                method: "PATCH",
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            cur++;
-        })
-        
+    if (!parent.classList.contains('workspace__board-list')) {
+        return;
+    }
 
+    let moveTaskUrl = "http://localhost:8080/api/v1/task/switchList/" + listId;
+    fetch(moveTaskUrl, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            taskId: event.target.id.slice(5),
+        }),
+    });
 
+    let allTasks = parent.querySelectorAll(".workspace__board-list-task");
+    let cur = 0;
+    allTasks.forEach((task) => {
+        setPos(task.id.slice(5), cur++)
+    });
 
     sessionStorage.setItem("isEditing", "0");
+}
 
-    // }
+function setPos(taskId, pos) {
+    fetch("http://localhost:8080/api/v1/task/setPos/" + taskId + "/" + pos, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+        },
+    });
 }
 
 function handleOnDrag(event) {
