@@ -1,11 +1,11 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
 let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
-let board;
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+let boardObj;
+// const $ = document.querySelector.bind(document);
+// const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
-const addListBtn = $(".workspace__add-list-btn");
-const addListBtnWrapper = $(".workspace__add-list-wrapper");
+// const addListBtn = $(".workspace__add-list-btn");
+// const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
 sessionStorage.setItem('isEditing', '0')
@@ -19,7 +19,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 1000)
+}, 3000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -44,6 +44,10 @@ function renderBoard(board) {
         let listHTML = ``;
 
         if (list !== undefined) {
+            list.tasks.sort(function (a, b) {
+                return a.pos - b.pos;
+            })
+
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
                     let taskHTML = `  
@@ -136,7 +140,7 @@ function getBoardInfo() {
 
 function createBoard(data) {
 
-    board = new Board();
+    boardObj = new Board();
 
     data.forEach(function (list) {
         let tempList = new List();
@@ -145,14 +149,15 @@ function createBoard(data) {
 
         list.tasks.forEach(function (task) {
             let tempTask = new Task()
+            tempTask.setPos(task.pos);
             tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
             tempList.addTask(tempTask);
         });
-        board.addList(tempList);
+        boardObj.addList(tempList);
     });
 
-    return board;
+    return boardObj;
 }
 
 class Board {
@@ -220,9 +225,18 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId) {
+    constructor(taskContent, taskId, pos) {
         this.taskContent = taskContent;
         this.taskId = taskId;
+        this.pos = pos;
+    }
+
+    setPos(pos) {
+        this.pos = pos;
+    }
+
+    getPos() {
+        return this.pos;
     }
 
     setTaskId(taskId) {
