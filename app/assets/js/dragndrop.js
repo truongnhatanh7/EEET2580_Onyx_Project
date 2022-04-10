@@ -12,7 +12,6 @@ function handleDragStart(event) {
 
 function handleDragEnd(event) {
     event.target.classList.remove("workspace__board-list-task--dragging");
-
     let parent = event.target.parentNode;
     let listId = parent.id.slice(5);
     if (event.target.parentNode.id.slice(5) == "") {
