@@ -262,6 +262,8 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(
       function() {
         console.log("DB Task add called")
+        let currentList = $('#list_' + currentListId)
+        let allTasks = currentList.querySelectorAll('.workspace__board-list-task')
 
         if (taskInput.value != "" && taskInput.value.length < 50) {
           let createTaskUrl =
@@ -273,6 +275,7 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
               },
               body: JSON.stringify({
                   taskContent: taskInput.value,
+                  pos: allTasks.length // Set last position in the list
               }),
           })
               .then((response) => response.json())
