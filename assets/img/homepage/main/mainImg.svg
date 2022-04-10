@@ -19,10 +19,10 @@ preserveAspectRatio="xMinYMin meet">
 <rect opacity="0.7" x="431" y="241" width="125" height="16" rx="8" fill="#282937"/>
 <rect opacity="0.24" x="252" y="353" width="497" height="30" rx="15" fill="#282937"/>
 <rect x="252" y="1138" width="497" height="10" rx="5" fill="#9D9D9D" fill-opacity="0.3"/>
-<path d="M305 607.5C305 604.462 307.462 602 310.5 602H534.5C537.538 602 540 604.462 540 607.5C540 610.538 537.538 613 534.5 613H310.5C307.462 613 305 610.538 305 607.5Z" fill="#D4CFCF" fill-opacity="0.4"/>
+<path d="M305 607.5C305 604.462 307.462 602 310.5 602H534.5C537.538 602 540 604.462 540 607.5V607.5C540 610.538 537.538 613 534.5 613H310.5C307.462 613 305 610.538 305 607.5V607.5Z" fill="#D4CFCF" fill-opacity="0.4"/>
 <rect x="305" y="579" width="285" height="12" rx="6" fill="#D4CFCF" fill-opacity="0.4"/>
 <rect x="744" y="554" width="337" height="92" rx="25" fill="#CCCCCC" fill-opacity="0.1"/>
-<path d="M769 607.5C769 604.462 771.462 602 774.5 602H998.5C1001.54 602 1004 604.462 1004 607.5C1004 610.538 1001.54 613 998.5 613H774.5C771.462 613 769 610.538 769 607.5Z" fill="#D4CFCF" fill-opacity="0.4"/>
+<path d="M769 607.5C769 604.462 771.462 602 774.5 602H998.5C1001.54 602 1004 604.462 1004 607.5V607.5C1004 610.538 1001.54 613 998.5 613H774.5C771.462 613 769 610.538 769 607.5V607.5Z" fill="#D4CFCF" fill-opacity="0.4"/>
 <rect x="769" y="580" width="285" height="11" rx="5.5" fill="#D4CFCF" fill-opacity="0.4"/>
 <rect x="280" y="477" width="148" height="28" rx="14" fill="#C4C4C4" fill-opacity="0.47"/>
 <rect x="744" y="477" width="147" height="28" rx="14" fill="#C4C4C4" fill-opacity="0.5"/>

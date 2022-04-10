@@ -5,110 +5,337 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Link Css file -->
-    <link rel="stylesheet" href="/assets/css/base.css">
-    <link rel="stylesheet" href="/assets/css/navbar.css">
-    <link rel="stylesheet" href="/assets/css/homepage.css">
-    <link rel="stylesheet" href="./assets/css/homepage-animation.css">
-
-    <!-- jquery hosted by google -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
     <!-- Link Poppins font for logo font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- link font awesome  -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <title>OnyX</title>
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- link css -->
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css">
+    <link rel="stylesheet" href="./assets/css/navbar-responsive.css">
+    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <link rel="stylesheet" href="./assets/css/hompage-responsive.css">
+
+    <title>ONYX</title>
 </head>
 <body>
-    
-    
-    <!-- Start of the header -->
-    <header class="flex">
-        <div class="nav-wrapper flex">
-            <nav class="flex flex-align-row">
-                <div class="navbar__name">
-                    <a href="#" class="navbar__name-text">ONYX</a>            
-                </div>
-                <div class="navbar__menu flex flex-align-row">
-                    <a class="navbar__menu-element black" href="#">Home</a>
-                    <a class="navbar__menu-element black" href="#">About</a>
-                    <a class="navbar__menu-element black" href="#">Pricing</a>
-                    <a class="navbar__menu-element black" href="#">Contact</a>
-                </div>
-                <div class="navbar__btn-wrapper flex flex-align-row">
-                    <button OnClick="location.href='./login.html'" class="btn navbar__btn white flex flex-align-row">
-                        Login
-                        <i class="navbar__btn-icon fa-solid fa-caret-right"></i>
-                    </button>
-                </div>     
-            </nav>        
-        </div>
-    </header>
-    <!-- End of the header -->
-    
-    <!-- Start of the main -->
-    <main>
-        <!-- main text -->
-        <div class="main__slider-wrapper flex">       
-            <!-- <div > -->
-                <img class="main__slider-first" src="./assets/img/homepage/main-slider/main-slider-text.svg" alt="Welcome img">
-            <!-- </div> -->
-            <!-- <div class="main__slider-second"> -->
-                <img class="main__slider-second" src="./assets/img/homepage/main-slider/main-slider-img.svg" alt="Illustration Image">
-            <!-- </div> -->
-        </div>
-
-        <!-- main feature -->
-        <div class="main__feature flex flex-center">
-            <h2 class="feature__header">Feature</h2>
-            <div class="feature__content flex">
-                <!-- start of drag drop card -->
-                <div class="feature__card flex flex-center feature__dragdrop">
-                    <div class="feature__card-img"></div>
-                    <div class="feature__card-text-wrapper flex flex-center align-left">
-                        <h4 class="feature__card-text-title">Drag and Drop</h4>
-                        <p class="feature__card-text-descri">Reallocate Task With Ease saving you the hazzel of repeated deleting and creating!</p>
-                    </div>
-                </div>
-                <!-- end of drag drop card -->
-                
-                <!-- start of collab card -->
-                <div class="feature__card flex flex-center feature__collab">
-                    <div class="feature__card-text-wrapper flex flex-center align-right">
-                        <h4 class="feature__card-text-title">Collaboration</h4>
-                        <p class="feature__card-text-descri">Real-time sync enable better collaboration and boost productivity</p>
-                    </div>
-                    <div class="feature__card-img"></div>
-                </div>
-                <!-- end of collab card -->
-                
-                <!-- start of darkmode card -->
-                <div class="feature__card flex flex-center feature__darkmode">
-                    <div class="feature__card-img"></div>
-                    <div class="feature__card-text-wrapper flex flex-center align-left">
-                        <h4 class="feature__card-text-title">Dark Mode</h4>
-                        <p class="feature__card-text-descri">Brings comfort to your eyes in the dark</p>
-                    </div>
-                </div>
-                <!-- end of darkmode card -->
-
-            </div>
-        </div>
-    </main>
-    <!-- End of the main -->
+    <header class="flex flex-center">
         
+        <nav class="flex flex-center-spacebtw nav-transparent">
+            <!-- start of nav logo -->
+            <div class="nav__logo">
+                <a href="#" class="nav__logo-text black">ONYX</a>
+            </div>
+            <!-- end of nav logo -->
+
+            <!-- start of nav menu -->
+            <div class="nav__hamburger-wrapper flex flex-center">
+                <svg id="nav__hamburger" preserveAspectRatio="xMinYMin meet" viewBox="0 0 820 650">
+                  <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="nav__hamburger-top"></path>
+                  <path d="M300,320 L540,320" id="nav__hamburger-middle"></path>
+                  <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="nav__hamburger-bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                </svg>
+              </div>
+            
+            <!-- end of nav menu -->
+
+            <!-- start of nav button -->
+            <button OnClick="location.href='./login.html'" class="btn nav__btn white flex flex-center">
+                <span>Login</span>
+                <i class="nav__btn-icon fa-solid fa-caret-right"></i>
+                <!-- <i class="nav__btnres-icon fa-solid fa-user"></i> -->
+            </button>
+
+            <div class="nav__menu-wrapper">
+                <div class="nav__menu flex flex-center-spacebtw">
+                    <div class="nav__menu-element nav__menu-element-logo">ONYX</div>
+                    <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-house"></i>Home</a>
+
+                    <a href="#" class="nav__menu-element">
+                        <i class="nav__menu-element-icon fa-solid fa-circle-info"></i>About
+                    </a>
+
+                    <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-tags"></i></svg>Pricing</a>
+                    
+                    <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-location-dot"></i>Contact</a>
+                    <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
+                    <!-- log out -->
+                    <!-- <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-right-from-bracket"></i></i>Logout</a> -->
+                </div>
+            </div>
+            <!-- end of nav button -->
+        </nav>
+    </header>
+    
+    <!-- Start of main -->
+    <main>
+        <!-- intro section -->
+        <section class="main__intro flex">
+            <div class="intro__text flex flex-center-spacebtw">
+                <img class="intro__text-img-hello" src="./assets/img/homepage/main/helloText.svg" alt="hello text">
+                <img class="intro__text-img-line" src="./assets/img/homepage/main/lineText.svg" alt="line text">
+                <img class="intro__text-img-collab open" src="./assets/img/homepage/main/collabText.svg" alt="collab text">
+            </div>
+            <img class="intro__img" src="./assets/img/homepage/main/mainImg.svg" alt="Welcome Image">
+        </section>
+        <!-- end intro section -->
+
+        <!-- start feature section -->
+        <section class="main__features flex">
+            <h2 class="features__title">Feature</h2>
+            <div class="features__container flex">
+                <!-- 1 card -->
+                <div class="features__card flex features__dragdrop">
+                    <figure class="features__card-fig flex flex-center">
+                        <!-- <img class="features__card-fig-img" src="./assets/img/homepage/features/dragdrop.svg" alt="Drag Drop Illus"> -->
+                        <svg class="features__card-fig-img">
+                            <use href="#svg__dragdrop"></use>
+                        </svg>
+                    </figure>
+                    <article class=" features__card-article flex flex-center">
+                        <h3 class="parallax">Drag and Drop</h3>
+                        <p>Reallocate Task With Ease saving you the hazzel of repeated deleting and creating!</p>
+                    </article>
+                </div>
+                <!-- 1 card -->
+                <div class="features__card flex features__collab">
+                    <figure class="features__card-fig flex flex-center">
+                        <svg class="features__card-fig-img">
+                            <use href="#svg__collab"></use>
+                        </svg>
+                        <!-- <img class="features__card-fig-img" src="./assets/img/homepage/features/collab.svg" alt="Collab Illus"> -->
+                    </figure>
+                    <article class=" features__card-article flex flex-center">
+                        <h3>Collaboration</h3>
+                        <p>Real-time sync enable better collaboration and boost productivity</p>
+                    </article>
+                </div>
+                <!-- 1 card -->
+                <div class="features__card flex features__darkmode">
+                    <figure class="features__card-fig flex flex-center">
+                        <img class="features__card-fig-img" id="features__img-darkmode" src="./assets/img/homepage/features/darkmode.png" alt="Dark Mode Illus">
+                        <img class="features__card-fig-img" id="features__img-darklight" src="./assets/img/homepage/features/darklight.png" alt="Dark Light Mode Illus">
+                        <!-- <svg class="features__card-fig-img">
+                            <use href="#svg__darklight"></use>
+                        </svg> -->
+                    </figure>
+                    <article class="features__card-article flex flex-center">
+                        <h3>Dark Mode</h3>
+                        <p>Brings comfort to your eyes in the dark</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- end feature section -->
+    </main>
+    <!-- End of main -->
+    
     <!-- Start of the footer -->
-    <footer class="flex flex-align-row">
-        <div class="footer__logo logo-font">ONYX</div>
+    <footer class="footer flex flex-center">
+        <div class="footer__logo flex flex-center logo-font">ONYX</div>
         <div class="footer__copyrights">@ reserved 2020</div>
     </footer>
     <!-- End of the footer -->
 
- 
- 
+
+    <!-- Start of svg container -->
+    <!-- drag drop -->
+    <svg  xmlns="http://www.w3.org/2000/svg">
+        <symbol id="svg__dragdrop"  viewBox="0 0 802 560" fill="none">
+            <g clip-path="url(#clip0_304_2)">
+            <rect width="802" height="560" rx="25" fill="#F1F1F1"/>
+            <g filter="url(#filter0_ddiiii_304_2)">
+            <rect x="451" y="75" width="278" height="280" rx="20" fill="#F1F1F1"/>
+            </g>
+            <g filter="url(#filter1_ddddii_304_2)">
+            <rect x="74" y="75" width="292" height="441" rx="20" fill="#F1F1F1"/>
+            </g>
+            <rect class="svg__dragdrop-destination-rect" x="483.257" y="249.086" width="225.671" height="70.8349" rx="24.5" fill="#C4C4C4" stroke="black" stroke-linecap="round" stroke-dasharray="9 9"/>
+            <rect class="svg__dragdrop-moving-rect" x="248.3" y="218.34" width="234.457" height="73.7253" rx="25" fill="#333" fill-opacity="0.74"/>
+            <path class="svg__dragdrop-moving-line" d="M271.659 266.072C271.659 263.723 273.564 261.819 275.913 261.819H425.73C428.079 261.819 429.983 263.723 429.983 266.072C429.983 268.422 428.079 270.326 425.73 270.326H275.913C273.564 270.326 271.659 268.422 271.659 266.072Z" fill="#FAFAFA" fill-opacity="0.93"/>
+            <rect class="svg__dragdrop-moving-line" x="271.659" y="240.08" width="191.2" height="8.50676" rx="4.25338" fill="#FAFAFA" fill-opacity="0.93"/>
+            <rect x="476.701" y="152.176" width="232.727" height="71.8349" rx="25" fill="#CCCCCC" fill-opacity="0.1"/>
+            <path d="M500.06 194.238C500.06 191.889 501.965 189.984 504.314 189.984H653.265C655.614 189.984 657.519 191.889 657.519 194.238C657.519 196.587 655.614 198.491 653.265 198.491H504.314C501.965 198.491 500.06 196.587 500.06 194.238Z" fill="#D4CFCF" fill-opacity="0.4"/>
+            <rect x="500.06" y="172.025" width="191.2" height="9.45196" rx="4.72598" fill="#D4CFCF" fill-opacity="0.4"/>
+            <rect x="98.6279" y="103.972" width="123.717" height="21.7395" rx="10.8698" fill="#C4C4C4" fill-opacity="0.47"/>
+            <rect x="476.701" y="103.972" width="98.6278" height="21.7395" rx="10.8698" fill="#C4C4C4" fill-opacity="0.5"/>
+            </g>
+            <defs>
+            <filter id="filter0_ddiiii_304_2" x="436" y="60" width="308" height="310" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-1" dy="-1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.5 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1" dy="1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+            <feBlend mode="normal" in2="effect1_dropShadow_304_2" result="effect2_dropShadow_304_2"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_304_2" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="15" dy="15"/>
+            <feGaussianBlur stdDeviation="19"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.9 0"/>
+            <feBlend mode="normal" in2="shape" result="effect3_innerShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-15" dy="-15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+            <feBlend mode="normal" in2="effect3_innerShadow_304_2" result="effect4_innerShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="15" dy="-15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.2 0"/>
+            <feBlend mode="normal" in2="effect4_innerShadow_304_2" result="effect5_innerShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-15" dy="15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.2 0"/>
+            <feBlend mode="normal" in2="effect5_innerShadow_304_2" result="effect6_innerShadow_304_2"/>
+            </filter>
+            <filter id="filter1_ddddii_304_2" x="29" y="30" width="390" height="539" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="15" dy="15"/>
+            <feGaussianBlur stdDeviation="19"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0.9 0"/>
+            <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-15" dy="-15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+            <feBlend mode="normal" in2="effect1_dropShadow_304_2" result="effect2_dropShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="15" dy="-15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0.2 0"/>
+            <feBlend mode="normal" in2="effect2_dropShadow_304_2" result="effect3_dropShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-15" dy="15"/>
+            <feGaussianBlur stdDeviation="15"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0.2 0"/>
+            <feBlend mode="normal" in2="effect3_dropShadow_304_2" result="effect4_dropShadow_304_2"/>
+            <feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_304_2" result="shape"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="-1" dy="-1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0 0.878431 0 0 0 0.5 0"/>
+            <feBlend mode="normal" in2="shape" result="effect5_innerShadow_304_2"/>
+            <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+            <feOffset dx="1" dy="1"/>
+            <feGaussianBlur stdDeviation="1"/>
+            <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+            <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+            <feBlend mode="normal" in2="effect5_innerShadow_304_2" result="effect6_innerShadow_304_2"/>
+            </filter>
+            <clipPath id="clip0_304_2">
+            <rect width="802" height="560" fill="white"/>
+            </clipPath>
+            </defs>
+        </symbol>
+    </svg>  
+    <!-- collab -->
+    <svg xmlns="http://www.w3.org/2000/svg">
+        <symbol id="svg__collab" viewBox="0 0 802 560" fill="none" >
+            <g clip-path="url(#clip0_301_4)">
+            <g filter="url(#filter0_d_301_4)">
+            <rect y="53" width="802" height="507" fill="#F1F1F1"/>
+            </g>
+            <g filter="url(#filter1_ddddii_301_4)">
+            <rect y="53" width="802" height="150" fill="#F1F1F1"/>
+            </g>
+    
+            <circle class="svg__collab-circle" id="svg__collab-circle1" cx="435.5" cy="127.5" r="33.5" fill="#6371EA"  stroke-width="3"
+            stroke-opacity="0.8" />
+            <circle class="svg__collab-circle" id="svg__collab-circle2" cx="530.5" cy="127.5" r="33.5" fill="#FDB827" stroke-width="3"
+            stroke-opacity="0.8"/>
+            <circle class="svg__collab-circle" id="svg__collab-circle3" cx="626.5" cy="127.5" r="34.5" fill="#49C1A5" stroke-width="3"
+            stroke-opacity="0.8"/>
+            <!-- stroke="#2A3C15" stroke="#A32D6A" -->
+            <path class="svg__collab-circle" id="svg__collab-circle4" d="M695 127.5C695 146.554 679.554 162 660.5 162C641.446 162 626 146.554 626 127.5C626 108.446 641.446 93 660.5 93C679.554 93 695 108.446 695 127.5Z" fill="#3D5124" stroke-opacity="0.95" stroke-width="3"
+            stroke-opacity="0.8"/>
+            <path class="svg__collab-circle" id="svg__collab-circle5" d="M728 127.5C728 146.002 713.002 161 694.5 161C675.998 161 661 146.002 661 127.5C661 108.998 675.998 94 694.5 94C713.002 94 728 108.998 728 127.5Z" fill="#EF5DA8" stroke-width="3"
+            stroke-opacity="0.8" />
+    
+            <path d="M0 26C0 11.6406 11.6406 0 26 0H776C790.359 0 802 11.6406 802 26V53H0V26Z" fill="#A299AA"/>
+            <path d="M682.112 26.5C682.112 32.8512 676.938 37.9999 670.556 37.9999C664.174 37.9999 659 32.8512 659 26.5C659 20.1487 664.174 15 670.556 15C676.938 15 682.112 20.1487 682.112 26.5Z" fill="#F24F4F"/>
+            <path d="M730.005 26.5C730.005 32.8513 724.831 38 718.449 38C712.067 38 706.893 32.8513 706.893 26.5C706.893 20.1488 712.067 15.0001 718.449 15.0001C724.831 15.0001 730.005 20.1488 730.005 26.5Z" fill="#FDE71E" fill-opacity="0.98"/>
+            <path d="M777 26.5C777 32.8513 771.826 38 765.444 38C759.062 38 753.888 32.8513 753.888 26.5C753.888 20.1488 759.062 15.0001 765.444 15.0001C771.826 15.0001 777 20.1488 777 26.5Z" fill="#00FB82"/>
+            </g>
+            <defs>
+                <filter id="filter0_d_301_4" x="-16" y="40" width="834" height="539" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feMorphology radius="1" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_301_4"/>
+                <feOffset dy="3"/>
+                <feGaussianBlur stdDeviation="7.5"/>
+                <feComposite in2="hardAlpha" operator="out"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.552941 0 0 0 0 0.258824 0 0 0 0 0.847059 0 0 0 0.13 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_4"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_301_4" result="shape"/>
+                </filter>
+                <filter id="filter1_ddddii_301_4" x="-78" y="-25" width="971" height="319" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="26" dy="26"/>
+                <feGaussianBlur stdDeviation="32.5"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.9 0"/>
+                <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_301_4"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="-26" dy="-26"/>
+                <feGaussianBlur stdDeviation="26"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.9 0"/>
+                <feBlend mode="normal" in2="effect1_dropShadow_301_4" result="effect2_dropShadow_301_4"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="26" dy="-26"/>
+                <feGaussianBlur stdDeviation="26"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.2 0"/>
+                <feBlend mode="normal" in2="effect2_dropShadow_301_4" result="effect3_dropShadow_301_4"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="-26" dy="26"/>
+                <feGaussianBlur stdDeviation="26"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.2 0"/>
+                <feBlend mode="normal" in2="effect3_dropShadow_301_4" result="effect4_dropShadow_301_4"/>
+                <feBlend mode="normal" in="SourceGraphic" in2="effect4_dropShadow_301_4" result="shape"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="-1" dy="-1"/>
+                <feGaussianBlur stdDeviation="1"/>
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0 0.85098 0 0 0 0.5 0"/>
+                <feBlend mode="normal" in2="shape" result="effect5_innerShadow_301_4"/>
+                <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                <feOffset dx="1" dy="1"/>
+                <feGaussianBlur stdDeviation="1"/>
+                <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+                <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.3 0"/>
+                <feBlend mode="normal" in2="effect5_innerShadow_301_4" result="effect6_innerShadow_301_4"/>
+                </filter>
+                <clipPath id="clip0_301_4">
+                <rect width="802" height="560" rx="25" fill="white"/>
+                </clipPath>
+            </defs>
+        </symbol>
+    </svg>
+    <!-- dark + light mode --> 
+        
+    <!-- End of svg container -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rellax/1.12.1/rellax.min.js" integrity="sha512-f5HTYZYTDZelxS7LEQYv8ppMHTZ6JJWglzeQmr0CVTS70vJgaJiIO15ALqI7bhsracojbXkezUIL+35UXwwGrQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/homepage.js"></script>
 </body>
 </html>
