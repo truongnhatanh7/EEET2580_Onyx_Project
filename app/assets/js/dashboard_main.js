@@ -11,7 +11,7 @@ const projectAddBtn = $(".dashboard__project-add-btn")
 const dashboardTitle = $('.dashboard__title');
 let latestWorkspaceId = -1;
 //////////////////////////////
-let currentUser = localStorage.getItem("userId"); // Current user id
+let currentUser = sessionStorage.getItem("userId"); // Current user id
 //////////////////////////////
 let linkWorkspaceUserUrl = "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/"
 let workspaceByUserId = "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();
@@ -28,6 +28,11 @@ main()
 
 function main() {
     getWorkspace(renderWorkspace)
+    setInterval(function() {
+        if (sessionStorage.getItem("isEditing") == '0') {
+            getWorkspace(renderWorkspace)
+        }
+    }, 3000)
 }
 
 function getWorkspace(callback) {
@@ -42,8 +47,17 @@ function getWorkspace(callback) {
 function renderWorkspace(workspaces) {
     totalWorkspaces = workspaces.length;
     if (totalWorkspaces > 1) {
-        dashboardTitle.innerHTML += 's'
+        dashboardTitle.innerHTML = 'Your projects'
+    } else {
+        dashboardTitle.innerHTML = 'Your project'
     }
+
+    let oldWorkspaces = projectList.querySelectorAll('.dashboard__project-card')
+    oldWorkspaces.forEach((element, index) => {
+        if (index != 0) {
+            element.remove()
+        }
+    })
  
     for (const workspace of workspaces) {
 
@@ -67,6 +81,7 @@ function renderWorkspace(workspaces) {
 
 function handleCardClick(event) {
     sessionStorage.setItem("currentBoardId", event.target.id);
+    sessionStorage.setItem('isEditing', '0')
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -74,11 +89,15 @@ function handleCardClick(event) {
 
 modalWrapper.onclick = (event) => {
     event.stopPropagation();
+    sessionStorage.setItem('isEditing', '1')
+
 }
 
 modalOutter.onclick = (event) => {
     modalOutter.classList.remove('dashboard__modal-create--enable')
     modalOutter.classList.add("dashboard__modal-create--disable")
+    sessionStorage.setItem('isEditing', '0')
+
     
 }
 

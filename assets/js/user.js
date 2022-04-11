@@ -1,16 +1,30 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
-const username = $('#login-username')
-const password = $('#login-password')
+const username = $('#sign-in-username')
+const password = $('#sign-in-password')
 const toast = $('.toast-wrapper')
 const toastMessage = $('.toast-message')
-const signInBtn = $('#sign-in')
+const signInBtn = $('#sign-in-btn')
 const allUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
 const createNewUser = "http://localhost:8080/api/v1/user"
+const showPassword = $('.show-password')
+let isShownPassword = false;
+
+showPassword.addEventListener("click", () => {
+    showPassword.classList.toggle('show-password-icon')
+    if (isShownPassword) {
+        password.type = "password"
+        isShownPassword = false
+    } else {
+        password.type = "text"
+        isShownPassword = true
+    }
+})
 
 signInBtn.addEventListener('click', (event) => {
     event.preventDefault()
+    let canLogin = false;
     if (username.value == '' || password.value == '') {
         throwToastEmptyFieldLogin()
     } else {
@@ -20,17 +34,21 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         localStorage.setItem("userId", user.userId.toString().trim());
-    
+                        sessionStorage.setItem("userId", user.userId.toString().trim());
+
                         location.assign("./app/dashboard.html")
+                        canLogin = true;
                         return false;
                     } else {
                         return true;
                     }
                 })
+                
+                if (!canLogin) {
+                    throwToastWrongUsernameOrPassword();
+                }
             })
-            .then(() => {
-                throwToastWrongUsernameOrPassword();
-            })
+
     }
 })
 
@@ -58,21 +76,21 @@ function throwToastWrongUsernameOrPassword() {
 }
 
 ////////////////////////////////////////////////////////////////////////
-const signUpName = $('#name')
-const signUpUsername = $('#user-name');
-const signUpPassword = $('#user-password');
-const signUpPasswordConfirm = $('#confirm-password')
-const signUpBtn = $('#sign-up')
+const signUpName = $('#sign-up-name')
+const signUpFirstName = $('#sign-up-first')
+const signUpLastName = $('#sign-up-last')
+const signUpUsername = $('#sign-up-username');
+const signUpPassword = $('#sign-up-password');
+const signUpPasswordConfirm = $('#sign-up-password-retype')
+const signUpBtn = $('#sign-up-btn')
 console.log(signUpBtn)
 signUpBtn.addEventListener('click', () => {
-    console.log(signUpPassword.value)
-    console.log(signUpPasswordConfirm.value)
 
     let validCreateUser = true;
     if (signUpPassword.value != signUpPasswordConfirm.value) {
         throwToastMismatchPassowrd()
 
-    } else if (signUpName == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
+    } else if (signUpFirstName == '' || signUpLastName == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
         throwToastEmptyField();
     }
     
@@ -92,7 +110,6 @@ signUpBtn.addEventListener('click', () => {
             })
             .then(() => {
                 if (validCreateUser) {
-
                     createNewUserAPI()
                 }
             })
@@ -103,14 +120,13 @@ signUpBtn.addEventListener('click', () => {
 })
 
 function createNewUserAPI() {
-    console.log("create new user...")
     fetch(createNewUser, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({
-            name:  signUpName.value,
+            name:  signUpFirstName.value + " " + signUpLastName.value,
             username: signUpUsername.value,
             password: signUpPassword.value
         }),
@@ -119,7 +135,9 @@ function createNewUserAPI() {
     })
     .then(data => {
         localStorage.setItem("userId", data.userId.toString().trim());  
+        sessionStorage.setItem("userId", data.userId.toString().trim());
         location.assign("./app/dashboard.html")
+
     })
 }
 

@@ -5,8 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta
             name="viewport"
-            content="width=device-width
-    , initial-scale=1.0"
+            content="width=device-width, initial-scale=1.0"
         />
         <title>Workspace</title>
         <link
@@ -24,8 +23,7 @@
         <script src="./assets/js/dragndrop.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
         <script
-            type="module"
-            src="./assets/js/render.js?version=1"
+            src="./assets/js/render.js"
             defer
         ></script>
         <script src="./assets/js/debounce.js" defer></script>
@@ -37,34 +35,65 @@
             </div>
             <nav class="workspace__navbar">
                 <div class="workspace__navbar-left-wrapper">
-                    <a href="#" class="workspace__navbar-link">Home</a>
+                    <a href="../index.html" class="workspace__navbar-link">Home</a>
                     <a href="dashboard.html" class="workspace__navbar-link"
                         >Dashboard</a
                     >
-                    <button class="workspace__navbar-progress-btn btn">
-                        Project status
-                    </button>
                 </div>
 
                 <div class="workspace__navbar-right-wrapper">
-                    <div class="workspace__navbar-darkmode-wrapper">
-                        <input
-                            type="checkbox"
-                            id="darkmode-switch"
-                            class="workspace__switch-input"
-                        />
-                        <label
-                            for="darkmode-switch"
-                            class="workspace__switch"
-                        ></label>
+                    
+
+                    <div class="dashboard-task__wrapper">
+                        <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img">
+                    
+                        <div class="dashboard-list__wrapper">
+                            <div class="dashboard-list-img__wrapper">
+                                <span>"Thai Manh Phi"</span>
+                                <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img-active">
+                            </div>
+                            <table class="dashboard-list-table">
+                                <tr>
+                                    <td>
+                                        <div class="workspace__navbar-darkmode-wrapper">
+                                            <p class="workspace__navbar-darkmode-tittle">Dark mode</p>
+                                            <input
+                                                type="checkbox"
+                                                id="darkmode-switch"
+                                                class="workspace__switch-input"
+                                            />
+                                            <label
+                                                for="darkmode-switch"
+                                                class="workspace__switch"
+                                            ></label>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="list-content_wrapper workspace__navbar-progress-btn ">
+                                    <td>
+                                        <a class="list-content">
+                                            Project status
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr class="list-content_wrapper">
+                                    <td>
+                                        <a href="" class="list-content"> 
+                                            Settings 
+                                        </a>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
                     </div>
-                    <div class="workspace__navbar-right-avatar-wrapper">
+                    <!-- <div class="workspace__navbar-right-avatar-wrapper">
                         <img
-                            src="../assets/img/default-avatar.jpeg"
+                            src="../assets/img/logo.png"
                             alt="User Avatar"
                             class="workspace__navbar-right-avatar-img"
                         />
-                    </div>
+                    </div> -->
                 </div>
             </nav>
 
@@ -103,13 +132,51 @@
                     <button class="workspace__task-setting-close btn">
                         <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
                       </button>
-                    <h1 class="workspace__task-setting-title">Task setting</h1>
                     <input type="text" class="workspace__task-setting-input"/>
     
                     <button class="workspace__task-setting-btn btn">Save</button>
                     <button class="workspace__task-delete-btn btn">Delete task</button>
+                </div>
+            </section>
+
+            <section class="workspace__status disable">
+                <div class="workspace__status-wrapper">
+
+                    <div class="workspace__status-container">
+                        <h1 class="workspace__status-title" contenteditable="true">Workspace</h1>
+                        <i class="fa-solid fa-xmark workspace__status-close-icon"></i>
+                    </div>
+    
+                    <!-- <div class="workspace__invite-wrapper">
+                        <button class="workspace__invite-btn btn"><i class="fa-solid fa-link workspace__invite-icon"></i>Copy invite link</button>
+                    </div> -->
+
+
+    
+                    <div class="workspace__collaborator-section">
+                        <h1 class="workspace__collaborator-title">Collaborators</h1>
+                        <div class="workspace__add-collaborator-wrapper">
+                            <input type="text" class="workspace__add-collaborator-input">
+                            <button class="workspace__add-collaborator-btn btn">Add</button>
+                        </div>
+                        <div class="workspace__collaborator-list">    
+                        </div>
+                    </div>
+    
+                    <div class="workspace__delete-section">
+                        <h1 class="workspace__delete-title">Danger Zone</h1>
+                        <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-pre">Delete this workspace</button>
+                    </div>
+    
+                    <div class="workspace__delete-confirmation">
+                        <h3 class="workspace__delete-instruction">Type "delete this workspace" to confirm</h3>
+                        <input type="text" class="workspace__delete-confirmation-input">
+                        <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-post">Delete this workspace</button>
+                    </div>
 
                 </div>
+
+
             </section>
         </main>
     </body>

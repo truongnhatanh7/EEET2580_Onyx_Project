@@ -1,17 +1,25 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
 let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
-let board;
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
+let boardObj;
+// const $ = document.querySelector.bind(document);
+// const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
-const addListBtn = $(".workspace__add-list-btn");
-const addListBtnWrapper = $(".workspace__add-list-wrapper");
+// const addListBtn = $(".workspace__add-list-btn");
+// const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
+sessionStorage.setItem('isEditing', '0')
 
 
 fetchBoardInfo();
 getBoardInfo();
+
+setInterval(function() {
+    if (sessionStorage.getItem("isEditing") == '0') {
+        fetchBoardInfo();
+        getBoardInfo();
+    }
+}, 3000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -23,11 +31,22 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
+    let oldBoardLists = $$('.workspace__board-list-scrollable')
+    let scrollRule = {}
+    let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
+
+    oldBoardLists.forEach((element) => {
+        scrollRule[element.parentNode.id] = element.scrollTop
+        element.parentNode.remove();
+    })
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
 
         if (list !== undefined) {
+            list.tasks.sort(function (a, b) {
+                return a.pos - b.pos;
+            })
 
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
@@ -55,12 +74,16 @@ function renderBoard(board) {
             });
             let html = `  
             <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
+                <div class="workspace__board-list-header-wrapper">
                 <h1 class="workspace__board-list-header">
                     ${list.listName}
                 </h1>
                 <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
-
+                </div>
+                <div class="workspace__board-list-scrollable">
                     ${listHTML}
+                </div>
+
                 <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                 <div class="workspace__add-task-wrapper">
                     <h2 class="workspace__submit-title">Enter new task:</h2>
@@ -71,18 +94,30 @@ function renderBoard(board) {
                     </button>
                     
                 </div>
-            </div>
+            </>
               `;
 
             
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
+            workspaceBoard.scrollLeft = horizontalBoardScrollRule;
+            setScrollRule(scrollRule)
         }
     });
 
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
     loading.remove();
+}
+
+function setScrollRule(scrollRule) {
+    for (const [key, value] of Object.entries(scrollRule)) {
+        let temp = workspaceBoard.querySelector('#' + key)
+        if (temp != null) {
+            let list = temp.querySelector('.workspace__board-list-scrollable')
+            list.scrollTop = value
+        }
+    }
 }
 
 function getBoardInfo() {
@@ -105,7 +140,7 @@ function getBoardInfo() {
 
 function createBoard(data) {
 
-    board = new Board();
+    boardObj = new Board();
 
     data.forEach(function (list) {
         let tempList = new List();
@@ -114,14 +149,15 @@ function createBoard(data) {
 
         list.tasks.forEach(function (task) {
             let tempTask = new Task()
+            tempTask.setPos(task.pos);
             tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
             tempList.addTask(tempTask);
         });
-        board.addList(tempList);
+        boardObj.addList(tempList);
     });
 
-    return board;
+    return boardObj;
 }
 
 class Board {
@@ -189,9 +225,18 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId) {
+    constructor(taskContent, taskId, pos) {
         this.taskContent = taskContent;
         this.taskId = taskId;
+        this.pos = pos;
+    }
+
+    setPos(pos) {
+        this.pos = pos;
+    }
+
+    getPos() {
+        return this.pos;
     }
 
     setTaskId(taskId) {
