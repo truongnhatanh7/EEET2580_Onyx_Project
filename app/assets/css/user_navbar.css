@@ -1,25 +1,28 @@
 @import "workspace_navbar_user.css";
 
-.workspace__navbar {
-    height: 64px;
+.user__navbar {
+    padding: 0;
+    height: var(--user-nav-height);
+    border-radius: 0 !important;
     position: fixed;
     top: 0; 
     right: 0;
     left: 0;
-    width: 100vw;
-    background-color: var(--white);
+    width: 100%;
+    color: var(--black);
     display: flex;
     justify-content: space-between;
-    color: var(--black);
     z-index: 3;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--task-shadow);
+    backdrop-filter: blur(28px);
+    background-color: var(--white);
 }
 
-.workspace__navbar-left-wrapper {
+.user__navbar-left-wrapper {
     width: 100%;
     padding-left: 48px;
 }
-.workspace__navbar-link {
+.user__navbar-link {
     text-decoration: none;
     font-size: 1.6rem;
     line-height: 64px;
@@ -27,33 +30,36 @@
     margin-right: 32px;
     display: inline-block;
 }
-.workspace__navbar-link:hover {
+.user__navbar-link:hover {
     opacity: 0.7;
 }
 
 @media (max-width: 767px) {
-    .workspace__navbar-right-wrapper {
+    /* .user__navbar-right-wrapper {
         display: none !important;
-    }
+    } */
 
-    .workspace__navbar-link:nth-child(1) {
+    /* .user__navbar-link:nth-child(1) {
         display: none !important;
-    }
+    } */
+    /* .active{
+        display: none !important;
+    } */
 }
 
-.workspace__navbar-project-name {
+.user__navbar-project-name {
     color: var(--black);
     display: block;
 }
 
-.workspace__navbar-right-wrapper {
+.user__navbar-right-wrapper {
     width: 360px;
     padding-right: 48px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
-.workspace__navbar-right-avatar-wrapper {
+.user__navbar-right-avatar-wrapper {
     object-fit: contain;
     width: 64px;
     display: flex;
@@ -62,16 +68,12 @@
     align-items: center;
 }
 
-
-
-/* .workspace__navbar-right-avatar-wrapper:hover {
-    cursor: pointer;
+.active{
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    text-decoration: none;
+    color: var(--black);
+    margin-right: 32px;
+    display: inline-block;
+    transition: 0.3s;
 }
-
-.workspace__navbar-right-avatar-img {
-    width: 70%;
-    height: 70%;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 50%;
-} */

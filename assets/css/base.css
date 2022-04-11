@@ -48,6 +48,7 @@ body{
     --red: #D45B4A;
 
     /* size */
+    --user-nav-height: 64px;
     --nav-height: 10rem;
     --nav-position-top: 0rem;
     --feature-bar-width: 20.6rem;
