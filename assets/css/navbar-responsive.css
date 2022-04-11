@@ -1,0 +1,165 @@
+@media (max-width: 768px) {
+    :root {
+        /* --logo-size: clamp(2.63rem, calc(0.83rem + 8.99vw), 5.13rem); */
+        --logo-size: clamp(3.15rem, calc(0.81rem + 11.71vw), 6.41rem);
+        --logo-size-inside: clamp(2.63rem, calc(0.83rem + 8.99vw), 5.13rem);
+        /* --menu-size: clamp(2.62rem, calc(0.73rem + 3.97vw), 1.52rem); */
+        --menu-size: clamp(2.10rem, calc(1.77rem + 1.65vw), 2.56rem);
+        --icon-size: clamp(3.28rem, calc(0.78rem + 5.24vw), 1.82rem);
+        --nav-height: 9rem;
+    }
+
+    nav {     
+        padding: 0 1em 0 0;
+        width: 100%;
+        flex-wrap: wrap;
+        --gap: 0;
+    }
+
+    /* hamburger */
+    .nav__hamburger-wrapper {
+        height: calc(var(--nav-height) - 3rem);
+        /* width: calc(var(--nav-height) - 3rem); */
+        /* border-radius: 50%; */
+        width: calc(100% / 3);
+        z-index: 1;
+        display: flex;
+        justify-content: flex-start;
+    }
+    #nav__hamburger {
+        /* width: 60%; */
+        width: calc(var(--nav-height) - 3rem);
+        /* height: 90%; */
+        /* background-color: rgba(40, 41, 55, 0.9); */
+        background-color: var(--black);
+        border-top-right-radius: 2.2rem;
+        border-bottom-right-radius: 2.2rem;
+        stroke: var(--white);
+        
+    }
+    #nav__hamburger:hover {
+        stroke: var(--yellow);
+    }
+    /* end of nav hamburger */
+
+    /* logo */
+    .nav__logo{
+        /* width: calc(100% / 3); */
+        flex-grow: 1;
+        order: 2;
+        display: flex;
+        /* justify-content: flex-end; */
+        /* display: none; */
+    }
+    .nav__logo-text {
+        font-size: var(--logo-size);
+        text-align: center;
+    }
+    /* end of logo */
+
+    /* menu */
+    .nav__menu-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+
+        width: 100%;
+        display: none;
+        background-color: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(5px);
+    }
+    .nav__menu{
+        background-color: rgba(245, 248, 255, 0.9);
+        backdrop-filter: blur(36px);
+        border-top-right-radius: 2.5rem;
+        border-bottom-right-radius: 2.5rem;
+        box-shadow:  24px 24px 34px rgba(40, 41, 55, 0.6);
+
+        width: 80%;
+        height: 100%;
+        /* height: calc(100vh - var(--nav-height)); */
+        padding: calc(var(--nav-height)) 4em 4em;
+
+        flex-direction: column;
+        --gap: 3em;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .nav__menu-element {
+        width: 100%;
+        font-size: var(--menu-size);
+        padding: 0.3em 0 0.3em 0.4em;
+        border-bottom: 1px solid var(--dark);
+        /* color: var(--white); */
+        
+        display: flex;
+        align-items: center;
+        gap: 0.3em;
+    }  
+    .nav__menu-element-logo {
+        /* order: 1; */
+        display: block;
+        padding: 0;
+        font-weight: 800;
+        font-size: var(--logo-size);
+        /* padding: 0; */
+        border-bottom: none;
+    }
+    .nav__menu-element-icon {
+        display: inline;
+    }
+    .nav__menu-element-login {
+        margin-top: auto;
+        font-weight: 600;
+        border: 2px solid #837378;
+        border-radius: 10px;
+        /* border-bottom-left-radius: 1rem; */
+        box-shadow:  23px 23px 54px #3a3738;
+    }
+    /* click in menu */
+    .nav__menu-element:not(:first-child):hover {
+        transform: scale(1.1) translate(1.5em, -0.2em);
+        
+        border: 1px solid var(--figma-gray);
+        border-radius: 1.5rem;
+        background-color: var(--white);
+        box-shadow: -18px 5px 1px var(--dark);
+    }
+    .nav__menu-element-login:hover {
+        color: var(--black);
+    }
+    /* end of nav menu */
+ 
+    /* button */
+    .nav__btn {
+        display: none;
+    }
+    /* end of button */
+    
+    /* when hamburger is pressed */
+    .nav__btn.open {
+        display: flex;
+    }
+    .nav__menu-wrapper.open {
+        display: block;
+    }
+    .nav__logo {
+        /* width: 50%; */
+    }
+
+}  
+@media (max-width: 420px) {
+    .nav__menu {
+        width: 100%;
+        --gap: 4em;
+    }
+    .nav__menu-element:not(:first-child):hover {
+        transform: scale(1.1) translate(1.3em, -0.2em);
+    }
+} 
+@media screen and (min-width: 768px){
+
+}
+@media screen and (min-width: 1024px) {
+}

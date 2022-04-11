@@ -1,0 +1,94 @@
+@media screen and (max-width: 1920px){
+    .main__intro {
+        padding-top: calc(var(--nav-height) + 10%);
+    }
+}
+@media screen and (max-width: 1440px) {
+    .main__intro {
+        padding-top: calc(var(--nav-height) + 15%);
+    }
+    
+}
+/* ipad size */
+@media (max-width: 1040px) {
+    :root {
+        --feature-title-size:  clamp(6.23rem, calc(-4.88rem + 23.13vw), 10.16rem);
+    }
+    /* main intro img */
+    .main__intro {
+        padding-top: calc(var(--nav-height) + 15%);
+    }
+    .intro__text {
+        flex-direction: column;
+    }
+    .intro__text-img-hello {
+        width: 70%;
+        align-self: flex-start;
+    }
+    .intro__text-img-collab {
+        width: 45%;
+        transform: translate(0);
+    }
+    .intro__text-img-line {
+        display: none;
+    }
+    
+    /* main intro img */
+    .intro__img {
+        transform: translateY(-2%);
+    }
+
+    /* start main features */
+    .main__features {
+        padding: 8em 5em;
+    }
+    .features__title {
+        font-size: var(--feature-title-size);
+        letter-spacing: 0.6rem;
+    }
+}
+/* iphone size */
+@media (max-width: 768px) {
+    :root {
+        --feature-title-size: clamp(1.50rem, calc(-2.06rem + 17.80vw), 6.48rem);
+    }
+    /* main intro text */
+    .main__intro {
+        padding-top: calc(var(--nav-height) + 25%);
+    }
+    .intro__text {
+        padding: 0 1.6em;
+        --gap: 5em;
+    }
+    .intro__text-img-hello {
+        width: 100%;
+    }
+    .intro__text-img-line {
+        display: none;
+        /* width: 100%; */
+    }
+    .intro__text-img-collab {
+        transform: translateY(0);
+        width: 85%;
+    }
+
+    /* main intro img */
+    .intro__img {
+        transform: translateY(2%);
+    }
+    
+    /* start of main features */
+    .main__features {
+        padding: 2em 2.7em;
+    }
+    .features__card {
+        align-self: center;
+        width: 90%;
+        flex-direction: column;
+        padding: 3em 5em;
+    }
+    .features__card-fig,
+    .features__card-article {
+        width: 100%;
+    }
+}
