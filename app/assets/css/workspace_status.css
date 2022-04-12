@@ -15,8 +15,8 @@
     border-radius: 25px;
     display: block;
     color: var(--black);
-    padding: 5% 5%;
-    width: 55%;
+    padding: 4%;
+    width: 40%;
     height: fit-content;
     position: absolute;
     top: 50%;
@@ -222,4 +222,31 @@
         opacity: 0;
         transform: translateY(-100%);
     }
+}
+
+
+@media (max-width: 1200px) {
+    .workspace__add-collaborator-wrapper {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .workspace__status-wrapper{
+        overflow: scroll;
+        padding: 54px;
+        width: 70%;
+        /* height:80%; */
+    }
+
+    .workspace__collaborator-title, .workspace__delete-title{
+        text-align: center;
+        padding: 0;
+    }
+
+    .workspace__collaborator-list{
+        padding: 22px;
+    }
+
 }
