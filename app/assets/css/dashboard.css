@@ -61,7 +61,7 @@
     border-radius: 25px;
     display: grid;
     place-items: center;
-    transition: 0.3s;
+    transition: 0s;
 }
 
 .dashboard__project-card:hover {
@@ -69,7 +69,7 @@
     margin-top: 4px;
     margin-bottom: 0px;
     box-shadow: rgba(50, 50, 93, 0.335) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    transition: 0.3s;
+    transition: 0s;
 }
 .dashboard__project-card:hover .dashboard__project-card-name {
     transform: scale(1.2);
@@ -115,7 +115,7 @@
     max-height: 70%;
     text-overflow: ellipsis;
     overflow: hidden;
-    transition: 0.3s;
+    transition: 0s;
     word-wrap: break-word;
     text-align: center;
 }

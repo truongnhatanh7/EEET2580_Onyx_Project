@@ -66,6 +66,8 @@
 //     scrollBar:true
 // });
 
+window.history.forward();
+
 document.querySelector(".features__card").addEventListener('scroll', event => {
         var scrollTop = document.querySelector("features__card").scrollTop;
         var scrollHeight = document.querySelector("features__card").scrollHeight; // added
