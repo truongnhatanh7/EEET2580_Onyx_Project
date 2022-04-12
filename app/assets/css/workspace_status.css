@@ -250,3 +250,13 @@
     }
 
 }
+
+@media (max-width: 768px) {
+    .workspace__status-wrapper{
+        width: 92%;
+        /* height:80%; */
+    }
+
+
+
+}
