@@ -23,6 +23,17 @@ const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
 const finish = false;
 const loading = $('.loading-wrapper');
+const logOut = $('.user__navbar-progress-btn');
+
+if (localStorage.getItem('userId') == null) {
+    location.href = "../login2.html";
+}
+
+logOut.addEventListener('click', () => {
+    localStorage.removeItem('userId');
+    location.href = "../index.html";
+
+})
 
 main()
 

@@ -1,15 +1,14 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
 let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
 let boardObj;
-// const $ = document.querySelector.bind(document);
-// const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
-// const addListBtn = $(".workspace__add-list-btn");
-// const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
 sessionStorage.setItem('isEditing', '0')
 
+if (localStorage.getItem('userId') == null) {
+    location.href = "../login2.html";
+}
 
 fetchBoardInfo();
 getBoardInfo();

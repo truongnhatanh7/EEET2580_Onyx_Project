@@ -249,8 +249,6 @@ function handleAddTask(event) {
         triggerModifying(event);
 
         let currentListId = event.target.parentNode.id.slice(5);
-        // console.log(event.target.parentNode);
-        // console.log(event.target.parentNode.id.slice(5))
         let tempArray = event.target.parentNode.childNodes;
         let taskFactory = tempArray[tempArray.length - 2];
         taskFactory.classList.add("enable");
@@ -626,7 +624,7 @@ function renderUserInWorkspace(users) {
             let tempHtml = `
       <div class="workspace__collaborator" id="user_${user.userId} ">
         <h3 class="workspace__collaborator-name" >${user.name}</h3>
-        <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+        <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
       </div>
       `;
             let para = document
@@ -643,7 +641,10 @@ document.addEventListener("click", (event) => {
     }
 });
 
-function handleRemoveCollaborator(id) {
+function handleRemoveCollaborator(event) {
+    console.log("Remove collaborator invoked")
+
+    let id = event.target.parentNode.id.slice(5);
     let removeCollaboratorUrl =
         "http://localhost:8080/api/v1/user/remove-user-from-workspace/" +
         sessionStorage.getItem("currentBoardId") +
