@@ -56,7 +56,7 @@ input[type="text"] {
 }
 
 .workspace__board-list {
-    padding: 24px;
+    padding: 24px 24px 12px 24px;
     max-width: 360px;
     min-width: 360px;
     height: fit-content;
@@ -84,11 +84,16 @@ input[type="text"] {
 }
 
 .workspace__add-task-btn {
-    width: fit-content;
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px 20px;
+    color: var(--black);
+    background-color: var(--white);
 }
-
-
-
+.workspace__add-task-btn:hover{
+    background-color: var(--pink-color);
+    color: white;
+}
 .workspace__board-list:hover{
     /* box-shadow: var(--box-shadow); */
 }
@@ -213,12 +218,10 @@ input[type="text"] {
 
 }
 
-
-.workspace__add-task-btn,
 .workspace__submit-task-btn,
 .workspace__submit-btn {
     padding: 12px 20px;
-    color: var(--constant-white);
+    color: var(--white);
     background-color: var(--soft-pink);
 }
 
@@ -231,6 +234,11 @@ input[type="text"] {
 } */
 .workspace__submit-btn {
     margin-bottom: 20px;
+    width: 238px;
+}
+
+.workspace__submit-task-btn{
+    width: 242px;
 }
 
 .workspace__add-list-btn {
