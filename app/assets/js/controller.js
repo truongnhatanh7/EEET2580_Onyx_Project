@@ -383,12 +383,16 @@ const taskSettingClose = $(".workspace__task-setting-close");
 const taskSettingUrgent = $('.workspace__task-setting-urgent')
 const taskSettingDesc = $('.workspace__task-setting-desc')
 const taskSettingDatepicker = $('.workspace__task-setting-datepicker')
+const datepickerJS = $('.datepicker')
 let descContent = ''
 let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
 
 datepicker(taskSettingDatepicker);
+taskSettingDatepicker.addEventListener('click', () => {
+    datepickerJS.classList.remove('disable');
+})
 
 taskSettingUrgent.addEventListener("click", (event) => {
     let priority = "0";

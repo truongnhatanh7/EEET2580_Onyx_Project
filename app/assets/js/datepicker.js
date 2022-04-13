@@ -1,16 +1,25 @@
-var currentDate = new Date();
+let currentDate;
 
 function datepicker(node) {
-    currentDate = new Date();
-    renderDay(node, new Date())
+    let tempDate = new Date()
+    currentDate = new Date(tempDate.getFullYear(), tempDate.getMonth(), 1);
+    renderDay(node, currentDate)
     addNext(node);
+    addPrev(node);
 }
 
 function addNext(node) {
     let next =  $('.datepicker__next');
-    currentDate = getNextMonth(currentDate);
-    console.log(getNextMonth(currentDate))
     next.addEventListener('click', () => {
+        currentDate = getNextMonth(currentDate);
+        renderDay(node, currentDate);
+    })
+}
+
+function addPrev(node) {
+    let prev = $('.datepicker__prev');
+    prev.addEventListener('click', () => {
+        currentDate = getPrevMonth(currentDate);
         renderDay(node, currentDate);
     })
 }
@@ -23,18 +32,16 @@ function getNextMonth(date) {
     }
 }
 
-function renderDay(node, date) {
-
-    let dow = {
-        0: "Mon",
-        1: "Tue",
-        2: "Wed",
-        3: "Thu",
-        4: "Fri",
-        5: "Sat",
-        6: "Sun"
+function getPrevMonth(date) {
+    if (date.getMonth() == 1) {
+        return new Date(date.getFullYear() - 1, 12, 1);
+    } else {
+        return new Date(date.getFullYear(), date.getMonth() - 1, 1);
     }
+}
 
+function renderDay(node, date) {
+    // Para "date" has to start at day 1
     let monthMap = {
         0: "Jan",
         1: "Feb",
@@ -49,44 +56,65 @@ function renderDay(node, date) {
         10: "Nov",
         11: "Dec"
     }
-    let day = date.getDay();
+
+    let day = date.getDate();
     let month = date.getMonth();
     let year = date.getFullYear();
     let callendar = node.parentNode.querySelector('.datepicker');
     let callendarHeader = callendar.querySelector('.datepicker__year');
     callendarHeader.textContent = monthMap[month] + " " + year;
     let callendarDaysWrapper = callendar.querySelector('.datepicker__numday-wrapper')
-    renderInnerDay(callendarDaysWrapper, day, date);
+    renderInnerDay(callendarDaysWrapper, date.getDay() - 1, date);
 }
 
 function renderInnerDay(node, startingDay, currentDate) {
     let allCells = node.querySelectorAll('.datepicker__numday');
+    if (startingDay < 0) {
+        startingDay = 6; // 0 is Sunday
+    }
 
+    // Reset css for cells
     allCells.forEach(cell => {
         cell.textContent = -1;
-        cell.style.backgroundColor = "white";
+        cell.classList.add('reset');
+        cell.classList.remove('numday_disable')
     })
+
     let dayOfMonth = calculateDayOfMonth(currentDate);
     let curDay = 1;
     let endDay = startingDay + dayOfMonth;
+    // Fill 1 -> days in that month
     for (let i = startingDay; i < startingDay + dayOfMonth; i++) {
         allCells[i].textContent = curDay;
         curDay++;
     }
-    curDay = 1;
-    for (let i = startingDay + dayOfMonth; i < allCells.length; i++) {
-        allCells[i].textContent = curDay;
-        allCells[i].style.backgroundColor = '#ccc';
 
+    // Fill end
+    curDay = 1;
+    for (let i = endDay; i < allCells.length; i++) {
+        allCells[i].textContent = curDay;
+        allCells[i].classList.add('numday_disable');
         curDay++;
     }
+
+    // Fill start
     let lastMonthDate = calculateLastDay(currentDate);
-    console.log(lastMonthDate);
     for (let i = startingDay - 1; i >= 0; i--) {
         allCells[i].textContent = lastMonthDate;
-        allCells[i].style.backgroundColor = '#ccc';
+        allCells[i].classList.add('numday_disable');
+
         lastMonthDate--;
     }
+
+    let allActiveCells = node.querySelectorAll('.datepicker__numday:not(.numday_disable)')
+    allActiveCells.forEach(cell => {
+        cell.onclick = () => {
+            console.log(node)
+            taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText);
+            datepickerJS.classList.add('disable')
+
+        }
+    })
 }
 
 function calculateLastDay(date) {

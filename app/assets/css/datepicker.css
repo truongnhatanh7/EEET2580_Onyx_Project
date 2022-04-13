@@ -19,6 +19,7 @@
 .datepicker__prev:hover,
 .datepicker__next:hover {
     cursor: pointer;
+    transform: scale(1.2);
 }
 
 .datepicker__year {
@@ -50,6 +51,21 @@
     
 }
 
+.datepicker__numday.reset {
+    background-color: white;
+}
+
+.datepicker__numday.numday_disable {
+    opacity: 0.5;
+    background-color: #ccc;
+
+}
+
+.datepicker__numday:hover.numday_disable {
+    cursor: auto;
+    background-color: #ccc !important;
+}
+
 .datepicker__numday {
     border: 0.5px solid black;
     text-align: center;
@@ -58,5 +74,4 @@
 .datepicker__numday:hover {
     cursor: pointer;
     background-color: var(--soft-pink);
-    
 }
