@@ -1,0 +1,86 @@
+@import "./workspace_navbar_user.css";
+.workspace__task-setting {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.801);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    animation: slideIn 0.3s;
+}
+
+.workspace__task-setting-wrapper {
+    position: absolute;
+    width: 312px;
+    height: fit-content;
+    top: 50%;
+    left: 50%;
+
+    transform: translateY(-50%) translateX(-50%);
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    align-items: flex-end;
+}
+
+.workspace__task-setting-close {
+    background-color: var(--white);
+    color: var(--black);
+    width: fit-content;
+    height: 58.2px;
+    padding: 0 24px;
+    position: absolute;
+    right: -68px;
+    border-radius: 20px;
+    /* animation: slideIn 0.3s; */
+}
+
+/* .workspace__task-setting-title {
+    font-size: 1.8rem;
+    font-weight: 400;
+    display: block;
+    margin-top: 8px;
+    margin-left: 16px;
+} */
+
+.workspace__task-setting-input {
+    padding: 16px 16px;
+    border: none;
+    border-radius: 20px;
+    outline: var(--soft-pink);
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+.workspace__task-setting-btn {
+    z-index: -1;
+    margin-top: 8px;
+    width: 50%;
+    padding: 8px 0;
+    background-color: var(--soft-pink);
+    color: var(--constant-white);
+    animation: appearMagic 0.3s;
+}
+
+.workspace__task-delete-btn {
+    margin-top: 8px;
+    padding: 8px 0;
+    background-color: var(--red);
+    color: var(--constant-white);
+    width: 50%;
+    animation: appearMagic 0.3s;
+}
+
+.workspace__board-list-task-edit {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--soft-pink);
+    padding: 4px;
+    display: none;
+}
