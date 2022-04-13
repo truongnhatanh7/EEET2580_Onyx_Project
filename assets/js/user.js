@@ -34,8 +34,8 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         localStorage.setItem("userId", user.userId.toString().trim());
+                        localStorage.setItem("login_timestamp", new Date());
                         sessionStorage.setItem("userId", user.userId.toString().trim());
-
                         location.assign("./app/dashboard.html")
                         canLogin = true;
                         return false;
