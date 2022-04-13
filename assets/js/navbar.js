@@ -4,8 +4,8 @@ let navMenu = document.querySelector(".nav__menu-wrapper");
 let loginIcon = document.querySelector(".nav__btn");
 // Mobile phone query
 const mobileMedia = window.matchMedia('(max-width: 768px)');
-var navBar = document.querySelector('nav');
-
+let navBar = document.querySelector('nav');
+let navElements = Array.from(document.querySelector(".nav__menu-element"));
 
 // Event listener
 hamburgerDiv.addEventListener("click", event => handleHamburgerClick(event));
@@ -16,6 +16,11 @@ navMenu.addEventListener('click', function(event) {
         navMenuClose();
     }
 })
+if (window.matchMedia('screen and (max-width: 768px)').matches) {
+    navElements.forEach(navElement => {
+        navElement.addEventListener(event => handleNavElementClickSidebar(event));
+    })
+}
 // scroll then change nav bar style
 window.onscroll = function () { 
     "use strict";
@@ -61,4 +66,9 @@ function handleHamburgerClick(event) {
         navMenuClose();
     }
     
+}
+
+// handle nav element click (sidebar)
+function handleNavElementClickSidebar(event) {
+    event.target.classList.toggle("nav__menu-element-click");
 }
