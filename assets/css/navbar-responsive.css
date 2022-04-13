@@ -9,13 +9,12 @@
         --nav-height: 9rem;
     }
 
-    nav {     
-        padding: 0 1em 0 0;
+    nav {
+        padding: 0;
         width: 100%;
         flex-wrap: wrap;
         --gap: 0;
     }
-
     /* hamburger */
     .nav__hamburger-wrapper {
         position: absolute;
@@ -30,7 +29,8 @@
     #nav__hamburger {
         /* width: 60%; */
         width: calc(var(--nav-height) - 3rem);
-        /* height: 90%; */
+        padding: 8px 4px 8px 8px;
+        align-items: center;
         /* background-color: rgba(40, 41, 55, 0.9); */
         background-color: var(--black);
         border-top-right-radius: 2.2rem;
@@ -66,30 +66,26 @@
 
         width: 100%;
         display: none;
-        background-color: rgba(0, 0, 0, 0.6);
-        backdrop-filter: blur(5px);
+        background-color: rgba(0, 0, 0, 0.707);
     }
     .nav__menu {
-        background-color: rgba(245, 248, 255, 0.9);
-        backdrop-filter: blur(36px);
-        border-top-right-radius: 2.5rem;
+        background-color: var(--white);
+        border-bottom-left-radius: 2.5rem;
         border-bottom-right-radius: 2.5rem;
-        box-shadow:  24px 24px 34px rgba(40, 41, 55, 0.6);
+        box-shadow:  var(--nav-shadow);
 
-        width: 80%;
-        height: 100%;
-        /* height: calc(100vh - var(--nav-height)); */
-        padding: calc(var(--nav-height)) 4em 4em;
+        padding: calc(var(--nav-height)) 6em;
 
         flex-direction: column;
         --gap: 3em;
         align-items: center;
     }
     .nav__menu-element {
+        background-color: white;
+        border-radius: 20px;
         width: 100%;
         font-size: var(--menu-size);
-        padding: 0.3em 0 0.3em 0.4em;
-        border-bottom: 1px solid var(--dark);
+        padding: 1em;
         /* color: var(--white); */
         
         display: flex;
@@ -108,14 +104,16 @@
     }
     .nav__menu-element-icon {
         display: inline;
+        margin-right: 20px;
     }
     .nav__menu-element-login {
-        margin-top: auto;
+        margin-top: 40px;
         font-weight: 600;
-        border: 2px solid #837378;
-        border-radius: 10px;
+        border: 20px;
+        border-radius: 20px;
+        background-color: var(--yellow);
         /* border-bottom-left-radius: 1rem; */
-        box-shadow:  23px 23px 54px #3a3738;
+        box-shadow:  var(--nav-shadow);
     }
     /* click in menu */
     .nav__menu-element:hover { 

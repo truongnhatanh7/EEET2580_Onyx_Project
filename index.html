@@ -46,7 +46,7 @@
             <!-- end of nav menu -->
 
             <!-- start of nav button -->
-            <button OnClick="location.href='./login.html'" class="btn nav__btn white flex flex-center">
+            <button OnClick="location.href='./login2.html'" class="btn nav__btn white flex flex-center">
                 <span>Login</span>
                 <i class="nav__btn-icon fa-solid fa-caret-right"></i>
                 <!-- <i class="nav__btnres-icon fa-solid fa-user"></i> -->
@@ -54,17 +54,17 @@
 
             <div class="nav__menu-wrapper">
                 <div class="nav__menu flex flex-center-spacebtw">
-                    <div class="nav__menu-element nav__menu-element-logo">ONYX</div>
+                    <div class=" nav__menu-element-logo">ONYX</div>
                     <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-house"></i>Home</a>
 
-                    <a href="#" class="nav__menu-element">
+                    <a href="./about.html" class="nav__menu-element">
                         <i class="nav__menu-element-icon fa-solid fa-circle-info"></i>About
                     </a>
 
-                    <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-tags"></i></svg>Pricing</a>
+                    <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-tags"></i>FQA</a>
                     
                     <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-location-dot"></i>Contact</a>
-                    <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
+                    <a href="./login2.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
                     <!-- log out -->
                     <!-- <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-right-from-bracket"></i></i>Logout</a> -->
                 </div>
@@ -80,7 +80,8 @@
             <div class="intro__text flex flex-center-spacebtw">
                 <img class="intro__text-img-hello" src="./assets/img/homepage/main/helloText.svg" alt="hello text">
                 <img class="intro__text-img-line" src="./assets/img/homepage/main/lineText.svg" alt="line text">
-                <img class="intro__text-img-collab open" src="./assets/img/homepage/main/collabText.svg" alt="collab text">
+                <!-- <img class="intro__text-img-collab open" src="./assets/img/homepage/main/collabText.svg" alt="collab text"> -->
+                <p class="intro__text-img-collab open">Best collaboration tools for your teams!</p>
             </div>
             <img class="intro__img" src="./assets/img/homepage/main/mainImg.svg" alt="Welcome Image">
         </section>
@@ -91,7 +92,7 @@
             <h2 class="features__title">Feature</h2>
             <div class="features__container flex flex-center">
                 <!-- 1 card -->
-                <div class="features__card flex features__dragdrop">
+                <div class="features__card flex-gap features__dragdrop">
                     <figure class="features__card-fig flex flex-center">
                         <!-- <img class="features__card-fig-img" src="./assets/img/homepage/features/dragdrop.svg" alt="Drag Drop Illus"> -->
                         <svg class="features__card-fig-img">
@@ -104,7 +105,7 @@
                     </article>
                 </div>
                 <!-- 1 card -->
-                <div class="features__card flex features__collab">
+                <div class="features__card flex-gap features__collab">
                     <figure class="features__card-fig flex flex-center">
                         <svg class="features__card-fig-img" >
                             <use href="#svg__collab"></use>
@@ -117,7 +118,7 @@
                     </article>
                 </div>
                 <!-- 1 card -->
-                <div class="features__card flex features__darkmode">
+                <div class="features__card flex-gap features__darkmode">
                     <figure class="features__card-fig flex flex-center">
                         <!-- <img class="features__card-fig-img" id="features__img-darkmode" src="./assets/img/homepage/features/darkmode.png" alt="Dark Mode Illus"> -->
                         <!-- <img class="features__card-fig-img" id="features__img-darklight" src="./assets/img/homepage/features/darklight.png" alt="Dark Light Mode Illus"> -->
