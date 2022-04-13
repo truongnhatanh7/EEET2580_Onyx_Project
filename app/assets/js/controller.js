@@ -380,8 +380,29 @@ const taskSave = $(".workspace__task-setting-btn");
 const taskDelete = $(".workspace__task-delete-btn");
 const taskInput = $(".workspace__task-setting-input");
 const taskSettingClose = $(".workspace__task-setting-close");
+const taskSettingUrgent = $('.workspace__task-setting-urgent')
+let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
+
+taskSettingUrgent.addEventListener("click", (event) => {
+    let priority = "0";
+    if (!isUrgent) {
+        priority = "1"
+    }
+    console.log(isUrgent);
+    let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
+    console.log(url)
+    if (currentTask != null) {
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+    taskSettingClose.click();
+})
 
 taskSetting.addEventListener("click", (event) => {
     taskSettingClose.click();
@@ -399,23 +420,41 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function handleTaskSetting(event) {
+    // Get current task content
     currentTask = event.target.parentNode.id.slice(5);
     currentTaskNode = event.target.parentNode;
+    renderTaskSettingUrgent();
+
     let boundingClientRect = currentTaskNode.getBoundingClientRect();
     sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
     sessionStorage.setItem("isEditing", "1");
     taskSetting.classList.add("enable");
     taskSetting.classList.remove("disable");
+
+    // Reposition modal
     taskSettingInner.style.top = boundingClientRect.top + "px";
     taskSettingInner.style.left = boundingClientRect.left + "px";
     taskSettingInner.style.transform = "translateX(0)";
+
+    // Take task clickcontent
     taskInput.value = currentTaskNode
         .querySelector(".workspace__board-list-task-content")
         .innerText.trim();
     taskInput.focus();
 }
 
+function renderTaskSettingUrgent() {
+    isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
+    if (isUrgent) {
+        taskSettingUrgent.innerText = "Unmark ungent";
+    } else {
+        taskSettingUrgent.innerText = "Mark as urgent";
+    }
+    console.log(isUrgent)
+}
+
 taskSettingClose.addEventListener("click", (event) => {
+    sessionStorage.setItem("isEditing", "0");
     taskInput.value = "";
     taskSetting.classList.add("disable");
     taskSetting.classList.remove("enable");

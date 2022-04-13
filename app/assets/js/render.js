@@ -18,7 +18,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 3000)
+}, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -49,6 +49,7 @@ function renderBoard(board) {
 
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
+                    let isUrgent = task.priority == 1 ? "enable" : "disable";
                     let taskHTML = `  
                     <div
                     class="workspace__board-list-task"
@@ -59,6 +60,8 @@ function renderBoard(board) {
 
                     id="${"task_" + task.taskId}"
                     >
+
+                    <i class="fa-solid fa-fire-flame-curved task-urgent ${isUrgent}"></i>
                     <p
                       class="workspace__board-list-task-content"
                     >
@@ -151,6 +154,7 @@ function createBoard(data) {
             tempTask.setPos(task.pos);
             tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
+            tempTask.setPriority(task.priority);
             tempList.addTask(tempTask);
         });
         boardObj.addList(tempList);
@@ -224,14 +228,23 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId, pos) {
+    constructor(taskContent, taskId, pos, priority) {
         this.taskContent = taskContent;
         this.taskId = taskId;
         this.pos = pos;
+        this.priority = priority;
     }
 
     setPos(pos) {
         this.pos = pos;
+    }
+
+    setPriority(priority) {
+        this.priority = priority;
+    }
+
+    getPriority() {
+        return this.priority;
     }
 
     getPos() {

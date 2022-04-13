@@ -68,6 +68,7 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 25px;
     position: relative;
+    z-index: 1;
     overflow-x: hidden;
     transition: 0.3s;
     display: flex;
@@ -135,6 +136,11 @@ input[type="text"] {
     color: var(--red);
 }
 
+.workspace__board-list-scrolalble {
+    position: relative;
+    z-index: 1;
+}
+
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--task-color);
@@ -148,6 +154,15 @@ input[type="text"] {
 
 .workspace__board-list-task:hover {
     cursor: pointer;
+}
+
+.task-urgent {
+    position: absolute;
+    top: 50%;
+    left: 6px; 
+    transform: translateY(-50%);
+    color: var(--red);
+    font-size: 1rem;
 }
 
 .workspace__board-list-task-content {
