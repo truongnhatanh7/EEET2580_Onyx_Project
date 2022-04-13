@@ -381,6 +381,8 @@ const taskDelete = $(".workspace__task-delete-btn");
 const taskInput = $(".workspace__task-setting-input");
 const taskSettingClose = $(".workspace__task-setting-close");
 const taskSettingUrgent = $('.workspace__task-setting-urgent')
+const taskSettingDesc = $('.workspace__task-setting-desc')
+let descContent = ''
 let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
@@ -441,6 +443,12 @@ function handleTaskSetting(event) {
         .querySelector(".workspace__board-list-task-content")
         .innerText.trim();
     taskInput.focus();
+    renderTaskDesc();
+}
+
+function renderTaskDesc() {
+    descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+    taskSettingDesc.value = descContent;
 }
 
 function renderTaskSettingUrgent() {
@@ -454,6 +462,7 @@ function renderTaskSettingUrgent() {
 }
 
 taskSettingClose.addEventListener("click", (event) => {
+    currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
     sessionStorage.setItem("isEditing", "0");
     taskInput.value = "";
     taskSetting.classList.add("disable");
@@ -461,13 +470,22 @@ taskSettingClose.addEventListener("click", (event) => {
     currentTaskNode = null;
 });
 
+taskSettingDesc.addEventListener('keyup', (event) => {
+    //TODO: Handle input validation desc
+    // console.log(taskSettingDesc.value.split("\n"))
+    // if(event.keyCode == 13 && taskSettingDesc.value.split("\n").length >= 3) { 
+    //     // taskSettingDesc.setAttribute('disabled', "")
+    //     return;
+    // } 
+})
+
 taskSave.addEventListener("click", (event) => {
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
     let newTaskContent = taskInput.value;
     if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
         throwInvalidInput();
         return;
-    }
+    } 
     if (newTaskContent == "") {
         throwToastEmptyTaskName();
     } else if (newTaskContent != "" && newTaskContent.length > 25) {
@@ -489,6 +507,15 @@ taskSave.addEventListener("click", (event) => {
             ).textContent = sessionStorage.getItem("currentTaskContent");
             taskSettingClose.click();
         });
+    }
+    if (taskSettingDesc.value != '') {
+        fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: taskSettingDesc.value
+        })
     }
     sessionStorage.setItem("isEditing", "0");
 });

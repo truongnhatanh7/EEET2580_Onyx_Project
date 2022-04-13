@@ -67,7 +67,12 @@ function renderBoard(board) {
                     >
                       ${task.taskContent}
                     </p>
-                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
+                    <p
+                        class="workspace__board-list-task-desc disable"
+                    >
+                        ${task.desc}
+                    </p>
+                    <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;
@@ -155,6 +160,7 @@ function createBoard(data) {
             tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
             tempTask.setPriority(task.priority);
+            tempTask.setDesc(task.description);
             tempList.addTask(tempTask);
         });
         boardObj.addList(tempList);
@@ -228,11 +234,16 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId, pos, priority) {
+    constructor(taskContent, taskId, pos, priority, desc) {
         this.taskContent = taskContent;
         this.taskId = taskId;
         this.pos = pos;
         this.priority = priority;
+        this.desc = desc;
+    }
+
+    setDesc(desc) {
+        this.desc = desc;
     }
 
     setPos(pos) {
@@ -241,6 +252,10 @@ class Task {
 
     setPriority(priority) {
         this.priority = priority;
+    }
+
+    getDesc() {
+        return this.desc;
     }
 
     getPriority() {

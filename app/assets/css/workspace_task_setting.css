@@ -56,6 +56,16 @@
     width: 100%;
 }
 
+.workspace__task-setting-desc {
+    resize: none;
+    min-width: 100%;
+    border-radius: 20px;
+    padding: 16px;
+    margin-top: 8px;
+    outline: none;
+    height: 120px;
+}
+
 .workspace__task-setting-btn {
     z-index: -1;
     margin-top: 8px;

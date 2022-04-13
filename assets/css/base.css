@@ -108,6 +108,13 @@ html {
     cursor: pointer;
 }
 
+textarea {
+    font-family: "Poppins", sans-serif !important;
+    font-size: 62.5%;
+    font-size: 1.4rem;
+    min-height: fit-content;
+}
+
 
 .toast-wrapper {
     width: 100%;
