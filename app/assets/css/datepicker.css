@@ -1,0 +1,62 @@
+.datepicker {
+    background-color: white;
+    position: absolute;
+    right: -94%;
+    top: 52%;
+    width: 280px;
+    padding: 8px;
+    font-size: 1.4rem;
+    border-radius: 8px;
+
+}
+
+.datepicker__prev,
+.datepicker__next {
+    padding: 4px;
+    font-size: 1.8rem;
+}
+
+.datepicker__prev:hover,
+.datepicker__next:hover {
+    cursor: pointer;
+}
+
+.datepicker__year {
+
+}
+
+.datepicker__header {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.datepicker__dow {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+
+}
+
+.datepicker__day {
+
+}
+
+.datepicker__numday-wrapper {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(7, 1fr);
+    padding: 8px;
+    
+}
+
+.datepicker__numday {
+    border: 0.5px solid black;
+    text-align: center;
+}
+
+.datepicker__numday:hover {
+    cursor: pointer;
+    background-color: var(--soft-pink);
+    
+}
