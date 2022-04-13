@@ -22,14 +22,13 @@ main {
     position: relative;
     padding: 0 5em; 
     width: 100%;
+    align-items: flex-end;
 }
 .intro__text-img-hello {
     width: 60%;
-    align-self: flex-end;
 }
 .intro__text-img-collab {
     width: 35%;
-    align-self: flex-end;
     transform: translateY(-47%);
 }
 .intro__text-img-line {
@@ -67,28 +66,32 @@ main {
 }
 .features__container {
     flex-direction: column;
+
 }
 /* feature card */
 .features__card {
-    /* position: sticky;
-    top: calc(var(--nav-height) + 7em); */
+    position: -webkit-sticky;
+    position: sticky;
+    top: calc(var(--nav-height) + 7em);
 
     width: 100%;
+    height: 40em;
     --gap: 0;
 
     /* background-color: var(--dark); */
     border-radius: 50px;
-    background-color: var(--dark);
-    box-shadow: -7px -5px 5px black;
-    padding: 10em 5em;
+    /* background-color: var(--alt-blue); */
+    /* color: var(--black); */
+    /* box-shadow: -7px -5px 5px black; */
+    /* padding: 10em 5em; */
 }
-/* .features__card:nth-child(2n) {
+.features__card:nth-child(2) {
     top: calc(var(--nav-height) + 7em + 5em);
     
 }
-.features__card:nth-child(3n) {
+.features__card:nth-child(3) {
     top: calc(var(--nav-height) + 7em + 10em);  
-} */
+}
 .features__card.features__collab figure {
     order: 2;
 }
@@ -96,14 +99,16 @@ main {
 .features__card-fig,
 .features__card-article {
     width: 50%;
+    height: 100%;
 } 
 .features__card-fig-img {
     width: 100%;
-    height: 50em;
+    height: 100%;
 }
-#features__img-darkmode {
-    display: none;
+[id^="svg__"] {
+    width: 100%;
 }
+
 /* feature article */
 .features__card-article {
     /* width: 40%; */
@@ -124,14 +129,14 @@ main {
     font-size: var(--feature-card-text);
 }
 /* animation */
-/* .svg__dragdrop-moving-rect, 
+.svg__dragdrop-moving-rect, 
 .svg__dragdrop-moving-line {
     animation: dragdrop-move 2.5s 1 ease forwards;
 }
 .svg__collab-circle {
     animation: collab-appear 2.5s 1 ease forwards;
-} */
-/* @keyframes dragdrop-move {
+} 
+@keyframes dragdrop-move {
     0% {
         transform: translate(-19%, -12%);
         fill-opacity: 0.74;
@@ -150,7 +155,7 @@ main {
         opacity: 1;
 
     }
-} */
+}
 
 /* end of main features */
 /* end of main */
