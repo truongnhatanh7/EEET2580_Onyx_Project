@@ -64,7 +64,7 @@ nav {
     backdrop-filter: blur(28px);
 }
 .nav-colored {
-    border-radius: 0;
+    /* border-radius: 0; */
     backdrop-filter: blur(28px);
     background-color: #ffffff9a;
     box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;

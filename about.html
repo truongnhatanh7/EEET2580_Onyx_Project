@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/about.css">
+    <link rel="stylesheet" href="./assets/css/navbar-responsive.css">
+    <link rel="stylesheet" href="./assets/css/hompage-responsive.css">
 
     <!-- Link Poppins font for logo font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,32 +17,61 @@
     <link rel = "icon" href = 
     "https://deciem.com/on/demandware.static/Sites-deciem-Site/-/default/dw7f9915df/images/brands-logo/theordinary_black.svg" 
             type = "image/x-icon">
-    <title>About us</title>
+
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    
+    <title>ONYZ | About</title>
 </head>
 <body>
         <!-- Start of the header -->
-        <header>
-            <div class="nav-wrapper">
-                <nav>
-                    <div class="navbar__name logo-font">
-                        ONYX
-                    </div>            
-                    <div class="navbar__menu">
-                        <a class="navbar__menu-element-link " href="./index.html">Home</a>
-                        <a class="navbar__menu-element-link" href="#">About</a>
-                        <a class="navbar__menu-element-link" href="#">Pricing</a>
+        <header class="flex flex-center">
+        
+            <nav class="flex flex-center-spacebtw nav-transparent">
+                <!-- start of nav logo -->
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-text black">ONYX</a>
+                </div>
+                <!-- end of nav logo -->
+    
+                <!-- start of nav menu -->
+                <div class="nav__hamburger-wrapper flex flex-center">
+                    <svg id="nav__hamburger" preserveAspectRatio="xMinYMin meet" viewBox="0 0 820 650">
+                      <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="nav__hamburger-top"></path>
+                      <path d="M300,320 L540,320" id="nav__hamburger-middle"></path>
+                      <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="nav__hamburger-bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
+                    </svg>
+                  </div>
+                
+                <!-- end of nav menu -->
+    
+                <!-- start of nav button -->
+                <button OnClick="location.href='./login2.html'" class="btn nav__btn white flex flex-center">
+                    <span>Login</span>
+                    <i class="nav__btn-icon fa-solid fa-caret-right"></i>
+                    <!-- <i class="nav__btnres-icon fa-solid fa-user"></i> -->
+                </button>
+    
+                <div class="nav__menu-wrapper">
+                    <div class="nav__menu flex flex-center-spacebtw">
+                        <div class=" nav__menu-element-logo">ONYX</div>
+                        <a href="./index.html" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-house"></i>Home</a>
+    
+                        <a href="./about.html" class="nav__menu-element">
+                            <i class="nav__menu-element-icon fa-solid fa-circle-info"></i>About
+                        </a>
+    
+                        <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-tags"></i>FQA</a>
+                        
+                        <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-location-dot"></i>Contact</a>
+                        <a href="./login2.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
+                        <!-- log out -->
+                        <!-- <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-right-from-bracket"></i></i>Logout</a> -->
                     </div>
-                    <div class="navbar__btnwrapper">
-                        <button OnClick="location.href='./login2.html'" class="btn navbar__btn">Login
-                            <!-- add Workspace button later -->
-                            <svg class="navbar__btn-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-fill" viewBox="0 0 16 16">
-                                <path d="m12.14 8.753-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 0 1 1.659-.753l5.48 4.796a1 1 0 0 1 0 1.506z"/>
-                            </svg>
-                        </button>
-                    </div>
-                    
-                </nav>        
-            </div>
+                </div>
+                <!-- end of nav button -->
+            </nav>
         </header>
         <!-- End of the header -->
 
@@ -136,14 +169,17 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="footer">
-                            <div class="footer__logo logo-font">ONYX</div>
-                            <div class="footer__copyrights">@ reserved 2020</div>
-                        </div>
+                        <div class="space"></div>
+                        <footer class="footer flex flex-center">
+                            <div class="footer__logo flex flex-center logo-font">ONYX</div>
+                            <div class="footer__copyrights flex flex-center">@ reserved 2020</div>
+                        </footer>
                     </div>
                 </div>
             </div>
         </main>
+
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/homepage.js"></script>
 </body>
 </html>
