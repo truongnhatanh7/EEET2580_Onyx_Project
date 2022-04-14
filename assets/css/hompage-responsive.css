@@ -12,7 +12,7 @@
         width: 1400px;
     }
     .main__intro {
-        padding-top: calc(var(--nav-height) + 10%);
+        padding-top: calc(var(--nav-height) + 15%);
     }
     .main__features {
         padding-top: 10em;
@@ -50,7 +50,7 @@
     }
     /* main intro img */
     .main__intro {
-        padding-top: calc(var(--nav-height) + 40%);
+        padding-top: calc(var(--nav-height) + 20%);
     }
     .intro__text {
         flex-direction: column;
@@ -78,16 +78,12 @@
         padding: 10em 5em;
     }
     .features__title{
+        font-size: 9rem;
         text-align: center;
     }
     .features__card {
         height: 40em;
     }
-    /* .features__title {
-        align-self: center;
-        font-size: var(--feature-title-size);
-        letter-spacing: 0.6rem;
-    } */
 }
 /* iphone size */
 @media (max-width: 768px) {
@@ -138,9 +134,9 @@
         --gap: 10em;
     }
     .features__title{
-        font-size: 8rem;
+        font-size: 7rem;
         text-align: center;
-        margin-bottom: 48px;
+        margin-bottom: 60px;
     }
 
     .flex-gap {

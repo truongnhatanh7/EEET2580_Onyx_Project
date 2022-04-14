@@ -46,6 +46,7 @@ header {
     position: fixed;
     top: 0;
     left: 0;
+    height: auto;
 }
 nav {
     z-index: 100;
@@ -69,10 +70,13 @@ nav {
     background-color: #ffffff9a;
     box-shadow: var(--task-shadow);
 }
+
 .nav__logo{
-    font-size: 4.5rem;
+    font-size: 4rem;
     font-weight: 800;
     /* order: 1; */
+    display: none;
+    height: auto;
 }
 .nav__logo-text{
 
@@ -164,21 +168,21 @@ path#nav__hamburger-middle {
 
 /* animation */
 @-webkit-keyframes slide-in {
-    0% { transform: translateY(-9rem); }
+    0% { transform: translateY(-8rem); }
     100% { transform: translateY(0%); }
 }
 
 @keyframes slide-in {
-    0% { transform: translateY(-9rem); }
+    0% { transform: translateY(-8rem); }
     100% { transform: translateY(0%); }
 }
 @-webkit-keyframes slide-out {
     0% { transform: translateY(0%); }
-    100% { transform: translateY(-9rem); }
+    100% { transform: translateY(-100%); }
 }
 
 @keyframes slide-out {
     0% { transform: translateY(0%); }
-    100% { transform: translateY(-9rem); }
+    100% { transform: translateY(-100%); }
 }
 /* end of nav bar menu */

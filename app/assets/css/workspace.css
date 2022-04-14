@@ -56,9 +56,9 @@ input[type="text"] {
 }
 
 .workspace__board-list {
-    padding: 24px 24px 12px 24px;
-    max-width: 360px;
-    min-width: 360px;
+    padding: 24px 18px 12px 18px;
+    max-width: 340px;
+    min-width: 340px;
     height: fit-content;
     
     overflow-y: hidden;
@@ -66,7 +66,7 @@ input[type="text"] {
     margin-left: 32px;
     margin-bottom: 32px;
     background-color: var(--white);
-    border-radius: 25px;
+    border-radius: var(--border-main);
     position: relative;
     z-index: 1;
     overflow-x: hidden;
@@ -149,9 +149,9 @@ input[type="text"] {
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--task-color);
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     margin-bottom: 16px;
-    width: 310px;
+    width: 100%;
     padding: 14px;
     position: relative;
     /* box-shadow: var(--task-shadow); */
@@ -211,11 +211,11 @@ input[type="text"] {
 .workspace__add-list-wrapper {
     height: fit-content;
     background-color: var(--white);
-    border-radius: 25px;
+    border-radius: var(--border-main);
 
     min-width: 360px;
     margin-left: 32px;
-
+    margin-right: 32px;
 }
 
 .workspace__submit-task-btn,
@@ -238,13 +238,13 @@ input[type="text"] {
 }
 
 .workspace__submit-task-btn{
-    width: 242px;
+    width: 230px;
 }
 
 .workspace__add-list-btn {
     background-color: var(--white);
     color: var(--dark-gray);
-    min-width: 360px;
+    min-width: 340px;
     margin-top: 0;
     padding: 16px 20px;
 }
@@ -273,7 +273,7 @@ input[type="text"] {
 }
 
 .workspace__add-task-wrapper {
-    margin-top: 40px;
+    margin-top: 10px;
     min-width: 100%;
     display: none;
     transition: 0.3s;
@@ -293,7 +293,7 @@ input[type="text"] {
     margin-bottom: 16px;
     width: 100%;
     padding: 14px;
-    border-radius: 16px;
+    border-radius: var(--border-sub);
     outline: none;
     border: none;
 }
