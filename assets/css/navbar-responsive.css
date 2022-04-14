@@ -43,6 +43,9 @@
     }
     /* end of nav hamburger */
 
+    nav{
+        border-radius: 0;
+    }
     /* logo */
     .nav__logo {
         width: 100%;

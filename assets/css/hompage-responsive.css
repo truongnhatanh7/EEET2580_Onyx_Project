@@ -1,11 +1,15 @@
 @media screen and (min-width: 1400px){
-    .main__intro, .main__features{
+    /* .main__intro, .main__features{
         padding-left: 10%;
         padding-right: 10%;
+    } */
+    body{
+        width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
     }
-    header{
-        padding-left: 9%;
-        padding-right: 9%;
+    .nav-colored, .nav-transparent{
+        width: 1400px;
     }
     .main__intro {
         padding-top: calc(var(--nav-height) + 10%);
@@ -28,6 +32,10 @@
     .features__title{
         font-size: 10em;
     }
+    header{
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
 }
 /* ipad size */
 @media (max-width: 1040px) {
@@ -38,8 +46,7 @@
         --feature-card-text: clamp(0.87rem, calc(0.01rem + 4.29vw), 2.80rem);
     }
     header{
-        padding-left: 4rem;
-        padding-right: 4rem;
+        padding: 0;
     }
     /* main intro img */
     .main__intro {

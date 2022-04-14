@@ -1,8 +1,15 @@
-@import "./base.css";
 @import "./navbar.css";
 @import "./homepage.css";
+
+.nav__menu-element-logo,
+.nav__menu-element-icon,
+.nav__menu-element-home,
+.nav__menu-element-login {
+    display: none;
+}
+
 main{
-    height: 100vh;
+    height: 100vh !important;
 }
 .empty-path{
     height: 100vh;
@@ -94,7 +101,7 @@ main{
 }
 .fifth-member{
     top: 560px;
-    bottom: -141rem;
+    bottom: -164rem;
 }
 
 .first-member-tag{
@@ -195,27 +202,18 @@ main{
     background-color: transparent;
 }
 
-.footer {
-    width: 100%;
+.space {
     height: 100rem;
-
-    padding-top: 700px;
-    padding-bottom: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background-color: var(--white-color);
 }
 
-@media (max-width: 1350px) {
-    main{
-        height: auto;
-    }
+
+@media (max-width: 1040px) {
     .phone-hidden{
         display: none;
     }
 
     .member-tittle__wrapper{
+        height: 800px;
         position: static;
         font-size: 4rem;
         font-weight: bold;
@@ -281,10 +279,13 @@ main{
         flex-direction: column;
         align-items: center;
     }
+    .space{
+        display: none;
+    }
+}
 
-    .footer{
-        height: auto;
-        padding-top: 20px;
-        padding-bottom: 0;
+@media (max-width: 768px){
+    .member-tittle__wrapper h4, .scroll-downs{
+        display: none;
     }
 }
