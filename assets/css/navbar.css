@@ -67,7 +67,7 @@ nav {
     /* border-radius: 0; */
     backdrop-filter: blur(28px);
     background-color: #ffffff9a;
-    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    box-shadow: var(--task-shadow);
 }
 .nav__logo{
     font-size: 4.5rem;
@@ -122,7 +122,9 @@ path#nav__hamburger-middle {
 .nav__menu-element-logo,
 .nav__menu-element-icon,
 .nav__menu-element-home,
-.nav__menu-element-login {
+.nav__menu-element-login,
+.nav__btnres-icon,
+.nav__btnres {
     display: none;
 }
 /* nav bar button */
@@ -133,13 +135,7 @@ path#nav__hamburger-middle {
 
     background-color: var(--pink-color);
 }
-.nav__btn-icon{
 
-}
-.nav__btnres-icon,
-.nav__btnres {
-    display: none;
-}
 
 /* logo */
 .nav__logo-text:hover {

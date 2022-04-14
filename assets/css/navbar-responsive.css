@@ -14,6 +14,7 @@
         width: 100%;
         flex-wrap: wrap;
         --gap: 0;
+        border-radius: 0;
     }
     /* hamburger */
     .nav__hamburger-wrapper {
@@ -43,9 +44,6 @@
     }
     /* end of nav hamburger */
 
-    nav{
-        border-radius: 0;
-    }
     /* logo */
     .nav__logo {
         width: 100%;
@@ -144,9 +142,6 @@
     .nav__menu-wrapper.open {
         display: block;
     }
-    .nav__logo {
-        /* width: 50%; */
-    }
 
 }  
 @media (max-width: 420px) {
@@ -155,5 +150,3 @@
         --gap: 4em;
     }
 } 
-@media screen and (min-width: 1024px) {
-}

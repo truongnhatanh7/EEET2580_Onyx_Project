@@ -1,13 +1,3 @@
-@import "./navbar.css";
-@import "./homepage.css";
-
-.nav__menu-element-logo,
-.nav__menu-element-icon,
-.nav__menu-element-home,
-.nav__menu-element-login {
-    display: none;
-}
-
 main{
     height: 100vh !important;
 }
