@@ -149,7 +149,6 @@
     .nav__menu-wrapper.open {
         display: block;
     }
-
 }  
 @media (max-width: 420px) {
     .nav__menu {
