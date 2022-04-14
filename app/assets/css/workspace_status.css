@@ -225,7 +225,7 @@
 }
 
 
-@media (max-width: 1200px) {
+@media (max-width: 1040px) {
     .workspace__add-collaborator-wrapper {
         display: grid;
         grid-template-columns: 1fr;
@@ -256,7 +256,4 @@
         width: 92%;
         /* height:80%; */
     }
-
-
-
 }
