@@ -72,26 +72,26 @@ main{
 .first-member{
     top: 150px;
     bottom: -350px;
-    background-color: #13135C;
+    background-color: #030C1C;
 }
 .second-member{
     top: 200px;
     bottom: -340px;
-    background-color: #3131E8;
+    background-color: #002366;
 }
 .third-member{
     top: 250px;
     bottom: -330px;
-    background-color: #2323A8;
+    background-color: #0B3B8C;
 }
 .fourth-member{
     top: 300px;
     bottom: -320px;
-    background-color: #1B1B82;
+    background-color: #335DAB;
 }
 .fifth-member{
     top: 560px;
-    bottom: -164rem;
+    bottom: -174rem;
 }
 
 .first-member-tag{
@@ -108,7 +108,7 @@ main{
 }
 .fifth-member-tag{
     height: 50px;
-    background-color: var(--gray);
+    background-color:#5C7CB8;
     border-radius: 20px 20px 0 0;
 }
 
@@ -179,7 +179,7 @@ main{
 .fifth-member-content__wrapper{
     height: 410px;
     justify-content: center;
-    background-color: var(--gray);
+    background-color: #5C7CB8;
     border-radius: 0 0 20px 20px;
 }
 
