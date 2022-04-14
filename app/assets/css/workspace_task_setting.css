@@ -14,7 +14,7 @@
 
 .workspace__task-setting-wrapper {
     position: absolute;
-    width: 312px;
+    width: 324px;
     height: fit-content;
     top: 50%;
     left: 50%;
@@ -23,7 +23,7 @@
     background-color: transparent;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     align-items: flex-end;
 }
 
@@ -35,7 +35,7 @@
     padding: 0 24px;
     position: absolute;
     right: -68px;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     /* animation: slideIn 0.3s; */
 }
 
@@ -50,7 +50,7 @@
 .workspace__task-setting-input {
     padding: 16px 16px;
     border: none;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     outline: var(--soft-pink);
     font-size: 1.6rem;
     width: 100%;
@@ -59,7 +59,7 @@
 .workspace__task-setting-desc {
     resize: none;
     min-width: 100%;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     padding: 16px;
     margin-top: 8px;
     outline: none;

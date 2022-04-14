@@ -71,7 +71,7 @@
 
 .active{
     padding: 0 20px;
-    border-radius: 20px;
+    border-radius: var(--button-border);
     text-decoration: none;
     color: var(--black);
     margin-right: 32px;

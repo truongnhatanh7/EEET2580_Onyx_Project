@@ -67,8 +67,8 @@ main {
 .features__title {
     color: var(--yellow);
     font-weight: 600;
-    font-size: 12rem;
-    letter-spacing: 0.7rem;
+    font-size: 10rem;
+    letter-spacing: 0.4rem;
     line-height: 1.7;
 }
 .features__container {
@@ -125,15 +125,16 @@ main {
 }
 .features__card-article h3 {
     /* 5.3 */
-    /* font-size: 7rem; */
+    font-weight: 600;
     font-size: var(--feature-card-header);
     text-align: center;
 }
 .features__card-article p {
     /* 1.95 */
+    font-weight: 300;
     text-align: center;
-    /* font-size: 3rem; */
-    font-size: var(--feature-card-text);
+    font-size: 2.5rem;
+    padding: 0 20px;
 }
 /* animation */
 .svg__dragdrop-moving-rect, 

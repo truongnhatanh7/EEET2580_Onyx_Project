@@ -12,7 +12,7 @@
 
 .workspace__status-wrapper {
     background-color: var(--white);
-    border-radius: 25px;
+    border-radius: var(--border-main);
     display: block;
     color: var(--black);
     padding: 4%;
@@ -34,7 +34,7 @@
     border: none;
     outline: none;
     background-color: var(--gray);
-    border-radius: 25px;
+    border-radius: var(--border-main);
 }
 
 .workspace__status-close-icon {
@@ -43,7 +43,7 @@
     right: 16px;
     top: 16px;
     padding: 8px 16px;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     width: fit-content;
     height: fit-content;
     transition: 0.3s;
@@ -62,7 +62,7 @@
 
 .workspace__add-collaborator-input {
     padding: 8px 20px;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     border: var(--soft-pink) solid 2px;
     margin-right:8px;
     outline: none;
@@ -82,7 +82,7 @@
     overflow: auto;
     background-color: var(--gray);
     padding: 32px;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     margin-top: 28px;
     box-shadow: var(--task-shadow);
 
@@ -150,7 +150,7 @@
     top: 0;
     bottom: 0;
     background: var(--red);
-    border-radius: 120px;
+    border-radius: var(--button-border);
     width: 0;
     transition: width 0.3s;
     z-index: -1;
@@ -186,7 +186,7 @@
     border: 2px solid var(--red);
     outline: var(--soft-pink);
     font-size: 1.6rem;
-    border-radius: 20px;
+    border-radius: var(--border-sub);
     margin-top: 8px;
     width: 100%;
 
