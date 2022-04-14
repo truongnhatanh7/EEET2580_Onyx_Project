@@ -58,8 +58,6 @@ function handleOnDrag(event) {
 }
 
 function handleDragOver(event) {
-    // const containerFake = $('.workspace__board-list.modifying');
-    // const container = containerFake.querySelector(".workspace__board-list-scrollable")
     let container = event.target.parentNode;
     event.preventDefault();
     if (container.classList["0"] === "workspace__board-list-scrollable") {
@@ -86,17 +84,15 @@ function handleDragOver(event) {
 
 function getDragAfterElement(container, yMousePos) {
     // Use y because the boundaries are in current container
-
     const draggableElements = [
         ...container.querySelectorAll(
             ".workspace__board-list-task:not(.workspace__board-list-task--dragging)"
         ),
-    ]; // Convert node list to array
+    ];
 
     return draggableElements.reduce(
         (closest, child) => {
             const box = child.getBoundingClientRect(); // Get current box
-
             const offset = yMousePos - box.top - box.height / 2; // If mouseY near center of current child -> negative value but we need the negative one AND closest to 0
             if (offset < 0 && offset > closest.offest) {
                 return { offset: offset, element: child };

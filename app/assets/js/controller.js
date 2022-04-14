@@ -249,8 +249,6 @@ function handleAddTask(event) {
         triggerModifying(event);
 
         let currentListId = event.target.parentNode.id.slice(5);
-        // console.log(event.target.parentNode);
-        // console.log(event.target.parentNode.id.slice(5))
         let tempArray = event.target.parentNode.childNodes;
         let taskFactory = tempArray[tempArray.length - 2];
         taskFactory.classList.add("enable");
@@ -382,8 +380,38 @@ const taskSave = $(".workspace__task-setting-btn");
 const taskDelete = $(".workspace__task-delete-btn");
 const taskInput = $(".workspace__task-setting-input");
 const taskSettingClose = $(".workspace__task-setting-close");
+const taskSettingUrgent = $('.workspace__task-setting-urgent')
+const taskSettingDesc = $('.workspace__task-setting-desc')
+const taskSettingDatepicker = $('.workspace__task-setting-datepicker')
+const datepickerJS = $('.datepicker')
+let descContent = ''
+let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
+
+datepicker(taskSettingDatepicker);
+taskSettingDatepicker.addEventListener('click', () => {
+    datepickerJS.classList.remove('disable');
+})
+
+taskSettingUrgent.addEventListener("click", (event) => {
+    let priority = "0";
+    if (!isUrgent) {
+        priority = "1"
+    }
+    console.log(isUrgent);
+    let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
+    console.log(url)
+    if (currentTask != null) {
+        fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+    }
+    taskSettingClose.click();
+})
 
 taskSetting.addEventListener("click", (event) => {
     taskSettingClose.click();
@@ -401,28 +429,62 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function handleTaskSetting(event) {
+    // Get current task content
     currentTask = event.target.parentNode.id.slice(5);
     currentTaskNode = event.target.parentNode;
+    renderTaskSettingUrgent();
+
     let boundingClientRect = currentTaskNode.getBoundingClientRect();
     sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
     sessionStorage.setItem("isEditing", "1");
     taskSetting.classList.add("enable");
     taskSetting.classList.remove("disable");
+
+    // Reposition modal
     taskSettingInner.style.top = boundingClientRect.top + "px";
     taskSettingInner.style.left = boundingClientRect.left + "px";
     taskSettingInner.style.transform = "translateX(0)";
+
+    // Take task clickcontent
     taskInput.value = currentTaskNode
         .querySelector(".workspace__board-list-task-content")
         .innerText.trim();
     taskInput.focus();
+    renderTaskDesc();
+}
+
+function renderTaskDesc() {
+    descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+    taskSettingDesc.value = descContent;
+}
+
+function renderTaskSettingUrgent() {
+    isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
+    if (isUrgent) {
+        taskSettingUrgent.innerText = "Unmark urgent";
+    } else {
+        taskSettingUrgent.innerText = "Mark as urgent";
+    }
+    console.log(isUrgent)
 }
 
 taskSettingClose.addEventListener("click", (event) => {
+    currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+    sessionStorage.setItem("isEditing", "0");
     taskInput.value = "";
     taskSetting.classList.add("disable");
     taskSetting.classList.remove("enable");
     currentTaskNode = null;
 });
+
+taskSettingDesc.addEventListener('keyup', (event) => {
+    //TODO: Handle input validation desc
+    // console.log(taskSettingDesc.value.split("\n"))
+    // if(event.keyCode == 13 && taskSettingDesc.value.split("\n").length >= 3) { 
+    //     // taskSettingDesc.setAttribute('disabled', "")
+    //     return;
+    // } 
+})
 
 taskSave.addEventListener("click", (event) => {
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
@@ -430,7 +492,7 @@ taskSave.addEventListener("click", (event) => {
     if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
         throwInvalidInput();
         return;
-    }
+    } 
     if (newTaskContent == "") {
         throwToastEmptyTaskName();
     } else if (newTaskContent != "" && newTaskContent.length > 25) {
@@ -452,6 +514,15 @@ taskSave.addEventListener("click", (event) => {
             ).textContent = sessionStorage.getItem("currentTaskContent");
             taskSettingClose.click();
         });
+    }
+    if (taskSettingDesc.value != '') {
+        fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: taskSettingDesc.value
+        })
     }
     sessionStorage.setItem("isEditing", "0");
 });
@@ -626,7 +697,7 @@ function renderUserInWorkspace(users) {
             let tempHtml = `
       <div class="workspace__collaborator" id="user_${user.userId} ">
         <h3 class="workspace__collaborator-name" >${user.name}</h3>
-        <i class="fa-solid fa-xmark workspace__collaborator-delete"></i>
+        <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
       </div>
       `;
             let para = document
@@ -643,7 +714,10 @@ document.addEventListener("click", (event) => {
     }
 });
 
-function handleRemoveCollaborator(id) {
+function handleRemoveCollaborator(event) {
+    console.log("Remove collaborator invoked")
+
+    let id = event.target.parentNode.id.slice(5);
     let removeCollaboratorUrl =
         "http://localhost:8080/api/v1/user/remove-user-from-workspace/" +
         sessionStorage.getItem("currentBoardId") +

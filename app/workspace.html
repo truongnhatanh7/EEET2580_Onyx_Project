@@ -20,6 +20,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="../assets/css/base.css" />
         <link rel="stylesheet" href="./assets/css/workspace.css" />
+        <link rel="stylesheet" href="./assets/css/datepicker.css" />
+        <script src="./assets/js/datepicker.js" defer></script>
         <script src="./assets/js/dragndrop.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
         <script
@@ -33,67 +35,51 @@
             <div class="loading-wrapper">
                 <div class="square-loading"></div>
             </div>
-            <nav class="workspace__navbar">
-                <div class="workspace__navbar-left-wrapper">
-                    <a href="../index.html" class="workspace__navbar-link">Home</a>
-                    <a href="dashboard.html" class="workspace__navbar-link"
-                        >Dashboard</a
-                    >
+            <nav class="user__navbar">
+                <div class="user__navbar-left-wrapper">
+                    <a href="../index.html" class="user__navbar-link">Home</a>
+                    <a href="dashboard.html" class="user__navbar-link">
+                        Dashboard
+                    </a>
                 </div>
 
-                <div class="workspace__navbar-right-wrapper">
+                <div class="user__navbar-right-wrapper">
+                    <div class="user-task__wrapper">
+                        <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img">
                     
-
-                    <div class="dashboard-task__wrapper">
-                        <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img">
-                    
-                        <div class="dashboard-list__wrapper">
-                            <div class="dashboard-list-img__wrapper">
+                        <div class="user-list__wrapper">
+                            <div class="user-list-img__wrapper">
                                 <span>"Thai Manh Phi"</span>
-                                <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img-active">
+                                <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img-active">
                             </div>
-                            <table class="dashboard-list-table">
-                                <tr>
-                                    <td>
-                                        <div class="workspace__navbar-darkmode-wrapper">
-                                            <p class="workspace__navbar-darkmode-tittle">Dark mode</p>
-                                            <input
-                                                type="checkbox"
-                                                id="darkmode-switch"
-                                                class="workspace__switch-input"
-                                            />
-                                            <label
-                                                for="darkmode-switch"
-                                                class="workspace__switch"
-                                            ></label>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr class="list-content_wrapper workspace__navbar-progress-btn ">
-                                    <td>
-                                        <a class="list-content">
-                                            Project status
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="list-content_wrapper">
-                                    <td>
-                                        <a href="" class="list-content"> 
-                                            Settings 
-                                        </a>
-                                    </td>
-                                </tr>
-                                
-                            </table>
+                            <div class="user-list-table">
+                                <div>
+                                    <div class="user__navbar-darkmode-wrapper">
+                                        <p class="user__navbar-darkmode-tittle">Dark mode</p>
+                                        <input
+                                            type="checkbox"
+                                            id="darkmode-switch"
+                                            class="workspace__switch-input"
+                                        />
+                                        <label
+                                            for="darkmode-switch"
+                                            class="user__switch"
+                                        ></label>
+                                    </div>
+                                </div>
+                                <div class="list-content_wrapper workspace__navbar-progress-btn">
+                                    <a class="list-content">
+                                        Project status
+                                    </a>
+                                </div>
+                                <!-- <div class="list-content_wrapper">
+                                    <a href="" class="list-content"> 
+                                        Settings 
+                                    </a>
+                                </div> -->
+                            </div>
                         </div>
                     </div>
-                    <!-- <div class="workspace__navbar-right-avatar-wrapper">
-                        <img
-                            src="../assets/img/logo.png"
-                            alt="User Avatar"
-                            class="workspace__navbar-right-avatar-img"
-                        />
-                    </div> -->
                 </div>
             </nav>
 
@@ -133,7 +119,67 @@
                         <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
                       </button>
                     <input type="text" class="workspace__task-setting-input"/>
-    
+                    <textarea maxlength="125" type="text" class="workspace__task-setting-desc" placeholder="Note for this task" rows="3"></textarea>
+                    <button class="workspace__task-setting-datepicker btn">Change deadline</button>
+                    <div class="datepicker disable">
+                        <div class="datepicker__header">
+                            <p class="datepicker__prev"><</p>
+                            <h1 class="datepicker__year">May 2022</h1>
+                            <p class="datepicker__next">></p>
+                        </div>
+                        <div class="datepicker__dow">
+                            <span class="datepicker__day">Mon</span>
+                            <span class="datepicker__day">Tue</span>
+                            <span class="datepicker__day">Wed</span>
+                            <span class="datepicker__day">Thu</span>
+                            <span class="datepicker__day">Fri</span>
+                            <span class="datepicker__day">Sat</span>
+                            <span class="datepicker__day">Sun</span>
+                        </div>
+                        <div class="datepicker__numday-wrapper">
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>                    <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>                    <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                        </div>
+                    </div>
+                    <button class="workspace__task-setting-urgent btn">Mark this task as urgent</button>
                     <button class="workspace__task-setting-btn btn">Save</button>
                     <button class="workspace__task-delete-btn btn">Delete task</button>
                 </div>

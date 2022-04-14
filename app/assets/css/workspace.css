@@ -1,4 +1,4 @@
-@import "workspace_navbar.css";
+@import "user_navbar.css";
 @import "workspace_status.css";
 @import "workspace_task_setting.css";
 
@@ -56,7 +56,7 @@ input[type="text"] {
 }
 
 .workspace__board-list {
-    padding: 24px;
+    padding: 24px 24px 12px 24px;
     max-width: 360px;
     min-width: 360px;
     height: fit-content;
@@ -68,6 +68,7 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 25px;
     position: relative;
+    z-index: 1;
     overflow-x: hidden;
     transition: 0.3s;
     display: flex;
@@ -83,11 +84,16 @@ input[type="text"] {
 }
 
 .workspace__add-task-btn {
-    width: fit-content;
+    margin-top: 12px;
+    width: 100%;
+    padding: 12px 20px;
+    color: var(--black);
+    background-color: var(--white);
 }
-
-
-
+.workspace__add-task-btn:hover{
+    background-color: var(--pink-color);
+    color: white;
+}
 .workspace__board-list:hover{
     /* box-shadow: var(--box-shadow); */
 }
@@ -135,6 +141,11 @@ input[type="text"] {
     color: var(--red);
 }
 
+.workspace__board-list-scrolalble {
+    position: relative;
+    z-index: 1;
+}
+
 .workspace__board-list-task {
     font-size: 1.6rem;
     background-color: var(--task-color);
@@ -148,6 +159,15 @@ input[type="text"] {
 
 .workspace__board-list-task:hover {
     cursor: pointer;
+}
+
+.task-urgent {
+    position: absolute;
+    top: 50%;
+    left: 6px; 
+    transform: translateY(-50%);
+    color: var(--red);
+    font-size: 1rem;
 }
 
 .workspace__board-list-task-content {
@@ -164,8 +184,6 @@ input[type="text"] {
     font-size: 1.6rem;
     display: block;
     padding: 8px;
-
-  
 }
 
 .workspace__board-list-delete {
@@ -200,12 +218,10 @@ input[type="text"] {
 
 }
 
-
-.workspace__add-task-btn,
 .workspace__submit-task-btn,
 .workspace__submit-btn {
     padding: 12px 20px;
-    color: var(--constant-white);
+    color: var(--white);
     background-color: var(--soft-pink);
 }
 
@@ -218,6 +234,11 @@ input[type="text"] {
 } */
 .workspace__submit-btn {
     margin-bottom: 20px;
+    width: 238px;
+}
+
+.workspace__submit-task-btn{
+    width: 242px;
 }
 
 .workspace__add-list-btn {

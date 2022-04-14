@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/navbar.css">
     <script src="./assets/js/dashboard_main.js" defer></script>
 
 
@@ -20,37 +21,35 @@
         <div class="square-loading"></div>
     </div>
     <main id="dashboard-root">
-        <div class="dashboard-wrapper">
-            <header class="dashboard__header">
-                <a href="../index.html" class="dashboard__return"><i class="fa-solid fa-arrow-left dashboard__return-arrow"></i>Return to homepage</a>
-                <div class="dashboard-task__wrapper">
-                    <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img">
+        <nav class="user__navbar nav-colored">
+            <div class="user__navbar-left-wrapper">
+                <a href="../index.html" class="user__navbar-link">Home</a>
+                <p class="active ">
+                    Dashboard
+                </p>
+            </div>
+
+            <div class="user__navbar-right-wrapper">
+                <div class="user-task__wrapper">
+                    <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img">
                 
-                    <div class="dashboard-list__wrapper">
-                        <div class="dashboard-list-img__wrapper">
+                    <div class="user-list__wrapper">
+                        <div class="user-list-img__wrapper">
                             <span>"Thai Manh Phi"</span>
-                            <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="dashboard__img-active">
+                            <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img-active">
                         </div>
-                        <table class="dashboard-list-table">
-                            <tr class="list-content_wrapper">
-                                <td>
-                                    <a href="" class="list-content">
-                                        Your Profile
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr class="list-content_wrapper">
-                                <td>
-                                    <a href="" class="list-content"> 
-                                        Settings 
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
+                        <div class="user-list-table">
+                            <div class="list-content_wrapper user__navbar-progress-btn ">
+                                <a class="list-content">
+                                    Sign-out
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </header>
-    
+            </div>
+        </nav>
+        <div class="dashboard__wrapper">    
             <h1 class="dashboard__title">Your project</h1>
 
             <section class="dashboard__project-list">

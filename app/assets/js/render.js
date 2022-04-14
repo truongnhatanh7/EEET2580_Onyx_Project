@@ -1,15 +1,14 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
 let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
 let boardObj;
-// const $ = document.querySelector.bind(document);
-// const $$ = document.querySelectorAll.bind(document);
 const workspaceBoard = $(".workspace__board");
-// const addListBtn = $(".workspace__add-list-btn");
-// const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
 sessionStorage.setItem('isEditing', '0')
 
+if (localStorage.getItem('userId') == null) {
+    location.href = "../login2.html";
+}
 
 fetchBoardInfo();
 getBoardInfo();
@@ -19,7 +18,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 3000)
+}, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -50,6 +49,7 @@ function renderBoard(board) {
 
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
+                    let isUrgent = task.priority == 1 ? "enable" : "disable";
                     let taskHTML = `  
                     <div
                     class="workspace__board-list-task"
@@ -60,12 +60,19 @@ function renderBoard(board) {
 
                     id="${"task_" + task.taskId}"
                     >
+
+                    <i class="fa-solid fa-fire-flame-curved task-urgent ${isUrgent}"></i>
                     <p
                       class="workspace__board-list-task-content"
                     >
                       ${task.taskContent}
                     </p>
-                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
+                    <p
+                        class="workspace__board-list-task-desc disable"
+                    >
+                        ${task.desc}
+                    </p>
+                    <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                     </div>
                     `;
                     listHTML += taskHTML;
@@ -152,6 +159,8 @@ function createBoard(data) {
             tempTask.setPos(task.pos);
             tempTask.setTaskId(task.taskId);
             tempTask.setTaskContent(task.taskContent);
+            tempTask.setPriority(task.priority);
+            tempTask.setDesc(task.description);
             tempList.addTask(tempTask);
         });
         boardObj.addList(tempList);
@@ -225,14 +234,32 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId, pos) {
+    constructor(taskContent, taskId, pos, priority, desc) {
         this.taskContent = taskContent;
         this.taskId = taskId;
         this.pos = pos;
+        this.priority = priority;
+        this.desc = desc;
+    }
+
+    setDesc(desc) {
+        this.desc = desc;
     }
 
     setPos(pos) {
         this.pos = pos;
+    }
+
+    setPriority(priority) {
+        this.priority = priority;
+    }
+
+    getDesc() {
+        return this.desc;
+    }
+
+    getPriority() {
+        return this.priority;
     }
 
     getPos() {

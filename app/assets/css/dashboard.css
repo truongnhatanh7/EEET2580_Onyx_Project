@@ -1,135 +1,10 @@
+@import "./user_navbar.css";
 
-
-#dashboard-root {
+.dashboard__wrapper {
     padding: 64px 240px;
     width: 100%;
     height: 100vh;
     position: relative;
-}
-
-.dashboard__header {
-    color: black;
-    backdrop-filter: blur(28px);
-    background-color: #ffffff9a;
-    box-shadow: var(--nav-shadow);
-    position: fixed;
-    top: 0;
-    left: 240px;
-    right: 240px;
-    z-index: 100;
-    height: var(--nav-height);
-    clear: both;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 0px 0px 25px 25px;
-    padding: 0 6em;
-}
-
-.dashboard__return {
-    text-decoration: none;
-    color: black;
-    font-size: 2rem;
-    display: block;
-    width: fit-content;
-    transition: 0.2s;
-    padding: 12px 24px;
-    background-color: var(--yellow);
-    border-radius: 25px;
-}
-.dashboard-task__wrapper{
-    position: relative;
-}
-.dashboard__img-active,
-.dashboard__img{
-    width: 54px;
-    height: 54px;
-    object-fit: cover;
-    border-radius: 25px;
-    box-shadow: var(--task-shadow);
-    position: relative;
-}
-
-.dashboard__img-active{
-    margin-top: 8px;
-    margin-right: 8px;
-}
-/* 
-.dashboard__img:hover{
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px, rgba(17, 17, 26, 0.1) 0px 24px 80px;
-    transition: 0.3s;
-} */
-.dashboard-task__wrapper:hover .dashboard-list__wrapper {
-    display: block;
-    transition: 0.3s;
-    animation: slideIn 0.3s;
-}
-@keyframes slideIn {
-    0%{
-        opacity: 0.5;
-        transform: translateX(0) translateY(0);
-      }
-    100%{
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-.dashboard__return:hover {
-    transform: translateX(-16px);
-}
-
-.dashboard__return-arrow {
-    padding-right: 8px;
-}
-
-.dashboard-list__wrapper{
-    display: none;
-    position: absolute;
-    top: -8px;
-    right: -8px;
-    background-color: white;
-    /* padding: 8px 8px 20px 20px; */
-    border-radius: 20px;
-    width: auto;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px;
-}
-.dashboard-list-img__wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 20px;
-}
-.dashboard-list-img__wrapper span{
-    margin-top: 8px;
-    margin-left: 24px;
-    font-size: 20px;
-    font-weight: 500;
-    white-space: nowrap;
-}
-.dashboard-list-table{
-    width: 100%;
-    margin-top: 12px;
-}
-.list-content_wrapper{
-    margin-bottom: 10px;
-    margin-right: 10px;
-    margin-left: 10px;
-    display: block;
-    padding: 12px 20px;
-}
-.list-content_wrapper:hover{
-    background-color: var(--soft-pink);
-    cursor: pointer;
-    border-radius: 20px;
-}
-.list-content_wrapper:hover .list-content{
-    color: var(--constant-white);
-}
-.list-content{
-    text-decoration: none;
-    color: black;
-    font-size: 1.75rem;
-    font-weight: 400;
 }
 
 .dashboard__title {
@@ -148,7 +23,7 @@
 }
 
 @media (max-width: 1200px) {
-    #dashboard-root {
+    .dashboard__wrapper {
         padding: 64px 140px;
 
     }
@@ -160,14 +35,12 @@
 }
 
 @media (max-width: 768px) {
-    #dashboard-root {
+    .dashboard__wrapper {
         padding: 64px 16px;
-
     }
 
     .dashboard__project-list {
         grid-template-columns: 1fr;
-
     }
 
     .dashboard__modal-title {
@@ -188,7 +61,7 @@
     border-radius: 25px;
     display: grid;
     place-items: center;
-    transition: 0.3s;
+    transition: 0s;
 }
 
 .dashboard__project-card:hover {
@@ -196,7 +69,7 @@
     margin-top: 4px;
     margin-bottom: 0px;
     box-shadow: rgba(50, 50, 93, 0.335) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    transition: 0.3s;
+    transition: 0s;
 }
 .dashboard__project-card:hover .dashboard__project-card-name {
     transform: scale(1.2);
@@ -205,7 +78,7 @@
 .dashboard__project-add-btn {
     padding: 16px;
     border: none;
-    border-radius: 16px;
+    border-radius: 25px;
     width: 100%;
     height: 100%;
     background-color: var(--gray);
@@ -242,7 +115,7 @@
     max-height: 70%;
     text-overflow: ellipsis;
     overflow: hidden;
-    transition: 0.3s;
+    transition: 0s;
     word-wrap: break-word;
     text-align: center;
 }
@@ -303,15 +176,12 @@
     }
     50% {
         outline: 1.5px solid var(--purple);
-
     }
     75% {
         outline: 1.75px solid var(--purple);
-
     }
     100% {
         outline: 2px solid var(--purple);
-
     }
 }
 

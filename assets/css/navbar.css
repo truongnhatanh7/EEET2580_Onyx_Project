@@ -55,6 +55,12 @@ nav {
     border-radius: 0px 0px 26px 26px;
 }
 .nav-transparent {
+    /* background: none;
+    box-shadow: none;
+    backdrop-filter: none; */
+    /* background-color: #ffffff9a; */
+    background-color: var(--white-color);
+    /* box-shadow: rgba(189, 188, 190, 0.15) 0px 30px 20px; */
     backdrop-filter: blur(28px);
 }
 .nav-colored {
