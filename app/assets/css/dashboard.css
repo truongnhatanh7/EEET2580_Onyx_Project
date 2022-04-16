@@ -1,33 +1,17 @@
-#dashboard-root {
-    padding: 64px 360px;
-}
+@import "./user_navbar.css";
 
-.dashboard__header {
-    color: black;
-}
-
-.dashboard__return {
-    text-decoration: none;
-    color: black;
-    font-size: 2rem;
-    display: block;
-    width: fit-content;
-    transition: 0.2s;
-    padding: 4px;
-
-}
-
-.dashboard__return:hover {
-    transform: translateX(-16px);
-}
-
-.dashboard__return-arrow {
-    padding-right: 8px;
+.dashboard__wrapper {
+    padding: 64px 240px;
+    width: 100%;
+    height: 100vh;
+    position: relative;
 }
 
 .dashboard__title {
     font-size: 5rem;
-    padding: 48px 0;
+    padding: 0 8px 48px 8px;
+    margin-top: 10rem;
+    font-weight: 700;
 }
 
 .dashboard__project-list {
@@ -35,29 +19,69 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: max-content;
-    gap: 16px;
+    gap: 40px;
+}
+
+@media (max-width: 1200px) {
+    .dashboard__wrapper {
+        padding: 64px 140px;
+
+    }
+
+    .dashboard__project-list {
+        grid-template-columns: 1fr 1fr;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard__wrapper {
+        padding: 64px 16px;
+    }
+
+    .dashboard__project-list {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard__modal-title {
+        font-size: 3rem !important;
+        padding: 0 8px;
+    }
+
+    .dashboard__modal-wrapper {
+        width: 90% !important;
+    }
 }
 
 .dashboard__project-card {
     width: 100%;
     height: 200px;
-    background-color: var(--purple);
-    border-radius: 16px;
+    margin-bottom: 4px;
+    background-color: var(--soft-pink);
+    border-radius: 25px;
     display: grid;
     place-items: center;
+    transition: 0s;
 }
 
 .dashboard__project-card:hover {
     cursor: pointer;
-    opacity: 0.7;
+    margin-top: 4px;
+    margin-bottom: 0px;
+    box-shadow: rgba(50, 50, 93, 0.335) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+    transition: 0s;
+}
+.dashboard__project-card:hover .dashboard__project-card-name {
+    transform: scale(1.2);
 }
 
 .dashboard__project-add-btn {
     padding: 16px;
     border: none;
-    border-radius: 16px;
+    border-radius: 25px;
     width: 100%;
     height: 100%;
+    background-color: var(--gray);
 }
 
 .dashboard__project-add-btn:hover {
@@ -66,6 +90,11 @@
 
 .dashboard__project-create {
     font-size: 3rem;
+    transition: 0.3s;
+}
+
+.dashboard__project-add-btn:hover .dashboard__project-create {
+    transform: rotate(90deg) scale(1.5);
 }
 
 .dashboard__project-card-link {
@@ -80,17 +109,20 @@
 
 .dashboard__project-card-name {
     color: var(--white);
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: 2rem;
+    font-weight: 500;
     max-width: 70%;
     max-height: 70%;
     text-overflow: ellipsis;
     overflow: hidden;
+    transition: 0s;
+    word-wrap: break-word;
+    text-align: center;
 }
 
 .dashboard__modal-create {
     position: absolute;
-    background-color: rgba(149, 149, 149, 0.856);
+    background-color: rgba(39, 39, 39, 0.952);
     width: 100%;
     height: 100%;
     top: 0;
@@ -99,13 +131,14 @@
     bottom: 0;
     display: grid;
     place-items: center;
+    z-index: 100;
 }
 
 .dashboard__modal-wrapper {
-    width: 40%;
+    width: 50%;
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
+    background-color: var(--white-color);
     padding: 64px 8px;
     border-radius: 32px;
     align-items: center;
@@ -113,25 +146,24 @@
 
 .dashboard__modal-title {
     font-size: 3rem;
+    font-weight: 700;
 }
 
 .dashboard__modal-input {
     width: 60%;
-    border-radius: 60px;
-    padding: 16px;
+    border-radius: 15px;
+    padding: 20px;
     margin-top: 32px;
     border: 1px solid var(--purple);
     transition: 0.3s;
+    background-color: var(--gray);
 }
 
 .dashboard__modal-input:focus {
     outline: none;
-    animation: breathingFocus 1s ease-out infinite normal;
+    /* animation: breathingFocus 1s ease-out infinite normal;
     -webkit-font-smoothing: antialiased;
-
-    animation-iteration-count: infinite;
-
-    
+    animation-iteration-count: infinite; */
 
 }
 
@@ -144,24 +176,23 @@
     }
     50% {
         outline: 1.5px solid var(--purple);
-
     }
     75% {
         outline: 1.75px solid var(--purple);
-
     }
     100% {
         outline: 2px solid var(--purple);
-
     }
 }
 
 .dashboard__modal-btn {
-    width: 60%;
-    margin-top: 16px;
-    padding: 16px;
+    width: 30%;
+    margin-top: 32px;
+    padding: 12px;
     font-size: 1.8rem;
     color: var(--white);
+    background-color: var(--soft-pink);
+    border-radius: 120px;
 }
 
 .dashboard__modal-create.dashboard__modal-create--disable {

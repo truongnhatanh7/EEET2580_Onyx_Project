@@ -1,0 +1,79 @@
+@import "workspace_navbar_user.css";
+
+.user__navbar {
+    padding: 0;
+    height: var(--user-nav-height);
+    border-radius: 0 !important;
+    position: fixed;
+    top: 0; 
+    right: 0;
+    left: 0;
+    width: 100%;
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    box-shadow: var(--task-shadow);
+    backdrop-filter: blur(28px);
+    background-color: var(--white);
+}
+
+.user__navbar-left-wrapper {
+    width: 100%;
+    padding-left: 48px;
+}
+.user__navbar-link {
+    text-decoration: none;
+    font-size: 1.6rem;
+    line-height: 64px;
+    color: var(--black);
+    margin-right: 32px;
+    display: inline-block;
+}
+.user__navbar-link:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 767px) {
+    /* .user__navbar-right-wrapper {
+        display: none !important;
+    } */
+
+    /* .user__navbar-link:nth-child(1) {
+        display: none !important;
+    } */
+    /* .active{
+        display: none !important;
+    } */
+}
+
+.user__navbar-project-name {
+    color: var(--black);
+    display: block;
+}
+
+.user__navbar-right-wrapper {
+    width: 360px;
+    padding-right: 48px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.user__navbar-right-avatar-wrapper {
+    object-fit: contain;
+    width: 64px;
+    display: flex;
+    height: 64px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.active{
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    text-decoration: none;
+    color: var(--black);
+    margin-right: 32px;
+    display: inline-block;
+    transition: 0.3s;
+}
