@@ -117,6 +117,26 @@ textarea {
     font-size: 1.4rem;
     min-height: fit-content;
 }
+.flex {
+    display: flex;
+    gap: var(--gap, 0);
+}
+.flex-center {
+    align-items: center;
+    justify-content: center;
+}
+.flex-center-leftside {
+    align-items: center;
+    justify-content: flex-start;
+}
+.flex-center-rightside {
+    align-items: center;
+    justify-content: flex-end;
+}
+.flex-center-spacebtw {
+    align-items: center;
+    justify-content: space-between;
+}
 
 
 .toast-wrapper {
