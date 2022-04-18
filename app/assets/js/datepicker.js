@@ -40,7 +40,7 @@ function getPrevMonth(date) {
     }
 }
 
-function renderDay(node, date) {
+function renderDay(node) {
     // Para "date" has to start at day 1
     let monthMap = {
         0: "Jan",
@@ -57,20 +57,22 @@ function renderDay(node, date) {
         11: "Dec"
     }
 
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
+    let day = currentDate.getDay();
+    let month = currentDate.getMonth();
+    let year = currentDate.getFullYear();
+    console.log("Starting day: ", day)
     let callendar = node.parentNode.querySelector('.datepicker');
     let callendarHeader = callendar.querySelector('.datepicker__year');
     callendarHeader.textContent = monthMap[month] + " " + year;
     let callendarDaysWrapper = callendar.querySelector('.datepicker__numday-wrapper')
-    renderInnerDay(callendarDaysWrapper, date.getDay() - 1, date);
+    console.log(day)
+    renderInnerDay(callendarDaysWrapper, day - 1, currentDate);
 }
 
 function renderInnerDay(node, startingDay, currentDate) {
     let allCells = node.querySelectorAll('.datepicker__numday');
     if (startingDay < 0) {
-        startingDay = 6; // 0 is Sunday
+        startingDay = 6; // -1 is Sunday
     }
 
     // Reset css for cells
@@ -81,6 +83,8 @@ function renderInnerDay(node, startingDay, currentDate) {
     })
 
     let dayOfMonth = calculateDayOfMonth(currentDate);
+    console.log(currentDate)
+    console.log("Day of month: " + dayOfMonth);
     let curDay = 1;
     let endDay = startingDay + dayOfMonth;
     // Fill 1 -> days in that month
@@ -110,7 +114,14 @@ function renderInnerDay(node, startingDay, currentDate) {
     allActiveCells.forEach(cell => {
         cell.onclick = () => {
             console.log(node)
-            taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText).toISOString();
+            // taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText).toISOString();
+            console.log("Selected month ", currentDate.getMonth())
+            console.log("Selected year ", currentDate.getFullYear())
+            let tempDay =  new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText)
+            let tzoffset = tempDay.getTimezoneOffset() * 60000;
+            console.log(tzoffset);
+            let localISOTime = (new Date(tempDay.getTime() - tzoffset)).toISOString();
+            sessionStorage.setItem("deadline", localISOTime)
             // fetch patch
             datepickerJS.classList.add('disable')
 
@@ -123,10 +134,12 @@ function calculateLastDay(date) {
         return 31;
     } 
     let d = new Date(date.getFullYear(), date.getMonth(), 0);
-    console.log(d)
     return d.getDate();
 }
 
 function calculateDayOfMonth(date) {
-    return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+    console.log("Inner func calculateDayOfMonth: ", date)
+    let d = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    console.log(d);
+    return d.getDate();
 }

@@ -525,6 +525,16 @@ taskSave.addEventListener("click", (event) => {
         })
     }
     sessionStorage.setItem("isEditing", "0");
+    let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
+    let time = sessionStorage.getItem("deadline");
+    if (time != "") {
+        fetch(editTaskDeadline + time, {
+            method: 'PATCH'
+        })
+        .then(() => {
+            sessionStorage.setItem("deadline", "");
+        })
+    }
 });
 
 taskDelete.addEventListener("click", () => {
