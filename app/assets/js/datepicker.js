@@ -110,7 +110,8 @@ function renderInnerDay(node, startingDay, currentDate) {
     allActiveCells.forEach(cell => {
         cell.onclick = () => {
             console.log(node)
-            taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText);
+            taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText).toISOString();
+            // fetch patch
             datepickerJS.classList.add('disable')
 
         }
