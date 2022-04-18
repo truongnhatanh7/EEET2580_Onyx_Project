@@ -60,12 +60,10 @@ function renderDay(node) {
     let day = currentDate.getDay();
     let month = currentDate.getMonth();
     let year = currentDate.getFullYear();
-    console.log("Starting day: ", day)
     let callendar = node.parentNode.querySelector('.datepicker');
     let callendarHeader = callendar.querySelector('.datepicker__year');
     callendarHeader.textContent = monthMap[month] + " " + year;
     let callendarDaysWrapper = callendar.querySelector('.datepicker__numday-wrapper')
-    console.log(day)
     renderInnerDay(callendarDaysWrapper, day - 1, currentDate);
 }
 
@@ -83,8 +81,6 @@ function renderInnerDay(node, startingDay, currentDate) {
     })
 
     let dayOfMonth = calculateDayOfMonth(currentDate);
-    console.log(currentDate)
-    console.log("Day of month: " + dayOfMonth);
     let curDay = 1;
     let endDay = startingDay + dayOfMonth;
     // Fill 1 -> days in that month
@@ -115,10 +111,11 @@ function renderInnerDay(node, startingDay, currentDate) {
         cell.onclick = () => {
             let tempDay =  new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText)
             let tzoffset = tempDay.getTimezoneOffset() * 60000;
-            let localISOTime = (new Date(tempDay.getTime() - tzoffset)).toISOString();
-            sessionStorage.setItem("deadline", localISOTime)
+            let localISOTime = (new Date(tempDay.getTime() - tzoffset));
+            sessionStorage.setItem("deadline", localISOTime.toISOString())
             // fetch patch
             datepickerJS.classList.add('disable')
+            taskDeadline.innerText = localISOTime.toString();
 
         }
     })
@@ -133,8 +130,6 @@ function calculateLastDay(date) {
 }
 
 function calculateDayOfMonth(date) {
-    console.log("Inner func calculateDayOfMonth: ", date)
     let d = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-    console.log(d);
     return d.getDate();
 }
