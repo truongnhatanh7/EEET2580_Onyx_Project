@@ -113,13 +113,8 @@ function renderInnerDay(node, startingDay, currentDate) {
     let allActiveCells = node.querySelectorAll('.datepicker__numday:not(.numday_disable)')
     allActiveCells.forEach(cell => {
         cell.onclick = () => {
-            console.log(node)
-            // taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText).toISOString();
-            console.log("Selected month ", currentDate.getMonth())
-            console.log("Selected year ", currentDate.getFullYear())
             let tempDay =  new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText)
             let tzoffset = tempDay.getTimezoneOffset() * 60000;
-            console.log(tzoffset);
             let localISOTime = (new Date(tempDay.getTime() - tzoffset)).toISOString();
             sessionStorage.setItem("deadline", localISOTime)
             // fetch patch
