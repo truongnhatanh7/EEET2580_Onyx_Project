@@ -70,7 +70,7 @@ input[type="text"] {
     position: relative;
     z-index: 1;
     overflow-x: hidden;
-    transition: 0.3s;
+    transition: 0.2s;
     display: flex;
     flex-direction: column;
 
@@ -89,6 +89,7 @@ input[type="text"] {
     padding: 12px 20px;
     color: var(--black);
     background-color: var(--white);
+    transition: 0s;
 }
 .workspace__add-task-btn:hover{
     background-color: var(--pink-color);
@@ -99,11 +100,11 @@ input[type="text"] {
 }
 
 .workspace__board-list ~ .workspace__add-task-wrapper {
-    animation: disappearMagic 0.3s;
+    animation: disappearMagic 0.2s;
 }
 
 .modifying {
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .workspace__board-list.modifying {
@@ -261,8 +262,8 @@ input[type="text"] {
     margin:  20px 28px 0 28px;
     display: none;
     max-width: 305px;
-    transition: 0.3s;
-    animation: appearMagic 0.3s;
+    transition: 0.2s;
+    animation: appearMagic 0.2s;
 }
 
 .workspace__list-close-icon {
@@ -276,8 +277,8 @@ input[type="text"] {
     margin-top: 10px;
     min-width: 100%;
     display: none;
-    transition: 0.3s;
-    animation: appearMagic 0.3s;
+    transition: 0.2s;
+    animation: appearMagic 0.2s;
 
 }
 
