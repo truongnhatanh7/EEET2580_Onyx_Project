@@ -383,6 +383,7 @@ const taskSettingClose = $(".workspace__task-setting-close");
 const taskSettingUrgent = $('.workspace__task-setting-urgent')
 const taskSettingDesc = $('.workspace__task-setting-desc')
 const taskSettingDatepicker = $('.workspace__task-setting-datepicker')
+const taskDeadline = $('.workspace__task-deadline');
 const datepickerJS = $('.datepicker')
 let descContent = ''
 let isUrgent = false;
@@ -399,6 +400,8 @@ taskSettingUrgent.addEventListener("click", (event) => {
     if (!isUrgent) {
         priority = "1"
     }
+    // BUG OX-L1: change this to hidden node in the html, render.js will render fire icon
+    // Change button to unmark and vice versa
     console.log(isUrgent);
     let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
     console.log(url)
@@ -410,6 +413,7 @@ taskSettingUrgent.addEventListener("click", (event) => {
             }
         })
     }
+    
     taskSettingClose.click();
 })
 
@@ -451,6 +455,14 @@ function handleTaskSetting(event) {
         .innerText.trim();
     taskInput.focus();
     renderTaskDesc();
+    renderDeadline();
+}
+
+function renderDeadline() {
+    let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
+    if (deadline != undefined) {
+        taskDeadline.innerText = deadline;
+    }
 }
 
 function renderTaskDesc() {
@@ -474,7 +486,7 @@ taskSettingClose.addEventListener("click", (event) => {
     taskInput.value = "";
     taskSetting.classList.add("disable");
     taskSetting.classList.remove("enable");
-    currentTaskNode = null;
+    // currentTaskNode = null;
 });
 
 taskSettingDesc.addEventListener('keyup', (event) => {
@@ -512,19 +524,43 @@ taskSave.addEventListener("click", (event) => {
             currentTaskNode.querySelector(
                 ".workspace__board-list-task-content"
             ).textContent = sessionStorage.getItem("currentTaskContent");
+
+        })
+        .then(() => {
+            if (taskSettingDesc.value != '') {
+                console.log("modiying desc")
+                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: taskSettingDesc.value.trim()
+                })
+            }
+        })
+        .then(() => {
+            let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
+            let time = sessionStorage.getItem("deadline");
+            if (time != "") {
+                fetch(editTaskDeadline + time, {
+                    method: 'PATCH' 
+                })
+                .then(() => {
+                    currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText = sessionStorage.getItem("deadline")
+                })
+                .then(() => {
+                    sessionStorage.setItem("deadline", "");
+        
+                })
+            }
+        })
+        .then(() => {
+            sessionStorage.setItem("isEditing", "0");
             taskSettingClose.click();
-        });
-    }
-    if (taskSettingDesc.value != '') {
-        fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-            method: "PATCH",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: taskSettingDesc.value
         })
     }
-    sessionStorage.setItem("isEditing", "0");
+
+    
 });
 
 taskDelete.addEventListener("click", () => {

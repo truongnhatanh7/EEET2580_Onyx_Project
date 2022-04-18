@@ -3,6 +3,12 @@
         padding-left: 10%;
         padding-right: 10%;
     } */
+    .intro__text{
+        padding: 0 120px;
+    }
+    .intro__img{
+        padding: 0 0 0 220px;
+    }
     body{
         width: 1400px;
         margin-left: auto;
@@ -10,12 +16,15 @@
     }
     .nav-colored, .nav-transparent{
         width: 1400px;
+        padding: 0 120px;
     }
     .main__intro {
         padding-top: calc(var(--nav-height) + 15%);
     }
     .main__features {
         padding-top: 10em;
+        padding-left: 120px;
+        padding-right: 120px;
     }
     .features__card {
         height: 100em;

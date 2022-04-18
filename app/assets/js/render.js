@@ -50,6 +50,10 @@ function renderBoard(board) {
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
                     let isUrgent = task.priority == 1 ? "enable" : "disable";
+                    console.log(task)
+                    let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
+
+
                     let taskHTML = `  
                     <div
                     class="workspace__board-list-task"
@@ -71,6 +75,9 @@ function renderBoard(board) {
                         class="workspace__board-list-task-desc disable"
                     >
                         ${task.desc}
+                    </p>
+                    <p class="workspace__board-list-task-deadline-content disable"
+                    >${dl}
                     </p>
                     <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
                     </div>
@@ -161,6 +168,7 @@ function createBoard(data) {
             tempTask.setTaskContent(task.taskContent);
             tempTask.setPriority(task.priority);
             tempTask.setDesc(task.description);
+            tempTask.setDeadline(task.deadline);
             tempList.addTask(tempTask);
         });
         boardObj.addList(tempList);
@@ -234,12 +242,17 @@ class List {
 }
 
 class Task {
-    constructor(taskContent, taskId, pos, priority, desc) {
+    constructor(taskContent, taskId, pos, priority, desc, deadline) {
         this.taskContent = taskContent;
         this.taskId = taskId;
         this.pos = pos;
         this.priority = priority;
         this.desc = desc;
+        this.deadline = deadline
+    }
+
+    setDeadline(deadline) {
+        this.deadline = deadline;
     }
 
     setDesc(desc) {
@@ -252,6 +265,10 @@ class Task {
 
     setPriority(priority) {
         this.priority = priority;
+    }
+
+    getDeadline() {
+        return this.deadline;
     }
 
     getDesc() {

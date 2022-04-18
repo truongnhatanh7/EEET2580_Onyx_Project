@@ -40,7 +40,7 @@ function getPrevMonth(date) {
     }
 }
 
-function renderDay(node, date) {
+function renderDay(node) {
     // Para "date" has to start at day 1
     let monthMap = {
         0: "Jan",
@@ -57,20 +57,20 @@ function renderDay(node, date) {
         11: "Dec"
     }
 
-    let day = date.getDate();
-    let month = date.getMonth();
-    let year = date.getFullYear();
+    let day = currentDate.getDay();
+    let month = currentDate.getMonth();
+    let year = currentDate.getFullYear();
     let callendar = node.parentNode.querySelector('.datepicker');
     let callendarHeader = callendar.querySelector('.datepicker__year');
     callendarHeader.textContent = monthMap[month] + " " + year;
     let callendarDaysWrapper = callendar.querySelector('.datepicker__numday-wrapper')
-    renderInnerDay(callendarDaysWrapper, date.getDay() - 1, date);
+    renderInnerDay(callendarDaysWrapper, day - 1, currentDate);
 }
 
 function renderInnerDay(node, startingDay, currentDate) {
     let allCells = node.querySelectorAll('.datepicker__numday');
     if (startingDay < 0) {
-        startingDay = 6; // 0 is Sunday
+        startingDay = 6; // -1 is Sunday
     }
 
     // Reset css for cells
@@ -109,9 +109,13 @@ function renderInnerDay(node, startingDay, currentDate) {
     let allActiveCells = node.querySelectorAll('.datepicker__numday:not(.numday_disable)')
     allActiveCells.forEach(cell => {
         cell.onclick = () => {
-            console.log(node)
-            taskSettingDatepicker.innerText = new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText);
+            let tempDay =  new Date(currentDate.getFullYear(), currentDate.getMonth(), cell.innerText)
+            let tzoffset = tempDay.getTimezoneOffset() * 60000;
+            let localISOTime = (new Date(tempDay.getTime() - tzoffset));
+            sessionStorage.setItem("deadline", localISOTime.toISOString())
+            // fetch patch
             datepickerJS.classList.add('disable')
+            taskDeadline.innerText = localISOTime.toString();
 
         }
     })
@@ -122,10 +126,10 @@ function calculateLastDay(date) {
         return 31;
     } 
     let d = new Date(date.getFullYear(), date.getMonth(), 0);
-    console.log(d)
     return d.getDate();
 }
 
 function calculateDayOfMonth(date) {
-    return new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+    let d = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    return d.getDate();
 }

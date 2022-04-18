@@ -5,7 +5,7 @@
 }
 html{
     font-family: "Poppins", sans-serif !important;
-    font-size: 62.5%;
+    font-size: 60% !important;
     width: 100%;
     overflow: auto;
     scroll-behavior: smooth;
@@ -31,7 +31,7 @@ body{
     --lm-only-gray: #F7F7F7;
     --focus-gray: #ccc;
     --dark-gray: #757575;
-    --red: #f81755;
+    --red: #8C2F39;
     --light-red: #f87ea1;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
@@ -43,12 +43,12 @@ body{
 
     /* Default color */
     --white-color: #ffffff;
-    --pink-color: #21209C;
+    --pink-color: #002366;
     --hard-pink: #4E589C;
     --soft-pink: #6371EA;
     --dark: #282937;
     --yellow: #FDB827;
-    --red: #D45B4A;
+    --red-pastel: #D45B4A;
 
     /* size */
     --user-nav-height: 64px;
@@ -71,8 +71,6 @@ body{
 }
 
 html {
-    font-size: 62.5%;
-    font-family: 'Montserrat', sans-serif;
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 .white{
