@@ -1,0 +1,20 @@
+@media (max-width: 1040px) {
+    .faq__wrapper {
+        width: 100%;
+        padding: 10em 0;
+        gap: 10em;
+    }
+    .faq__card > summary {
+        padding: 0 2em;
+        height: 3.5em;
+        border-radius: 1.5rem;
+    }
+    /* content */
+    .faq__card-content {
+        padding: 0.2em 0 0.7em 1.2em;
+    }
+    .faq__card p {
+        line-height: 2.5;
+        font-size: 1.6rem;
+    }
+}

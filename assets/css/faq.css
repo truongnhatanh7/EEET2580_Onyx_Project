@@ -1,0 +1,93 @@
+/* details summary > * { 
+    display: inline;
+}  */
+
+/* main */
+body {
+    width: 100vw;
+    height: 100vh;
+}
+main {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    --gap: 3em;
+}
+.faq__title {
+    /* font-size: 7rem; */
+    font-size: clamp(7.50rem, calc(-1.50rem + 10.00vw), 0.50rem);
+}
+.faq__find {
+    width: 45%;
+    padding: 1.7em 1.8em;
+    font-size: 1.5rem;
+    border-radius: 2rem;
+    /* border-color: var(--task-color); */
+    border: none;
+    outline: none;
+    opacity: 0.8;
+    box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(190, 190, 190, 0.5), inset -20px 20px 40px rgba(190, 190, 190, 0.2), inset 20px -20px 40px rgba(190, 190, 190, 0.2), inset -20px -20px 40px rgba(255, 255, 255, 0.9), inset 20px 20px 50px rgba(190, 190, 190, 0.9);
+}
+.faq__find:focus {
+    outline: 3px solid var(--dark-gray);
+}
+
+/* start of faq wrapper */
+.faq__wrapper {
+    flex-direction: column;
+    width: 90%;
+    gap: 20em;
+    padding: 7em;
+}
+/* start of details */
+.faq__card {
+    width: 100%;
+    font-size: 4rem;
+    background-color: var(--tan);
+    box-shadow: 2px 5px 20px #646360;
+    border-radius: 2.5rem;
+}
+/* summary */
+.faq__card > summary::before {
+    padding-right: 0.5em;
+    content: "\f106";
+    font-family: FontAwesome;
+}
+.faq__card > summary {
+    padding: 0 3em;
+    height: 4.5em;
+    
+    border-radius: 1.8rem;
+    background-color: var(--dark);
+    box-shadow: 2px 5px 20px #404258;
+    color: var(--white);
+    /* list-style-type: '▶️'; */
+    list-style-type: none;
+    
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+/* when open the faq card */
+.faq__card[open] > summary::before {
+    content: "\f107";
+    font-family: FontAwesome;
+}
+.faq__card[open] > summary {
+    color: var(--yellow);
+    /* list-style-type: '🔽'; */
+    list-style-type: none;
+}
+/* content */
+.faq__card-content {
+    width: 100%;
+    padding: 0.5em 0 1.3em 2em;
+}
+.faq__card p {
+    width: 50%;
+    line-height: 4;
+    font-size: 2rem;
+
+}
+.faq__card img {
+    width: 50%;
+}
