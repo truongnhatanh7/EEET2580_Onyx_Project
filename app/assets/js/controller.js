@@ -122,9 +122,9 @@ submitList.addEventListener("click", (event) => {
                     "list_" + data.listId
                 }">
                 <div class="workspace__board-list-header-wrapper">
-                    <h1 class="workspace__board-list-header" >
-                        ${listName}
-                    </h1>
+                    <h1 class="workspace__board-list-header" >${
+                        listName
+                    }</h1>
                     <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
                 </div>
 
@@ -138,7 +138,7 @@ submitList.addEventListener("click", (event) => {
                         <input type="text" class="workspace__add-input-task">
                         <button class="workspace__submit-task-btn btn">Create</button>
                         <button class="workspace__task-close-btn btn">
-                        <i class="fa-solid fa-xmark workspace__task-close"></i>
+                            <i class="fa-solid fa-xmark workspace__task-close"></i>
                         </button>
                     </div>
                 </div>
@@ -394,12 +394,6 @@ taskSettingDatepicker.addEventListener('click', () => {
 })
 
 taskSettingUrgent.addEventListener("click", (event) => {
-    // let priority = "0";
-    // if (!isUrgent) {
-    //     priority = "1"
-    // }
-    // BUG OX-L1: change this to hidden node in the html, render.js will render fire icon
-    // Change button to unmark and vice versa
     let urgentIcon = currentTaskNode.querySelector('.task-urgent')
     urgentIcon.classList.toggle('disable')
     if (urgentIcon.classList.contains('disable')) {
@@ -407,19 +401,6 @@ taskSettingUrgent.addEventListener("click", (event) => {
     } else {
         taskSettingUrgent.innerText = "Unmark urgent"
     }
-    // currentTaskNode.querySelector('.task-staus')
-    // let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
-    // if (currentTask != null) {
-    //     fetch(url, {
-    //         method: 'PATCH',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    // }
-    
-
-    // taskSettingClose.click();
 })
 
 taskSetting.addEventListener("click", (event) => {
@@ -451,9 +432,18 @@ function handleTaskSetting(event) {
     sessionStorage.setItem("isEditing", "1");
     taskSetting.classList.add("enable");
     taskSetting.classList.remove("disable");
-
+    console.log(boundingClientRect)
+    console.log(window.outerHeight);
+    let windowHeight = window.outerHeight;
+    let divisionBreakpoint = Math.floor(windowHeight / 2)
+    if (boundingClientRect.top > divisionBreakpoint) {
+        taskSettingInner.style.top = (boundingClientRect.top - 420 + 55) + "px";
+        taskSettingInner.style.flexDirection = "column-reverse";
+    } else {
+        taskSettingInner.style.flexDirection = "column";
+        taskSettingInner.style.top = boundingClientRect.top + "px";
+    }
     // Reposition modal
-    taskSettingInner.style.top = boundingClientRect.top + "px";
     taskSettingInner.style.left = boundingClientRect.left + "px";
     taskSettingInner.style.transform = "translateX(0)";
 

@@ -21,7 +21,7 @@
     transform: translateY(-50%) translateX(-50%);
     background-color: transparent;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     border-radius: var(--border-sub);
     align-items: flex-end;
 }
@@ -36,14 +36,6 @@
     right: -68px;
     border-radius: var(--border-sub);
 }
-
-/* .workspace__task-setting-title {
-    font-size: 1.8rem;
-    font-weight: 400;
-    display: block;
-    margin-top: 8px;
-    margin-left: 16px;
-} */
 
 .workspace__task-setting-input {
     padding: 16px 16px;
@@ -62,6 +54,7 @@
     margin-top: 8px;
     outline: none;
     height: 120px;
+    margin-bottom: 8px;
 }
 
 .workspace__task-setting-btn {
