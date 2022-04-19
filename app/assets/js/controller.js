@@ -396,25 +396,32 @@ taskSettingDatepicker.addEventListener('click', () => {
 })
 
 taskSettingUrgent.addEventListener("click", (event) => {
-    let priority = "0";
-    if (!isUrgent) {
-        priority = "1"
-    }
+    // let priority = "0";
+    // if (!isUrgent) {
+    //     priority = "1"
+    // }
     // BUG OX-L1: change this to hidden node in the html, render.js will render fire icon
     // Change button to unmark and vice versa
-    console.log(isUrgent);
-    let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
-    console.log(url)
-    if (currentTask != null) {
-        fetch(url, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
+    let urgentIcon = currentTaskNode.querySelector('.task-urgent')
+    urgentIcon.classList.toggle('disable')
+    if (urgentIcon.classList.contains('disable')) {
+        taskSettingUrgent.innerText = "Mark as urgent"
+    } else {
+        taskSettingUrgent.innerText = "Unmark urgent"
     }
+    // currentTaskNode.querySelector('.task-staus')
+    // let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
+    // if (currentTask != null) {
+    //     fetch(url, {
+    //         method: 'PATCH',
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    // }
     
-    taskSettingClose.click();
+
+    // taskSettingClose.click();
 })
 
 taskSetting.addEventListener("click", (event) => {
@@ -551,6 +558,22 @@ taskSave.addEventListener("click", (event) => {
                 .then(() => {
                     sessionStorage.setItem("deadline", "");
         
+                })
+            }
+        })
+        .then(() => {
+            let priority = "1";
+            if (currentTaskNode.querySelector('.task-urgent').classList.contains("disable")) {
+                console.log("this is disabled");
+                priority = "0"
+            }
+            let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority;
+            if (currentTask != null) {
+                fetch(url, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
                 })
             }
         })

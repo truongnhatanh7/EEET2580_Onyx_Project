@@ -41,35 +41,31 @@ function renderBoard(board) {
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
-
         if (list !== undefined) {
             list.tasks.sort(function (a, b) {
                 return a.pos - b.pos;
             })
-
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
-                    let isUrgent = task.priority == 1 ? "enable" : "disable";
-                    console.log(task)
+                    let isUrgent = task.priority == 1 ? "" : "disable";
+                    let urgentStatus = isUrgent ? "1" : "0"
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
-
-
+                    console.log(isUrgent)
                     let taskHTML = `  
                     <div
-                    class="workspace__board-list-task"
-                    draggable="true"
-                    ondragstart="handleDragStart(event)"
-                    ondragend="handleDragEnd(event)"
-                    ondrag="handleOnDrag(event)"
+                        class="workspace__board-list-task"
+                        draggable="true"
+                        ondragstart="handleDragStart(event)"
+                        ondragend="handleDragEnd(event)"
+                        ondrag="handleOnDrag(event)"
 
-                    id="${"task_" + task.taskId}"
+                        id="${"task_" + task.taskId}"
                     >
-
                     <i class="fa-solid fa-fire-flame-curved task-urgent ${isUrgent}"></i>
                     <p
-                      class="workspace__board-list-task-content"
+                        class="workspace__board-list-task-content"
                     >
-                      ${task.taskContent}
+                        ${task.taskContent}
                     </p>
                     <p
                         class="workspace__board-list-task-desc disable"
@@ -83,7 +79,6 @@ function renderBoard(board) {
                     </div>
                     `;
                     listHTML += taskHTML;
-
                 }
             });
             let html = `  
@@ -109,13 +104,11 @@ function renderBoard(board) {
                     
                 </div>
             </>
-              `;
-
-            
+            `;
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
             workspaceBoard.scrollLeft = horizontalBoardScrollRule;
-            setScrollRule(scrollRule)
+            setScrollRule(scrollRule);
         }
     });
 
@@ -139,8 +132,8 @@ function getBoardInfo() {
 		cache: "no-cache",
 		method: 'GET',
 		headers: {
-		  'Content-Type': 'application/json',
-		  'Cache-Control': 'no-cache'
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
 		}
 	},	
 	
