@@ -414,4 +414,17 @@
     .form-section {
         padding-right: 0;
     }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .form-grid input {
+        width: 100%;
+    }
+
+    #sign-up-first {
+        grid-row-start: 2;
+    }
 }
