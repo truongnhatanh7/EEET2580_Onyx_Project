@@ -87,7 +87,7 @@ input[type="text"] {
     margin-top: 12px;
     width: 100%;
     padding: 12px 20px;
-    color: var(--black);
+    color: var(--constant-white);
     background-color: var(--soft-pink);
     border: 1px solid var(--white);
 }
@@ -133,13 +133,13 @@ input[type="text"] {
 .workspace__board-list-header:hover + .workspace__board-list-delete {
     display: block;
     cursor: pointer;
-    color: var(--red);
+    color: var(--red-pastel);
 }
 
 .workspace__board-list-delete:hover {
     display: block;
     cursor: pointer;
-    color: var(--red);
+    color: var(--red-pastel);
 }
 
 .workspace__board-list-scrolalble {
@@ -166,7 +166,7 @@ input[type="text"] {
     top: 50%;
     left: 6px; 
     transform: translateY(-50%);
-    color: var(--red);
+    color: var(--red-pastel);
     font-size: 1rem;
 }
 
@@ -239,6 +239,7 @@ input[type="text"] {
     min-width: 360px;
     margin-top: 0;
     padding: 16px 20px;
+    transition: 0.2s;
 }
 
 .workspace__add-list-btn:hover {
@@ -246,7 +247,8 @@ input[type="text"] {
     color: var(--white);
     /* font-size: large; */
     width: 100%;
-    font-weight: 700;
+    border-radius: 8px;
+    /* font-weight: 700; */
     box-shadow: var(--box-shadow);
 }
 
@@ -293,7 +295,7 @@ input[type="text"] {
 .workspace__task-close-btn,
 .workspace__list-close {
     color: var(--white-color);
-    background-color: var(--red);
+    background-color: var(--red-pastel);
     opacity: 0.7;
     padding: 12px 20px;
     margin-left: 12px;
