@@ -88,13 +88,13 @@ input[type="text"] {
     width: 100%;
     padding: 12px 20px;
     color: var(--black);
-    background-color: var(--white);
-    transition: 0s;
+    background-color: var(--soft-pink);
+    border: 1px solid var(--white);
 }
-.workspace__add-task-btn:hover{
-    background-color: var(--pink-color);
+/* .workspace__add-task-btn:hover{
+    background-color: var(--soft-pink);
     color: white;
-}
+} */
 .workspace__board-list:hover{
     /* box-shadow: var(--box-shadow); */
 }

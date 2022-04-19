@@ -98,11 +98,11 @@ html {
     font-weight: 400;
     font-family: 'poppins', sans-serif;
     text-align: center;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .btn:hover {
-    opacity: 0.7;
+    /* opacity: 0.7; */
     cursor: pointer;
 }
 
