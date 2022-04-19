@@ -33,7 +33,7 @@ nav {
     height: var(--nav-height);
     width: 97%;
     padding: 0 2.5em;
-    border-radius: 0px 0px 26px 26px;
+    border-radius: 0px 0px 18px 18px;
 }
 .nav-transparent {
     /* background: none;
@@ -54,8 +54,6 @@ nav {
 .nav__logo{
     font-size: 4rem;
     font-weight: 800;
-    /* order: 1; */
-    display: none;
     height: auto;
 }
 .nav__logo-text{
@@ -96,6 +94,10 @@ path#nav__hamburger-middle {
 .nav__menu{
     order: 2;
     --gap: 3em;
+}
+.nav__menu-element-row{
+    display: flex;
+    gap: 3em;
 }
 .nav__menu-element{
     font-size: 2.1rem;
