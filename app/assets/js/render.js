@@ -50,7 +50,6 @@ function renderBoard(board) {
                     let isUrgent = task.priority == 1 ? "" : "disable";
                     let urgentStatus = isUrgent ? "1" : "0"
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
-                    console.log(isUrgent)
                     let taskHTML = `  
                     <div
                         class="workspace__board-list-task"

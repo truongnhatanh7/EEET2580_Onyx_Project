@@ -155,7 +155,6 @@ input[type="text"] {
     width: 100%;
     padding: 14px;
     position: relative;
-    /* box-shadow: var(--task-shadow); */
 }
 
 .workspace__board-list-task:hover {
@@ -213,7 +212,6 @@ input[type="text"] {
     height: fit-content;
     background-color: var(--white);
     border-radius: var(--border-main);
-
     min-width: 360px;
     margin-left: 32px;
     margin-right: 32px;
@@ -279,7 +277,6 @@ input[type="text"] {
     display: none;
     transition: 0.2s;
     animation: appearMagic 0.2s;
-
 }
 
 .workspace__submit-title {
