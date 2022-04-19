@@ -10,11 +10,8 @@ html{
     overflow: auto;
     scroll-behavior: smooth;
 }
-body{
+body {
     overflow: auto;
-    /* width: 100%; */
-    transition: 0.3s;
-
 }
 :root {
     --border-main: 18px;
@@ -192,7 +189,7 @@ textarea {
     border-radius: 16px;
     height: 8px;
     display: none;
-  }
+}
 
 ::-webkit-scrollbar-track {
     background: transparent !important;

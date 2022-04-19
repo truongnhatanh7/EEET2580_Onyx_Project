@@ -70,7 +70,7 @@ input[type="text"] {
     position: relative;
     z-index: 1;
     overflow-x: hidden;
-    transition: 0.2s;
+    transition: 0.1s;
     display: flex;
     flex-direction: column;
 
@@ -104,7 +104,7 @@ input[type="text"] {
 }
 
 .modifying {
-    transition: 0.2s;
+    transition: 0.1s;
 }
 
 .workspace__board-list.modifying {
@@ -224,13 +224,6 @@ input[type="text"] {
     background-color: var(--soft-pink);
 }
 
-/* uncomment to see magic */
-/* .workspace__add-task-btn { 
-    position: sticky;
-    z-index: 40;
-    bottom: 8px;
-    left: 0px;
-} */
 .workspace__submit-btn {
     margin-bottom: 20px;
     width: 238px;
@@ -243,7 +236,7 @@ input[type="text"] {
 .workspace__add-list-btn {
     background-color: var(--white);
     color: var(--dark-gray);
-    min-width: 340px;
+    min-width: 360px;
     margin-top: 0;
     padding: 16px 20px;
 }
@@ -251,7 +244,8 @@ input[type="text"] {
 .workspace__add-list-btn:hover {
     background-color: var(--yellow);
     color: var(--white);
-    font-size: large;
+    /* font-size: large; */
+    width: 100%;
     font-weight: 700;
     box-shadow: var(--box-shadow);
 }
@@ -260,7 +254,7 @@ input[type="text"] {
     margin:  20px 28px 0 28px;
     display: none;
     max-width: 305px;
-    transition: 0.2s;
+    transition: 0.1s;
     animation: appearMagic 0.2s;
 }
 
@@ -275,7 +269,7 @@ input[type="text"] {
     margin-top: 10px;
     min-width: 100%;
     display: none;
-    transition: 0.2s;
+    transition: 0.1s;
     animation: appearMagic 0.2s;
 }
 
