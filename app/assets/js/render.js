@@ -13,12 +13,12 @@ if (localStorage.getItem('userId') == null) {
 fetchBoardInfo();
 getBoardInfo();
 
-setInterval(function() {
-    if (sessionStorage.getItem("isEditing") == '0') {
-        fetchBoardInfo();
-        getBoardInfo();
-    }
-}, 1000)
+// setInterval(function() {
+//     if (sessionStorage.getItem("isEditing") == '0') {
+//         fetchBoardInfo();
+//         getBoardInfo();
+//     }
+// }, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();

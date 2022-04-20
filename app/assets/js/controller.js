@@ -432,15 +432,15 @@ function handleTaskSetting(event) {
     sessionStorage.setItem("isEditing", "1");
     taskSetting.classList.add("enable");
     taskSetting.classList.remove("disable");
-    console.log(boundingClientRect)
-    console.log(window.outerHeight);
     let windowHeight = window.outerHeight;
     let divisionBreakpoint = Math.floor(windowHeight / 2)
     if (boundingClientRect.top > divisionBreakpoint) {
         taskSettingInner.style.top = (boundingClientRect.top - 420 + 55) + "px";
         taskSettingInner.style.flexDirection = "column-reverse";
+        taskSettingDesc.style.marginBottom = "8px";
     } else {
         taskSettingInner.style.flexDirection = "column";
+        taskSettingDesc.style.marginBottom = "0px";
         taskSettingInner.style.top = boundingClientRect.top + "px";
     }
     // Reposition modal
@@ -479,6 +479,9 @@ function renderTaskSettingUrgent() {
 }
 
 taskSettingClose.addEventListener("click", (event) => {
+    if (!datepickerJS.classList.contains('disable')) {
+        datepickerJS.classList.add('disable');
+    }
     if (!hitSave) {
         let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
         if (prevPriority == "1") {
@@ -751,11 +754,11 @@ function renderUserInWorkspace(users) {
         collaboratorList.innerHTML = "";
         users.forEach((user) => {
             let tempHtml = `
-      <div class="workspace__collaborator" id="user_${user.userId} ">
-        <h3 class="workspace__collaborator-name" >${user.name}</h3>
-        <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
-      </div>
-      `;
+        <div class="workspace__collaborator" id="user_${user.userId} ">
+            <h3 class="workspace__collaborator-name" >${user.name}</h3>
+            <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
+        </div>
+        `;
             let para = document
                 .createRange()
                 .createContextualFragment(tempHtml);
