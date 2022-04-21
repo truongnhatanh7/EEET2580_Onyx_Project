@@ -35,6 +35,19 @@
     opacity: 0.7;
 }
 
+.user__navbar-link-home {
+    text-decoration: none;
+    color: var(--constant-white);
+
+}
+
+.user__navbar-home-btn {
+    padding: 8px 16px;
+    background-color: var(--soft-pink);
+    color: var(--constant-white);
+
+}
+
 @media (max-width: 767px) {
     /* .user__navbar-right-wrapper {
         display: none !important;
