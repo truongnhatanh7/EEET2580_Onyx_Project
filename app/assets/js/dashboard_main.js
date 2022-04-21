@@ -48,10 +48,7 @@ function renderUserNavbar() {
 const avatar = $('.user-text-avatar')
 function renderAvatarFromName() {
     let nameList = sessionStorage.getItem('userName').split(' ')
-    nameList.map((element) => {
-        return element[0]
-    })
-    let processedName = nameList[0] + nameList[nameList.length - 1]
+    let processedName = nameList[0][0] + nameList[nameList.length - 1][0]
     avatar.innerText = processedName.toUpperCase();
 }
 
