@@ -28,16 +28,35 @@ const loading = $('.loading-wrapper');
 const logOut = $('.user__navbar-progress-btn');
 var globalKeyword = "";
 
-if (localStorage.getItem('userId') == null) {
+if (sessionStorage.getItem('userId') == null) {
     location.href = "../login2.html";
 }
 
 logOut.addEventListener('click', () => {
-    localStorage.removeItem('userId');
+    sessionStorage.removeItem('userId');
     location.href = "../index.html";
 
 })
 
+const userTaskWrapper = $(".user-task__wrapper");
+const userName = $('.user-list-img__name')
+function renderUserNavbar() {
+    userName.innerText = sessionStorage.getItem("userName")
+}
+
+
+const avatar = $('.user-text-avatar')
+function renderAvatarFromName() {
+    let nameList = sessionStorage.getItem('userName').split(' ')
+    nameList.map((element) => {
+        return element[0]
+    })
+    let processedName = nameList[0] + nameList[nameList.length - 1]
+    avatar.innerText = processedName.toUpperCase();
+}
+
+renderUserNavbar()
+renderAvatarFromName()
 main()
 
 searchBtn.onclick = () => {
@@ -189,16 +208,16 @@ modalBtn.onclick = (event) => {
         toastBox.classList.remove("disable");
         toastMessage.innerHTML = "List name is too long!"
         setTimeout(() => {
-          toastBox.classList.remove("enable");
-          toastBox.classList.add("disable");
+            toastBox.classList.remove("enable");
+            toastBox.classList.add("disable");
         }, 2000)
     } else {
         toastBox.classList.add("enable");
         toastBox.classList.remove("disable");
         toastMessage.innerHTML = "Project name cannot be empty"
         setTimeout(() => {
-          toastBox.classList.remove("enable");
-          toastBox.classList.add("disable");
+            toastBox.classList.remove("enable");
+            toastBox.classList.add("disable");
         }, 2000)
     }
 }

@@ -84,7 +84,7 @@ function handleLocationLoginMobile(event) {
 }
 
 function handleRedirectLogin() {
-    if (localStorage.getItem("userId")) {
+    if (sessionStorage.getItem("userId")) {
         // Redirect to dashboard
         location.href = "./app/dashboard.html"
     } else {
@@ -96,7 +96,7 @@ function handleRedirectLogin() {
 function renderLoginBtn() {
     let loginNormal = document.querySelector('#home-login-normal')
     let loginMobile = document.querySelector('#home-login-mobile')
-    if (localStorage.getItem("userId")) {
+    if (sessionStorage.getItem("userId")) {
         loginNormal.innerText = "Dashboard"
         loginMobile.innerText = "Dashboard"
     } else {

@@ -119,34 +119,9 @@ path#nav__hamburger-middle {
     font-size: 1.7rem;
     order: 3;
 
-    background-color: var(--pink-color);
+    background-color: var(--soft-pink);
 }
 
-
-/* logo */
-.nav__logo-text:hover {
-    background: url("../img/navbar/84d87eb7e536135161c55887d878d44b.gif");
-    color: #00000047;
-    background-size: cover;
-    background-position: center;
-    -webkit-background-clip: text;
-        
-    -webkit-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
-
-    transform: scale(1.1);
-}
-/* menu */
-.nav__menu-element:hover {
-    transform: scale(1.05) translateY(-6%);
-}
-/* button */
-.nav__btn:hover {
-    opacity: 1;
-    transform: scale(1.05) translateY(-7%);
-}
 
 /* animation */
 @-webkit-keyframes slide-in {
