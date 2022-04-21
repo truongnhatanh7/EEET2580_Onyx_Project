@@ -22,9 +22,9 @@
         padding-top: calc(var(--nav-height) + 15%);
     }
     .main__features {
-        padding-top: 10em;
+        /* padding-top: 10em;
         padding-left: 120px;
-        padding-right: 120px;
+        padding-right: 120px; */
     }
     .features__card {
         height: 100em;
@@ -84,7 +84,7 @@
 
     /* start main features */
     .main__features {
-        padding: 10em 5em;
+        /* padding: 10em 5em; */
     }
     .features__title{
         font-size: 9rem;
