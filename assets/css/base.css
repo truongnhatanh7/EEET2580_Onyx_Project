@@ -213,17 +213,17 @@ textarea {
     z-index: 2;
     place-items: center;
     background-color: var(--white);
-   visibility: visible;
+    visibility: visible;
     /* opacity: 1; */
     transition: all 0.3s linear;
 }
 
 .square-loading {
-   width: 100px;
-   height: 100px;
-   background-color: var(--purple);
-   border-radius: 8px;
-   animation: flip 1.2s ease-in-out infinite;
+    width: 100px;
+    height: 100px;
+    background-color: var(--purple);
+    border-radius: 8px;
+    animation: flip 1.2s ease-in-out infinite;
 }
 
 @keyframes fadeOut {

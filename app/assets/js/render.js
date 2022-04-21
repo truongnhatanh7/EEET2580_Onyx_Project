@@ -308,3 +308,26 @@ class Task {
         return this.taskContent;
     }
 }
+
+
+/////   /   /   ////////////////////////    /       /   //////////////////////////////
+
+const userTaskWrapper = $(".user-task__wrapper");
+const userName = $('.user-list-img__name')
+function renderUserNavbar() {
+    userName.innerText = sessionStorage.getItem("userName")
+}
+
+
+const avatar = $('.user-text-avatar')
+function renderAvatarFromName() {
+    let nameList = sessionStorage.getItem('userName').split(' ')
+    nameList.map((element) => {
+        return element[0]
+    })
+    let processedName = nameList[0] + nameList[nameList.length - 1]
+    avatar.innerText = processedName.toUpperCase();
+}
+
+renderUserNavbar()
+renderAvatarFromName()
