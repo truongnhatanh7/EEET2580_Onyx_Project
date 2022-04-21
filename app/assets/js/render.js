@@ -18,7 +18,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 111000)
+}, 1000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
