@@ -9,6 +9,8 @@ const modalInput = $('.dashboard__modal-input');
 const modalBtn = $('.dashboard__modal-btn');
 const projectAddBtn = $(".dashboard__project-add-btn")
 const dashboardTitle = $('.dashboard__title');
+const searchInput = $('.dashboard__search-workspace-input')
+const searchBtn = $('.dashboard__search-workspace-btn')
 let latestWorkspaceId = -1;
 //////////////////////////////
 let currentUser = sessionStorage.getItem("userId"); // Current user id
@@ -24,6 +26,7 @@ const toastMessage = $(".toast-message");
 const finish = false;
 const loading = $('.loading-wrapper');
 const logOut = $('.user__navbar-progress-btn');
+var globalKeyword = "";
 
 if (localStorage.getItem('userId') == null) {
     location.href = "../login2.html";
@@ -36,6 +39,11 @@ logOut.addEventListener('click', () => {
 })
 
 main()
+
+searchBtn.onclick = () => {
+    globalKeyword = searchInput.value.trim();
+    getWorkspace(renderWorkspace)
+}
 
 function main() {
     getWorkspace(renderWorkspace)
@@ -71,16 +79,17 @@ function renderWorkspace(workspaces) {
     })
  
     for (const workspace of workspaces) {
-
-        let html = `
-        <div class="dashboard__project-card" onclick="handleCardClick(event)" >
-            <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
-                <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
-            </a>
-        </div>
-        `;
-        let para = document.createRange().createContextualFragment(html);
-        projectList.appendChild(para);
+        if (workspace.workspaceTitle.includes(globalKeyword)) {
+            let html = `
+            <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                    <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
+                </a>
+            </div>
+            `;
+            let para = document.createRange().createContextualFragment(html);
+            projectList.appendChild(para);
+        }
         
     }
 

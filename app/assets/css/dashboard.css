@@ -23,7 +23,7 @@
 .dashboard__search-workspace-input {
     padding: 8px 16px;
     border-radius: 8px;
-    width: 30%;
+    width: 320px;
     font-size: 1.6rem;
     outline: 1px solid var(--soft-pink);
     border: 1px solid var(--soft-pink);
