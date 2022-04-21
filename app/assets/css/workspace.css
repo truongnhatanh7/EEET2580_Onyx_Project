@@ -159,6 +159,14 @@ input[type="text"] {
     position: relative;
 }
 
+.workspace__board-list-task.workspace__board-list-task--noted {
+    
+}
+
+.workspace__board-list-task.workspace__board-list-task--deadline {
+    background-color: var(--red-pastel);
+}
+
 .workspace__board-list-task:hover {
     cursor: pointer;
 }

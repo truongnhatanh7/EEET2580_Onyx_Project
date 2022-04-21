@@ -115,7 +115,7 @@ function renderInnerDay(node, startingDay, currentDate) {
             sessionStorage.setItem("deadline", localISOTime.toISOString())
             // fetch patch
             datepickerJS.classList.add('disable')
-            taskDeadline.innerText = localISOTime.toString();
+            taskDeadline.innerText = localISOTime.getDate() + "/" + (localISOTime.getMonth() + 1) + "/" + localISOTime.getFullYear();
 
         }
     })

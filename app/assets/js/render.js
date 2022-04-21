@@ -18,7 +18,7 @@ setInterval(function() {
         fetchBoardInfo();
         getBoardInfo();
     }
-}, 1000)
+}, 111000)
 
 function fetchBoardInfo() {
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
@@ -47,12 +47,26 @@ function renderBoard(board) {
             })
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
+                    let isLate = false;
                     let isUrgent = task.priority == 1 ? "" : "disable";
                     let urgentStatus = isUrgent ? "1" : "0"
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
-                    let taskHTML = `  
+                    if (task.deadline !== undefined) {
+                        let deadlineDay = new Date(task.deadline);
+                        dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
+                        if (deadlineDay < new Date()) {
+                            isLate = true;
+                            dl += " (Late)"
+                        }
+                    } else {
+                        dl = "No deadline for this task"
+                    }
+
+                    let taskHTML = `
                     <div
-                        class="workspace__board-list-task"
+                        class="workspace__board-list-task
+                            ${isLate ? "workspace__board-list-task--deadline" : ""}
+                        "
                         draggable="true"
                         ondragstart="handleDragStart(event)"
                         ondragend="handleDragEnd(event)"
