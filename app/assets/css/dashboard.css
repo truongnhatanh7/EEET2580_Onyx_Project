@@ -14,6 +14,31 @@
     font-weight: 700;
 }
 
+.dashboard__search-workspace {
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: row;
+}
+
+.dashboard__search-workspace-input {
+    padding: 8px 16px;
+    border-radius: 8px;
+    width: 30%;
+    font-size: 1.6rem;
+    outline: 1px solid var(--soft-pink);
+    border: 1px solid var(--soft-pink);
+}
+
+.dashboard__search-workspace-btn {
+    padding: 18px;
+    background-color: var(--soft-pink);
+    color: var(--constant-white);
+    margin-left: 8px;
+    font-size: 1.6rem;
+
+    border-radius: 8px;
+}
+
 .dashboard__project-list {
     width: 100%;
     display: grid;
@@ -161,9 +186,6 @@
 
 .dashboard__modal-input:focus {
     outline: none;
-    /* animation: breathingFocus 1s ease-out infinite normal;
-    -webkit-font-smoothing: antialiased;
-    animation-iteration-count: infinite; */
 
 }
 
