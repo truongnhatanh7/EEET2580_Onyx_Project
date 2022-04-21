@@ -49,23 +49,30 @@ function renderBoard(board) {
                 if (task !== undefined) {
                     let isLate = false;
                     let isUrgent = task.priority == 1 ? "" : "disable";
-                    let urgentStatus = isUrgent ? "1" : "0"
+                    let urgentStatus = isUrgent ? "1" : "0";
+                    let hasNote = task.desc != "" ? true : false;
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
                     if (task.deadline !== undefined) {
                         let deadlineDay = new Date(task.deadline);
-                        dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
-                        if (deadlineDay < new Date()) {
+                        if (deadlineDay.getFullYear() == 1970) {
+                            dl = "No deadline for this task"
+                        } else {
+                            dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
+                        }
+                        if (deadlineDay < new Date() && deadlineDay.getFullYear() != 1970) {
                             isLate = true;
                             dl += " (Late)"
                         }
                     } else {
                         dl = "No deadline for this task"
+
                     }
 
                     let taskHTML = `
                     <div
                         class="workspace__board-list-task
-                            ${isLate ? "workspace__board-list-task--deadline" : ""}
+                            ${isLate ? " workspace__board-list-task--deadline " : ""}
+                            ${hasNote ? " workspace__board-list-task--noted " : ""}
                         "
                         draggable="true"
                         ondragstart="handleDragStart(event)"

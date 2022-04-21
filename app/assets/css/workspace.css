@@ -157,15 +157,25 @@ input[type="text"] {
     width: 100%;
     padding: 14px;
     position: relative;
-}
-
-.workspace__board-list-task.workspace__board-list-task--noted {
-    
+    overflow: hidden;
 }
 
 .workspace__board-list-task.workspace__board-list-task--deadline {
     background-color: var(--red-pastel);
 }
+
+.workspace__board-list-task.workspace__board-list-task--noted::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: -2px;
+    width: 24px;
+    height: 8px;
+    transform: rotate(45deg);
+    background-color: var(--yellow);
+}
+
+
 
 .workspace__board-list-task:hover {
     cursor: pointer;
