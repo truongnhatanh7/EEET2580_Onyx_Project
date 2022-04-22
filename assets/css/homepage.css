@@ -30,6 +30,7 @@ main {
 }
 .intro__text-img-hello {
     width: 60%;
+    height: 50em;
 }
 .intro__text-img-collab {
     line-height: 1.2;
@@ -48,6 +49,7 @@ main {
 .intro__img {
     justify-self: flex-end;
     width: 100%;
+    height: 70em;
     transform: translateY(-5%);
 }
 
@@ -73,12 +75,13 @@ main {
 }
 .features__container {
     flex-direction: column;
+    --gap: 40em;
 }
 /* feature card */
 .features__card {
-    position: -webkit-sticky;
-    position: sticky;
-    top: calc(var(--nav-height) + 7em);
+    /* position: -webkit-sticky; */
+    /* position: sticky; */
+    /* top: calc(var(--nav-height) + 7em); */
 
     width: 100%;
     height: 40em;
@@ -137,8 +140,17 @@ main {
     padding: 0 20px;
 }
 /* animation */
-.svg__dragdrop-moving-rect, 
-.svg__dragdrop-moving-line {
+/* appear animation */
+.features__scroll-appear {
+    /* transform: translateY(20em); */
+    opacity: 0;
+    transition: 0.7s all ease;
+}
+.features__scroll-appear.active {
+    transform: translateY(0);
+    opacity: 1;  
+}
+.svg__dragdrop-moving-rect {
     animation: dragdrop-move 2.5s 1 ease forwards;
 }
 .svg__collab-circle {

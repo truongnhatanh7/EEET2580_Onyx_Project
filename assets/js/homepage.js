@@ -6,3 +6,23 @@ let elapsedTime = (Math.round((Date.now() - new Date(localStorage.getItem('login
 if (elapsedTime > 1) {
     localStorage.removeItem('userId');
 }
+window.addEventListener("scroll", reveal);
+
+function reveal() {
+    let reveals = document.querySelectorAll(".features__scroll-appear");
+  
+    for (let i = 0; i < reveals.length; i++) {
+        let windowHeight = window.innerHeight;
+        let elementTop = reveals[i].getBoundingClientRect().top;
+        let elementVisible = 300;
+        let elementInvisible = 600;
+        console.log(elementTop);
+        if ((elementTop < windowHeight - elementVisible)) {
+        reveals[i].classList.add("active");
+
+        } else {
+        reveals[i].classList.remove("active");
+        }
+    }
+}
+  
