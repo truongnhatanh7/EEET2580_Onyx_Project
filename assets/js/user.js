@@ -33,7 +33,7 @@ signInBtn.addEventListener('click', (event) => {
             .then(data => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
-                        // localStorage.setItem("userId", user.userId.toString().trim());
+                        localStorage.setItem("userId", user.userId.toString().trim());
                         localStorage.setItem("login_timestamp", new Date());
                         sessionStorage.setItem("userId", user.userId.toString().trim());
                         sessionStorage.setItem("userName", user.name)
@@ -85,7 +85,7 @@ const signUpUsername = $('#sign-up-username');
 const signUpPassword = $('#sign-up-password');
 const signUpPasswordConfirm = $('#sign-up-password-retype')
 const signUpBtn = $('#sign-up-btn')
-console.log(signUpBtn)
+
 signUpBtn.addEventListener('click', () => {
 
     let validCreateUser = true;
@@ -138,6 +138,8 @@ function createNewUserAPI() {
     .then(data => {
         localStorage.setItem("userId", data.userId.toString().trim());  
         sessionStorage.setItem("userId", data.userId.toString().trim());
+        localStorage.setItem("login_timestamp", new Date());
+        sessionStorage.setItem("userName", data.name)
         location.assign("./app/dashboard.html")
 
     })

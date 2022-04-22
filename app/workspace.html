@@ -3,10 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Workspace</title>
         <link
             rel="stylesheet"
@@ -15,19 +12,19 @@
             crossorigin="anonymous"
             referrerpolicy="no-referrer"
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
         <link rel="stylesheet" href="../assets/css/base.css" />
         <link rel="stylesheet" href="./assets/css/workspace.css" />
         <link rel="stylesheet" href="./assets/css/datepicker.css" />
         <script src="./assets/js/datepicker.js" defer></script>
         <script src="./assets/js/dragndrop.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
-        <script
-            src="./assets/js/render.js"
-            defer
-        ></script>
+        <script src="./assets/js/render.js" defer></script>
         <script src="./assets/js/debounce.js" defer></script>
     </head>
     <body>
@@ -49,13 +46,17 @@
                         <div class="user-text-avatar"></div>
                         <div class="user-list__wrapper">
                             <div class="user-list-img__wrapper">
-                                <span class="user-list-img__name">"Thai Manh Phi"</span>
+                                <span class="user-list-img__name"
+                                    >"Thai Manh Phi"</span
+                                >
                                 <!-- <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img-active"> -->
                             </div>
                             <div class="user-list-table">
                                 <div>
                                     <div class="user__navbar-darkmode-wrapper">
-                                        <p class="user__navbar-darkmode-tittle">Dark mode</p>
+                                        <p class="user__navbar-darkmode-tittle">
+                                            Dark mode
+                                        </p>
                                         <input
                                             type="checkbox"
                                             id="darkmode-switch"
@@ -67,10 +68,10 @@
                                         ></label>
                                     </div>
                                 </div>
-                                <div class="list-content_wrapper workspace__navbar-progress-btn">
-                                    <a class="list-content">
-                                        Project status
-                                    </a>
+                                <div
+                                    class="list-content_wrapper workspace__navbar-progress-btn"
+                                >
+                                    <a class="list-content"> Project status </a>
                                 </div>
                                 <!-- <div class="list-content_wrapper">
                                     <a href="" class="list-content"> 
@@ -91,6 +92,20 @@
 
             <section class="workspace__info">
                 <h1 class="workspace__info-name"></h1>
+                <div class="workspace__info-urgent">
+                    <p class="workspace__info-urgent-desc">
+                        Show only urgent task
+                    </p>
+                    <div class="show-urgent-checkbox">
+                        <!-- <label
+                            for="show-only-urgent"
+                            class="show-urgent-mask"
+                        >
+                        
+                    </label> -->
+                    <input type="checkbox" name="" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                    </div>
+                </div>
             </section>
 
             <section class="workspace__board">
@@ -107,7 +122,9 @@
                             Create
                         </button>
                         <button class="workspace__list-close btn">
-                            <i class="fa-solid fa-xmark workspace__list-close-icon"></i>
+                            <i
+                                class="fa-solid fa-xmark workspace__list-close-icon"
+                            ></i>
                         </button>
                     </div>
                 </div>
@@ -116,12 +133,22 @@
             <section class="workspace__task-setting disable">
                 <div class="workspace__task-setting-wrapper">
                     <button class="workspace__task-setting-close btn">
-                        <i class="fa-solid fa-xmark workspace__task-setting-close-icon"></i>
+                        <i
+                            class="fa-solid fa-xmark workspace__task-setting-close-icon"
+                        ></i>
                     </button>
-                    <input type="text" class="workspace__task-setting-input"/>
-                    <textarea maxlength="125" type="text" class="workspace__task-setting-desc" placeholder="Note for this task" rows="3"></textarea>
+                    <input type="text" class="workspace__task-setting-input" />
+                    <textarea
+                        maxlength="125"
+                        type="text"
+                        class="workspace__task-setting-desc"
+                        placeholder="Note for this task"
+                        rows="3"
+                    ></textarea>
                     <p class="workspace__task-deadline"></p>
-                    <button class="workspace__task-setting-datepicker btn">Change deadline</button>
+                    <button class="workspace__task-setting-datepicker btn">
+                        Change deadline
+                    </button>
                     <div class="datepicker disable">
                         <div class="datepicker__header">
                             <p class="datepicker__prev"><</p>
@@ -157,7 +184,6 @@
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
-                            <div class="datepicker__numday">1</div>                    <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
@@ -166,7 +192,10 @@
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
-                            <div class="datepicker__numday">1</div>                    <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
+                            <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
                             <div class="datepicker__numday">1</div>
@@ -180,50 +209,76 @@
                             <div class="datepicker__numday">1</div>
                         </div>
                     </div>
-                    <button class="workspace__task-setting-urgent btn">Mark this task as urgent</button>
-                    <button class="workspace__task-setting-btn btn">Save</button>
-                    <button class="workspace__task-delete-btn btn">Delete task</button>
+                    <button class="workspace__task-setting-urgent btn">
+                        Mark this task as urgent
+                    </button>
+                    <button class="workspace__task-setting-btn btn">
+                        Save
+                    </button>
+                    <button class="workspace__task-delete-btn btn">
+                        Delete task
+                    </button>
                 </div>
             </section>
 
             <section class="workspace__status disable">
                 <div class="workspace__status-wrapper">
-
                     <div class="workspace__status-container">
-                        <h1 class="workspace__status-title" contenteditable="true">Workspace</h1>
-                        <i class="fa-solid fa-xmark workspace__status-close-icon"></i>
+                        <h1
+                            class="workspace__status-title"
+                            contenteditable="true"
+                        >
+                            Workspace
+                        </h1>
+                        <i
+                            class="fa-solid fa-xmark workspace__status-close-icon"
+                        ></i>
                     </div>
-    
+
                     <!-- <div class="workspace__invite-wrapper">
                         <button class="workspace__invite-btn btn"><i class="fa-solid fa-link workspace__invite-icon"></i>Copy invite link</button>
                     </div> -->
 
-
-    
                     <div class="workspace__collaborator-section">
-                        <h1 class="workspace__collaborator-title">Collaborators</h1>
+                        <h1 class="workspace__collaborator-title">
+                            Collaborators
+                        </h1>
                         <div class="workspace__add-collaborator-wrapper">
-                            <input type="text" class="workspace__add-collaborator-input">
-                            <button class="workspace__add-collaborator-btn btn">Add</button>
+                            <input
+                                type="text"
+                                class="workspace__add-collaborator-input"
+                            />
+                            <button class="workspace__add-collaborator-btn btn">
+                                Add
+                            </button>
                         </div>
-                        <div class="workspace__collaborator-list">    
-                        </div>
+                        <div class="workspace__collaborator-list"></div>
                     </div>
-    
+
                     <div class="workspace__delete-section">
                         <h1 class="workspace__delete-title">Danger Zone</h1>
-                        <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-pre">Delete this workspace</button>
+                        <button
+                            class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-pre"
+                        >
+                            Delete this workspace
+                        </button>
                     </div>
-    
+
                     <div class="workspace__delete-confirmation">
-                        <h3 class="workspace__delete-instruction">Type "delete this workspace" to confirm</h3>
-                        <input type="text" class="workspace__delete-confirmation-input">
-                        <button class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-post">Delete this workspace</button>
+                        <h3 class="workspace__delete-instruction">
+                            Type "delete this workspace" to confirm
+                        </h3>
+                        <input
+                            type="text"
+                            class="workspace__delete-confirmation-input"
+                        />
+                        <button
+                            class="workspace__delete-workspace-btn btn workspace__delete-workspace-btn-post"
+                        >
+                            Delete this workspace
+                        </button>
                     </div>
-
                 </div>
-
-
             </section>
         </main>
     </body>
