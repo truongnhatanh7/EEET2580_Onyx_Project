@@ -89,7 +89,6 @@ signUpBtn.addEventListener('click', () => {
             .then(data => {
                 data.forEach(user => {
                     if (user.username == signUpUsername.value) {
-                        console.log("Existed username")
                         throwToastExistedUsername()
                         validCreateUser = false;
                     } 
