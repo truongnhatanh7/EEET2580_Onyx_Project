@@ -825,7 +825,20 @@ function handleAddToWorkspace(user) {
         },
     }).then(() => {
         fetchUserInWorkspace();
-    });
+    }).then(() => {
+        handleEmailUser(user.username);
+    })
+    ;
+}
+
+function handleEmailUser(username) {
+    let sendEmailUrl = "http://localhost:8080/api/v1/email/notifyUser/" + username
+    fetch(sendEmailUrl, {
+        method: "POST",
+        body: {
+            'Content-Type': 'application/json'
+        }
+    })
 }
 
 function throwUserNotFound(username) {
