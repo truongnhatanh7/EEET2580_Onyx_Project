@@ -25,9 +25,14 @@ showPassword.addEventListener("click", () => {
 signInBtn.addEventListener('click', (event) => {
     event.preventDefault()
     let canLogin = false;
+
     if (username.value == '' || password.value == '') {
-        throwToastEmptyFieldLogin()
-    } else {
+        throwToastEmptyFieldLogin();
+    } 
+    else if (!emailCheck(username.value)) {
+        throwInvalidEmail();
+    }
+    else {
         fetch(allUsersUrl)
             .then(response => response.json())
             .then(data => {
@@ -54,30 +59,9 @@ signInBtn.addEventListener('click', (event) => {
     }
 })
 
-function throwToastEmptyFieldLogin() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "You must fill all fields";
-    setTimeout(() => {
-
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
-
-function throwToastWrongUsernameOrPassword() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "Wrong username or password";
-    setTimeout(() => {
-
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
 ////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
 const signUpName = $('#sign-up-name')
 const signUpFirstName = $('#sign-up-first')
 const signUpLastName = $('#sign-up-last')
@@ -92,17 +76,18 @@ signUpBtn.addEventListener('click', () => {
     if (signUpPassword.value != signUpPasswordConfirm.value) {
         throwToastMismatchPassowrd()
 
-    } else if (signUpFirstName == '' || signUpLastName == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
+    } else if (signUpFirstName.value == '' || signUpLastName.value == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
         throwToastEmptyField();
+    } else if (!emailCheck(signUpUsername.value)) {
+        throwInvalidEmail()
+    } else if (!passwordCheck(signUpPassword.value)) {
+        throwInvalidPassword()
     }
-    
     else {
         fetch(allUsersUrl)
             .then(response => response.json())
             .then(data => {
-   
                 data.forEach(user => {
-                    console.log(user)
                     if (user.username == signUpUsername.value) {
                         console.log("Existed username")
                         throwToastExistedUsername()
@@ -115,9 +100,6 @@ signUpBtn.addEventListener('click', () => {
                     createNewUserAPI()
                 }
             })
-        
-        
-
     }
 })
 
@@ -143,6 +125,54 @@ function createNewUserAPI() {
         location.assign("./app/dashboard.html")
 
     })
+}
+
+////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+// Toast
+
+function throwInvalidPassword() {
+    toast.classList.add('enable');
+    toast.classList.remove('disable');
+    toastMessage.textContent = "Password has to be between 8 to 15 characters which contain at least 1 lowercase letter, 1 uppercase letter, 1 numeric digit, 1 special character";
+    setTimeout(() => {
+
+        toast.classList.add('disable');
+        toast.classList.remove('enable');
+    }, 2000);        
+}
+
+function throwInvalidEmail() {
+    toast.classList.add('enable');
+    toast.classList.remove('disable');
+    toastMessage.textContent = "Invalid email format";
+    setTimeout(() => {
+
+        toast.classList.add('disable');
+        toast.classList.remove('enable');
+    }, 2000);    
+}
+
+function throwToastEmptyFieldLogin() {
+    toast.classList.add('enable');
+    toast.classList.remove('disable');
+    toastMessage.textContent = "You must fill all fields";
+    setTimeout(() => {
+
+        toast.classList.add('disable');
+        toast.classList.remove('enable');
+    }, 1000);
+}
+
+
+function throwToastWrongUsernameOrPassword() {
+    toast.classList.add('enable');
+    toast.classList.remove('disable');
+    toastMessage.textContent = "Wrong username or password";
+    setTimeout(() => {
+        toast.classList.add('disable');
+        toast.classList.remove('enable');
+    }, 1000);
 }
 
 function throwToastExistedUsername() {
@@ -173,5 +203,22 @@ function throwToastEmptyField() {
         toast.classList.add('disable');
         toast.classList.remove('enable');
     }, 1000);  
+}
+
+//////  //////////////////////////////////////////////////////////////////
+// Regex
+
+function emailCheck(email) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        return true
+    }
+    return false
+}
+
+function passwordCheck(password) {
+    if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(password)) {
+        return true
+    }
+    return false
 }
 
