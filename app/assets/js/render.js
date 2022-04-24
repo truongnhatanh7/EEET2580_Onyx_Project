@@ -17,14 +17,8 @@ if (localStorage.getItem('userId') == null) {
 function handleShowOnlyUrgent(event) {
     if (showOnlyUrgentCheckbox.checked) {
         showOnlyUrgentFlag = true;
-        // showOnlyUrgentMask.style.backgroundColor = "var(--soft-pink)";
-        // showOnlyUrgentMaskTick.style.display = "block";
     } else {
         showOnlyUrgentFlag = false;
-        // showOnlyUrgentMask.style.backgroundColor = "var(--white)";
-        // showOnlyUrgentMaskTick.style.display = "none";
-
-
     }
     fetchBoardInfo();
     getBoardInfo();
@@ -69,12 +63,12 @@ function renderBoard(board) {
                 if (task !== undefined) {
                     let isLate = false;
                     let isUrgent = task.priority == 1 ? "" : "disable";
-                    let urgentStatus = isUrgent ? "1" : "0";
                     let hasNote = task.desc != "" ? true : false;
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
                     if (showOnlyUrgentFlag && task.priority == 0) {
                         return;
                     }
+                    
                     if (task.deadline !== undefined) {
                         let deadlineDay = new Date(task.deadline);
                         if (deadlineDay.getFullYear() == 1970) {

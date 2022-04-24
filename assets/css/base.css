@@ -16,7 +16,7 @@ body {
 :root {
     --border-main: 18px;
     --border-sub: 12px;
-    --button-border: 100px;
+    --button-border: 8px;
     --blue: #1b73e7;
     --black: #000;
     --white: #f0f0f0;
