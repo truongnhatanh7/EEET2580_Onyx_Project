@@ -109,12 +109,19 @@ function getWorkspace(callback) {
 function handleFilter(workspaces) {
     if (filterCondition == "a-z") {
         workspaces.sort((a, b) => {
-            a.workspaceTitle.localeCompare(b.workspaceTitle);
+            if (a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()) {
+                return 1;
+            } else {
+                return -1;
+            }
         });
     } else if (filterCondition == "z-a") {
         workspaces.sort((a, b) => {
-            console.log("sort: " + a.workspaceTitle[0] + " vs " + b.workspaceTitle[0])
-            a.workspaceTitle[0].toLowerCase() > b.workspaceTitle[0].toLowerCase();
+            if (a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()) {
+                return 1;
+            } else {
+                return -1;
+            }
         });
         workspaces.reverse();
         console.log(workspaces);
