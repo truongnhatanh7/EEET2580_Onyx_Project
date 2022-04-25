@@ -38,6 +38,13 @@ if (sessionStorage.getItem("userId") == null) {
     location.href = "../login2.html";
 }
 
+document.addEventListener("click", (event) => {
+    if (!event.target.classList.contains('dashboard__filter-option')
+    && !event.target.classList.contains('dashboard__filter-btn')) {
+        filterOptionsWrapper.classList.add('disable');
+    }
+})
+
 filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
         filterCondition = option.innerText.toLowerCase();
@@ -106,9 +113,11 @@ function handleFilter(workspaces) {
         });
     } else if (filterCondition == "z-a") {
         workspaces.sort((a, b) => {
-            a.workspaceTitle.localeCompare(b.workspaceTitle);
+            console.log("sort: " + a.workspaceTitle[0] + " vs " + b.workspaceTitle[0])
+            a.workspaceTitle[0].toLowerCase() > b.workspaceTitle[0].toLowerCase();
         });
         workspaces.reverse();
+        console.log(workspaces);
     } else if (filterCondition == "latest") {
         workspaces.reverse();
     } else {
@@ -240,6 +249,10 @@ modalBtn.onclick = (event) => {
                         .createRange()
                         .createContextualFragment(html);
                     projectList.appendChild(para);
+                })
+                .then(() => {
+                    currentPage = 0;
+                    getWorkspace(renderWorkspace);
                 });
             });
 

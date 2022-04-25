@@ -9,8 +9,9 @@
 
 .dashboard__title {
     font-size: 5rem;
-    padding: 0 8px 48px 8px;
-    margin-top: 10rem;
+    /* padding: 0 8px 48px 8px; */
+    padding: 24px 0px;
+    /* margin-top: 10rem; */
     font-weight: 700;
 }
 
