@@ -23,7 +23,7 @@ let linkWorkspaceUserUrl = "http://localhost:8080/api/v1/user/add-workspace-for-
 let workspaceByUserId = "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" + currentUser.toString();
 let createUrl = "http://localhost:8080/api/v1/workspace/";
 let allWPUrl = "http://localhost:8080/api/v1/workspace/";
-let allUsers = "http://localhost:8080/api/v1/user/all-users/"
+let allUsers = "http://localhost:8080/api/v1/user/all-users/";
 let totalWorkspaces = 0;
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
@@ -31,10 +31,22 @@ const finish = false;
 const loading = $('.loading-wrapper');
 const logOut = $('.user__navbar-progress-btn');
 var globalKeyword = "";
+let filterCondition = "latest"
+let isReversed = false;
 
 if (sessionStorage.getItem('userId') == null) {
     location.href = "../login2.html";
 }
+
+filterOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        console.log("cvs")
+        filterCondition = option.innerText.toLowerCase();
+        console.log(filterCondition)
+        getWorkspace(renderWorkspace)
+
+    })
+})
 
 logOut.addEventListener('click', () => {
     sessionStorage.removeItem('userId');
@@ -92,22 +104,43 @@ function getWorkspace(callback) {
 
 }
 
+function handleFilter(workspaces) {
+    if (filterCondition == "a-z") {
+        workspaces.sort((a, b) => {
+            a.workspaceTitle.localeCompare(b.workspaceTitle)
+        })
+    } else if (filterCondition == "z-a") {
+        workspaces.sort((a, b) => {
+            a.workspaceTitle.localeCompare(b.workspaceTitle)
+        })
+        workspaces.reverse()
+    } else if (filterCondition == "latest") {
+        workspaces.reverse()
+    
+    } else {
+        return;
+    }
+}
+
 function renderWorkspace(workspaces) {
     totalWorkspaces = workspaces.length;
-    if (totalWorkspaces > 1) {
-        dashboardTitle.innerHTML = 'Your projects'
-    } else {
-        dashboardTitle.innerHTML = 'Your project'
-    }
+    sessionStorage.setItem('totalWorkspaces', totalWorkspaces)    
 
     let oldWorkspaces = projectList.querySelectorAll('.dashboard__project-card')
     oldWorkspaces.forEach((element, index) => {
-        if (index != 0) {
+
             element.remove()
-        }
+        
     })
- 
+    let cur = 0
+    handleFilter(workspaces)
+    console.log(workspaces)
+    // if (latestSort) {
+    //     workspaces.reverse()
+    // }
+
     for (const workspace of workspaces) {
+
         if (workspace.workspaceTitle.includes(globalKeyword)) {
             let html = `
             <div class="dashboard__project-card" onclick="handleCardClick(event)" >
@@ -119,6 +152,7 @@ function renderWorkspace(workspaces) {
             let para = document.createRange().createContextualFragment(html);
             projectList.appendChild(para);
         }
+        cur++;
         
     }
 
@@ -232,6 +266,14 @@ modalBtn.onclick = (event) => {
     }
 }
 
+////////////////////////////////
+paginationRender(0)
+
+function paginationRender(currentPage) {
+    let totalPages = sessionStorage.getItem('totalWorkspaces');
+    totalPages = Math.floor(totalPages / 4);
+    console.log(totalPages)
+}
 
 
 

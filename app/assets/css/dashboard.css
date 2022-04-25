@@ -23,7 +23,7 @@
 .dashboard__search-workspace-input {
     padding: 8px 16px;
     border-radius: 8px;
-    width: 320px;
+    flex: 100;
     font-size: 1.6rem;
     outline: 1px solid var(--soft-pink);
     border: 1px solid var(--soft-pink);
@@ -34,8 +34,8 @@
 .dashboard__filter-btn,
 .dashboard__project-add-btn {
     padding: 18px;
-    background-color: var(--soft-pink);
-    color: var(--constant-white);
+    background-color: var(--yellow);
+    color: var(--black);
     margin-left: 8px;
     font-size: 1.6rem;
 
@@ -59,6 +59,7 @@
 .dashboard__filter-option {
     display: block;
     padding: 16px 16px;
+    color: var(--constant-white);
 }
 
 .dashboard__project-list {
@@ -240,4 +241,25 @@
 
 .dashboard__modal-create.dashboard__modal-create--enable {
     display: grid;
+}
+
+.dashboard__pagination {
+    margin-top: 32px;
+    width: 100%;
+    display: flex;
+    padding: 32px 0;
+}
+
+.dashboard__pagination-wrapper {
+    margin: 0 auto;
+}
+
+.dashboard__pagination-btn {
+    padding: 8px 16px;
+    margin: 4px;
+
+}
+
+.dashboard__pagination-btn.dashboard__pagination-btn--active {
+    background-color: var(--yellow);
 }
