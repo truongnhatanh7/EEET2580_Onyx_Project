@@ -103,7 +103,7 @@ html {
 }
 .btn {
     border: none;
-    border-radius: 25px;
+    border-radius: 8px;
     font-size: 1.6rem;
     font-weight: 400;
     font-family: 'poppins', sans-serif;
