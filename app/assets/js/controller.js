@@ -4,8 +4,10 @@ const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
 const board = $(".workspace__board");
+
 const darkModeSwitch = $(".workspace__switch-input");
 const darkModeBtn = $(".workspace__navbar-darkmode-wrapper");
+
 const currentTheme = localStorage.getItem("theme");
 const tasks = $$(".workspace__board-list-task");
 const lists = $$(".workspace__board-list");
@@ -15,6 +17,9 @@ const closeSubmitList = $(".workspace__list-close");
 const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
+
+const darkIcon = $(".workspace-darkmode");
+const lightIcon = $(".workspace-lightmode");
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
@@ -621,7 +626,10 @@ function handleDeleteTask(event) {
 if (currentTheme) {
     document.documentElement.setAttribute("data-theme", currentTheme);
     if (currentTheme === "dark") {
+        darkIcon.classList.add('disable');
         darkModeSwitch.checked = true;
+    } else {
+        lightIcon.classList.add('disable');
     }
 }
 
@@ -629,18 +637,17 @@ function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark");
+        darkIcon.classList.add('disable');
+        lightIcon.classList.remove('disable');
     } else {
         document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem("theme", "light");
+        darkIcon.classList.remove('disable');
+        lightIcon.classList.add('disable');
     }
 }
 darkModeSwitch.addEventListener("change", switchTheme);
 
-// function switchIcon(e){
-//     if(e.targer.checked){
-//         document.documentElement
-//     }
-// }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Workspace status

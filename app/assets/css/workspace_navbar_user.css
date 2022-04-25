@@ -147,12 +147,12 @@
     display: none;
 }
 
-.workspace__switch-input:checked  .fa-moon {
+/* .workspace__switch-input:checked  .fa-moon {
     display: none;
 }
 
 .workspace__switch-input:checked + .user__switch:after {
     transform: translateX(2.6rem);
     background-color: var(--constant-white);
-}
+} */
 
