@@ -59,16 +59,67 @@ input[type="text"] {
 }
 
 .workspace__info-urgent-desc {
-    margin-right: 4px;
 }
 .filter__wrapper{
     display: none;
+    background-color: var(--white);
+    border-radius: var(--border-sub);
+    padding: 20px;
+    position: absolute;
+    top: 55px;
+    right:0px;
+    width: auto;
 }
-.show-urgent-checkbox {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
+
+.filter-content__wrapper{
+    width: 200px;
+    font-size: 18px;
 }
+
+.filter-urgent-task__wrapper{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.list-content_wrapper:hover .filter__wrapper{
+    display: block;
+}
+
+.switch {
+    position: relative;
+    cursor: pointer;
+    width: 6rem;
+    height: 3rem;
+    display: block;
+    margin: 0 auto;
+    overflow: hidden;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    background: var(--dark-gray);
+    border-radius: 100rem;
+    transition: background-color 0.25s linear;
+  }
+  .switch:after {
+    content: "";
+    position: absolute;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 4rem;
+    background-color: var(--white);
+    top: 5px;
+    left: 5px;
+    transition: background-color 0.25s linear, transform 0.25s linear;
+  }
+  .switch-input {
+    display: none;
+  }
+  .switch-input:checked + .switch {
+    background-color: #6a5af9;
+  }
+  .switch-input:checked + .switch:after {
+    transform: translateX(3rem);
+    background-color: white;
+  }
+
 
 .show-urgent-mask {
     width: 16px;

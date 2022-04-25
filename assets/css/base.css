@@ -121,6 +121,9 @@ textarea {
     font-size: 1.4rem;
     min-height: fit-content;
 }
+.relative{
+    position: relative;
+}
 .flex {
     display: flex !important;
 }

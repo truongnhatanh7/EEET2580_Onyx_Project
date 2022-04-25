@@ -96,21 +96,38 @@
                             </label>
                         </div>
                     </div>
-                    <div class="list-content_wrapper flex flex-row flex-center">
+                    <div class="list-content_wrapper flex flex-row flex-center relative">
                         <i class="fa-solid fa-filter"></i>
                         <p class="list-content-tittle">Filter</p>
                         <div class="filter__wrapper">
-                            <p class="workspace__info-urgent-desc">
-                                Show only urgent task
-                            </p>
-                            <div class="show-urgent-checkbox">
-                                <!-- <label
-                                    for="show-only-urgent"
-                                    class="show-urgent-mask"
-                                >
-                                
-                            </label> -->
-                                <input type="checkbox" name="" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                            <div class="filter-content__wrapper">
+                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
+                                    <p class="workspace__info-urgent-desc">
+                                        Show only urgent task
+                                    </p>
+                                    <div class="show-urgent-checkbox">
+                                        <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                                        <label for="show-only-urgent" class="switch"></label>
+                                    </div>
+                                </div>
+                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
+                                    <p class="workspace__info-urgent-desc">
+                                        Overdue task
+                                    </p>
+                                    <div class="show-urgent-checkbox">
+                                        <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                                        <label for="show-only-urgent" class="switch"></label>
+                                    </div>
+                                </div>
+                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
+                                    <p class="workspace__info-urgent-desc">
+                                        ...
+                                    </p>
+                                    <div class="show-urgent-checkbox">
+                                        <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                                        <label for="show-only-urgent" class="switch"></label>
+                                    </div>
+                                </div>
                             </div>
                         </div> 
                     </div>
