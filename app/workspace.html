@@ -53,25 +53,7 @@
                             </div>
                             <div class="user-list-table">
                                 <div>
-                                    <div class="user__navbar-darkmode-wrapper">
-                                        <p class="user__navbar-darkmode-tittle">
-                                            Dark mode
-                                        </p>
-                                        <input
-                                            type="checkbox"
-                                            id="darkmode-switch"
-                                            class="workspace__switch-input"
-                                        />
-                                        <label
-                                            for="darkmode-switch"
-                                            class="user__switch"
-                                        ></label>
-                                    </div>
-                                </div>
-                                <div
-                                    class="list-content_wrapper workspace__navbar-progress-btn"
-                                >
-                                    <a class="list-content"> Project status </a>
+                                    
                                 </div>
                                 <!-- <div class="list-content_wrapper">
                                     <a href="" class="list-content"> 
@@ -91,19 +73,48 @@
             </section>
 
             <section class="workspace__info">
-                <h1 class="workspace__info-name"></h1>
+                <div class="workspace__info__tittle">
+                    <h1 class="workspace__info-name"></h1>
+                </div>
                 <div class="workspace__info-urgent">
-                    <p class="workspace__info-urgent-desc">
-                        Show only urgent task
-                    </p>
-                    <div class="show-urgent-checkbox">
-                        <!-- <label
-                            for="show-only-urgent"
-                            class="show-urgent-mask"
-                        >
-                        
-                    </label> -->
-                    <input type="checkbox" name="" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                    <div class="list-content_wrapper">
+                        <div class="user__navbar-darkmode-wrapper">
+                            <!-- <p class="user__navbar-darkmode-tittle">
+                                Dark mode
+                            </p> -->
+                            <input
+                                type="checkbox"
+                                id="darkmode-switch"
+                                class="workspace__switch-input"
+                            />
+                            <label
+                                for="darkmode-switch"
+                                class="user__switch"
+                            >
+                                <i class="fa-solid fa-moon"></i>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="list-content_wrapper flex flex-row flex-center">
+                        <i class="fa-solid fa-filter"></i>
+                        <p class="list-content-tittle">Filter</p>
+                        <div class="filter__wrapper">
+                            <p class="workspace__info-urgent-desc">
+                                Show only urgent task
+                            </p>
+                            <div class="show-urgent-checkbox">
+                                <!-- <label
+                                    for="show-only-urgent"
+                                    class="show-urgent-mask"
+                                >
+                                
+                            </label> -->
+                                <input type="checkbox" name="" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
+                            </div>
+                        </div> 
+                    </div>
+                    <div class="list-content_wrapper workspace__navbar-progress-btn">
+                        <i class="fa-solid fa-gear"></i>
                     </div>
                 </div>
             </section>

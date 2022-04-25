@@ -636,6 +636,11 @@ function switchTheme(e) {
 }
 darkModeSwitch.addEventListener("change", switchTheme);
 
+// function switchIcon(e){
+//     if(e.targer.checked){
+//         document.documentElement
+//     }
+// }
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 //Workspace status

@@ -122,8 +122,10 @@ textarea {
     min-height: fit-content;
 }
 .flex {
-    display: flex;
-    gap: var(--gap, 0);
+    display: flex !important;
+}
+.flex-row{
+    flex-direction: row;
 }
 .flex-center {
     align-items: center;
