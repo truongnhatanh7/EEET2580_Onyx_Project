@@ -10,18 +10,21 @@ window.addEventListener("scroll", reveal);
 
 function reveal() {
     let reveals = document.querySelectorAll(".features__scroll-appear");
-  
+    let parallaxText = document.querySelectorAll(".features__card-article");
+    let parallaxImg = document.querySelectorAll(".features__card-fig");
     for (let i = 0; i < reveals.length; i++) {
         let windowHeight = window.innerHeight;
         let elementTop = reveals[i].getBoundingClientRect().top;
         let elementVisible = 300;
-        let elementInvisible = 600;
-        console.log(elementTop);
-        if ((elementTop < windowHeight - elementVisible)) {
-        reveals[i].classList.add("active");
+        if (elementTop < windowHeight - elementVisible) {
+            // appear on scroll
+            reveals[i].classList.add("active");
+            // parallax when appear
+            parallaxText[i].style.transform = `translateY(${(-1) *elementTop * 0.13}px)`;
+            parallaxImg[i].style.transform = `translateY(${elementTop * 0.13}px)`;
 
         } else {
-        reveals[i].classList.remove("active");
+            reveals[i].classList.remove("active");
         }
     }
 }

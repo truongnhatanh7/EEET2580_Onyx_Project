@@ -75,7 +75,7 @@ main {
 }
 .features__container {
     flex-direction: column;
-    --gap: 40em;
+    --gap: 20em;
 }
 /* feature card */
 .features__card {
@@ -123,6 +123,7 @@ main {
 
 /* feature article */
 .features__card-article {
+    /* position: relative; */
     flex-direction: column;
     color: var(--white);
 }
