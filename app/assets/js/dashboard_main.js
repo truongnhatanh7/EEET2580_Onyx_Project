@@ -11,6 +11,10 @@ const projectAddBtn = $(".dashboard__project-add-btn")
 const dashboardTitle = $('.dashboard__title');
 const searchInput = $('.dashboard__search-workspace-input')
 const searchBtn = $('.dashboard__search-workspace-btn')
+const viewAllBtn = $('.dashboard__view-all-btn')
+const filterBtn = $('.dashboard__filter-btn')
+const filterOptionsWrapper = $('.dashboard__filter-options')
+const filterOptions = $$('.dashboard__filter-option')
 let latestWorkspaceId = -1;
 //////////////////////////////
 let currentUser = sessionStorage.getItem("userId"); // Current user id
@@ -36,6 +40,15 @@ logOut.addEventListener('click', () => {
     sessionStorage.removeItem('userId');
     location.href = "../index.html";
 
+})
+
+viewAllBtn.addEventListener('click', () => {
+    searchInput.value = "";
+    searchBtn.click();
+})
+
+filterBtn.addEventListener('click', () => {
+    filterOptionsWrapper.classList.toggle('disable')
 })
 
 const userTaskWrapper = $(".user-task__wrapper");
@@ -67,7 +80,7 @@ function main() {
         if (sessionStorage.getItem("isEditing") == '0') {
             getWorkspace(renderWorkspace)
         }
-    }, 3000)
+    }, 3333000)
 }
 
 function getWorkspace(callback) {

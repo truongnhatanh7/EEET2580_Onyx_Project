@@ -29,7 +29,10 @@
     border: 1px solid var(--soft-pink);
 }
 
-.dashboard__search-workspace-btn {
+.dashboard__search-workspace-btn,
+.dashboard__view-all-btn,
+.dashboard__filter-btn,
+.dashboard__project-add-btn {
     padding: 18px;
     background-color: var(--soft-pink);
     color: var(--constant-white);
@@ -37,6 +40,25 @@
     font-size: 1.6rem;
 
     border-radius: 8px;
+    position: relative;
+}
+
+.dashboard__filter-options {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    margin-top: 8px;
+    border-radius: 8px;
+    background-color: var(--hard-pink);
+    z-index: 300;
+}
+
+.dashboard__filter-option {
+    display: block;
+    padding: 16px 16px;
 }
 
 .dashboard__project-list {
@@ -101,12 +123,7 @@
 }
 
 .dashboard__project-add-btn {
-    padding: 16px;
-    border: none;
-    border-radius: var(--border-main);
-    width: 100%;
-    height: 100%;
-    background-color: var(--gray);
+
 }
 
 .dashboard__project-add-btn:hover {
