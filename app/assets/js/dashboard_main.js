@@ -33,6 +33,7 @@ const logOut = $('.user__navbar-progress-btn');
 var globalKeyword = "";
 let filterCondition = "latest"
 let isReversed = false;
+let currentPage = 0;
 
 if (sessionStorage.getItem('userId') == null) {
     location.href = "../login2.html";
@@ -133,28 +134,32 @@ function renderWorkspace(workspaces) {
         
     })
     let cur = 0
+    let count = 0;
     handleFilter(workspaces)
-    console.log(workspaces)
-    // if (latestSort) {
-    //     workspaces.reverse()
-    // }
-
+    let newTotalWorkspaces = 0;
+    console.log("current page: ", currentPage)
     for (const workspace of workspaces) {
 
         if (workspace.workspaceTitle.includes(globalKeyword)) {
-            let html = `
-            <div class="dashboard__project-card" onclick="handleCardClick(event)" >
-                <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
-                    <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
-                </a>
-            </div>
-            `;
-            let para = document.createRange().createContextualFragment(html);
-            projectList.appendChild(para);
+            if (cur >= currentPage * 4 && cur < currentPage * 4 + 4) {
+                let html = `
+                <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                    <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                        <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
+                    </a>
+                </div>
+                `;
+                let para = document.createRange().createContextualFragment(html);
+                projectList.appendChild(para);
+                
+            }
+            newTotalWorkspaces += 1
         }
         cur++;
-        
     }
+    console.log("new pages: ", newTotalWorkspaces)
+
+    paginationRender(newTotalWorkspaces);
 
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
@@ -267,17 +272,66 @@ modalBtn.onclick = (event) => {
 }
 
 ////////////////////////////////
-paginationRender(0)
+// const paginationPrev = $('.dashboard__pagination-prev')
+// const paginationNext = $('.dashboard__pagination_next')
+const pagination = $('.dashboard__pagination-wrapper')
+let pages = 0;
+function paginationRender(totalPages) {
+    totalPages = Math.ceil(totalPages / 4);
+    pages = totalPages
+    pagination.innerHTML = ""
+    if (totalPages > 1) {
+        let html = `
+        <button class="dashboard__pagination-prev dashboard__pagination-btn btn" onclick=handlePaginationPrev(event)>Previous</button>
+        `
+        let para = document.createRange().createContextualFragment(html)
+        pagination.appendChild(para)
+        let activeClass = ""
+        for (let i = 0; i < totalPages; i++) {
+    
+            if (i == currentPage) {
+                activeClass = "dashboard__pagination-btn--active"
+            } else {
+                activeClass = ""
+            }
+            html = `
+            <button class="dashboard__pagination-btn btn ${activeClass}" onclick=handlePageClick(event)>${i + 1}</button>
+            `
+            para = document.createRange().createContextualFragment(html)
+            pagination.appendChild(para)
+        }
+        html = `
+        <button class="dashboard__pagination-next dashboard__pagination-btn btn" onclick=handlePaginationNext(event)>Next</button>
+        `
+        para = document.createRange().createContextualFragment(html)
+        pagination.appendChild(para)
+    }
 
-function paginationRender(currentPage) {
-    let totalPages = sessionStorage.getItem('totalWorkspaces');
-    totalPages = Math.floor(totalPages / 4);
-    console.log(totalPages)
 }
 
+function handlePageClick(event) {
+    let allPages = $$('.dashboard__pagination-btn:not(.dashboard__pagination-prev):not(.dashboard__pagination-next)')
+    allPages.forEach(page => {
+        if (currentPage + 1 != page.textContent) {
+            page.classList.remove('dashboard__pagination-btn--active')
+        }
+    })
+    currentPage = event.target.textContent - 1
+    console.log("clicked current page: " + currentPage)
+    getWorkspace(renderWorkspace)
+    event.target.classList.add('dashboard__pagination-btn--active')
+}
 
+function handlePaginationPrev(event) {
+    if (currentPage - 1 >= 0) {
+        currentPage -= 1
+        getWorkspace(renderWorkspace)
+    }
+}
 
-
-
-
-
+function handlePaginationNext(event) {
+    if (currentPage + 1 <= pages - 1) {
+        currentPage += 1
+        getWorkspace(renderWorkspace)
+    }
+}
