@@ -85,12 +85,16 @@ input[type="text"] {
 
 .filter-content__wrapper{
     width: 200px;
-    font-size: 18px;
+    font-size: 1.6rem;
+}
+
+.filter-urgent-task__wrapper:nth-child(2) {
+    margin-top: 16px;
 }
 
 .filter-urgent-task__wrapper{
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .list-content_wrapper:hover .filter__wrapper{
