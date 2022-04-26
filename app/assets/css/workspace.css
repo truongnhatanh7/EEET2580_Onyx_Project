@@ -113,8 +113,8 @@ input[type="text"] {
     background: var(--dark-gray);
     border-radius: 100rem;
     transition: background-color 0.25s linear;
-  }
-  .switch:after {
+    }
+    .switch:after {
     content: "";
     position: absolute;
     width: 2rem;
@@ -124,18 +124,17 @@ input[type="text"] {
     top: 5px;
     left: 5px;
     transition: background-color 0.25s linear, transform 0.25s linear;
-  }
-  .switch-input {
+    }
+    .switch-input {
     display: none;
-  }
-  .switch-input:checked + .switch {
+    }
+    .switch-input:checked + .switch {
     background-color: #6a5af9;
-  }
-  .switch-input:checked + .switch:after {
+    }
+    .switch-input:checked + .switch:after {
     transform: translateX(3rem);
     background-color: white;
-  }
-
+    }
 
 .show-urgent-mask {
     width: 16px;
@@ -143,18 +142,6 @@ input[type="text"] {
     border-radius: 100%;
     background-color: var(--soft-pink);
     position: relative;
-}
-
-.show-urgent-mask::after {
-    /* content: '';
-    position: absolute;
-    top: 50%;
-    width: 12px;
-    height: 12px;
-    right: -25%;
-    background-color: white;
-    border-radius: 100%;
-    transform: translateX(-50%) translateY(-50%); */
 }
 
 #show-only-urgent {
@@ -218,20 +205,12 @@ input[type="text"] {
     border: 1px solid var(--white);
     border-radius: 8px;
 }   
-/* .workspace__add-task-btn:hover{
-    background-color: var(--soft-pink);
-    color: white;
-} */
-.workspace__board-list:hover{
-    /* box-shadow: var(--box-shadow); */
-}
 
 .workspace__board-list ~ .workspace__add-task-wrapper {
-    animation: disappearMagic 0.2s;
 }
 
 .modifying {
-    transition: 0.1s;
+
 }
 
 .workspace__board-list.modifying {
@@ -385,16 +364,13 @@ input[type="text"] {
     min-width: 360px;
     margin-top: 0;
     padding: 16px 20px;
-    transition: 0.2s;
 }
 
 .workspace__add-list-btn:hover {
     background-color: var(--yellow);
     color: var(--white);
-    /* font-size: large; */
     width: 100%;
     border-radius: 8px;
-    /* font-weight: 700; */
     box-shadow: var(--box-shadow);
 }
 
@@ -403,7 +379,7 @@ input[type="text"] {
     display: none;
     max-width: 305px;
     transition: 0.1s;
-    animation: appearMagic 0.2s;
+
 }
 
 .workspace__list-close-icon {
@@ -418,7 +394,7 @@ input[type="text"] {
     min-width: 100%;
     display: none;
     transition: 0.1s;
-    animation: appearMagic 0.2s;
+
 }
 
 .workspace__submit-title {
@@ -442,14 +418,12 @@ input[type="text"] {
 .workspace__list-close {
     color: var(--constant-white);
     background-color: var(--red-pastel);
-    /* opacity: 0.7; */
     padding: 12px 20px;
     margin-left: 12px;
 }
 
 .workspace__task-close {
     color: var(--constant-white);
-
     font-size: 1.6rem;
 }
 
