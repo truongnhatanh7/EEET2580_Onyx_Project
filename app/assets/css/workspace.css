@@ -80,7 +80,6 @@ input[type="text"] {
     position: absolute;
     top: 55px;
     right: 0px;
-    width: auto;
     box-shadow: var(--nav-shadow);
 }
 

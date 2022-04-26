@@ -65,9 +65,9 @@ viewAllBtn.addEventListener("click", () => {
     searchBtn.click();
 });
 
-filterBtn.addEventListener("click", () => {
-    filterOptionsWrapper.classList.toggle("disable");
-});
+// filterBtn.addEventListener("click", () => {
+//     filterOptionsWrapper.classList.toggle("disable");
+// });
 
 const userTaskWrapper = $(".user-task__wrapper");
 const userName = $(".user-list-img__name");
