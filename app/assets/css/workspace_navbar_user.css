@@ -82,7 +82,10 @@
     border-radius: var(--button-border);
     opacity: 50%;
     color: var(--hard-pink);
-    font-size: 2rem;
+    font-size: 1.6rem;
+    height: 50px;
+    display: grid;
+    place-items: center;
 }
 .list-content_wrapper:hover{
     background-color: var(--yellow);
@@ -107,6 +110,7 @@
 
 .list-content-tittle{
     margin-left: 8px;
+    font-size: 1.4rem;
 }
 .user__navbar-darkmode-wrapper {
     /* margin-right: 10px;

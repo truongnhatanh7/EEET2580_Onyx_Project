@@ -464,7 +464,7 @@ function handleTaskSetting(event) {
 function renderDeadline() {
     let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
     if (deadline != undefined) {
-        taskDeadline.innerText = deadline;
+        taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
     }
 }
 
@@ -484,33 +484,25 @@ function renderTaskSettingUrgent() {
 }
 
 taskSettingClose.addEventListener("click", (event) => {
-    if (!datepickerJS.classList.contains('disable')) {
-        datepickerJS.classList.add('disable');
-    }
-    if (!hitSave) {
-        let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
-        if (prevPriority == "1") {
-            tempTaskUrgent.classList.remove('disable');
-        } else {
-            tempTaskUrgent.classList.add('disable')
-        }
-    }
-    currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
-    sessionStorage.setItem("isEditing", "0");
-    taskInput.value = "";
-    taskSetting.classList.add("disable");
-    taskSetting.classList.remove("enable");
+    taskSave.click();
+    // if (!datepickerJS.classList.contains('disable')) {
+    //     datepickerJS.classList.add('disable');
+    // }
+    // if (!hitSave) {
+    //     let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
+    //     if (prevPriority == "1") {
+    //         tempTaskUrgent.classList.remove('disable');
+    //     } else {
+    //         tempTaskUrgent.classList.add('disable')
+    //     }
+    // }
+    // currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+    // sessionStorage.setItem("isEditing", "0");
+    // taskInput.value = "";
+    // taskSetting.classList.add("disable");
+    // taskSetting.classList.remove("enable");
     // currentTaskNode = null;
 });
-
-taskSettingDesc.addEventListener('keyup', (event) => {
-    //TODO: Handle input validation desc
-    // console.log(taskSettingDesc.value.split("\n"))
-    // if(event.keyCode == 13 && taskSettingDesc.value.split("\n").length >= 3) { 
-    //     // taskSettingDesc.setAttribute('disabled', "")
-    //     return;
-    // } 
-})
 
 taskSave.addEventListener("click", (event) => {
     hitSave = true;
@@ -585,7 +577,25 @@ taskSave.addEventListener("click", (event) => {
         })
         .then(() => {
             sessionStorage.setItem("isEditing", "0");
-            taskSettingClose.click();
+            // taskSettingClose.click();
+        })
+        .then(() => {
+            if (!datepickerJS.classList.contains('disable')) {
+                datepickerJS.classList.add('disable');
+            }
+            if (!hitSave) {
+                let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
+                if (prevPriority == "1") {
+                    tempTaskUrgent.classList.remove('disable');
+                } else {
+                    tempTaskUrgent.classList.add('disable')
+                }
+            }
+            currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+            sessionStorage.setItem("isEditing", "0");
+            taskInput.value = "";
+            taskSetting.classList.add("disable");
+            taskSetting.classList.remove("enable");
         })
     }
 

@@ -14,8 +14,8 @@ body {
     overflow: auto;
 }
 :root {
-    --border-main: 18px;
-    --border-sub: 12px;
+    --border-main: 8px;
+    --border-sub: 8px;
     --button-border: 8px;
     --blue: #1b73e7;
     --black: #000;

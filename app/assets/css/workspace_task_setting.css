@@ -64,6 +64,7 @@
     background-color: var(--soft-pink);
     color: var(--constant-white);
     animation: appearMagic 0.2s;
+    display: none;
 }
 
 .workspace__task-setting-urgent {
@@ -103,9 +104,20 @@
     border: 1px solid var(--constant-white);
     width: 100%;
     border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace__task-deadline:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 767px) {
     
 }
     
+.deadline-change-icon {
+    color: var(--soft-pink);
+    margin-left: auto;
+}

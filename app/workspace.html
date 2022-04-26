@@ -103,7 +103,7 @@
                             <div class="filter-content__wrapper">
                                 <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
                                     <p class="workspace__info-urgent-desc">
-                                        Show only urgent task
+                                        Urgent task
                                     </p>
                                     <div class="show-urgent-checkbox">
                                         <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
@@ -114,18 +114,9 @@
                                     <p class="workspace__info-urgent-desc">
                                         Overdue task
                                     </p>
-                                    <div class="show-urgent-checkbox">
-                                        <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
-                                        <label for="show-only-urgent" class="switch"></label>
-                                    </div>
-                                </div>
-                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
-                                    <p class="workspace__info-urgent-desc">
-                                        ...
-                                    </p>
-                                    <div class="show-urgent-checkbox">
-                                        <input type="checkbox" name="" class="switch-input" id="show-only-urgent" onclick="handleShowOnlyUrgent(event)"/>
-                                        <label for="show-only-urgent" class="switch"></label>
+                                    <div class="show-overdue-checkbox">
+                                        <input type="checkbox" name="" class="switch-input" id="show-overdue" onclick="handleShowOverdue(event)"/>
+                                        <label for="show-overdue" class="switch"></label>
                                     </div>
                                 </div>
                             </div>
@@ -174,10 +165,10 @@
                         placeholder="Note for this task"
                         rows="3"
                     ></textarea>
-                    <p class="workspace__task-deadline"></p>
-                    <button class="workspace__task-setting-datepicker btn">
+                    <p class="workspace__task-deadline workspace__task-setting-datepicker"></p>
+                    <!-- <button class="workspace__task-setting-datepicker btn">
                         Change deadline
-                    </button>
+                    </button> -->
                     <div class="datepicker disable">
                         <div class="datepicker__header">
                             <p class="datepicker__prev"><</p>

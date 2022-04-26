@@ -6,8 +6,10 @@ const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
 const showOnlyUrgentCheckbox = $('#show-only-urgent')
 const showOnlyUrgentMask = $('.show-urgent-mask')
+const showOverdue = $('#show-overdue')
 const showOnlyUrgentMaskTick = $('.show-urgent-mask::after')
-let showOnlyUrgentFlag = false;
+var showOnlyUrgentFlag = false;
+var showOverdueFlag = false;
 sessionStorage.setItem('isEditing', '0')
 
 if (localStorage.getItem('userId') == null) {
@@ -19,6 +21,16 @@ function handleShowOnlyUrgent(event) {
         showOnlyUrgentFlag = true;
     } else {
         showOnlyUrgentFlag = false;
+    }
+    fetchBoardInfo();
+    getBoardInfo();
+}
+
+function handleShowOverdue(event) {
+    if (showOverdue.checked) {
+        showOverdueFlag = true;
+    } else {
+        showOverdueFlag = false;
     }
     fetchBoardInfo();
     getBoardInfo();
@@ -83,6 +95,9 @@ function renderBoard(board) {
                     } else {
                         dl = "No deadline for this task"
                     }
+                    if (!isLate && showOverdueFlag) {
+                        return;
+                    } 
 
                     let taskHTML = `
                     <div
