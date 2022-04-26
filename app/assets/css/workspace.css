@@ -60,6 +60,18 @@ input[type="text"] {
 
 .workspace__info-urgent-desc {
 }
+
+.filter__wrapper::before {
+    content: "";
+    height: 0;
+    position: absolute;
+    top: -6px;
+    right: 0;
+    height: 8px;
+    width: 100%;
+    background-color: transparent;
+}
+
 .filter__wrapper{
     display: none;
     background-color: var(--white);

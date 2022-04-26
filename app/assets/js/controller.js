@@ -21,6 +21,8 @@ const toastMessage = $(".toast-message");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // Board
 
