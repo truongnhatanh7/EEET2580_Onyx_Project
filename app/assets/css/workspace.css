@@ -51,7 +51,7 @@ input[type="text"] {
 
 .workspace__info-urgent {
     font-size: 1.6rem;
-    padding-right: 4px;
+    /* padding-right: 4px; */
     /* margin-right: 8px; */
     display: flex;
     align-items: center;

@@ -21,7 +21,13 @@ const toastMessage = $(".toast-message");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
+const signOut = $(".workspace__sign-out");
+////////////////////////////////////////////////////////////////////////////////
 
+signOut.addEventListener("click", (event) => {
+    sessionStorage.removeItem('userId');
+    location.href = "../index.html";
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
