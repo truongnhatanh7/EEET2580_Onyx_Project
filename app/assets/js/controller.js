@@ -765,7 +765,7 @@ function fetchUserInWorkspace() {
     fetch(workspaceUrl)
         .then((response) => response.json())
         .then((workspace) => {
-            workspaceStatusTitle.textContent = workspace.workspaceTitle;
+            // workspaceStatusTitle.textContent = workspace.workspaceTitle;
             return workspace.users;
         })
         .then((users) => {

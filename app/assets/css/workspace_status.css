@@ -33,7 +33,7 @@
     margin-bottom: 28px;
     border: none;
     outline: none;
-    background-color: var(--gray);
+    /* background-color: var(--gray); */
     border-radius: var(--border-main);
 }
 
@@ -51,7 +51,7 @@
 
 .workspace__status-close-icon:hover {
     cursor: pointer;
-    color: var(--red)
+    color: var(--red-pastel)
 }
 
 .workspace__add-collaborator-wrapper {
@@ -99,7 +99,7 @@
 }
 
 .workspace__delete-title{
-    color: var(--red)
+    color: var(--red-pastel)
 }
 
 .workspace__collaborator-delete {
@@ -110,7 +110,7 @@
 }
 
 .workspace__collaborator-delete:hover {
-    color: var(--red);
+    color: var(--red-pastel);
     cursor: pointer;
 }
 
@@ -124,46 +124,20 @@
     font-weight: 600;
     width: 100%;
     padding-left: 20px;
-    /* text-align: center; */
     font-size: 2rem;
     margin-top: 48px;
     position: relative;
 }
 
 .workspace__delete-workspace-btn {
-    background: transparent;
-    border: 1px solid var(--red);
+    background: var(--red-pastel);
     padding: 8px 16px;
-    color: var(--black);
+    color: var(--constant-white);
     margin-top: 16px;
     position: relative;
     overflow: hidden;
     isolation: isolate;
     width: 100%;
-}
-
-.workspace__delete-workspace-btn::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: var(--red);
-    border-radius: var(--button-border);
-    width: 0;
-    transition: width 0.3s;
-    z-index: -1;
-}
-
-.workspace__delete-workspace-btn:hover::before {
-    width: 100%;
-    
-}
-
-.workspace__delete-workspace-btn:hover {
-    opacity: 1;
-    color: var(--black);
 }
 
 .workspace__delete-instruction {
@@ -177,13 +151,13 @@
     margin-top: 20px;
     display: none;
     flex-direction: column;
-    transition: 0.3s;
-    animation: appearMagic 0.3s;
+    /* transition: 0.3s; */
+    /* animation: appearMagic 0.3s; */
 }
 
 .workspace__delete-confirmation-input {
     padding: 8px 16px;
-    border: 2px solid var(--red);
+    border: 2px solid var(--red-pastel);
     outline: var(--soft-pink);
     font-size: 1.6rem;
     border-radius: var(--border-sub);
