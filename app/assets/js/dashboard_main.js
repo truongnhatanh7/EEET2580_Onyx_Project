@@ -1,3 +1,7 @@
+if (sessionStorage.getItem("userId") == null) {
+    location.href = "../login2.html";
+}
+
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 const projectList = $(".dashboard__project-list");
@@ -34,9 +38,7 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
-if (sessionStorage.getItem("userId") == null) {
-    location.href = "../login2.html";
-}
+
 
 document.addEventListener("click", (event) => {
     if (!event.target.classList.contains('dashboard__filter-option')

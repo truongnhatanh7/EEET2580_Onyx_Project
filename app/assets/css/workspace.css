@@ -79,7 +79,7 @@ input[type="text"] {
     padding: 20px;
     position: absolute;
     top: 55px;
-    right:0px;
+    right: 0px;
     width: auto;
     box-shadow: var(--nav-shadow);
 }
@@ -297,7 +297,7 @@ input[type="text"] {
     top: 50%;
     left: 6px; 
     transform: translateY(-50%);
-    color: var(--red-pastel);
+    color: var(--yellow);
     font-size: 1rem;
 }
 
@@ -344,8 +344,8 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 8px;
     min-width: 360px;
-    margin-left: 32px;
-    margin-right: 32px;
+    margin-left: 16px;
+    margin-right: 16px;
 }
 
 .workspace__submit-task-btn,

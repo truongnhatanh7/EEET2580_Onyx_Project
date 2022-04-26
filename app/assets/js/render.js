@@ -12,7 +12,7 @@ var showOnlyUrgentFlag = false;
 var showOverdueFlag = false;
 sessionStorage.setItem('isEditing', '0')
 
-if (localStorage.getItem('userId') == null) {
+if (sessionStorage.getItem('userId') == null) {
     location.href = "../login2.html";
 }
 
