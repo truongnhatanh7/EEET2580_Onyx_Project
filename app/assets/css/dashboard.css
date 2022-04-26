@@ -103,7 +103,7 @@
     border-radius: 8px;
     background-color: var(--white);
     z-index: 300;
-    box-shadow: var(--nav-shadow);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
 .dashboard__filter-option {
