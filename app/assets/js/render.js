@@ -75,7 +75,10 @@ function renderBoard(board) {
                 if (task !== undefined) {
                     let isLate = false;
                     let isUrgent = task.priority == 1 ? "" : "disable";
-                    let hasNote = task.desc != "" ? true : false;
+                    let hasNote = true
+                    if (task.desc == " " || task.desc == "") {
+                        hasNote = false
+                    }
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
                     if (showOnlyUrgentFlag && task.priority == 0) {
                         return;

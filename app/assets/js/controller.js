@@ -542,6 +542,14 @@ taskSave.addEventListener("click", (event) => {
                     },
                     body: taskSettingDesc.value.trim()
                 })
+            } else {
+                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: " "
+                })
             }
         })
         .then(() => {
