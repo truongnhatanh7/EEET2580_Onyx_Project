@@ -81,6 +81,7 @@ input[type="text"] {
     top: 55px;
     right:0px;
     width: auto;
+    box-shadow: var(--nav-shadow);
 }
 
 .filter-content__wrapper{
