@@ -30,7 +30,10 @@
 .dashboard__search-workspace-input {
     /* width: 50px; */
     /* margin: 8px; */
-    padding: 17px 140px 17px 16px;
+    margin-top: 1px;
+    margin-bottom: 1px;
+    margin-right: 1px;
+    padding: 16px 140px 16px 16px;
     border-radius: 8px;
     flex: 100;
     font-size: 1.4rem;
