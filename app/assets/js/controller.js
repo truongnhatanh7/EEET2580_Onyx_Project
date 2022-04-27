@@ -448,7 +448,7 @@ function handleTaskSetting(event) {
     let windowHeight = window.outerHeight;
     let divisionBreakpoint = Math.floor(windowHeight / 2)
     if (boundingClientRect.top > divisionBreakpoint) {
-        taskSettingInner.style.top = (boundingClientRect.top - 420 + 55) + "px";
+        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
         taskSettingInner.style.flexDirection = "column-reverse";
         taskSettingDesc.style.marginBottom = "8px";
     } else {
