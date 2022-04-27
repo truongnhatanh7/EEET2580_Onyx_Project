@@ -43,7 +43,7 @@ let currentPage = 0;
 document.addEventListener("click", (event) => {
     if (!event.target.classList.contains('dashboard__filter-option')
     && !event.target.classList.contains('dashboard__filter-btn')) {
-        filterOptionsWrapper.classList.add('disable');
+        // filterOptionsWrapper.classList.add('disable');
     }
 })
 
@@ -88,6 +88,9 @@ main();
 
 searchBtn.onclick = () => {
     globalKeyword = searchInput.value.trim();
+    console.log("globalKeyword: " + globalKeyword)
+    filterCondition = "latest";
+    currentPage = 0;
     getWorkspace(renderWorkspace);
 };
 
@@ -136,42 +139,37 @@ function handleFilter(workspaces) {
 
 function renderWorkspace(workspaces) {
     totalWorkspaces = workspaces.length;
-    sessionStorage.setItem("totalWorkspaces", totalWorkspaces);
 
     let oldWorkspaces = projectList.querySelectorAll(
         ".dashboard__project-card"
     );
-    oldWorkspaces.forEach((element, index) => {
+    oldWorkspaces.forEach((element) => {
         element.remove();
     });
     let cur = 0;
-    let count = 0;
     handleFilter(workspaces);
     let newTotalWorkspaces = 0;
-    console.log("current page: ", currentPage);
+
+    workspaces = workspaces.filter(workspace => workspace.workspaceTitle.includes(globalKeyword))
+
     for (const workspace of workspaces) {
-        if (workspace.workspaceTitle.includes(globalKeyword)) {
-            if (cur >= currentPage * 4 && cur < currentPage * 4 + 4) {
-                let html = `
-                <div class="dashboard__project-card" onclick="handleCardClick(event)" >
-                    <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
-                        <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
-                    </a>
-                </div>
-                `;
-                let para = document
-                    .createRange()
-                    .createContextualFragment(html);
-                projectList.appendChild(para);
-            }
-            newTotalWorkspaces += 1;
+        if (cur >= currentPage * 4 && cur < currentPage * 4 + 4) {
+            let html = `
+            <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                    <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
+                </a>
+            </div>
+            `;
+            let para = document
+                .createRange()
+                .createContextualFragment(html);
+            projectList.appendChild(para);
         }
+        newTotalWorkspaces += 1;
         cur++;
     }
-    console.log("new pages: ", newTotalWorkspaces);
-
     paginationRender(newTotalWorkspaces);
-
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
     loading.remove();
