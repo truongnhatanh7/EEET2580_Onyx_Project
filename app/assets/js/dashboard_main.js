@@ -88,7 +88,6 @@ main();
 
 searchBtn.onclick = () => {
     globalKeyword = searchInput.value.trim();
-    console.log("globalKeyword: " + globalKeyword)
     filterCondition = "latest";
     currentPage = 0;
     getWorkspace(renderWorkspace);
@@ -100,7 +99,7 @@ function main() {
         if (sessionStorage.getItem("isEditing") == "0") {
             getWorkspace(renderWorkspace);
         }
-    }, 3333000);
+    }, 1000);
 }
 
 function getWorkspace(callback) {

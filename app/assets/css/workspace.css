@@ -164,12 +164,14 @@ input[type="text"] {
     z-index: 1;
     width: 100%;
     padding-top: 80px;
+    gap: 16px;
+    padding-left: 48px;
     /* box-shadow: var(--box-shadow-engrave) */
 
 }
 
 .workspace__board-list:first-child {
-    margin-left: 48px;
+    /* margin-left: 48px; */
 
 }
 
@@ -181,7 +183,7 @@ input[type="text"] {
     
     overflow-y: hidden;
     max-height: 98%;
-    margin-left: 16px;
+    /* margin-left: 16px; */
     margin-bottom: 32px;
     background-color: var(--white);
     border-radius: 8px;
@@ -343,7 +345,7 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 8px;
     min-width: 360px;
-    margin-left: 16px;
+    /* margin-left: 16px; */
     margin-right: 16px;
 }
 
