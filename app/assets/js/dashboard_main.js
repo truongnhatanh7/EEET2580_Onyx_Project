@@ -169,6 +169,12 @@ function renderWorkspace(workspaces) {
         cur++;
     }
     paginationRender(newTotalWorkspaces);
+    console.log(newTotalWorkspaces)
+    if (newTotalWorkspaces == 0) {
+        console.log("asd")
+        throwSearchNotFound()
+    }
+
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
     loading.remove();
@@ -264,23 +270,41 @@ modalBtn.onclick = (event) => {
 
         modalInput.value = "";
     } else if (modalInput.value != "" && modalInput.value.length >= 25) {
-        toastBox.classList.add("enable");
-        toastBox.classList.remove("disable");
-        toastMessage.innerHTML = "List name is too long!";
-        setTimeout(() => {
-            toastBox.classList.remove("enable");
-            toastBox.classList.add("disable");
-        }, 2000);
+        throwLongListName()
     } else {
-        toastBox.classList.add("enable");
-        toastBox.classList.remove("disable");
-        toastMessage.innerHTML = "Project name cannot be empty";
-        setTimeout(() => {
-            toastBox.classList.remove("enable");
-            toastBox.classList.add("disable");
-        }, 2000);
+        throwEmptyProjectName()
     }
 };
+
+function throwLongListName() {
+    toastBox.classList.add("enable");
+    toastBox.classList.remove("disable");
+    toastMessage.innerHTML = "List name is too long!";
+    setTimeout(() => {
+        toastBox.classList.remove("enable");
+        toastBox.classList.add("disable");
+    }, 3000);
+}
+
+function throwEmptyProjectName() {
+    toastBox.classList.add("enable");
+    toastBox.classList.remove("disable");
+    toastMessage.innerHTML = "Project name cannot be empty";
+    setTimeout(() => {
+        toastBox.classList.remove("enable");
+        toastBox.classList.add("disable");
+    }, 3000);
+}
+
+function throwSearchNotFound() {
+    toastBox.classList.add("enable");
+    toastBox.classList.remove("disable");
+    toastMessage.innerHTML = "Search not found";
+    setTimeout(() => {
+        toastBox.classList.remove("enable");
+        toastBox.classList.add("disable");
+    }, 3000);
+}
 
 ////////////////////////////////
 // Pagination
