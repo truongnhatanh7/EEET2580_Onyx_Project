@@ -4,10 +4,36 @@ let boardObj;
 const workspaceBoard = $(".workspace__board");
 const workspaceName = $('.workspace__info-name')
 const loading = $('.loading-wrapper');
+const showOnlyUrgentCheckbox = $('#show-only-urgent')
+const showOnlyUrgentMask = $('.show-urgent-mask')
+const showOverdue = $('#show-overdue')
+const showOnlyUrgentMaskTick = $('.show-urgent-mask::after')
+var showOnlyUrgentFlag = false;
+var showOverdueFlag = false;
 sessionStorage.setItem('isEditing', '0')
 
-if (localStorage.getItem('userId') == null) {
+if (sessionStorage.getItem('userId') == null) {
     location.href = "../login2.html";
+}
+
+function handleShowOnlyUrgent(event) {
+    if (showOnlyUrgentCheckbox.checked) {
+        showOnlyUrgentFlag = true;
+    } else {
+        showOnlyUrgentFlag = false;
+    }
+    fetchBoardInfo();
+    getBoardInfo();
+}
+
+function handleShowOverdue(event) {
+    if (showOverdue.checked) {
+        showOverdueFlag = true;
+    } else {
+        showOverdueFlag = false;
+    }
+    fetchBoardInfo();
+    getBoardInfo();
 }
 
 fetchBoardInfo();
@@ -41,35 +67,59 @@ function renderBoard(board) {
 
     board.getAllList().forEach(function (list) {
         let listHTML = ``;
-
         if (list !== undefined) {
             list.tasks.sort(function (a, b) {
                 return a.pos - b.pos;
             })
-
             list.tasks.forEach(function (task) {
                 if (task !== undefined) {
-                    let isUrgent = task.priority == 1 ? "enable" : "disable";
-                    console.log(task)
+                    let isLate = false;
+                    let isUrgent = task.priority == 1 ? "" : "disable";
+                    let hasNote = true
+                    if (task.desc == " " || task.desc == "") {
+                        hasNote = false
+                    }
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
+                    if (showOnlyUrgentFlag && task.priority == 0) {
+                        return;
+                    }
+                    
+                    if (task.deadline !== undefined) {
+                        let deadlineDay = new Date(task.deadline);
+                        if (deadlineDay.getFullYear() == 1970) {
+                            dl = "No deadline for this task"
+                        } else {
+                            dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
+                        }
+                        if (deadlineDay < new Date() && deadlineDay.getFullYear() != 1970) {
+                            isLate = true;
+                            dl += " (Late)"
+                        }
+                    } else {
+                        dl = "No deadline for this task"
+                    }
+                    if (!isLate && showOverdueFlag) {
+                        return;
+                    } 
 
-
-                    let taskHTML = `  
+                    let taskHTML = `
                     <div
-                    class="workspace__board-list-task"
-                    draggable="true"
-                    ondragstart="handleDragStart(event)"
-                    ondragend="handleDragEnd(event)"
-                    ondrag="handleOnDrag(event)"
+                        class="workspace__board-list-task
+                            ${isLate ? " workspace__board-list-task--deadline " : ""}
+                            ${hasNote ? " workspace__board-list-task--noted " : ""}
+                        "
+                        draggable="true"
+                        ondragstart="handleDragStart(event)"
+                        ondragend="handleDragEnd(event)"
+                        ondrag="handleOnDrag(event)"
 
-                    id="${"task_" + task.taskId}"
+                        id="${"task_" + task.taskId}"
                     >
-
                     <i class="fa-solid fa-fire-flame-curved task-urgent ${isUrgent}"></i>
                     <p
-                      class="workspace__board-list-task-content"
+                        class="workspace__board-list-task-content"
                     >
-                      ${task.taskContent}
+                        ${task.taskContent}
                     </p>
                     <p
                         class="workspace__board-list-task-desc disable"
@@ -83,11 +133,10 @@ function renderBoard(board) {
                     </div>
                     `;
                     listHTML += taskHTML;
-
                 }
             });
             let html = `  
-            <div class="workspace__board-list" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
+            <div class="workspace__board-list noselect" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
                 <div class="workspace__board-list-header-wrapper">
                 <h1 class="workspace__board-list-header">
                     ${list.listName}
@@ -109,13 +158,11 @@ function renderBoard(board) {
                     
                 </div>
             </>
-              `;
-
-            
+            `;
             let para = document.createRange().createContextualFragment(html);
             workspaceBoard.insertBefore(para, addListBtnWrapper);
             workspaceBoard.scrollLeft = horizontalBoardScrollRule;
-            setScrollRule(scrollRule)
+            setScrollRule(scrollRule);
         }
     });
 
@@ -139,8 +186,8 @@ function getBoardInfo() {
 		cache: "no-cache",
 		method: 'GET',
 		headers: {
-		  'Content-Type': 'application/json',
-		  'Cache-Control': 'no-cache'
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-cache'
 		}
 	},	
 	
@@ -295,3 +342,23 @@ class Task {
         return this.taskContent;
     }
 }
+
+
+/////   /   /   ////////////////////////    /       /   //////////////////////////////
+
+const userTaskWrapper = $(".user-task__wrapper");
+const userName = $('.user-list-img__name')
+function renderUserNavbar() {
+    userName.innerText = sessionStorage.getItem("userName")
+}
+
+
+const avatar = $('.user-text-avatar')
+function renderAvatarFromName() {
+    let nameList = sessionStorage.getItem('userName').split(' ')
+    let processedName = nameList[0][0] + nameList[nameList.length - 1][0]
+    avatar.innerText = processedName.toUpperCase();
+}
+
+renderUserNavbar()
+renderAvatarFromName()

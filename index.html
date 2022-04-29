@@ -1,56 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Link Poppins font for logo font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel = "icon" href = 
-    "https://deciem.com/on/demandware.static/Sites-deciem-Site/-/default/dw7f9915df/images/brands-logo/theordinary_black.svg" 
-            type = "image/x-icon">
-    <!-- link font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
-    <!-- link css -->
-    <link rel="stylesheet" href="./assets/css/base.css">
-    <link rel="stylesheet" href="./assets/css/navbar.css">
-    <link rel="stylesheet" href="./assets/css/navbar-responsive.css">
-    <link rel="stylesheet" href="./assets/css/homepage.css">
-    <link rel="stylesheet" href="./assets/css/hompage-responsive.css">
+        <!-- Link Poppins font for logo font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="icon"
+            href="https://deciem.com/on/demandware.static/Sites-deciem-Site/-/default/dw7f9915df/images/brands-logo/theordinary_black.svg"
+            type="image/x-icon"
+        />
+        <!-- link font awesome -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+            integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
 
-    <title>ONYX | Home</title>
-</head>
-<body>
-    <header class="flex flex-center">
-        
-        <nav class="flex flex-center-spacebtw nav-transparent">
-            <!-- start of nav logo -->
-            <div class="nav__logo">
-                <a href="#" class="nav__logo-text black">ONYX</a>
-            </div>
-            <!-- end of nav logo -->
+        <!-- link css -->
+        <link rel="stylesheet" href="./assets/css/base.css" />
+        <link rel="stylesheet" href="./assets/css/navbar.css" />
+        <link rel="stylesheet" href="./assets/css/navbar-responsive.css" />
+        <link rel="stylesheet" href="./assets/css/homepage.css" />
+        <link rel="stylesheet" href="./assets/css/hompage-responsive.css" />
 
-            <!-- start of nav menu -->
-            <div class="nav__hamburger-wrapper flex flex-center">
-                <svg id="nav__hamburger" preserveAspectRatio="xMinYMin meet" viewBox="0 0 820 650">
-                  <path d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200" id="nav__hamburger-top"></path>
-                  <path d="M300,320 L540,320" id="nav__hamburger-middle"></path>
-                  <path d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190" id="nav__hamburger-bottom" transform="translate(480, 320) scale(1, -1) translate(-480, -318) "></path>
-                </svg>
-              </div>
-            
-            <!-- end of nav menu -->
+        <title>ONYX | Home</title>
+    </head>
+    <body>
+        <header class="flex flex-center">
+            <nav class="flex flex-center-spacebtw nav-transparent">
+                <!-- start of nav logo -->
+                <div class="nav__logo">
+                    <a href="#" class="nav__logo-text black">ONYX</a>
+                </div>
+                <!-- end of nav logo -->
 
-            <!-- start of nav button -->
-            <button OnClick="location.href='./login2.html'" class="btn nav__btn white flex flex-center">
-                <span>Login</span>
-                <i class="nav__btn-icon fa-solid fa-caret-right"></i>
-                <!-- <i class="nav__btnres-icon fa-solid fa-user"></i> -->
-            </button>
+                <!-- start of nav menu -->
+                <div class="nav__hamburger-wrapper flex flex-center">
+                    <svg
+                        id="nav__hamburger"
+                        preserveAspectRatio="xMinYMin meet"
+                        viewBox="0 0 820 650"
+                    >
+                        <path
+                            d="M300,220 C300,220 520,220 540,220 C740,220 640,540 520,420 C440,340 300,200 300,200"
+                            id="nav__hamburger-top"
+                        ></path>
+                        <path
+                            d="M300,320 L540,320"
+                            id="nav__hamburger-middle"
+                        ></path>
+                        <path
+                            d="M300,210 C300,210 520,210 540,210 C740,210 640,530 520,410 C440,330 300,190 300,190"
+                            id="nav__hamburger-bottom"
+                            transform="translate(480, 320) scale(1, -1) translate(-480, -318) "
+                        ></path>
+                    </svg>
+                </div>
+
+                <!-- end of nav menu -->
+
+                <!-- start of nav button -->
+                <button
+                    onclick="handleLocationLogin(event)"
+                    class="btn nav__btn white flex flex-center" 
+                >
+                    <span id="home-login-normal">Login</span>
+                </button>
 
             <div class="nav__menu-wrapper">
                 <div class="nav__menu flex flex-center-spacebtw">
@@ -65,6 +90,16 @@
                     
                     <a href="#" class="nav__menu-element"><i class="nav__menu-element-icon fa-solid fa-location-dot"></i>Contact</a>
                     <a href="./login2.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
+                </div>
+            </div>
+            <!-- end of nav button -->
+<!--                     <a href="./login2.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a> -->
+                    <button
+                            class="nav__menu-element nav__menu-element-login"
+                            onclick="handleLocationLoginMobile(event)"
+                            id="home-login-mobile"
+                        >Login
+                    </button>
                 </div>
             </div>
             <!-- end of nav button -->
@@ -125,23 +160,22 @@
                         <p>Brings comfort to your eyes in the dark</p>
                     </article>
                 </div>
+            </section>
+            <!-- end feature section -->
+        </main>
+        <!-- End of main -->
+
+        <!-- Start of the footer -->
+        <footer class="footer flex flex-center">
+            <div class="footer__logo flex flex-center logo-font">ONYX</div>
+            <div class="footer__copyrights flex flex-center">
+                @ reserved 2020
             </div>
-        </section>
-        <!-- end feature section -->
-    </main>
-    <!-- End of main -->
-    
-    <!-- Start of the footer -->
-    <footer class="footer flex flex-center">
-        <div class="footer__logo flex flex-center logo-font">ONYX</div>
-        <div class="footer__copyrights flex flex-center">@ reserved 2020</div>
-    </footer>
-    <!-- End of the footer -->
+        </footer>
+        <!-- End of the footer -->
 
-
-    <!-- Start of svg container -->
-    <!-- drag drop -->
-    <svg id="svg__container" xmlns="http://www.w3.org/2000/svg" >
+        <!-- Start of svg container -->
+        <svg id="svg__container" xmlns="http://www.w3.org/2000/svg" >
         <symbol id="svg__main-hello-text" viewBox="0 0 917 637" fill="none">
             <path d="M79.2 585.6C68.2667 585.6 58.4 583.267 49.6 578.6C40.9333 573.933 34.0667 567.267 29 558.6C24.0667 549.933 21.6 539.8 21.6 528.2C21.6 516.733 24.1333 506.667 29.2 498C34.2667 489.2 41.2 482.467 50 477.8C58.8 473.133 68.6667 470.8 79.6 470.8C90.5333 470.8 100.4 473.133 109.2 477.8C118 482.467 124.933 489.2 130 498C135.067 506.667 137.6 516.733 137.6 528.2C137.6 539.667 135 549.8 129.8 558.6C124.733 567.267 117.733 573.933 108.8 578.6C100 583.267 90.1333 585.6 79.2 585.6ZM79.2 556C85.7333 556 91.2667 553.6 95.8 548.8C100.467 544 102.8 537.133 102.8 528.2C102.8 519.267 100.533 512.4 96 507.6C91.6 502.8 86.1333 500.4 79.6 500.4C72.9333 500.4 67.4 502.8 63 507.6C58.6 512.267 56.4 519.133 56.4 528.2C56.4 537.133 58.5333 544 62.8 548.8C67.2 553.6 72.6667 556 79.2 556ZM223.744 471.2C236.81 471.2 247.21 475.467 254.944 484C262.81 492.4 266.744 504 266.744 518.8V584H232.744V523.4C232.744 515.933 230.81 510.133 226.944 506C223.077 501.867 217.877 499.8 211.344 499.8C204.81 499.8 199.61 501.867 195.744 506C191.877 510.133 189.944 515.933 189.944 523.4V584H155.744V472.4H189.944V487.2C193.41 482.267 198.077 478.4 203.944 475.6C209.81 472.667 216.41 471.2 223.744 471.2ZM404.509 472.4L334.509 637H297.709L323.309 580.2L277.909 472.4H316.109L341.909 542.2L367.509 472.4H404.509ZM482.877 584L461.477 553L443.477 584H406.477L443.277 527L405.477 472.4H443.877L465.277 503.2L483.277 472.4H520.277L482.877 528.6L521.277 584H482.877Z" fill="#21209C"/>
             <path opacity="0.08" d="M206.1 118.5V330H147.3V245.1H75.6V330H16.8V118.5H75.6V198H147.3V118.5H206.1ZM400.549 243.9C400.549 248.5 400.249 253.1 399.649 257.7H288.349C288.949 266.9 291.449 273.8 295.849 278.4C300.449 282.8 306.249 285 313.249 285C323.049 285 330.049 280.6 334.249 271.8H396.949C394.349 283.4 389.249 293.8 381.649 303C374.249 312 364.849 319.1 353.449 324.3C342.049 329.5 329.449 332.1 315.649 332.1C299.049 332.1 284.249 328.6 271.249 321.6C258.449 314.6 248.349 304.6 240.949 291.6C233.749 278.6 230.149 263.3 230.149 245.7C230.149 228.1 233.749 212.9 240.949 200.1C248.149 187.1 258.149 177.1 270.949 170.1C283.949 163.1 298.849 159.6 315.649 159.6C332.249 159.6 346.949 163 359.749 169.8C372.549 176.6 382.549 186.4 389.749 199.2C396.949 211.8 400.549 226.7 400.549 243.9ZM340.549 229.2C340.549 222 338.149 216.4 333.349 212.4C328.549 208.2 322.549 206.1 315.349 206.1C308.149 206.1 302.249 208.1 297.649 212.1C293.049 215.9 290.049 221.6 288.649 229.2H340.549ZM483.413 108V330H424.613V108H483.413ZM575.698 108V330H516.898V108H575.698ZM687.483 332.1C670.683 332.1 655.583 328.6 642.183 321.6C628.983 314.6 618.583 304.6 610.983 291.6C603.383 278.6 599.583 263.3 599.583 245.7C599.583 228.3 603.383 213.1 610.983 200.1C618.783 187.1 629.283 177.1 642.483 170.1C655.883 163.1 670.983 159.6 687.783 159.6C704.583 159.6 719.583 163.1 732.783 170.1C746.183 177.1 756.683 187.1 764.283 200.1C772.083 213.1 775.983 228.3 775.983 245.7C775.983 263.1 772.083 278.4 764.283 291.6C756.683 304.6 746.183 314.6 732.783 321.6C719.383 328.6 704.283 332.1 687.483 332.1ZM687.483 281.1C695.683 281.1 702.483 278.1 707.883 272.1C713.483 265.9 716.283 257.1 716.283 245.7C716.283 234.3 713.483 225.6 707.883 219.6C702.483 213.6 695.783 210.6 687.783 210.6C679.783 210.6 673.083 213.6 667.683 219.6C662.283 225.6 659.583 234.3 659.583 245.7C659.583 257.3 662.183 266.1 667.383 272.1C672.583 278.1 679.283 281.1 687.483 281.1ZM878.505 107.7L871.605 250.8H821.505L814.605 107.7H878.505ZM846.705 332.4C836.305 332.4 827.905 329.6 821.505 324C815.305 318.2 812.205 310.9 812.205 302.1C812.205 293.3 815.305 286 821.505 280.2C827.905 274.4 836.305 271.5 846.705 271.5C856.905 271.5 865.105 274.4 871.305 280.2C877.705 286 880.905 293.3 880.905 302.1C880.905 310.7 877.705 317.9 871.305 323.7C865.105 329.5 856.905 332.4 846.705 332.4Z" fill="#282937"/>
@@ -1095,13 +1129,11 @@
             </defs>
         </symbol>
             
-    </svg>  
-
-        
-    <!-- End of svg container -->
-</body>
-<script src="./assets/js/navbar.js"></script>
-<script src="./assets/js/homepage.js"></script>
-<script type="module" src="./assets/js/export.js"></script>
-
+      </svg>  
+        <!-- End of svg container -->
+      
+    </body>
+    <script src="./assets/js/navbar.js"></script>
+    <script src="./assets/js/homepage.js"></script>
+    <script type="module" src="./assets/js/export.js"></script>
 </html>

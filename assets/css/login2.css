@@ -32,8 +32,6 @@
     color: var(--constant-white);
     animation: hovering 5s infinite alternate;
     z-index: 9;
-    
-
 }
 
 #hard-pink, #pink, #soft-pink {
@@ -413,5 +411,18 @@
 
     .form-section {
         padding-right: 0;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .form-grid input {
+        width: 100%;
+    }
+
+    #sign-up-first {
+        grid-row-start: 2;
     }
 }

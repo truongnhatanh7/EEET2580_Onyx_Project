@@ -10,16 +10,13 @@ html{
     overflow: auto;
     scroll-behavior: smooth;
 }
-body{
+body {
     overflow: auto;
-    /* width: 100%; */
-    transition: 0.3s;
-
 }
 :root {
-    --border-main: 18px;
-    --border-sub: 12px;
-    --button-border: 100px;
+    --border-main: 8px;
+    --border-sub: 8px;
+    --button-border: 8px;
     --blue: #1b73e7;
     --black: #000;
     --white: #f0f0f0;
@@ -70,6 +67,16 @@ body{
     --task-shadow: rgba(0, 0, 0, 0.103) 0px 5px 15px 0px;
 }
 
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
 html {
     -ms-overflow-style: -ms-autohiding-scrollbar;
 }
@@ -96,16 +103,15 @@ html {
 }
 .btn {
     border: none;
-    border-radius: 25px;
+    border-radius: 8px;
     font-size: 1.6rem;
     font-weight: 400;
     font-family: 'poppins', sans-serif;
     text-align: center;
-    transition: 0.3s;
 }
 
 .btn:hover {
-    opacity: 0.7;
+    transform: scale(1.04);
     cursor: pointer;
 }
 
@@ -115,9 +121,15 @@ textarea {
     font-size: 1.4rem;
     min-height: fit-content;
 }
+.relative{
+    position: relative;
+}
+
 .flex {
-    display: flex;
-    gap: var(--gap, 0);
+    display: flex !important;
+}
+.flex-row{
+    flex-direction: row;
 }
 .flex-center {
     align-items: center;
@@ -192,7 +204,7 @@ textarea {
     border-radius: 16px;
     height: 8px;
     display: none;
-  }
+}
 
 ::-webkit-scrollbar-track {
     background: transparent !important;
@@ -216,17 +228,17 @@ textarea {
     z-index: 2;
     place-items: center;
     background-color: var(--white);
-   visibility: visible;
+    visibility: visible;
     /* opacity: 1; */
     transition: all 0.3s linear;
 }
 
 .square-loading {
-   width: 100px;
-   height: 100px;
-   background-color: var(--purple);
-   border-radius: 8px;
-   animation: flip 1.2s ease-in-out infinite;
+    width: 100px;
+    height: 100px;
+    background-color: var(--purple);
+    border-radius: 8px;
+    animation: flip 1.2s ease-in-out infinite;
 }
 
 @keyframes fadeOut {

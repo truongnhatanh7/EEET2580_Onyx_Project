@@ -2,14 +2,14 @@
 .workspace__task-setting {
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.801);
+    background-color: rgba(0, 0, 0, 0.8);
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 3;
-    animation: slideIn 0.3s;
+    animation: slideIn 0.2s;
 }
 
 .workspace__task-setting-wrapper {
@@ -18,7 +18,6 @@
     height: fit-content;
     top: 50%;
     left: 50%;
-
     transform: translateY(-50%) translateX(-50%);
     background-color: transparent;
     display: flex;
@@ -31,21 +30,12 @@
     background-color: var(--white);
     color: var(--black);
     width: fit-content;
-    height: 58.2px;
+    height: 55px;
     padding: 0 24px;
     position: absolute;
     right: -68px;
     border-radius: var(--border-sub);
-    /* animation: slideIn 0.3s; */
 }
-
-/* .workspace__task-setting-title {
-    font-size: 1.8rem;
-    font-weight: 400;
-    display: block;
-    margin-top: 8px;
-    margin-left: 16px;
-} */
 
 .workspace__task-setting-input {
     padding: 16px 16px;
@@ -73,7 +63,8 @@
     padding: 8px 0;
     background-color: var(--soft-pink);
     color: var(--constant-white);
-    animation: appearMagic 0.3s;
+    animation: appearMagic 0.2s;
+    display: none;
 }
 
 .workspace__task-setting-urgent {
@@ -87,7 +78,7 @@
     background-color: var(--red);
     color: var(--constant-white);
     width: 50%;
-    animation: appearMagic 0.3s;
+    animation: appearMagic 0.2s;
 }
 
 .workspace__board-list-task-edit {
@@ -109,13 +100,24 @@
     padding: 8px 16px;
     font-size: 1.6rem;
     margin-top: 8px;
-    color: var(--white);
-    border: 1px solid var(--white);
+    color: var(--constant-white);
+    border: 1px solid var(--constant-white);
     width: 100%;
     border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace__task-deadline:hover {
+    cursor: pointer;
 }
 
 @media (max-width: 767px) {
     
 }
     
+.deadline-change-icon {
+    color: var(--soft-pink);
+    margin-left: auto;
+}

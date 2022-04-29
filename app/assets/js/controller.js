@@ -4,8 +4,10 @@ const addListBtn = $(".workspace__add-list-btn");
 const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
 const board = $(".workspace__board");
+
 const darkModeSwitch = $(".workspace__switch-input");
 const darkModeBtn = $(".workspace__navbar-darkmode-wrapper");
+
 const currentTheme = localStorage.getItem("theme");
 const tasks = $$(".workspace__board-list-task");
 const lists = $$(".workspace__board-list");
@@ -15,6 +17,17 @@ const closeSubmitList = $(".workspace__list-close");
 const listNameInput = $(".workspace__add-input");
 const toastBox = $(".toast-wrapper");
 const toastMessage = $(".toast-message");
+
+const darkIcon = $(".workspace-darkmode");
+const lightIcon = $(".workspace-lightmode");
+
+const signOut = $(".workspace__sign-out");
+////////////////////////////////////////////////////////////////////////////////
+
+signOut.addEventListener("click", (event) => {
+    sessionStorage.removeItem('userId');
+    location.href = "../index.html";
+})
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
@@ -118,30 +131,30 @@ submitList.addEventListener("click", (event) => {
             .then((response) => response.json())
             .then((data) => {
                 let html = `  
-                  <div class="workspace__board-list" id="${
-                      "list_" + data.listId
-                  }">
-                  <div class="workspace__board-list-header-wrapper">
-                    <h1 class="workspace__board-list-header" >
-                      ${listName}
-                    </h1>
+                <div class="workspace__board-list" id="${
+                    "list_" + data.listId
+                }">
+                <div class="workspace__board-list-header-wrapper">
+                    <h1 class="workspace__board-list-header" >${
+                        listName
+                    }</h1>
                     <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
-                  </div>
+                </div>
 
-                  <div class="workspace__board-list-scrollable" ondragover="handleDragOver(event)">
-                  
-                  </div>
+                <div class="workspace__board-list-scrollable" ondragover="handleDragOver(event)">
+                
+                </div>
 
                     <button class="workspace__add-task-btn btn" onclick="handleAddTask(event)">Add task</button>
                     <div class="workspace__add-task-wrapper">
-                      <h2 class="workspace__submit-title">Enter new task:</h2>
-                      <input type="text" class="workspace__add-input-task">
-                      <button class="workspace__submit-task-btn btn">Create</button>
-                      <button class="workspace__task-close-btn btn">
-                      <i class="fa-solid fa-xmark workspace__task-close"></i>
-                      </button>
+                        <h2 class="workspace__submit-title">Enter new task:</h2>
+                        <input type="text" class="workspace__add-input-task">
+                        <button class="workspace__submit-task-btn btn">Create</button>
+                        <button class="workspace__task-close-btn btn">
+                            <i class="fa-solid fa-xmark workspace__task-close"></i>
+                        </button>
                     </div>
-                  </div>
+                </div>
                 `;
                 let para = document
                     .createRange()
@@ -284,7 +297,6 @@ function handleAddTask(event) {
 
 function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(function () {
-        console.log("DB Task add called");
         let currentList = $("#list_" + currentListId);
         let allTasks = currentList.querySelectorAll(
             ".workspace__board-list-task"
@@ -306,27 +318,24 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                 .then((response) => response.json())
                 .then((data) => {
                     let html = `  
-                      <div
-                      class="workspace__board-list-task"
-                      draggable="true"
-                      ondragstart="handleDragStart(event)"
-                      ondragend="handleDragEnd(event)"
-                      id="${"task_" + data.taskId}"
-                      >
-                      <p
-                        class="workspace__board-list-task-content"
-
-                      >
-                        ${taskInput.value}
-                      </p>
-                        <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
-                      </div>
-                  `;
+                        <div
+                        class="workspace__board-list-task"
+                        draggable="true"
+                        ondragstart="handleDragStart(event)"
+                        ondragend="handleDragEnd(event)"
+                        id="${"task_" + data.taskId}"
+                        >
+                            <p class="workspace__board-list-task-content">
+                                ${taskInput.value}
+                            </p>
+                            <i class="fa-solid fa-pen workspace__board-list-task-edit" onclick="handleTaskSetting(event)"></i>
+                        </div>
+                    `;
 
                     let para = document
                         .createRange()
                         .createContextualFragment(html);
-                    event.target.parentNode
+                        event.target.parentNode
                         .querySelector(".workspace__board-list-scrollable")
                         .appendChild(para);
                 })
@@ -385,6 +394,8 @@ const taskSettingDesc = $('.workspace__task-setting-desc')
 const taskSettingDatepicker = $('.workspace__task-setting-datepicker')
 const taskDeadline = $('.workspace__task-deadline');
 const datepickerJS = $('.datepicker')
+let hitSave = false;
+let prevPriority;
 let descContent = ''
 let isUrgent = false;
 let currentTask = null;
@@ -396,25 +407,13 @@ taskSettingDatepicker.addEventListener('click', () => {
 })
 
 taskSettingUrgent.addEventListener("click", (event) => {
-    let priority = "0";
-    if (!isUrgent) {
-        priority = "1"
+    let urgentIcon = currentTaskNode.querySelector('.task-urgent')
+    urgentIcon.classList.toggle('disable')
+    if (urgentIcon.classList.contains('disable')) {
+        taskSettingUrgent.innerText = "Mark as urgent"
+    } else {
+        taskSettingUrgent.innerText = "Unmark urgent"
     }
-    // BUG OX-L1: change this to hidden node in the html, render.js will render fire icon
-    // Change button to unmark and vice versa
-    console.log(isUrgent);
-    let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority
-    console.log(url)
-    if (currentTask != null) {
-        fetch(url, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-    }
-    
-    taskSettingClose.click();
 })
 
 taskSetting.addEventListener("click", (event) => {
@@ -433,19 +432,31 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function handleTaskSetting(event) {
+    hitSave = false;
     // Get current task content
     currentTask = event.target.parentNode.id.slice(5);
     currentTaskNode = event.target.parentNode;
     renderTaskSettingUrgent();
+
+    prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
 
     let boundingClientRect = currentTaskNode.getBoundingClientRect();
     sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
     sessionStorage.setItem("isEditing", "1");
     taskSetting.classList.add("enable");
     taskSetting.classList.remove("disable");
-
+    let windowHeight = window.outerHeight;
+    let divisionBreakpoint = Math.floor(windowHeight / 2)
+    if (boundingClientRect.top > divisionBreakpoint) {
+        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
+        taskSettingInner.style.flexDirection = "column-reverse";
+        taskSettingDesc.style.marginBottom = "8px";
+    } else {
+        taskSettingInner.style.flexDirection = "column";
+        taskSettingDesc.style.marginBottom = "0px";
+        taskSettingInner.style.top = boundingClientRect.top + "px";
+    }
     // Reposition modal
-    taskSettingInner.style.top = boundingClientRect.top + "px";
     taskSettingInner.style.left = boundingClientRect.left + "px";
     taskSettingInner.style.transform = "translateX(0)";
 
@@ -461,7 +472,7 @@ function handleTaskSetting(event) {
 function renderDeadline() {
     let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
     if (deadline != undefined) {
-        taskDeadline.innerText = deadline;
+        taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
     }
 }
 
@@ -477,28 +488,32 @@ function renderTaskSettingUrgent() {
     } else {
         taskSettingUrgent.innerText = "Mark as urgent";
     }
-    console.log(isUrgent)
+
 }
 
 taskSettingClose.addEventListener("click", (event) => {
-    currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
-    sessionStorage.setItem("isEditing", "0");
-    taskInput.value = "";
-    taskSetting.classList.add("disable");
-    taskSetting.classList.remove("enable");
+    taskSave.click();
+    // if (!datepickerJS.classList.contains('disable')) {
+    //     datepickerJS.classList.add('disable');
+    // }
+    // if (!hitSave) {
+    //     let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
+    //     if (prevPriority == "1") {
+    //         tempTaskUrgent.classList.remove('disable');
+    //     } else {
+    //         tempTaskUrgent.classList.add('disable')
+    //     }
+    // }
+    // currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+    // sessionStorage.setItem("isEditing", "0");
+    // taskInput.value = "";
+    // taskSetting.classList.add("disable");
+    // taskSetting.classList.remove("enable");
     // currentTaskNode = null;
 });
 
-taskSettingDesc.addEventListener('keyup', (event) => {
-    //TODO: Handle input validation desc
-    // console.log(taskSettingDesc.value.split("\n"))
-    // if(event.keyCode == 13 && taskSettingDesc.value.split("\n").length >= 3) { 
-    //     // taskSettingDesc.setAttribute('disabled', "")
-    //     return;
-    // } 
-})
-
 taskSave.addEventListener("click", (event) => {
+    hitSave = true;
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
     let newTaskContent = taskInput.value;
     if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
@@ -528,13 +543,20 @@ taskSave.addEventListener("click", (event) => {
         })
         .then(() => {
             if (taskSettingDesc.value != '') {
-                console.log("modiying desc")
                 fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
                     method: "PATCH",
                     headers: {
                         'Content-Type': 'application/json'
                     },
                     body: taskSettingDesc.value.trim()
+                })
+            } else {
+                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+                    method: "PATCH",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: " "
                 })
             }
         })
@@ -555,8 +577,41 @@ taskSave.addEventListener("click", (event) => {
             }
         })
         .then(() => {
+            let priority = "1";
+            if (currentTaskNode.querySelector('.task-urgent').classList.contains("disable")) {
+                priority = "0"
+            }
+            let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority;
+            if (currentTask != null) {
+                fetch(url, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+            }
+        })
+        .then(() => {
             sessionStorage.setItem("isEditing", "0");
-            taskSettingClose.click();
+            // taskSettingClose.click();
+        })
+        .then(() => {
+            if (!datepickerJS.classList.contains('disable')) {
+                datepickerJS.classList.add('disable');
+            }
+            if (!hitSave) {
+                let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
+                if (prevPriority == "1") {
+                    tempTaskUrgent.classList.remove('disable');
+                } else {
+                    tempTaskUrgent.classList.add('disable')
+                }
+            }
+            currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+            sessionStorage.setItem("isEditing", "0");
+            taskInput.value = "";
+            taskSetting.classList.add("disable");
+            taskSetting.classList.remove("enable");
         })
     }
 
@@ -564,7 +619,6 @@ taskSave.addEventListener("click", (event) => {
 });
 
 taskDelete.addEventListener("click", () => {
-    console.log(sessionStorage.getItem("currentTask"));
     let deleteTaskUrl =
         "http://localhost:8080/api/v1/task/" +
         sessionStorage.getItem("currentTask");
@@ -598,7 +652,10 @@ function handleDeleteTask(event) {
 if (currentTheme) {
     document.documentElement.setAttribute("data-theme", currentTheme);
     if (currentTheme === "dark") {
+        darkIcon.classList.add('disable');
         darkModeSwitch.checked = true;
+    } else {
+        lightIcon.classList.add('disable');
     }
 }
 
@@ -606,9 +663,13 @@ function switchTheme(e) {
     if (e.target.checked) {
         document.documentElement.setAttribute("data-theme", "dark");
         localStorage.setItem("theme", "dark");
+        darkIcon.classList.add('disable');
+        lightIcon.classList.remove('disable');
     } else {
         document.documentElement.setAttribute("data-theme", "light");
         localStorage.setItem("theme", "light");
+        darkIcon.classList.remove('disable');
+        lightIcon.classList.add('disable');
     }
 }
 darkModeSwitch.addEventListener("change", switchTheme);
@@ -712,7 +773,7 @@ function fetchUserInWorkspace() {
     fetch(workspaceUrl)
         .then((response) => response.json())
         .then((workspace) => {
-            workspaceStatusTitle.textContent = workspace.workspaceTitle;
+            // workspaceStatusTitle.textContent = workspace.workspaceTitle;
             return workspace.users;
         })
         .then((users) => {
@@ -731,11 +792,11 @@ function renderUserInWorkspace(users) {
         collaboratorList.innerHTML = "";
         users.forEach((user) => {
             let tempHtml = `
-      <div class="workspace__collaborator" id="user_${user.userId} ">
-        <h3 class="workspace__collaborator-name" >${user.name}</h3>
-        <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
-      </div>
-      `;
+        <div class="workspace__collaborator" id="user_${user.userId} ">
+            <h3 class="workspace__collaborator-name" >${user.name}</h3>
+            <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
+        </div>
+        `;
             let para = document
                 .createRange()
                 .createContextualFragment(tempHtml);
@@ -751,8 +812,6 @@ document.addEventListener("click", (event) => {
 });
 
 function handleRemoveCollaborator(event) {
-    console.log("Remove collaborator invoked")
-
     let id = event.target.parentNode.id.slice(5);
     let removeCollaboratorUrl =
         "http://localhost:8080/api/v1/user/remove-user-from-workspace/" +
@@ -804,7 +863,20 @@ function handleAddToWorkspace(user) {
         },
     }).then(() => {
         fetchUserInWorkspace();
-    });
+    }).then(() => {
+        handleEmailUser(user.username);
+    })
+    ;
+}
+
+function handleEmailUser(username) {
+    let sendEmailUrl = "http://localhost:8080/api/v1/email/notifyUser/" + username
+    fetch(sendEmailUrl, {
+        method: "POST",
+        body: {
+            'Content-Type': 'application/json'
+        }
+    })
 }
 
 function throwUserNotFound(username) {

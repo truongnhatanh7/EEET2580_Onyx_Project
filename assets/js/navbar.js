@@ -6,7 +6,7 @@ let loginIcon = document.querySelector(".nav__btn");
 const mobileMedia = window.matchMedia('(max-width: 768px)');
 let navBar = document.querySelector('nav');
 let navElements = Array.from(document.querySelector(".nav__menu-element"));
-
+renderLoginBtn()
 // Event listener
 hamburgerDiv.addEventListener("click", event => handleHamburgerClick(event));
 // click outside menu nav to close the menu nav
@@ -71,4 +71,36 @@ function handleHamburgerClick(event) {
 // handle nav element click (sidebar)
 function handleNavElementClickSidebar(event) {
     event.target.classList.toggle("nav__menu-element-click");
+}
+
+function handleLocationLogin(event) {
+    console.log("normal")
+    handleRedirectLogin()
+}
+
+function handleLocationLoginMobile(event) {
+    console.log("mobile")
+    handleRedirectLogin()
+}
+
+function handleRedirectLogin() {
+    if (sessionStorage.getItem("userId")) {
+        // Redirect to dashboard
+        location.href = "./app/dashboard.html"
+    } else {
+        // Redirect to login
+        location.href = "./login2.html"
+    }
+}
+
+function renderLoginBtn() {
+    let loginNormal = document.querySelector('#home-login-normal')
+    let loginMobile = document.querySelector('#home-login-mobile')
+    if (sessionStorage.getItem("userId")) {
+        loginNormal.innerText = "Dashboard"
+        loginMobile.innerText = "Dashboard"
+    } else {
+        loginNormal.innerText = "Login"
+        loginMobile.innerText = "Login"
+    }
 }
