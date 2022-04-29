@@ -6,26 +6,80 @@ let elapsedTime = (Math.round((Date.now() - new Date(localStorage.getItem('login
 if (elapsedTime > 1) {
     localStorage.removeItem('userId');
 }
-window.addEventListener("scroll", reveal);
 
-function reveal() {
-    let reveals = document.querySelectorAll(".features__scroll-appear");
-    let parallaxText = document.querySelectorAll(".features__card-article");
-    let parallaxImg = document.querySelectorAll(".features__card-fig");
-    for (let i = 0; i < reveals.length; i++) {
-        let windowHeight = window.innerHeight;
-        let elementTop = reveals[i].getBoundingClientRect().top;
-        let elementVisible = 300;
-        if (elementTop < windowHeight - elementVisible) {
-            // appear on scroll
-            reveals[i].classList.add("active");
+// Detect request animation frame
+let scroll = window.requestAnimationFrame || 
+    function(callback){ window.setTimeout(callback, 1000 / 60)};
+let elementsToShow = document.querySelectorAll('.features__scroll-appear'); 
+let darkmodeFigureContainer = document.querySelector(".features__card-fig-darkmode");
+let darklightFigure = document.querySelector(".features__card-fig-img-darklight");
+let darkmodeAnimationPath = "darkmode-scale-in 1.5s 1 cubic-bezier(.25,.46,.45,.94) both";
+
+function loop() {
+
+    Array.prototype.forEach.call(elementsToShow, function(element) {
+        let elementTop = element.getBoundingClientRect().top;
+        if (isElementInViewport(element)) {
+            element.classList.add('active');
             // parallax when appear
-            parallaxText[i].style.transform = `translateY(${(-1) *elementTop * 0.13}px)`;
-            parallaxImg[i].style.transform = `translateY(${elementTop * 0.13}px)`;
+            element.querySelector(".features__card-article").style.transform = `translateY(${(-1) *elementTop * 0.13}px)`;
+            // parallaxImg[i].style.transform = `translateY(${elementTop * 0.13}px)`;
 
+            if (element.classList.contains("features__collab")) {
+                document.querySelectorAll(".svg__collab-circle").forEach(animationTarget => {
+                    animationTarget.style.animation = "collab-appear 2.5s 1 ease forwards";
+                })
+            }
+            else if (element.classList.contains("features__dragdrop")) {
+                document.querySelectorAll(".svg__dragdrop-moving-rect").forEach(animationTarget => {
+                    animationTarget.style.animation = "dragdrop-move 2.5s 5 ease forwards";
+                })
+            }
+            else if (element.classList.contains("features__darkmode")) {
+                // document.querySelector(".features__card-fig-img-dark").style.display = "none";
+                darkmodeFigureContainer.classList.add("active");
+                darklightFigure.style.webkitAnimation = darkmodeAnimationPath;
+                darklightFigure.style.animation = darkmodeAnimationPath;
+            }
         } else {
-            reveals[i].classList.remove("active");
+            element.classList.remove('active');
+            if (element.classList.contains("features__collab")) {
+                document.querySelectorAll(".svg__collab-circle").forEach(animationTarget => {
+                    animationTarget.style.animation = "";
+                })
+            }
+            else if (element.classList.contains("features__dragdrop")) {
+                document.querySelectorAll(".svg__dragdrop-moving-rect").forEach(animationTarget => {
+                    animationTarget.style.animation = "";
+                })
+            }
+            else if (element.classList.contains("features__darkmode")) {
+                darkmodeFigureContainer.classList.remove("active");
+                darklightFigure.style.animation = "";
+                darklightFigure.style.webkitAnimation = "";
+                // navMenuClose();
+            }
         }
-    }
+    });
+
+    scroll(loop);
 }
-  
+
+loop();
+function isElementInViewport(element) {
+  // special bonus for those using jQuery
+  if (typeof jQuery === "function" && element instanceof jQuery) {
+    element = element[0];
+  }
+  let rect = element.getBoundingClientRect();
+  return (
+    (rect.top <= 0
+      && rect.bottom >= 0)
+    ||
+    (rect.bottom >= (window.innerHeight || document.documentElement.clientHeight) &&
+      rect.top <= (window.innerHeight || document.documentElement.clientHeight))
+    ||
+    (rect.top >= 0 &&
+      rect.bottom <= (window.innerHeight || document.documentElement.clientHeight))
+  );
+}

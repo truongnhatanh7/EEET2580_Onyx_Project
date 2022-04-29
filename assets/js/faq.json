@@ -1,0 +1,35 @@
+[
+    {
+        "title": "How to set up your workspace",
+        "detail": [
+            "Log-in to your dashboard using your ONYX Account",
+            "Select “+” card to add new workspace",
+            "Enter a new name for your workspace.",
+            "Click at the newly created workspace.",
+            "You can now create a new task list for your project."
+        ],
+        "img": "./assets/img/faq/faq-setup.svg",
+        "alt": "Set Up in Faq"
+    },
+    {
+        "title": "How to create workspace list?",
+        "detail": [
+            "Log-in to your dashboard using your ONYX Account",
+            "Select a workspace to continue",
+            "An option to create new list will appeare",
+            "Enter a name and hit create"
+        ],
+        "img": "./assets/img/faq/faq-create.svg",
+        "alt": "Create Workspace in Faq"
+
+    },
+    {
+        "title": "How to add new task within the list?",
+        "detail": [
+            ""
+        ],
+        "img": "",
+        "alt": ""
+    }
+
+]
