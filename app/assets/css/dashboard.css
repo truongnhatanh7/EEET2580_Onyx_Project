@@ -44,10 +44,10 @@
     border: 1px solid var(--soft-pink);
 }
 .fa-x{
-    font-size: smaller;
+    font-size: 1.2rem;
 }
 
-.dashboard__view-all-btn{
+.dashboard__view-all-btn {
     height: 30px;
     width: 30px;
     position: absolute;

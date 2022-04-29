@@ -38,14 +38,21 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
-
-
-document.addEventListener("click", (event) => {
-    if (!event.target.classList.contains('dashboard__filter-option')
-    && !event.target.classList.contains('dashboard__filter-btn')) {
-        // filterOptionsWrapper.classList.add('disable');
+window.addEventListener("keyup", event => {
+    event.preventDefault();
+    if (event.keyCode == 13) {
+        searchBtn.click();
     }
 })
+
+document.addEventListener("click", (event) => {
+    if (
+        !event.target.classList.contains("dashboard__filter-option") &&
+        !event.target.classList.contains("dashboard__filter-btn")
+    ) {
+        // filterOptionsWrapper.classList.add('disable');
+    }
+});
 
 filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
@@ -60,7 +67,7 @@ logOut.addEventListener("click", () => {
 });
 
 viewAllBtn.addEventListener("click", () => {
-    currentPage = 0
+    currentPage = 0;
     searchInput.value = "";
     searchBtn.click();
 });
@@ -113,7 +120,9 @@ function getWorkspace(callback) {
 function handleFilter(workspaces) {
     if (filterCondition == "a-z") {
         workspaces.sort((a, b) => {
-            if (a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()) {
+            if (
+                a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()
+            ) {
                 return 1;
             } else {
                 return -1;
@@ -121,7 +130,9 @@ function handleFilter(workspaces) {
         });
     } else if (filterCondition == "z-a") {
         workspaces.sort((a, b) => {
-            if (a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()) {
+            if (
+                a.workspaceTitle.toLowerCase() > b.workspaceTitle.toLowerCase()
+            ) {
                 return 1;
             } else {
                 return -1;
@@ -149,7 +160,9 @@ function renderWorkspace(workspaces) {
     handleFilter(workspaces);
     let newTotalWorkspaces = 0;
 
-    workspaces = workspaces.filter(workspace => workspace.workspaceTitle.includes(globalKeyword))
+    workspaces = workspaces.filter((workspace) =>
+        workspace.workspaceTitle.includes(globalKeyword)
+    );
 
     for (const workspace of workspaces) {
         if (cur >= currentPage * 4 && cur < currentPage * 4 + 4) {
@@ -160,19 +173,16 @@ function renderWorkspace(workspaces) {
                 </a>
             </div>
             `;
-            let para = document
-                .createRange()
-                .createContextualFragment(html);
+            let para = document.createRange().createContextualFragment(html);
             projectList.appendChild(para);
         }
         newTotalWorkspaces += 1;
         cur++;
     }
     paginationRender(newTotalWorkspaces);
-    console.log(newTotalWorkspaces)
+
     if (newTotalWorkspaces == 0) {
-        console.log("asd")
-        throwSearchNotFound()
+        throwSearchNotFound();
     }
 
     loading.style.visibility = "hidden";
@@ -249,30 +259,31 @@ modalBtn.onclick = (event) => {
                     headers: {
                         "Content-Type": "application/json",
                     },
-                }).then(() => {
-                    let html = `
+                })
+                    .then(() => {
+                        let html = `
                     <div class="dashboard__project-card" onclick="handleCardClick(event)" >
                         <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
                             <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
                         </a>
                     </div>
                     `;
-                    let para = document
-                        .createRange()
-                        .createContextualFragment(html);
-                    projectList.appendChild(para);
-                })
-                .then(() => {
-                    currentPage = 0;
-                    getWorkspace(renderWorkspace);
-                });
+                        let para = document
+                            .createRange()
+                            .createContextualFragment(html);
+                        projectList.appendChild(para);
+                    })
+                    .then(() => {
+                        currentPage = 0;
+                        getWorkspace(renderWorkspace);
+                    });
             });
 
         modalInput.value = "";
     } else if (modalInput.value != "" && modalInput.value.length >= 25) {
-        throwLongListName()
+        throwLongListName();
     } else {
-        throwEmptyProjectName()
+        throwEmptyProjectName();
     }
 };
 
