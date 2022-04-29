@@ -26,8 +26,6 @@ loginSwitch.addEventListener('click', () => {
     console.log("remove sign up")
     window.removeEventListener("keyup", handleSignUpKeyUp)
     window.addEventListener("keyup", handleSignInKeyUp)
-
-    
 })
 
 function handleSignUpKeyUp(event) {

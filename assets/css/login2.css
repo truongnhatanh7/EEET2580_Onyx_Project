@@ -32,8 +32,6 @@
     color: var(--constant-white);
     animation: hovering 5s infinite alternate;
     z-index: 9;
-    
-
 }
 
 #hard-pink, #pink, #soft-pink {

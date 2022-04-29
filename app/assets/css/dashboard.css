@@ -29,12 +29,9 @@
     position: relative;
 }
 .dashboard__search-workspace-input {
-    /* width: 50px; */
-    /* margin: 8px; */
     margin-top: 1px;
     margin-bottom: 1px;
     margin-right: 1px;
-    /* padding: 16px 200px 16px 16px; */
     padding: 16px;
     min-width: 300px;
     border-radius: 8px;
@@ -67,7 +64,7 @@
 .dashboard__search-workspace-btn{
     position: absolute;
     right: 10px;
-    top: 9px;
+    top: 9.5px;
     padding: 8px 14px;
     background-color: var(--yellow);
     color: var(--black);
