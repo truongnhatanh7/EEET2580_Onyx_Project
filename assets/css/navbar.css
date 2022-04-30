@@ -91,20 +91,62 @@ path#nav__hamburger-middle {
     stroke-dashoffset: 0px;
 }
 /* nav bar menu */
-.nav__menu{
+.nav__menu {
     order: 2;
-    --gap: 3em;
+    position: relative;
+
 }
 .nav__menu-element-row{
     display: flex;
     gap: 3em;
 }
-.nav__menu-element{
+.nav__menu-element {
+    min-width: 5em;
+    height: 100%;
+    
     font-size: 2.1rem;
+    line-height: var(--nav-height);
     color: var(--black);
-    /* animation */
-    /* transition: transform 150ms; */
+    flex: 1;
+    cursor: pointer;
+    user-select: none;
+    text-align: center;
 }
+/* hover on nav menu  */
+/* .nav__menu-element:hover {
+    color: var(--yellow);
+} */
+.nav__menu-line {
+    position: absolute;
+    height: 8px;
+    width: 25%;
+    /* border-bottom: none; */
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+/* not first-child because first-child means element must also first child */
+.nav__menu-element:hover ~ .nav__menu-line {
+    background-color: var(--yellow);
+    /* border-top: 10px solid var(--yellow); */
+    /* border-bottom: 10px solid var(--yellow); */
+    /* border-radius: 5px; */
+}
+.nav__menu-element:nth-of-type(2):hover ~ .nav__menu-line {
+    left: 25%;
+}
+.nav__menu-element:nth-of-type(3):hover ~ .nav__menu-line {
+    left: 50%;
+}
+.nav__menu-element:nth-of-type(4):hover ~ .nav__menu-line {
+    left: 75%;
+}
+/* .nav__menu-element:nth-of-type(5):hover ~ .nav__menu-line {
+    left: 95%;
+} */
+/* end hover */
+
 .nav__menu-element-logo,
 .nav__menu-element-icon,
 .nav__menu-element-home,
@@ -121,6 +163,9 @@ path#nav__hamburger-middle {
 
     background-color: var(--soft-pink);
 }
+
+
+/* hover animation nav */
 
 
 /* animation */

@@ -46,6 +46,7 @@ const exportElement = newElement.innerHTML = `
                     <a href="./login2.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-circle-user"></i>Login</a>
                     <!-- log out -->
                     <!-- <a href="./login.html" class="nav__menu-element nav__menu-element-login"><i class="nav__menu-element-icon fa-solid fa-right-from-bracket"></i></i>Logout</a> -->
+                    <div class="nav__menu-line"></div>
                 </div>
             </div>
             <!-- end of nav button -->
