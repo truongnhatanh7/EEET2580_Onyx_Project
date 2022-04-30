@@ -117,11 +117,11 @@ main {
     height: 100%;
 }
 .features__card-fig-img-darklight {
-    display: none;
-}
-.features__card-fig-darkmode.active .features__card-fig-img-darklight {
     display: block;
 }
+/* .features__card-fig-darkmode.active .features__card-fig-img-darklight {
+    display: block;
+} */
 [id^="svg__"] {
     width: 100%;
 }

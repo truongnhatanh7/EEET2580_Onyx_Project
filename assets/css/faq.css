@@ -42,16 +42,22 @@ main {
 /* start of details */
 .faq__card {
     width: 100%;
+
     font-size: 4rem;
     background-color: var(--tan);
     box-shadow: 2px 5px 20px #646360;
     border-radius: 2.5rem;
+    transition: height 1s ease;
 }
 /* summary */
 .faq__card > summary::before {
     padding-right: 0.5em;
-    content: "\f106";
+    content: "\f105";
     font-family: FontAwesome;
+
+    transform: rotate(0);
+    transform-origin: .2rem 50%;
+    transition: .25s transform ease;
 }
 .faq__card > summary {
     padding: 0 3em;
@@ -63,14 +69,14 @@ main {
     color: var(--white);
     /* list-style-type: '▶️'; */
     list-style-type: none;
+    cursor: pointer;
     
     font-size: 2.2rem;
     font-weight: 700;
 }
 /* when open the faq card */
 .faq__card[open] > summary::before {
-    content: "\f107";
-    font-family: FontAwesome;
+    transform: rotate(90deg);
 }
 .faq__card[open] > summary {
     color: var(--yellow);
