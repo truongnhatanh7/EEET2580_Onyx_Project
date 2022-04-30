@@ -126,10 +126,8 @@ textarea {
 }
 
 .flex {
-    display: flex !important;
-}
-.flex-row{
-    flex-direction: row;
+    display: flex;
+    gap: var(--gap, 0);
 }
 .flex-center {
     align-items: center;
