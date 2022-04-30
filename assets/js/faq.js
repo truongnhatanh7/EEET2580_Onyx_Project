@@ -1,11 +1,13 @@
 const faqContainer = document.querySelector(".faq__wrapper");
 animationDetails();
 
+// functions
 async function animationDetails() {
     await getFaqContent();
-    document.querySelectorAll(".faq__card").forEach((el) => {
-        new Accordion(el);
-        // el.addEventListener("click", onClick(event));
+
+    // animation on details
+    document.querySelectorAll(".faq__card").forEach((el, index) => {
+        new DetailObject(el);
     });
 }
 async function getFaqContent() {
@@ -13,12 +15,12 @@ async function getFaqContent() {
     response.map(card => {
         faqContainer.innerHTML += `
         <details class="faq__card flex flex-center">
-                <summary class="flex flex-center-leftside">${card["title"]}</summary>
-
-                <div class="faq__card-content flex flex-center">
-                    <p>${card["detail"].reduce((totalLine, line, index) => {
-                        return totalLine + (index === 0? (line) : ("<br>" + line));
-                    }, "")}</p>
+        <summary class="flex flex-center-leftside">${card["title"]}</summary>
+        
+        <div class="faq__card-content flex flex-center">
+        <p>${card["detail"].reduce((totalLine, line, index) => {
+            return totalLine + (index === 0? (line) : ("<br>" + line));
+        }, "")}</p>
 
                     ${card["img"] == ""? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
                 </div>
@@ -26,14 +28,16 @@ async function getFaqContent() {
     });
 
 }
-class Accordion {
-    constructor(el) {
-      // Store the <details> element
-      this.el = el;
-      // Store the <summary> element
-      this.summary = el.querySelector('summary');
-      // Store the <div class="content"> element
-      this.content = el.querySelector('.faq__card-content');
+class DetailObject {
+    constructor(element) {
+      // detail
+      this.element = element;
+      // summary
+      this.summary = element.querySelector('summary');
+      // summary text content
+      this.summaryContent = this.summary.textContent || this.summary.innerText;
+      // content p
+      this.content = element.querySelector('.faq__card-content');
   
       // Store the animation object (so we can cancel it if needed)
       this.animation = null;
@@ -42,22 +46,22 @@ class Accordion {
       // Store if the element is expanding
       this.isExpanding = false;
       // Detect user clicks on the summary element
-      this.summary.addEventListener('click', async (e) => {
-          await this.closeOtherDetails(this.el);
-          this.onClick(e);
+      this.summary.addEventListener('click', async (event) => {
+          await this.closeOtherDetails(this.element);
+          this.onClick(event);
         });
     }
   
-    onClick(e) {
+    onClick(event) {
       // Stop default behaviour from the browser
-      e.preventDefault();
+      event.preventDefault();
       // Add an overflow on the <details> to avoid content overflowing
-      this.el.style.overflow = 'hidden';
+      this.element.style.overflow = 'hidden';
       // Check if the element is being closed or is already closed
-      if (this.isClosing || !this.el.open) {
+      if (this.isClosing || !this.element.open) {
         this.open();
       // Check if the element is being openned or is already open
-      } else if (this.isExpanding || this.el.open) {
+      } else if (this.isExpanding || this.element.open) {
         this.shrink();
       }
     }
@@ -67,7 +71,7 @@ class Accordion {
       this.isClosing = true;
       
       // Store the current height of the element
-      const startHeight = `${this.el.offsetHeight}px`;
+      const startHeight = `${this.element.offsetHeight}px`;
       // Calculate the height of the summary
       const endHeight = `${this.summary.offsetHeight}px`;
       
@@ -78,7 +82,7 @@ class Accordion {
       }
       
       // Start a WAAPI animation
-      this.animation = this.el.animate({
+      this.animation = this.element.animate({
         // Set the keyframes from the startHeight to endHeight
         height: [startHeight, endHeight]
       }, {
@@ -94,9 +98,9 @@ class Accordion {
   
     open() {
       // Apply a fixed height on the element
-      this.el.style.height = `${this.el.offsetHeight}px`;
+      this.element.style.height = `${this.element.offsetHeight}px`;
       // Force the [open] attribute on the details element
-      this.el.open = true;
+      this.element.open = true;
       // Wait for the next frame to call the expand function
       window.requestAnimationFrame(() => this.expand());
     }
@@ -104,31 +108,32 @@ class Accordion {
     expand() {
       // expanding state true
       this.isExpanding = true;
-      const startHeight = `${this.el.offsetHeight}px`;
+      const startHeight = `${this.element.offsetHeight}px`;
       const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
       
-      // If there is already an animation running
+      // if animation is running
       if (this.animation) {
-        // Cancel the current animation
+        // cancel animation
         this.animation.cancel();
       }
       
-      // Start a WAAPI animation
-      this.animation = this.el.animate({
-        // Set the keyframes from the startHeight to endHeight
+      // add animation
+      this.animation = this.element.animate({
+        // keyframes
         height: [startHeight, endHeight]
       }, {
         duration: 400,
         easing: 'ease-out'
       });
-      // When the animation is complete, call onAnimationFinish()
+      
+
       this.animation.onfinish = () => this.onAnimationFinish(true);
-      // If the animation is cancelled, isExpanding variable is set to false
+      // if animation is cancelled
       this.animation.oncancel = () => this.isExpanding = false;
     }
   
     onAnimationFinish(open) {
-      this.el.open = open;
+      this.element.open = open;
       this.animation = null;
 
       // reset
@@ -136,7 +141,7 @@ class Accordion {
       this.isExpanding = false;
       
       // remove overflow hidden and the fixed height
-      this.el.style.height = this.el.style.overflow = '';
+      this.element.style.height = this.element.style.overflow = '';
     }
     closeOtherDetails(currentTarget) {
         document.querySelectorAll(".faq__card").forEach(detail => {
@@ -146,4 +151,19 @@ class Accordion {
           });
     }
 }
-  
+ 
+// search on input
+function filterFaqCard() {
+    let input = document.querySelector(".faq__find");
+    let filter = input.value.toUpperCase();
+    let summaryList = document.querySelectorAll(".faq__card summary");
+    console.log(summaryList);
+    summaryList.forEach(summary => {
+        summaryContent = summary.textContent || summary.innerText;
+        if (summaryContent.toUpperCase().indexOf(filter) > -1) {
+            summary.style.display = "";
+        } else {
+            summary.style.display = "none";
+        }
+    });
+}
