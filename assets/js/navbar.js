@@ -6,7 +6,6 @@ let loginIcon = document.querySelector(".nav__btn");
 const mobileMedia = window.matchMedia('(max-width: 768px)');
 let navBar = document.querySelector('nav');
 let navElements = Array.from(document.querySelector(".nav__menu-element"));
-renderLoginBtn()
 // Event listener
 hamburgerDiv.addEventListener("click", event => handleHamburgerClick(event));
 // click outside menu nav to close the menu nav
@@ -33,6 +32,9 @@ window.onscroll = function () {
         navBar.classList.remove("nav-colored");
     }
 };
+renderLoginBtn()
+
+
 
 // functions
 //  open nav menu when click hamburger

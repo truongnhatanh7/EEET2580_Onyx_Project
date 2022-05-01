@@ -126,10 +126,8 @@ textarea {
 }
 
 .flex {
-    display: flex !important;
-}
-.flex-row{
-    flex-direction: row;
+    display: flex;
+    gap: var(--gap, 0);
 }
 .flex-center {
     align-items: center;
@@ -147,7 +145,6 @@ textarea {
     align-items: center;
     justify-content: space-between;
 }
-
 
 .toast-wrapper {
     width: 100%;

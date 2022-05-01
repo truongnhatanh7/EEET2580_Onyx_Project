@@ -71,6 +71,9 @@
     /* end of logo */
 
     /* menu */
+    .nav__menu-line {
+        display: none;
+    }
     .nav__menu-wrapper {
         position: absolute;
         top: 0;

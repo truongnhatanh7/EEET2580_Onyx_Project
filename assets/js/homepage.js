@@ -12,9 +12,9 @@ if (elapsedTime > 1) {
 let scroll = window.requestAnimationFrame || 
     function(callback){ window.setTimeout(callback, 1000 / 60)};
 let elementsToShow = document.querySelectorAll('.features__scroll-appear'); 
-let darkmodeFigureContainer = document.querySelector(".features__card-fig-darkmode");
-let darklightFigure = document.querySelector(".features__card-fig-img-darklight");
-let darkmodeAnimationPath = "darkmode-scale-in 1.5s 1 cubic-bezier(.25,.46,.45,.94) both";
+// let darkmodeFigureContainer = document.querySelector(".features__card-fig-darkmode");
+// let darklightFigure = document.querySelector(".features__card-fig-img-darklight");
+// let darkmodeAnimationPath = "darkmode-scale-in 1.5s 1 cubic-bezier(.25,.46,.45,.94) both";
 
 function loop() {
 
@@ -36,12 +36,12 @@ function loop() {
                     animationTarget.style.animation = "dragdrop-move 2.5s 5 ease forwards";
                 })
             }
-            else if (element.classList.contains("features__darkmode")) {
-                // document.querySelector(".features__card-fig-img-dark").style.display = "none";
-                darkmodeFigureContainer.classList.add("active");
-                darklightFigure.style.webkitAnimation = darkmodeAnimationPath;
-                darklightFigure.style.animation = darkmodeAnimationPath;
-            }
+            // else if (element.classList.contains("features__darkmode")) {
+            //     // document.querySelector(".features__card-fig-img-dark").style.display = "none";
+            //     darkmodeFigureContainer.classList.add("active");
+            //     darklightFigure.style.webkitAnimation = darkmodeAnimationPath;
+            //     darklightFigure.style.animation = darkmodeAnimationPath;
+            // }
         } else {
             element.classList.remove('active');
             if (element.classList.contains("features__collab")) {
@@ -54,12 +54,12 @@ function loop() {
                     animationTarget.style.animation = "";
                 })
             }
-            else if (element.classList.contains("features__darkmode")) {
-                darkmodeFigureContainer.classList.remove("active");
-                darklightFigure.style.animation = "";
-                darklightFigure.style.webkitAnimation = "";
-                // navMenuClose();
-            }
+            // else if (element.classList.contains("features__darkmode")) {
+            //     darkmodeFigureContainer.classList.remove("active");
+            //     darklightFigure.style.animation = "";
+            //     darklightFigure.style.webkitAnimation = "";
+            //     // navMenuClose();
+            // }
         }
     });
 
