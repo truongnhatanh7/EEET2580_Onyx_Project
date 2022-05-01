@@ -2,7 +2,7 @@
     .faq__wrapper {
         width: 100%;
         padding: 10em 0;
-        gap: 10em;
+        gap: 3em;
     }
     .faq__card > summary {
         padding: 0 2em;
@@ -11,10 +11,11 @@
     }
     /* content */
     .faq__card-content {
-        padding: 0.2em 0 0.7em 1.2em;
+        flex-direction: column;
+        padding: 0.2em 0 0.7em 0.2em;
     }
     .faq__card p {
         line-height: 2.5;
-        font-size: 1.6rem;
+        /* font-size: 1.6rem; */
     }
 }
