@@ -328,6 +328,8 @@ main {
     font-size: 1.8rem;
     background-color: var(--pink-color);
     color: var(--white);
+    z-index: 30;
+    position: relative;
 }
 
 .view__img-wrapper {
@@ -363,6 +365,123 @@ main {
     transform: translateX(-40%);
 }
 
+.home__feature-wrapper {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 0 auto;
+    padding: 8rem;
+}
+
+.feature__picker-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 18px 24px;
+    border-radius: 20px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    gap: 18px;
+}
+
+.picker__item {
+    display: grid;
+    place-items: center;
+    font-size: 1.4rem;
+    padding: 8px;
+
+}
+
+.picker__item:hover {
+    cursor: pointer;
+    opacity: 0.7;
+}
+
+.picker__item i {
+    font-size: 2rem;
+    padding: 8px;
+}
+
+.feature__heading {
+    font-size: 4rem;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.feature__content {
+    padding-top: 8rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    width: 100%;
+}
+
+.feature__img {
+    max-width: 620px;
+}
+
+.feature__img-helper {
+    width: 146px;
+    position: absolute;
+    top: 144px;
+    left: 124px;
+    animation: flyTask 1.5s ease-in-out infinite alternate;
+}
+
+.feature__img-wrapper {
+    position: relative;
+}
+
+
+.feature__paragraph {
+    display: grid;
+    padding: 24px;
+    place-items: center;
+    text-align: justify;
+    font-size: 1.6rem;
+}
+
+.home__prefooter-wrapper {
+    height: 55vh;
+    background-color: var(--yellow);
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.home__prefooter {
+    display: grid;
+    place-items: center;
+    
+}
+
+.prefooter__heading {
+    width: 100%;
+    font-size: 3rem;
+    text-align: center;
+}
+
+.prefooter__img {
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    filter: blur(2px) brightness(50%);
+
+
+}
+
+.prefooter__btn {
+    margin: 32px;
+    background-color: var(--soft-pink);
+
+}
+
+
 footer {
     height: 160px;
     display: flex;
@@ -381,7 +500,12 @@ footer {
     font-size: 1.8rem;
 }
 
-
+@keyframes flyTask {
+    from {
+    } to {
+        transform: translateY(56px) translateX(236px);
+    }
+}
 
 @keyframes fadeIn {
     from {
