@@ -148,7 +148,7 @@ main {
 /* content */
 .faq__card-content {
     width: 100%;
-    padding: 1.3em 0 1.6em 0.9em;
+    padding: 0.8em 0 1em 0.9em;
     --gap: 0;
 }
 .faq__card p {
