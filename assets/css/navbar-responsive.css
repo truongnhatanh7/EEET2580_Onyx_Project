@@ -1,4 +1,4 @@
-@media (min-width: 768px) {
+@media (min-width: 769px) {
     .nav__logo {
         display: flex;
         justify-content: center;
@@ -6,13 +6,13 @@
 }
 @media (max-width: 768px) {
     :root {
-        /* --logo-size: clamp(2.63rem, calc(0.83rem + 8.99vw), 5.13rem); */
-        --logo-size: clamp(3.15rem, calc(0.81rem + 11.71vw), 6.41rem);
-        --logo-size-inside: clamp(2.63rem, calc(0.83rem + 8.99vw), 5.13rem);
-        /* --menu-size: clamp(2.62rem, calc(0.73rem + 3.97vw), 1.52rem); */
-        --menu-size: clamp(2.10rem, calc(1.77rem + 1.65vw), 2.56rem);
-        --icon-size: clamp(3.28rem, calc(0.78rem + 5.24vw), 1.82rem);
-        --nav-height: 9rem;
+
+        /* --logo-size: clamp(3.15rem, calc(0.81rem + 11.71vw), 6.41rem); */
+        /* --logo-size-inside: clamp(2.63rem, calc(0.83rem + 8.99vw), 5.13rem); */
+
+        /* --menu-size: clamp(2.10rem, calc(1.77rem + 1.65vw), 2.56rem); */
+        /* --icon-size: clamp(3.28rem, calc(0.78rem + 5.24vw), 1.82rem); */
+        /* --nav-height: 9rem; */
     }
 
     nav {

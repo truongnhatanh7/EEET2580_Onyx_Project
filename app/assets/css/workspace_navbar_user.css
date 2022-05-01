@@ -81,8 +81,9 @@
     color: var(--hard-pink);
     font-size: 1.4rem;
     height: 50px;
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .list-content_wrapper:first-child {
