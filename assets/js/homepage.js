@@ -105,14 +105,48 @@ if (sessionStorage.getItem('userId')) {
 pickerDragAndDrop.addEventListener('click', () => {
     featureImage.src = "./assets/img/homepage/dnd.svg";
     featureImageHelper.style.display = "block";
+    pickerDragAndDrop.classList.add("pick");
+    pickerDarkmode.classList.remove("pick");
+    pickerCollaboration.classList.remove("pick");
 })
 
 pickerDarkmode.addEventListener('click', () => {
     featureImage.src = "./assets/img/homepage/darkmode.svg";
     featureImageHelper.style.display = "none";
+    pickerDragAndDrop.classList.remove("pick");
+    pickerDarkmode.classList.add("pick");
+    pickerCollaboration.classList.remove("pick");
 })
 
 pickerCollaboration.addEventListener('click', () => {
     featureImage.src = "./assets/img/homepage/collaboration.svg";
     featureImageHelper.style.display = "none";
+    pickerDragAndDrop.classList.remove("pick");
+    pickerDarkmode.classList.remove("pick");
+    pickerCollaboration.classList.add("pick");
 })
+
+const line = $('.line');
+const navbarItems = $$('.navbar__item');
+const leftIndex = line.style.left;
+const lineWidth = line.style.width;
+
+line.style.left = leftIndex + "px";
+line.style.width = lineWidth + "px";  
+
+navbarItems.forEach(function(item, index) {
+    item.addEventListener('mouseover', function() {
+        if(this.querySelector(":hover")){
+            console.log("hovering");
+            line.style.left = this.offsetLeft + "px";
+            line.style.width = this.offsetWidth + "px";
+        }
+    });
+})
+
+// Help me with this!!!!
+
+
+
+
+      
