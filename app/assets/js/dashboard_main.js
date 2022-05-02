@@ -40,7 +40,7 @@ let currentPage = 0;
 
 window.addEventListener("keyup", event => {
     event.preventDefault();
-    if (event.keyCode == 13) {
+    if (event.key == 'Enter') {
         searchBtn.click();
     }
 })
@@ -106,7 +106,7 @@ function main() {
         if (sessionStorage.getItem("isEditing") == "0") {
             getWorkspace(renderWorkspace);
         }
-    }, 1000);
+    }, 3000);
 }
 
 function getWorkspace(callback) {
@@ -159,9 +159,9 @@ function renderWorkspace(workspaces) {
     let cur = 0;
     handleFilter(workspaces);
     let newTotalWorkspaces = 0;
-
+    
     workspaces = workspaces.filter((workspace) =>
-        workspace.workspaceTitle.includes(globalKeyword)
+    workspace.workspaceTitle.includes(globalKeyword)
     );
 
     for (const workspace of workspaces) {
@@ -181,9 +181,9 @@ function renderWorkspace(workspaces) {
     }
     paginationRender(newTotalWorkspaces);
 
-    if (newTotalWorkspaces == 0) {
-        throwSearchNotFound();
-    }
+    // if (newTotalWorkspaces == 0) {
+    //     throwSearchNotFound();
+    // }
 
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";
