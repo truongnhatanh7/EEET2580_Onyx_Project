@@ -1,0 +1,60 @@
+@media (max-width: 768px) {
+    .welcome__hello-text {
+        top: 220px;
+
+        font-size: 7rem;
+    }
+    .welcome__weare-text {
+        top: 248px;
+
+        font-size: 8rem;
+    }
+    .welcome__onyx-text {
+        top: 280px;
+        font-size: 12rem;
+    }
+    .home__feature-wrapper {
+        width: 100%;
+        padding: 2rem;
+    }
+
+    .feature__picker-wrapper {
+        gap: 4px;
+        min-width: 100%;
+        padding: 18px 48px;
+    }
+
+    .picker__item {
+        text-align: center;
+    }
+
+    .feature__content {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+
+    .feature__img {
+        width: 400px;
+    }
+
+    .feature__img-helper {
+        width: 90px;
+        top: 100px;
+        left: 80px;
+    }
+
+    .prefooter__heading {
+        font-size: 3rem;
+    }
+
+    .footer__logo {
+        font-size: 6rem;
+    }
+
+    @keyframes flyTask {
+        from {
+        } to {
+            transform: translateY(40px) translateX(140px);
+        }
+    }
+}
