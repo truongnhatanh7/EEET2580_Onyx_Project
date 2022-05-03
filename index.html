@@ -29,7 +29,6 @@
         <link rel="stylesheet" href="./assets/css/homepage.css" />
         <link rel="stylesheet" href="./assets/css/homepage-responsive.css" />
         <link rel="stylesheet" href="./assets/css/base.css" />
-        <link rel="stylesheet" href="./assets/css/navbar.css" />
 
         <script src="./assets/js/homepage.js" defer></script>
         <script src="./assets/js/navbar.js" defer></script>
@@ -41,15 +40,17 @@
 
                 <ul class="navbar__list">
                     <li class="navbar__item">
-                        <a href="index.html" class="navbar__link">home</a>
+                        <a href="index.html" class="navbar__link">Home</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="about.html" class="navbar__link">about</a>
+                        <a href="about.html" class="navbar__link">About</a>
                     </li>
                     <li class="navbar__item">
-                        <a href="faq.html" class="navbar__link">faq</a>
+                        <a href="faq.html" class="navbar__link">FAQ</a>
                     </li>
                 </ul>
+                <div class="line"></div>
+                <!-- <div class="line"></div> -->
 
                 <button class="navbar__login btn">Login</button>
             </nav>
@@ -60,97 +61,110 @@
 
         <main>
             <section class="home__welcome-wrapper">
-                <p class="welcome__hello-text">HELLO</p>
-                <p class="welcome__weare-text">WE ARE</p>
-                <p class="welcome__onyx-text">ONYX</p>
-                <img
-                    src="./assets/img/homepage/welcome.png"
-                    class="welcome__img"
-                    alt="welcome.svg"
-                />
-            </section>
-
-            <section class="home__view-wrapper">
-                <div class="view__text-wrapper">
-                    <p class="view__text-quote">
-                        "The sky is the limit, paginate the unpaginatable
-                        content" <br />Credence, CEO of Onyx
-                    </p>
-                    <button class="discover-btn btn">Discover now</button>
+                <div class="page__wrapper">
+                    <div class="text__wrapper">
+                        <p class="welcome__hello-text">hello!</p>
+                        <p class="welcome__weare-text">we are</p>
+                        <p class="welcome__onyx-text">ONYX</p>
+                    </div>
+                    <img
+                        src="./assets/img/homepage/welcome.png"
+                        class="welcome__img flex"
+                        alt="welcome.svg"
+                    />
                 </div>
-                <div class="view__img-wrapper">
-                    <img
-                        src="./assets/img/homepage/onyx_1.svg"
-                        alt="onyx_1"
-                        class="view__img"
-                    />
-                    <img
-                        src="./assets/img/homepage/onyx_2.svg"
-                        alt="onyx_2"
-                        class="view__img"
-                    />
-                    <img
-                        src="./assets/img/homepage/onyx_3.svg"
-                        alt="onyx_3"
-                        class="view__img"
-                    />
+            </section>
+            <!-- <div class="space"></div> -->
+            <section class="home__view-wrapper">
+                <div class="page__wrapper">
+                    <div class="view__text-wrapper">
+                        <div class="content__wrapper">
+                            <p class="view__text-quote">
+                                " The sky is the limit, paginate the unpaginatable
+                                content "
+                            </p>
+                            <p class="view__text-credit">Credence, CEO of Onyx</p>
+                        </div>
+                        <button class="discover-btn btn">Discover now</button>
+                    </div>
+                    <div class="view__img-wrapper">
+                        <img
+                            src="./assets/img/homepage/onyx_1.svg"
+                            alt="onyx_1"
+                            class="view__img"
+                        />
+                        <img
+                            src="./assets/img/homepage/onyx_2.svg"
+                            alt="onyx_2"
+                            class="view__img"
+                        />
+                        <img
+                            src="./assets/img/homepage/onyx_3.svg"
+                            alt="onyx_3"
+                            class="view__img"
+                        />
+                    </div>
                 </div>
             </section>
 
             <section class="home__feature-wrapper">
-                <h1 class="feature__heading">Features</h1>
+                <div class="page__wrapper">
+                    <h1 class="feature__heading">Features</h1>
 
-                <div class="feature__picker-wrapper">
-                    <div class="picker__dragndrop picker__item">
-                        <i class="fa-solid fa-arrows-up-down-left-right"></i>
-                        Drag & drop
+                    <div class="feature__picker-wrapper">
+                        <div class="picker__dragndrop picker__item pick">
+                            <i class="fa-solid fa-arrows-up-down-left-right"></i>
+                            Drag & drop
+                        </div>
+                        <div class="picker__darkmode picker__item">
+                            <i class="fa-solid fa-moon"></i>
+                            Dark mode
+                        </div>
+                        <div class="picker__collaboration picker__item">
+                            <i class="fa-solid fa-people-arrows-left-right"></i>
+                            Collaboration
+                        </div>
                     </div>
-                    <div class="picker__darkmode picker__item">
-                        <i class="fa-solid fa-moon"></i>
-                        Dark mode
-                    </div>
-                    <div class="picker__collaboration picker__item">
-                        <i class="fa-solid fa-people-arrows-left-right"></i>
-                        Collaboration
-                    </div>
-                </div>
 
-                <div class="feature__content">
-                    <div class="feature__img-wrapper">
-                        <img
-                            src="./assets/img/homepage/dnd.svg"
-                            alt="feature__img"
-                            class="feature__img"
-                        />
-                        <img
-                            src="./assets/img/homepage/task.svg"
-                            alt="feature__helper-img"
-                            class="feature__img-helper"
-                        />
+                    <div class="feature__content">
+                        <div class="feature__img-wrapper">
+                            <img
+                                src="./assets/img/homepage/dnd.svg"
+                                alt="feature__img"
+                                class="feature__img"
+                            />
+                            <img
+                                src="./assets/img/homepage/task.svg"
+                                alt="feature__helper-img"
+                                class="feature__img-helper"
+                            />
+                        </div>
+                        <p class="feature__paragraph">
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                            Aut labore veritatis corporis perferendis dolor aliquam
+                            enim odit cum neque, autem unde vel, ipsa tempore
+                            quisquam. Doloremque nobis repellat quos nemo.
+                        </p>
                     </div>
-                    <p class="feature__paragraph">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Aut labore veritatis corporis perferendis dolor aliquam
-                        enim odit cum neque, autem unde vel, ipsa tempore
-                        quisquam. Doloremque nobis repellat quos nemo.
-                    </p>
                 </div>
             </section>
 
             <section class="home__prefooter-wrapper">
-                <div class="home__prefooter">
-                    <h1 class="prefooter__heading">
-                        Discover your best with Onyx
-                    </h1>
-                    <button class="discover-btn btn prefooter__btn">
-                        Discover now
-                    </button>
+                <div class="page__wrapper">
+                    <div class="home__prefooter">
+                        <h1 class="prefooter__heading">
+                            Discover your best with Onyx
+                        </h1>
+                        <button class="discover-btn btn prefooter__btn" src="./login2.html">
+                            Discover now
+                        </button>
+                    </div>
+                    <img
+                        src="./assets/img/homepage/onyx_1.png"
+                        alt="prefooter__img"
+                        class="prefooter__img"
+                    />
                 </div>
-                <img
-                    src="./assets/img/homepage/onyx_1.png"
-                    alt="prefooter__img"
-                    class="prefooter__img"
-                />
             </section>
         </main>
 

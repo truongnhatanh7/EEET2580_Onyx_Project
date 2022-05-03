@@ -8,3 +8,4 @@ hamburger.addEventListener('click', () => {
         navbar.classList.add('flex')
     }
 })
+
