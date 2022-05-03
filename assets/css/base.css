@@ -126,8 +126,7 @@ textarea {
 }
 
 .flex {
-    display: flex;
-    gap: var(--gap, 0);
+    display: flex !important;
 }
 .flex-center {
     align-items: center;

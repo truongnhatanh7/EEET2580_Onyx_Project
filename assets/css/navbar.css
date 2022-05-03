@@ -79,6 +79,12 @@
     cursor: pointer;
 }
 
+@media (min-width: 769px) {
+    .home__navbar {
+        display: flex;
+    }
+}
+
 @media (max-width: 768px) {
     .navbar__hamburger-wrapper {
         display: grid;

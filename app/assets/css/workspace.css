@@ -39,7 +39,6 @@ input[type="text"] {
     display: flex;
     align-items: center;
     flex-direction: row;
-    /* gap: 40px; */
 }
 
 .workspace__info-name {
@@ -49,10 +48,32 @@ input[type="text"] {
     font-weight: 700;
 }
 
+.workspace__info-ultility {
+    display: flex;
+    gap: 8px;
+}
+
+.ultility-wrapper:nth-child(1) {
+    padding: 0;
+}
+
+.ultility-wrapper:hover {
+    cursor: pointer;
+}
+
+.ultility-wrapper {
+    display: flex;
+    padding: 8px 20px;
+    background-color: var(--white);
+    border-radius: 8px;
+    font-size: 1.4rem;
+    width: fit-content;
+    align-items: center;
+    position: relative;
+}
+
 .workspace__info-urgent {
     font-size: 1.6rem;
-    /* padding-right: 4px; */
-    /* margin-right: 8px; */
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -61,32 +82,39 @@ input[type="text"] {
 }
 
 .workspace__info-urgent-desc {
+    width: fit-content;
 }
 
 .filter__wrapper::before {
     content: "";
     height: 0;
     position: absolute;
-    top: -6px;
+    top: -10px;
     right: 0;
-    height: 8px;
-    width: 100%;
+    height: 18px;
+    width: 80px;
     background-color: transparent;
 }
 
-.filter__wrapper{
+.filter__title {
+    padding-left: 4px;
+}
+
+.filter__wrapper {
     display: none;
-    background-color: var(--white);
-    border-radius: var(--border-sub);
-    padding: 20px;
     position: absolute;
+    background-color: var(--white);
     top: 55px;
     right: 0px;
-    box-shadow: var(--nav-shadow);
+    width: 280px;
+    padding: 18px;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+
+
 }
 
 .filter-content__wrapper{
-    width: 200px;
     font-size: 1.6rem;
 }
 
@@ -96,10 +124,16 @@ input[type="text"] {
 
 .filter-urgent-task__wrapper{
     width: 100%;
-    /* margin-bottom: 20px; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.list-content_wrapper:hover .filter__wrapper{
+.filter:hover {
+    cursor: pointer;
+}
+
+.filter:hover .filter__wrapper {
     display: block;
 }
 
@@ -109,7 +143,6 @@ input[type="text"] {
     width: 6rem;
     height: 3rem;
     display: block;
-    margin: 0 auto;
     overflow: hidden;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     background: var(--dark-gray);

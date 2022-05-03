@@ -1,9 +1,10 @@
 const hamburger = $('.navbar__hamburger-wrapper')
 const navbar = $('.home__navbar')
+
 hamburger.addEventListener('click', () => {
-    if (navbar.style.display === 'none') {
-        navbar.style.display = 'flex';
+    if (navbar.classList.contains('flex')) {
+        navbar.classList.remove('flex')
     } else {
-        navbar.style.display = 'none'
+        navbar.classList.add('flex')
     }
 })
