@@ -63,13 +63,14 @@ main {
 /* header */
 .faq__title {
     /* font-size: 7rem; */
-    font-size: var(--font-size-title);
+    font-size: 6rem;
+    margin-bottom: 80px;
 }
 /* input */
 .faq__find {
     width: 47%;
     padding: 1.2em 1.8em;
-    font-size: var(--font-size-input);
+    font-size: 1.6rem;
     border-radius: 2rem;
 
     /* border-color: var(--task-color); */
@@ -79,7 +80,7 @@ main {
     box-shadow: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(190, 190, 190, 0.5), inset -20px 20px 40px rgba(190, 190, 190, 0.2), inset 20px -20px 40px rgba(190, 190, 190, 0.2), inset -20px -20px 40px rgba(255, 255, 255, 0.9), inset 20px 20px 50px rgba(190, 190, 190, 0.9);
 }
 .faq__find:focus {
-    outline: 2px solid var(--dark);
+    /* outline: 2px solid var(--dark); */
 }
 
 /* start of faq wrapper */
@@ -95,9 +96,10 @@ main {
 
     font-size: 4rem;
     background-color: var(--figma-gray);
-    box-shadow: 2px 5px 20px #646360;
+    /* box-shadow: 2px 5px 20px #646360; */
     border-radius: var(--border-radius);
     transition: height 1s ease;
+    margin-bottom: 18px;
 }
 /* summary */
 .faq__card > summary::before {
@@ -115,22 +117,14 @@ main {
     padding: 0 2.5em;
     height: 3.5em;
     --gap: 0;
-    
     background: var(--white);
-    /* box-shadow: -40px 40px 80px rgba(230, 230, 230, 0.2), 40px -40px 80px rgba(230, 230, 230, 0.2), -40px -40px 80px rgba(255, 255, 255, 0.9), 40px 40px 100px rgba(230, 230, 230, 0.9), inset 2px 2px 3px rgba(255, 255, 255, 0.3), inset -2px -2px 3px rgba(230, 230, 230, 0.5); */
     color: var(--black);
-    /* list-style-type: '▶️'; */
     list-style-type: none;
     cursor: pointer;
-    
-    font-size: var(--font-size-summary);
-    font-weight: 700;
+    font-size: 1.8rem;
+    font-weight: 500;
+}
 
-}
-/* when hover */
-.faq__card:hover, .faq__card:focus {
-    transform: translate(3px, -5px);
-}
 .faq__card:hover summary, .faq__card:focus summary {
     background-color: var(--alt-blue);
 }
@@ -139,9 +133,7 @@ main {
     transform: rotate(90deg) translateX(-3px);
 }
 .faq__card[open] > summary {
-    background-color: var(--dark);
     color: var(--yellow);
-    /* list-style-type: '🔽'; */
     list-style-type: none;
 }
 
@@ -154,7 +146,7 @@ main {
 .faq__card p {
     width: 50%;
     line-height: 2;
-    font-size: var(--font-size-content);
+    font-size: 1.6rem;
 
 }
 .faq__card img {

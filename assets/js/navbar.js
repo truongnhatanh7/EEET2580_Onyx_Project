@@ -1,5 +1,6 @@
 const hamburger = $('.navbar__hamburger-wrapper')
 const navbar = $('.home__navbar')
+const navbarLogin = $('.navbar__login');
 
 hamburger.addEventListener('click', () => {
     if (navbar.classList.contains('flex')) {
@@ -9,3 +10,15 @@ hamburger.addEventListener('click', () => {
     }
 })
 
+
+navbarLogin.addEventListener('click', () => {
+    if (sessionStorage.getItem("userId")) {
+        location.href = "./app/dashboard.html"
+    } else {
+        location.href = "./login2.html";
+    }
+})
+
+if (sessionStorage.getItem('userId')) {
+    navbarLogin.innerText = "Dashboard"
+} 
