@@ -137,16 +137,11 @@ pickerCollaboration.addEventListener('click', () => {
 // navbarItems.forEach(function(item, index) {
 //     item.addEventListener('mouseover', function() {
 //         if(this.querySelector(":hover")){
-//             console.log("hovering");
 //             line.style.left = this.offsetLeft + "px";
 //             line.style.width = this.offsetWidth + "px";
 //         }
 //     });
+
 // })
 
 // Help me with this!!!!
-
-
-
-
-      
