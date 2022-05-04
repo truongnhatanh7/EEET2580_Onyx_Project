@@ -84,6 +84,7 @@
     background-color: var(--pink-color);
     padding-bottom: 14rem;
     padding-top: 14rem;
+    overflow: hidden;
 }
 
 .view__text-wrapper {
