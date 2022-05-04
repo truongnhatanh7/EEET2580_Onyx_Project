@@ -61,7 +61,7 @@
     .feature__picker-wrapper {
         gap: 4px;
         min-width: 100%;
-        padding: 18px 48px;
+        /* padding: 18px 48px; */
     }
 
     .picker__item {
