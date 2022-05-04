@@ -3,7 +3,7 @@
 }
 
 .home__navbar {
-    display: flex !important;
+    display: none;
     justify-content: space-between;
     align-items: center;
     padding: 0 48px;
