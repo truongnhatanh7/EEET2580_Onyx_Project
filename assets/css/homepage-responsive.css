@@ -93,8 +93,9 @@
     }
 
     .picker__item {
-        padding: 0;
+        padding: 18px 0;
         text-align: center;
+
     }
 
     .feature__content {
@@ -118,6 +119,8 @@
 
     .feature__paragraph {
         font-size: 1.4rem;
+        padding: 48px 0;
+        width: 70%;
     }
 
     .feature__img-helper {
