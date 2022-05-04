@@ -89,6 +89,13 @@ const pickerDragAndDrop = $('.picker__dragndrop')
 const pickerDarkmode = $('.picker__darkmode')
 const pickerCollaboration = $('.picker__collaboration')
 
+const discoverBtns = $$('.discover-btn')
+
+discoverBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        location.href = "./login2.html"
+    })
+})
 
 navbarLogin.addEventListener('click', () => {
     if (sessionStorage.getItem("userId")) {
