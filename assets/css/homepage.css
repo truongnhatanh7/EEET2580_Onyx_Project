@@ -237,7 +237,7 @@
 .feature__paragraph {
     display: grid;
     padding: 24px;
-    padding-left: 0;
+    padding-left: 48px;
     place-items: center;
     /* text-align: right; */
     font-size: 2.2rem;
@@ -245,11 +245,12 @@
 
 .home__prefooter-wrapper {
     height: 55vh;
-    padding-top: 140px;
+
     background-color: var(--yellow);
     display: grid;
     position: relative;
     overflow: hidden;
+    place-items: center;
 }
 
 .home__prefooter {
