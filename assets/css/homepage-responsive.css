@@ -71,6 +71,10 @@
         padding-top: 10rem;
     }
 
+    .view__img {
+        width: 60%;
+    }
+
     .view__img:nth-child(1) {
         transform: scale(1.5);
     

@@ -82,16 +82,17 @@
 }
 
 .home__view-wrapper {
-    height: auto;
+    height: 100vh;
     background-color: var(--pink-color);
-    padding-bottom: 14rem;
-    padding-top: 14rem;
+    /* padding-bottom: 14rem;
+    padding-top: 14rem; */
     overflow: hidden;
 }
 
 .view__text-wrapper {
     /* width: 80%; */
-    margin: 0 40px;
+    margin: 4rem 8rem;
+    margin-top: 9rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -105,6 +106,8 @@
     width: 80%;
     font-weight: 300;
     font-style: italic;
+    padding: 4rem 0;
+
 }
 
 .view__text-credit{
@@ -122,6 +125,7 @@
     color: var(--white);
     z-index: 30;
     white-space: nowrap;
+    margin: 4rem 0;
 }
 
 .view__img-wrapper {
@@ -134,7 +138,8 @@
 }
 
 .view__img {
-    width: 70%;
+    margin-top: 2rem;
+    width: 80%;
     position: relative;
     border-radius: 4px;
 }
