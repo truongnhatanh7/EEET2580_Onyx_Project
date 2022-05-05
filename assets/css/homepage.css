@@ -297,6 +297,7 @@
 
 .prefooter__btn {
     background-color: var(--soft-pink);
+    margin: 0;
 }
 
 
