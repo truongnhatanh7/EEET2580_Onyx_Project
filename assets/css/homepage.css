@@ -279,7 +279,7 @@
 .prefooter__heading {
     font-size: 4rem;
     text-align: center;
-    color: var(--white);
+    color: var(--white-color);
     z-index: 30;
     padding-bottom: 18px;
 }

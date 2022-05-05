@@ -41,10 +41,10 @@
         display: none;
     }
     .welcome__onyx-text {
-        top: 44vh;
-        transform: translateY(-50%) rotateX(75deg);
+        top: 50vh;
+        transform: translateY(-50%) ;
         font-size: 12rem;
-        animation: hueSwitch 1s infinite alternate;
+        /* animation: hueSwitch 1s infinite alternate; */
         box-shadow: var(--box-engrave);
 
     }
@@ -58,7 +58,7 @@
         100% {
             color: var(--soft-pink);
         transform: translateY(2rem) rotateX(60deg) rotateZ(400deg) translateZ(-18px);
-        text-shadow: 8px 8px 8px #ccc;
+        text-shadow: 8px 8px 8px rgb(124, 124, 124);
 
 
         }
