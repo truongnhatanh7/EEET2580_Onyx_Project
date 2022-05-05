@@ -50,7 +50,7 @@
 .welcome__hello-text,
 .welcome__weare-text,
 .welcome__onyx-text {
-    transform-style: preserve-3d;
+    /* transform-style: preserve-3d; */
     position: absolute;
     width: 100%;
     text-align: center;
