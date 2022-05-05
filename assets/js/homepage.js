@@ -91,7 +91,7 @@ const discoverBtns = $$('.discover-btn')
 
 discoverBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        location.href = "./login2.html"
+        location.href = "./login.html"
     })
 })
 

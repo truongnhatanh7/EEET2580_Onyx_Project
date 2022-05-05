@@ -15,7 +15,7 @@ navbarLogin.addEventListener('click', () => {
     if (sessionStorage.getItem("userId")) {
         location.href = "./app/dashboard.html"
     } else {
-        location.href = "./login2.html";
+        location.href = "./login.html";
     }
 })
 
