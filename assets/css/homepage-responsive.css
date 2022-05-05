@@ -1,4 +1,23 @@
-@media (max-width: 768px) {
+@media (max-width: 968px) and (min-width: 768px) {
+    .feature__img {
+        width: 500px;
+    }
+
+    .feature__img-helper {
+        width: 112px;
+        top: 120px;
+        left: 100px;
+    }
+
+    @keyframes flyTask {
+        from {
+        } to {
+            transform: translateY(48px) translateX(190px);
+        }
+    }
+}
+
+@media (max-width: 767px) {
 
     .home__welcome-wrapper {
         height: 100vh;
@@ -43,13 +62,6 @@
 
 
         }
-    }
-
-    .text__wrapper {
-        /* display: flex;
-        flex-direction: column;
-        gap: 0;
-        height: 100px !important; */
     }
 
     .welcome__img {
