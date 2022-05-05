@@ -1,33 +1,18 @@
-/* details summary > * { 
-    display: inline;
-}  */
-
-/* main */
-
 main {
     padding-top: 220px;
     flex-direction: column;
-    /* width: 100%; */
-    /* height: auto; */
-    /* --gap: 3em; */
 }
 /* button back to top */
 #button {
-    /* display: inline-block; */
     position: fixed;
     bottom: 30px;
     right: 30px;
     z-index: 1;
-
     width: 50px;
     height: 50px;
-
     border-radius: 50%;
     background-color: var(--yellow);
     text-align: center;
-    transition: background-color .3s, 
-      opacity .5s, visibility .5s;
-
 }
 #button::after {
     content: "\f077";
@@ -58,15 +43,10 @@ main {
     padding: 1em 2em;
     font-size: 1.6rem;
     border-radius: 2rem;
-
-    /* border-color: var(--task-color); */
     border: none;
     outline: none;
     opacity: 0.8;
     box-shadow: var(--box-shadow-engrave);
-}
-.faq__find:focus {
-    /* outline: 2px solid var(--dark); */
 }
 
 /* start of faq wrapper */
@@ -82,7 +62,6 @@ main {
     font-size: 4rem;
     background-color: var(--white-color);
     border-radius: var(--border-main);
-    transition: height 1s ease;
     margin-bottom: 44px;
 }
 /* summary */
@@ -90,10 +69,8 @@ main {
     padding-right: 0.5em;
     content: "\f105";
     font-family: FontAwesome;
-
     transform: rotate(0);
     transform-origin: .2rem 50%;
-    transition: .25s transform ease;
 }
 .faq__card > summary {
     box-shadow: -22px 22px 44px rgba(219, 219, 219, 0.2), 22px -22px 44px rgba(219, 219, 219, 0.2), -22px -22px 44px rgba(255, 255, 255, 0.9), 22px 22px 55px rgba(219, 219, 219, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(219, 219, 219, 0.5);
