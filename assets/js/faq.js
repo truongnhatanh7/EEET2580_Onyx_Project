@@ -175,15 +175,15 @@ class DetailObject {
  
 // search on input
 function filterFaqCard() {
-    let input = document.querySelector(".faq__find");
-    let filter = input.value.toUpperCase();
-    let summaryList = document.querySelectorAll(".faq__card summary");
-    summaryList.forEach(summary => {
-        summaryContent = summary.textContent || summary.innerText;
-        if (summaryContent.toUpperCase().indexOf(filter) > -1) {
-            summary.parentElement.style.display = "";
+  let input = document.querySelector(".faq__find");
+  let filter = input.value.toUpperCase();
+  let summaryList = document.querySelectorAll(".faq__card summary");
+  summaryList.forEach(summary => {
+        summaryContent = summary.textContent;
+        if (!summaryContent.toUpperCase().includes(filter)) {
+            summary.parentElement.classList.add('disable');
         } else {
-            summary.parentElement.style.display = "none";
+          summary.parentElement.classList.remove('disable');
         }
     });
 }
