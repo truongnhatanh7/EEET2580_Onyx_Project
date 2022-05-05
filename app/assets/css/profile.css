@@ -1,0 +1,87 @@
+main{
+    margin: 8vh 20px 20px;
+}
+
+.page__wrapper{
+    max-width: 800px !important;
+}
+h1{
+    font-size: 40px;
+    font-weight: 700;
+}
+
+
+h2{
+    font-size: 24px;
+    font-weight: 600;
+    margin-top: 2rem;
+}
+
+h3{
+    font-size: 14px;
+    font-weight: 300;
+    background-color: var(--figma-gray);
+    padding: 24px 40px;
+    border-radius: var(--border-main) 0 0 var(--border-main);
+    opacity: 80%;
+    width: 100%;
+}
+
+.return__wrapper{
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    background-color: var(--pink-color);
+    color: var(--white);
+}
+.return__content{
+    color: var(--white);
+    text-decoration: none;
+}
+
+.header__wrapper{
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+.grid-content{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    margin-top: 2rem;
+}
+.save__btn{
+    padding: 12px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 12px;
+    background-color: var(--hard-pink);
+    color: var(--white);
+}
+
+.edit__btn{
+    padding: 12px 20px;
+    border-radius: 0 var(--border-main) var(--border-main) 0 !important;
+}
+.edit__btn:hover{
+    color: var(--yellow);
+}
+
+.delete__btn{
+    padding: 20px;
+    width: 100%;
+    margin-top: 20px;
+    border: 2px solid var(--red-pastel) !important;
+    background-color: var(--white-color) !important;
+
+}
+
+.signout__btn{
+    margin-top: 80px;
+    width: 100%;
+    padding: 20px;
+    background-color: var(--red-pastel);
+    color: var(--white);
+    font-weight: 600 !important;
+    font-size: 2rem !important;
+}
