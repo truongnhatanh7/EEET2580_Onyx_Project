@@ -27,6 +27,7 @@
 }
 
 .workspace__task-setting-close {
+    display: none;
     background-color: var(--white);
     color: var(--black);
     width: fit-content;
