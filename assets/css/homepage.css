@@ -28,6 +28,25 @@
     margin-top: 14vh;
     overflow: hidden;
 }
+
+.home__scroll-down {
+    display: none;
+    position: fixed;
+    font-size: 4rem;
+    top: 90vh;
+    right: 50%;
+    transform: translateX(50%);
+    animation: forSlideDownIcon 0.8s alternate infinite;
+}
+
+@keyframes forSlideDownIcon {
+    from {
+    } to {
+        transform: translateX(50%) translateY(18px);
+
+    }
+}
+
 .text__wrapper{
     position: relative;
     height: 400px;
@@ -244,13 +263,11 @@
     padding: 24px;
     padding-left: 48px;
     place-items: center;
-    /* text-align: right; */
     font-size: 2.2rem;
 }
 
 .home__prefooter-wrapper {
     height: 55vh;
-
     background-color: var(--yellow);
     display: grid;
     position: relative;
