@@ -37,16 +37,16 @@
 }
 
 .navbar__item {
-    font-size: 1.4rem;
 }
 
 .navbar__link {
     display: block;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.8rem;
     margin: 0 4px;
     color: var(--black);
     font-weight: 400;
+    text-transform: capitalize;
 }
 
 .navbar__link:hover {
@@ -55,6 +55,8 @@
 }
 
 .navbar__login {
+    font-size: 1.8rem;
+    text-transform: capitalize;
 
     background-color: var(--yellow);
     padding: 12px 24px;
