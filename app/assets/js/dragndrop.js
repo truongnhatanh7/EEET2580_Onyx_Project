@@ -1,6 +1,4 @@
 "use strict";
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 const draggables = $$(".workspace__board-list-task");
 const containers = $$(".workspace__board-list");
 

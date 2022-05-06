@@ -2,8 +2,6 @@ if (sessionStorage.getItem("userId") == null) {
     location.href = "../login2.html";
 }
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 const projectList = $(".dashboard__project-list");
 const modalOutter = $(".dashboard__modal-create");
 const modalWrapper = $(".dashboard__modal-wrapper");
@@ -28,8 +26,6 @@ let createUrl = "http://localhost:8080/api/v1/workspace/";
 let allWPUrl = "http://localhost:8080/api/v1/workspace/";
 let allUsers = "http://localhost:8080/api/v1/user/all-users/";
 let totalWorkspaces = 0;
-const toastBox = $(".toast-wrapper");
-const toastMessage = $(".toast-message");
 const finish = false;
 const loading = $(".loading-wrapper");
 const logOut = $(".user__navbar-progress-btn");
@@ -281,41 +277,11 @@ modalBtn.onclick = (event) => {
 
         modalInput.value = "";
     } else if (modalInput.value != "" && modalInput.value.length >= 25) {
-        throwLongListName();
+        throwError("List name is too long!")
     } else {
-        throwEmptyProjectName();
+        throwError("Empty project name!")
     }
 };
-
-function throwLongListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name is too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
-
-function throwEmptyProjectName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Project name cannot be empty";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
-
-function throwSearchNotFound() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Search not found";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
 
 ////////////////////////////////
 // Pagination

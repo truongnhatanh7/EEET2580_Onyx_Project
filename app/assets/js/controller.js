@@ -15,8 +15,6 @@ const addListSection = $(".workspace__add-wrapper");
 const submitList = $(".workspace__submit-btn");
 const closeSubmitList = $(".workspace__list-close");
 const listNameInput = $(".workspace__add-input");
-const toastBox = $(".toast-wrapper");
-const toastMessage = $(".toast-message");
 
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
@@ -25,14 +23,6 @@ const userAvatar = $('.user-text-avatar');
 userAvatar.addEventListener('click', () => {
     location.href = './profile.html'
 })
-
-// const signOut = $(".workspace__sign-out");
-////////////////////////////////////////////////////////////////////////////////
-
-// signOut.addEventListener("click", (event) => {
-//     sessionStorage.removeItem('userId');
-//     location.href = "../index.html";
-// })
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
@@ -118,7 +108,7 @@ submitList.addEventListener("click", (event) => {
     if (listNameInput.value != "" && listNameInput.value.length < 25) {
         let listName = listNameInput.value;
         if (listName.includes("<") || listName.includes(">")) {
-            throwInvalidInput();
+            throwError("Invalid input")
             return;
         }
         let createListUrl =
@@ -176,9 +166,9 @@ submitList.addEventListener("click", (event) => {
             });
         resetAddListBtn();
     } else if (listNameInput.value != "" && listNameInput.value.length >= 25) {
-        throwToastLongListName();
+        throwError("List name is too long!");
     } else {
-        throwToastEmptyListName();
+        throwError("Empty list name");
     }
 });
 
@@ -187,26 +177,6 @@ function resetAddListBtn() {
     addListSection.classList.add("disable");
     addListBtn.classList.remove("disable");
     addListBtn.classList.add("enable");
-}
-
-function throwToastLongListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name is too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwToastEmptyListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name cannot be empty";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
 }
 
 function handleDeleteList(event) {
@@ -350,9 +320,9 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                     rapidInputTask(event, taskFactory, taskInput);
                 });
         } else if (taskInput.value != "" && taskInput.value.length >= 50) {
-            throwToastLongTaskName();
+            throwError("Long task name")
         } else {
-            throwToastEmptyTaskName();
+            throwError("Empty task name");
         }
     }, 150);
 }
@@ -366,29 +336,6 @@ function rapidInputTask(event, taskFactory, taskInput) {
     event.target.parentNode.classList.remove("modifying");
     event.target.parentNode.querySelector(".workspace__add-task-btn").click();
 }
-
-function throwToastLongTaskName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Task content too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwToastEmptyTaskName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Task content cannot be empty!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Task setting
@@ -514,13 +461,13 @@ taskSave.addEventListener("click", (event) => {
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
     let newTaskContent = taskInput.value;
     if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
-        throwInvalidInput();
+        throwError("Invalid input")
         return;
     } 
     if (newTaskContent == "") {
-        throwToastEmptyTaskName();
+        throwError("Empty task name!")
     } else if (newTaskContent != "" && newTaskContent.length > 25) {
-        throwToastLongTaskName();
+        throwError("Empty task name!")
     } else {
         sessionStorage.setItem("currentTaskContent", newTaskContent.trim());
         fetch(editTaskUrl, {
@@ -738,29 +685,9 @@ postDeleteBtn.addEventListener("click", () => {
             },
         }).then(location.assign("./dashboard.html"));
     } else {
-        throwInvalidInput();
+        throwError("Invalid input")
     }
 });
-
-function throwInvalidInput() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Invalid input";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwUnknownError() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Unknown error";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
 
 ///////////////////////////////////////////////////////////////
 // Collab
@@ -835,7 +762,7 @@ function handleRemoveCollaborator(event) {
 
 addCollaboratorBtn.addEventListener("click", () => {
     if (addCollaboratorInput.value == "") {
-        throwInvalidInput();
+        throwError("Invalid input")
     } else {
         let getAllUsersUrl = "http://localhost:8080/api/v1/user/all-users/";
         fetch(getAllUsersUrl)
@@ -849,7 +776,7 @@ addCollaboratorBtn.addEventListener("click", () => {
                     }
                 });
                 if (!found) {
-                    throwUserNotFound();
+                    throwError("User not found!")
                 }
             });
     }
@@ -882,14 +809,4 @@ function handleEmailUser(username) {
             'Content-Type': 'application/json'
         }
     })
-}
-
-function throwUserNotFound(username) {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Username: " + username + " not found!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
 }
