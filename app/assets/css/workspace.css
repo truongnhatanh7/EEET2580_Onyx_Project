@@ -35,7 +35,7 @@ input[type="text"] {
     justify-content: space-between;
 }
 
-.workspace__info__tittle{
+.workspace__info__tittle {
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -499,7 +499,7 @@ input[type="text"] {
     padding: 32px;
     width: max-content;
     border-radius: 8px;
-    background-color: var(--hard-pink);
+    background-color: var(--white);
     box-shadow: var(--box-shadow);
     display: flex;
     flex-direction: column;
