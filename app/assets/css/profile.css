@@ -26,6 +26,12 @@ h1{
     font-size: 2rem;
 }
 
+.user-form__sub-label {
+    font-weight: 400;
+    font-size: 1.8rem;
+    margin-top: 8px;
+}
+
 .user-form__header {
     display: flex;
     margin-top: 18px;

@@ -12,12 +12,22 @@ const modifyEmailTrigger = $('.modify-email-icon');
 const modifyEmailWrapper = $('.user-form__modify-email-wrapper');
 const modifyPasswordTrigger = $('.modify-password-icon');
 const modifyPasswordWrapper = $('.user-form__modify-password-wrapper')
+const modifyNameTrigger = $('.modify-name-icon');
+const modifyNameWrapper = $('.user-form__modify-name-wrapper')
+const modifyAvatarTrigger = $('.modify-avatar-icon')
+const modifyAvatarWrapper = $('.user-form__modify-avatar-wrapper')
 
 const emailInput = $('.modify-email-input');
 const oldPasswordInput = $('.modify-old-password');
 const newPasswordInput = $('.modify-new-password');
 const retypeNewPassword = $('.modify-new-password-retype');
+const firstNameInput = $('.modify-first-name')
+const lastNameInput = $('.modify-last-name')
+const avatarInput = $('.modify-avatar')
 
+modifyAvatarTrigger.addEventListener('click', () => {
+    modifyAvatarWrapper.classList.toggle('disable');
+})
 
 modifyEmailTrigger.addEventListener('click', () => {
     modifyEmailWrapper.classList.toggle('disable');
@@ -27,10 +37,62 @@ modifyPasswordTrigger.addEventListener('click', () => {
     modifyPasswordWrapper.classList.toggle('disable');
 })
 
+modifyNameTrigger.addEventListener('click', () => {
+    modifyNameWrapper.classList.toggle('disable')
+})
+
 const saveBtnEmail = $('.user-form__modify-btn--save-email');
 const cancelBtnEmail = $('.user-form__modify-btn--cancel-email')
 const saveBtnPassword = $('.user-form__modify-btn--save-password')
 const cancelBtnPassword = $('.user-form__modify-btn--cancel-password')
+const saveBtnName = $('.user-form__modify-btn--save-name')
+const cancelBtnName = $('.user-form__modify-btn--cancel-name')
+const saveBtnAvatar = $('.user-form__modify-btn--save-avatar')
+const cancelBtnAvatar = $('.user-form__modify-btn--cancel-avatar')
+
+saveBtnAvatar.addEventListener('click', () => {
+    const url = "https://api.cloudinary.com/v1_1/dbyasuo/image/upload";
+
+    const formData = new FormData();
+    console.log(avatarInput.files[0])
+    formData.append("file", avatarInput.files[0])
+    formData.append("upload_preset", "vdfx4jbe");
+    fetch(url, {
+        method: "POST",
+        body: formData
+    })
+    .then((response) => {
+        return response.json();
+    })
+    .then((data) => {
+        fetch("http://localhost:8080/api/v1/user/edit-avatar/" + sessionStorage.getItem("userId") + "/" + data.url)
+    });
+})
+
+cancelBtnAvatar.addEventListener('click', () => {
+    modifyAvatarTrigger.click();
+})
+
+saveBtnName.addEventListener('click', () => {
+    if (firstNameInput.value != "" && lastNameInput.value != "") {
+        fetch("http://localhost:8080/api/v1/user/edit-name/" + sessionStorage.getItem("userId") + "/" + firstNameInput.value + " " + lastNameInput.value,
+        {
+                method: 'PATCH'
+        })
+        .then(() => {
+            cancelBtnName.click();
+        })
+        .then(() => {
+            throwSuccess("Success")
+        })
+    } else {
+        throwError("Invalid input")
+    }
+})
+
+cancelBtnName.addEventListener('click', () => {
+    modifyNameTrigger.click();
+})
 
 saveBtnEmail.addEventListener('click', () => {
     let uniqueEmailFlag = true;

@@ -39,6 +39,7 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         sessionStorage.setItem("userId", user.userId.toString().trim());
+                        sessionStorage.setItem("userAvatar", user.userAvatarURL)
                         sessionStorage.setItem("userName", user.name)
                         location.assign("./app/dashboard.html")
 
@@ -116,6 +117,7 @@ function createNewUserAPI() {
     })
     .then(data => {
         sessionStorage.setItem("userId", data.userId.toString().trim());
+        sessionStorage.setItem("userAvatar", "")
         sessionStorage.setItem("userName", data.name)
         location.assign("./app/dashboard.html")
 

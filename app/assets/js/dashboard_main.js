@@ -41,14 +41,14 @@ window.addEventListener("keyup", event => {
     }
 })
 
-document.addEventListener("click", (event) => {
-    if (
-        !event.target.classList.contains("dashboard__filter-option") &&
-        !event.target.classList.contains("dashboard__filter-btn")
-    ) {
-        // filterOptionsWrapper.classList.add('disable');
-    }
-});
+// document.addEventListener("click", (event) => {
+//     if (
+//         !event.target.classList.contains("dashboard__filter-option") &&
+//         !event.target.classList.contains("dashboard__filter-btn")
+//     ) {
+//         // filterOptionsWrapper.classList.add('disable');
+//     }
+// });
 
 filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
@@ -71,23 +71,6 @@ viewAllBtn.addEventListener("click", () => {
 // filterBtn.addEventListener("click", () => {
 //     filterOptionsWrapper.classList.toggle("disable");
 // });
-
-const userTaskWrapper = $(".user-task__wrapper");
-const userName = $(".user-list-img__name");
-function renderUserNavbar() {
-    userName.innerText = sessionStorage.getItem("userName");
-}
-
-const avatar = $(".user-text-avatar")
-avatar.addEventListener('click', () => {
-    location.href = './profile.html'
-})
-
-function renderAvatarFromName() {
-    let nameList = sessionStorage.getItem("userName").split(" ");
-    let processedName = nameList[0][0] + nameList[nameList.length - 1][0];
-    avatar.innerText = processedName.toUpperCase();
-}
 
 renderUserNavbar();
 renderAvatarFromName();
@@ -139,7 +122,6 @@ function handleFilter(workspaces) {
             }
         });
         workspaces.reverse();
-        console.log(workspaces);
     } else if (filterCondition == "latest") {
         workspaces.reverse();
     } else {
@@ -230,7 +212,6 @@ modalBtn.onclick = (event) => {
         let name = modalInput.value;
         modalOutter.classList.remove("dashboard__modal-create--enable");
         modalOutter.classList.add("dashboard__modal-create--disable");
-
         let options = {
             method: "POST",
             headers: {
