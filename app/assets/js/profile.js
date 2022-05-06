@@ -33,20 +33,38 @@ const saveBtnPassword = $('.user-form__modify-btn--save-password')
 const cancelBtnPassword = $('.user-form__modify-btn--cancel-password')
 
 saveBtnEmail.addEventListener('click', () => {
-    if (emailInput.value != "" && emailCheck(emailInput.value)) { // TODO: check valid email
-        fetch("http://localhost:8080/api/v1/user/edit-username/" + sessionStorage.getItem("userId") + "/" + emailInput.value, {
-            method: 'PATCH'
+    let uniqueEmailFlag = true;
+    fetch("http://localhost:8080/api/v1/user/all-users/")
+    .then(response => response.json())
+    .then((users) => {
+        users.forEach(user => {
+            if (user.username.toLowerCase() == emailInput.value.toLowerCase()) {
+                uniqueEmailFlag = false;
+            }
         })
-        .then(() => {
-            emailInput.value = ""
-            cancelBtnEmail.click();
-        })
-        .then(() => {
-            throwSuccess("Success")
-        })
-    } else {
-        throwError("Invalid email")
-    }
+    })
+    .then(() => {
+        if (emailInput.value != "" && emailCheck(emailInput.value) && uniqueEmailFlag) { // TODO: check valid email
+            fetch("http://localhost:8080/api/v1/user/edit-username/" + sessionStorage.getItem("userId") + "/" + emailInput.value, {
+                method: 'PATCH'
+            })
+            .then(() => {
+                cancelBtnEmail.click();
+            })
+            .then(() => {
+                throwSuccess("Success")
+            })
+        } else {
+            if (!uniqueEmailFlag) {
+                throwError("Please use another email address")
+            } else {
+                throwError("Invalid email")
+            }
+        }
+    })
+    .then(() => {
+        emailInput.value = ""
+    })
 })
 
 cancelBtnEmail.addEventListener('click', () => {
@@ -58,29 +76,46 @@ cancelBtnPassword.addEventListener('click', () => {
 })
 
 saveBtnPassword.addEventListener('click', () => {
-    if (oldPasswordInput.value == '' 
-        || newPasswordInput.value == '' 
-        || retypeNewPassword.value == ''
-        || !passwordCheck(newPasswordInput.value)
-        ) {
-        oldPasswordInput.value = ""
-        newPasswordInput.value = ""
-        retypeNewPassword.value = ""
-        throwError("Invalid password")
-    } else {
-        fetch("http://localhost:8080/api/v1/user/edit-password/" + sessionStorage.getItem("userId") + "/" + newPasswordInput.value, {
-            method: 'PATCH'
+    let correctOldPassword = true;
+    fetch("http://localhost:8080/api/v1/user/all-users/")
+    .then(response => response.json())
+    .then((users) => {
+        users.forEach(user => {
+            if (user.userId == sessionStorage.getItem('userId')
+                && user.password != oldPasswordInput.value
+            ) {
+                correctOldPassword = false;
+            }
         })
-        .then(() => {
+    }).then(() => {
+        if (oldPasswordInput.value == '' 
+            || newPasswordInput.value == '' 
+            || retypeNewPassword.value == ''
+            || !passwordCheck(newPasswordInput.value)
+            ) {
             oldPasswordInput.value = ""
             newPasswordInput.value = ""
             retypeNewPassword.value = ""
-            cancelBtnPassword.click();
-        })
-        .then(() => {
-            throwSuccess("Success")
-        })
-    }
+            if (!correctOldPassword) {
+                throwError("Incorrrect old password")
+            } else {
+                throwError("Invalid password")
+            }
+        } else {
+            fetch("http://localhost:8080/api/v1/user/edit-password/" + sessionStorage.getItem("userId") + "/" + newPasswordInput.value, {
+                method: 'PATCH'
+            })
+            .then(() => {
+                oldPasswordInput.value = ""
+                newPasswordInput.value = ""
+                retypeNewPassword.value = ""
+                cancelBtnPassword.click();
+            })
+            .then(() => {
+                throwSuccess("Success")
+            })
+        }
+    })
 })
 
 ////////////////////////////////////////////////////////////////////////////////////////////////

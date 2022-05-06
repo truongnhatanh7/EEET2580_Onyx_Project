@@ -6,8 +6,13 @@ main{
     max-width: 800px !important;
 }
 h1{
-    font-size: 40px;
-    font-weight: 700;
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+.secondary-btn {
+    background-color: var(--dark-gray) !important;
+    margin-top: 4px !important;
 }
 
 
@@ -62,7 +67,7 @@ h1{
     background-color: var(--soft-pink);
     padding: 8px 16px;
     border-radius: 8px;
-    margin-top: 8px;
+    margin-top: 16px;
     width: fit-content;
 }
 
@@ -118,11 +123,8 @@ h1{
 }
 
 .sign-out-btn{
-    margin-top: 80px;
-    width: 100%;
-    padding: 20px;
+    padding: 8px 18px;
     background-color: var(--red-pastel);
-    color: var(--white);
-    font-weight: 600 !important;
-    font-size: 2rem !important;
+    color: var(--white-color);
+    margin-top: 48px;
 }
