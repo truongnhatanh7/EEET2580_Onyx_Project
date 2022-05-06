@@ -500,21 +500,20 @@ input[type="text"] {
     width: max-content;
     border-radius: 8px;
     background-color: var(--white);
-    box-shadow: var(--box-shadow);
     display: flex;
     flex-direction: column;
 }
 
 .list-del__message {
     font-size: 1.8rem;
-    color: var(--constant-white);
+    color: var(--black);
     margin-bottom: 8px;
 }
 
 .list-del__accept,
 .list-del__decline {
     padding: 8px 18px;
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: 1.6rem;
 }
 

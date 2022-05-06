@@ -51,9 +51,9 @@ h1{
 
 .user-form__modify-wrapper {
     margin-top: 8px;
-    display: block;
+    /* display: block;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; */
 }
 
 .user-form__modify-input {
@@ -64,6 +64,7 @@ h1{
     border-radius: 8px;
     border: 1px solid var(--soft-pink);
     outline: 1px solid var(--soft-pink);
+    display: block;
 }
 
 .user-form__modify-btn {
