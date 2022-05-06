@@ -39,7 +39,7 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         sessionStorage.setItem("userId", user.userId.toString().trim());
-                        sessionStorage.setItem("userAvatar", user.userAvatarURL)
+                        sessionStorage.setItem("userAvatar", user.avatarURL)
                         sessionStorage.setItem("userName", user.name)
                         location.assign("./app/dashboard.html")
 

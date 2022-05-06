@@ -65,7 +65,25 @@ saveBtnAvatar.addEventListener('click', () => {
         return response.json();
     })
     .then((data) => {
-        fetch("http://localhost:8080/api/v1/user/edit-avatar/" + sessionStorage.getItem("userId") + "/" + data.url)
+        fetch("http://localhost:8080/api/v1/user/edit-avatar?" 
+        + new URLSearchParams({
+            userId: sessionStorage.getItem('userId'),
+            avatar: data.url
+        }), {
+            method: "PATCH"
+        })
+        .then(() => {
+            sessionStorage.setItem("userAvatar", data.url)
+        })
+    })
+    .then(() => {
+        throwSuccess("Success")
+    })
+    .catch(() => {
+        throwError("Unexpected error")
+    })
+    .finally(() => {
+        cancelBtnAvatar.click();
     });
 })
 
@@ -99,6 +117,7 @@ saveBtnEmail.addEventListener('click', () => {
     fetch("http://localhost:8080/api/v1/user/all-users/")
     .then(response => response.json())
     .then((users) => {
+        console.log(users)
         users.forEach(user => {
             if (user.username.toLowerCase() == emailInput.value.toLowerCase()) {
                 uniqueEmailFlag = false;
