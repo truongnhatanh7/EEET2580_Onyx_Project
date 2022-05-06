@@ -1,8 +1,11 @@
 const userTaskWrapper = $(".user-task__wrapper");
-const userName = $(".user-list-img__name");
 const userAvatar = $(".user-avatar");
 function renderUserNavbar() {
-    userName.innerText = sessionStorage.getItem("userName");
+    console.log("yes")
+}
+
+userAvatar.onerror = () => {
+    userAvatar.classList.add('disable');
 }
 
 const avatar = $(".user-text-avatar")
@@ -11,15 +14,17 @@ userTaskWrapper.addEventListener('click', () => {
 })
 
 function renderAvatarFromName() {
-    if (sessionStorage.getItem("userAvatar") == undefined
-    || sessionStorage.getItem("userAvatar") == null
-    || sessionStorage.getItem("userAvatar") == ''
-    ) {
+
+        userAvatar.classList.add("disable")
+        console.log("SDF")
         let nameList = sessionStorage.getItem("userName").split(" ");
         let processedName = nameList[0][0] + nameList[nameList.length - 1][0];
         avatar.innerText = processedName.toUpperCase();
-        console.log("fadfads");
-    } else {
+
+        userAvatar.classList.remove("disable")
         userAvatar.src = sessionStorage.getItem("userAvatar")
-    }
+    
 }
+
+renderUserNavbar()
+renderAvatarFromName()

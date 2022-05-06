@@ -96,33 +96,32 @@
 }
 
 .user-task__wrapper {
-    /* background-color: red; */
     width: 40px;
     height: 40px;
     border-radius: 100%;
     overflow: hidden;
-    border: 1px solid var(--soft-pink);
+    border: 1px solid var(--yellow);
+    display: grid;
+    place-items: center;
 }
 
 .user-text-avatar {
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    /* background-color: var(--soft-pink); */
+    background-color: var(--soft-pink);
     display: grid;
     color: var(--constant-white);
     overflow: hidden;
     place-items: center;
     font-size: 1.6rem;
-    object-fit: cover;
-    object-position: center;
+    position: relative;
+
 }
 
 .user-avatar {
-    /* width: 40px;
-    height: 40px; */
     width: 100%;
-    aspect-ratio: 1 / 1;
-    /* height: 100%; */
+    height: auto;
     border-radius: 100%;
+    position: relative;
 }

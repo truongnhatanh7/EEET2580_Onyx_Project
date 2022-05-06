@@ -1,5 +1,5 @@
 if (sessionStorage.getItem("userId") == null) {
-    location.href = "../login2.html";
+    location.href = "../login.html";
 }
 
 const projectList = $(".dashboard__project-list");
@@ -28,7 +28,7 @@ let allUsers = "http://localhost:8080/api/v1/user/all-users/";
 let totalWorkspaces = 0;
 const finish = false;
 const loading = $(".loading-wrapper");
-const logOut = $(".user__navbar-progress-btn");
+
 var globalKeyword = "";
 let filterCondition = "latest";
 let isReversed = false;
@@ -57,23 +57,12 @@ filterOptions.forEach((option) => {
     });
 });
 
-logOut.addEventListener("click", () => {
-    sessionStorage.removeItem("userId");
-    location.href = "../index.html";
-});
-
 viewAllBtn.addEventListener("click", () => {
     currentPage = 0;
     searchInput.value = "";
     searchBtn.click();
 });
 
-// filterBtn.addEventListener("click", () => {
-//     filterOptionsWrapper.classList.toggle("disable");
-// });
-
-renderUserNavbar();
-renderAvatarFromName();
 main();
 
 searchBtn.onclick = () => {

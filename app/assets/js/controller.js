@@ -19,10 +19,10 @@ const listNameInput = $(".workspace__add-input");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
-const userAvatar = $('.user-text-avatar');
-userAvatar.addEventListener('click', () => {
-    location.href = './profile.html'
-})
+// const userAvatar = $('.user-text-avatar');
+// userAvatar.addEventListener('click', () => {
+//     location.href = './profile.html'
+// })
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
