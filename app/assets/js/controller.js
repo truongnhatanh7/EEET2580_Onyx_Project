@@ -21,13 +21,18 @@ const toastMessage = $(".toast-message");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
-const signOut = $(".workspace__sign-out");
+const userAvatar = $('.user-text-avatar');
+userAvatar.addEventListener('click', () => {
+    location.href = './profile.html'
+})
+
+// const signOut = $(".workspace__sign-out");
 ////////////////////////////////////////////////////////////////////////////////
 
-signOut.addEventListener("click", (event) => {
-    sessionStorage.removeItem('userId');
-    location.href = "../index.html";
-})
+// signOut.addEventListener("click", (event) => {
+//     sessionStorage.removeItem('userId');
+//     location.href = "../index.html";
+// })
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
@@ -218,6 +223,8 @@ function handleDeleteList(event) {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Task
+
 
 function handleCloseTaskAdd() {
     let currentModifier = board.querySelector(
@@ -380,8 +387,13 @@ function throwToastEmptyTaskName() {
     }, 2000);
 }
 
-////////////////////////////////
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // Task setting
+
+
 
 const taskSetting = $(".workspace__task-setting");
 const taskSettingInner = $(".workspace__task-setting-wrapper");
@@ -400,8 +412,10 @@ let descContent = ''
 let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
+let taskDelCount = 0;
 
 datepicker(taskSettingDatepicker);
+
 taskSettingDatepicker.addEventListener('click', () => {
     datepickerJS.classList.remove('disable');
 })
@@ -493,23 +507,6 @@ function renderTaskSettingUrgent() {
 
 taskSettingClose.addEventListener("click", (event) => {
     taskSave.click();
-    // if (!datepickerJS.classList.contains('disable')) {
-    //     datepickerJS.classList.add('disable');
-    // }
-    // if (!hitSave) {
-    //     let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
-    //     if (prevPriority == "1") {
-    //         tempTaskUrgent.classList.remove('disable');
-    //     } else {
-    //         tempTaskUrgent.classList.add('disable')
-    //     }
-    // }
-    // currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
-    // sessionStorage.setItem("isEditing", "0");
-    // taskInput.value = "";
-    // taskSetting.classList.add("disable");
-    // taskSetting.classList.remove("enable");
-    // currentTaskNode = null;
 });
 
 taskSave.addEventListener("click", (event) => {
@@ -612,6 +609,8 @@ taskSave.addEventListener("click", (event) => {
             taskInput.value = "";
             taskSetting.classList.add("disable");
             taskSetting.classList.remove("enable");
+            taskDelete.innerText = "Delete task";
+            taskDelCount = 0;
         })
     }
 
@@ -619,17 +618,23 @@ taskSave.addEventListener("click", (event) => {
 });
 
 taskDelete.addEventListener("click", () => {
-    let deleteTaskUrl =
-        "http://localhost:8080/api/v1/task/" +
-        sessionStorage.getItem("currentTask");
-    fetch(deleteTaskUrl, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    currentTaskNode.remove();
-    taskSettingClose.click();
+    if (taskDelCount > 0) {
+        let deleteTaskUrl =
+            "http://localhost:8080/api/v1/task/" +
+            sessionStorage.getItem("currentTask");
+        fetch(deleteTaskUrl, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+        currentTaskNode.remove();
+        taskSettingClose.click();
+        taskDelCount = 0;
+    } else {
+        taskDelete.innerHTML = "Confirm delete?";
+        taskDelCount += 1;
+    }
 });
 
 function handleDeleteTask(event) {

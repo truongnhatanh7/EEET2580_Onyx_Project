@@ -11,29 +11,70 @@ h1{
 }
 
 
-h2{
-    font-size: 24px;
-    font-weight: 600;
-    margin-top: 2rem;
+.user-form__label {
+    font-weight: 500;
+    font-size: 2rem;
 }
 
-h3{
-    font-size: 14px;
-    font-weight: 300;
-    background-color: var(--figma-gray);
-    padding: 24px 40px;
-    border-radius: var(--border-main) 0 0 var(--border-main);
-    opacity: 80%;
-    width: 100%;
+.user-form__header {
+    display: flex;
+    margin-top: 18px;
 }
 
-.return__wrapper{
+.user-form__input-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.user-form__modify-icon {
+    padding: 4px;
+    margin-left: 4px;
+    color: var(--soft-pink);
+    background-color: transparent;
+    border: none;
+}
+
+.user-form__modify-icon:hover {
+    cursor: pointer;
+}
+
+.user-form__modify-wrapper {
+    margin-top: 8px;
+    display: block;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-form__modify-input {
+    margin-top: 8px;
+    padding: 8px;
+    width: 400px;
+    font-size: 1.6rem;
+    border-radius: 8px;
+    border: 1px solid var(--soft-pink);
+    outline: 1px solid var(--soft-pink);
+}
+
+.user-form__modify-btn {
+    border: none;
+    color: var(--white-color);
+    background-color: var(--soft-pink);
+    padding: 8px 16px;
+    border-radius: 8px;
+    margin-top: 8px;
+    width: fit-content;
+}
+
+
+.return__wrapper {
     padding: 12px 20px;
     margin-bottom: 20px;
     display: flex;
     gap: 12px;
-    background-color: var(--pink-color);
+    background-color: var(--soft-pink);
     color: var(--white);
+    align-items: center;
 }
 .return__content{
     color: var(--white);
@@ -55,7 +96,7 @@ h3{
     margin-bottom: 20px;
     display: flex;
     gap: 12px;
-    background-color: var(--hard-pink);
+    background-color: var(--soft-pink);
     color: var(--white);
 }
 
@@ -76,7 +117,7 @@ h3{
 
 }
 
-.signout__btn{
+.sign-out-btn{
     margin-top: 80px;
     width: 100%;
     padding: 20px;

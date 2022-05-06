@@ -16,7 +16,7 @@
     top: 0;
     left: 0;
     right: 0;
-    border-radius: 16px;
+    border-radius: 0 0 16px 16px;
     background-color: var(--white);
     box-shadow: var(--task-shadow);
 }

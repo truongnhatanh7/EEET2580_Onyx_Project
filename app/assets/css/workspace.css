@@ -397,7 +397,8 @@ input[type="text"] {
 }
 
 .workspace__submit-task-btn{
-    width: 230px;
+    width: 250.5px;
+    margin-right: auto;
 }
 
 .workspace__add-list-btn {
@@ -461,7 +462,12 @@ input[type="text"] {
     color: var(--constant-white);
     background-color: var(--red-pastel);
     padding: 12px 20px;
-    margin-left: 12px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+}
+
+.workspace__task-close-btn {
+    margin-left: 0;
 }
 
 .workspace__task-close {

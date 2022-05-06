@@ -5,58 +5,71 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/base.css">
-    <title>Document</title>
+    <title>Profile setting</title>
+
+    <script src="../assets/js/config.js" defer></script>
+    <script src="../assets/js/validator.js" defer></script>
+    <script src="./assets/js/profile.js" defer></script>
 </head>
 <body>
     <main>
+
+        <section class="toast-wrapper disable">
+            <div class="toast">
+                <h2 class="toast-message">Toast message</h2>
+            </div>
+        </section>
+
         <div class="page__wrapper">
             <button class="return__wrapper btn">
-                <a href="./dashboard.html" class="return__content">
-                    <i class="fa-solid fa-arrow-left"></i>
-                    Return back
-                </a>
+                <i class="fa-solid fa-arrow-left"></i>
+                Return back
             </button>
+
             <div class="grid-content header__wrapper">
-                <h1>Profile settings</h1>
-                <button class="btn save__btn">
-                    Save
-                </button>
+                <h1>Profile</h1>
+
             </div>
-            <div class="content__wrapper">
-                <h2>Name</h2>
-                <div class="grid-content">
-                    <h3>Thai Manh Phi</h3>
-                    <button class="btn edit__btn">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+
+            <div class="user-form__wrapper">
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change email</h2>
+                    <button class="user-form__modify-icon modify-email-icon"><i class="fa-solid fa-pen"></i></button>
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-email-wrapper">
+                    <input type="text" class="user-form__modify-input modify-email-input" placeholder="Enter new email address">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-email btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-email btn">Cancel</button>
                 </div>
 
-                <h2>Email</h2>
-                <div class="grid-content">
-                    <h3>phi.thai2@rmit.edu.vn</h3>
-                    <button class="btn edit__btn">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                </div>
 
-                <h2>Password</h2>
-                <div class="grid-content">
-                    <h3>********</h3>
-                    <button class="btn edit__btn">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change password</h2>
+
+                        <button class="user-form__modify-icon modify-password-icon"><i class="fa-solid fa-pen"></i></button>
+
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-password-wrapper">
+                    <input type="password" class="user-form__modify-input modify-old-password" placeholder="Enter old password">
+                    <input type="password" class="user-form__modify-input modify-new-password" placeholder="Enter new password">
+                    <input type="password" class="user-form__modify-input modify-new-password-retype" placeholder="Retype new password">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-password btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-password btn">Cancel</button>
                 </div>
             </div>
-            <h2>Delete account?</h2>
-            <button class="btn delete__btn">Confirm to delete your account</button>
 
-            <button class="btn signout__btn">
-                Sign out
-            </button>
+            <button class="sign-out-btn btn">Sign out</button>
+
         </div>
+
     </main>
 </body>
 </html>

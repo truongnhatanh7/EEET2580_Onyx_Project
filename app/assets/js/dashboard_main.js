@@ -82,7 +82,11 @@ function renderUserNavbar() {
     userName.innerText = sessionStorage.getItem("userName");
 }
 
-const avatar = $(".user-text-avatar");
+const avatar = $(".user-text-avatar")
+avatar.addEventListener('click', () => {
+    location.href = './profile.html'
+})
+
 function renderAvatarFromName() {
     let nameList = sessionStorage.getItem("userName").split(" ");
     let processedName = nameList[0][0] + nameList[nameList.length - 1][0];
@@ -180,10 +184,6 @@ function renderWorkspace(workspaces) {
         cur++;
     }
     paginationRender(newTotalWorkspaces);
-
-    // if (newTotalWorkspaces == 0) {
-    //     throwSearchNotFound();
-    // }
 
     loading.style.visibility = "hidden";
     loading.style.opacity = "0";

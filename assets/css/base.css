@@ -7,7 +7,7 @@ html{
     font-family: "Poppins", sans-serif !important;
     font-size: 60% !important;
     width: 100%;
-    overflow: auto;
+    /* overflow: hidden; */
     scroll-behavior: smooth;
 }
 body {
@@ -37,6 +37,7 @@ body {
     --light-red: #f87ea1;
     --alt-blue: #f5f8ff;
     --tan: #fffbf1;
+    --green: rgb(121, 205, 70);
     --task-color: #ffffff;
     --box-shadow: -24px 24px 48px rgba(217, 217, 217, 0.2), 24px -24px 48px rgba(217, 217, 217, 0.2), -24px -24px 48px rgba(255, 255, 255, 0.9), 24px 24px 60px rgba(217, 217, 217, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(217, 217, 217, 0.5);
     --box-shadow-engrave: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
@@ -184,6 +185,14 @@ textarea {
     left: 0;
     top: 0;
     bottom: 0;
+}
+
+.toast.success {
+    background-color: var(--green);
+}
+
+.toast::before.success {
+    border: 4px solid var(--green);
 
 }
 
