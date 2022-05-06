@@ -179,18 +179,39 @@ function resetAddListBtn() {
     addListBtn.classList.add("enable");
 }
 
+////////////////////////////////////////////////////////////////
+const delListConfirmationBox = $('.workspace__list-del-confirmation-wrapper')
+const delListConfirmationHeader = $('.list-del__message')
+const delListConfirmationAccept = $('.list-del__accept')
+const delListConfirmationDecline = $('.list-del__decline')
+let toBeDeleteListId = -1;
+
 function handleDeleteList(event) {
-    let deleteListUrl =
-        "http://localhost:8080/api/v1/list/" +
-        event.target.parentNode.parentNode.id.slice(5).toString();
+    delListConfirmationBox.classList.remove('disable')
+    delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
+    toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
+
+}
+
+delListConfirmationAccept.addEventListener("click", () => {
+    let deleteListUrl = "http://localhost:8080/api/v1/list/" + toBeDeleteListId
     fetch(deleteListUrl, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         },
+    })
+    .then(() => {
+        delListConfirmationDecline.click();
+    })
+    .then(() => {
+        throwSuccess("Deleted")
     });
-    event.target.parentNode.parentNode.remove();
-}
+})
+
+delListConfirmationDecline.addEventListener("click", () => {
+    delListConfirmationBox.classList.add('disable')
+})
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // Task

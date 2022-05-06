@@ -277,7 +277,15 @@ input[type="text"] {
     background-color: transparent;
 }
 
-
+.workspace__board-list-delete-confirmation {
+    position: absolute;
+    font-size: 1.8rem;
+    right: 18px;
+    vertical-align: middle;
+}
+.workspace__board-list-delete-confirmation i {
+    vertical-align: middle;
+}
 
 .workspace__board-list-header:hover + .workspace__board-list-delete {
     display: block;
@@ -462,8 +470,7 @@ input[type="text"] {
     color: var(--constant-white);
     background-color: var(--red-pastel);
     padding: 12px 20px;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
+
 }
 
 .workspace__task-close-btn {
@@ -475,6 +482,52 @@ input[type="text"] {
     font-size: 1.6rem;
 }
 
+.workspace__list-del-confirmation-wrapper {
+    display: grid;
+    place-items: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 3000;
+}
+
+.workspace__list-del-confirmation {
+    z-index: 3000;
+    padding: 32px;
+    width: max-content;
+    border-radius: 8px;
+    background-color: var(--hard-pink);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.list-del__message {
+    font-size: 1.8rem;
+    color: var(--constant-white);
+    margin-bottom: 8px;
+}
+
+.list-del__accept,
+.list-del__decline {
+    padding: 8px 18px;
+    margin-top: 6px;
+    font-size: 1.6rem;
+}
+
+.list-del__accept {
+    background-color: var(--red-pastel);
+    color: var(--constant-white);
+}
+
+.list-del__decline {
+    background-color: var(--gray);
+    color: var(--constant-white);
+
+}
 
 
 
