@@ -3,7 +3,11 @@ main{
 }
 
 .page__wrapper{
-    max-width: 800px !important;
+    max-width: 896px !important;
+    box-shadow: var(--box-shadow);
+    padding: 48px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 h1{
     font-size: 5rem;
