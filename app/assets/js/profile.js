@@ -17,8 +17,7 @@ const emailInput = $('.modify-email-input');
 const oldPasswordInput = $('.modify-old-password');
 const newPasswordInput = $('.modify-new-password');
 const retypeNewPassword = $('.modify-new-password-retype');
-const toastBox = $(".toast-wrapper");
-const toastMessage = $(".toast-message");
+
 
 modifyEmailTrigger.addEventListener('click', () => {
     modifyEmailWrapper.classList.toggle('disable');
@@ -41,7 +40,10 @@ saveBtnEmail.addEventListener('click', () => {
         .then(() => {
             emailInput.value = ""
             cancelBtnEmail.click();
-        })   
+        })
+        .then(() => {
+            throwSuccess("Success")
+        })
     } else {
         throwError("Invalid email")
     }
@@ -56,13 +58,10 @@ cancelBtnPassword.addEventListener('click', () => {
 })
 
 saveBtnPassword.addEventListener('click', () => {
-
     if (oldPasswordInput.value == '' 
         || newPasswordInput.value == '' 
         || retypeNewPassword.value == ''
-        || !passwordCheck(oldPasswordInput.value)
         || !passwordCheck(newPasswordInput.value)
-        || !passwordCheck(retypeNewPassword.value)
         ) {
         oldPasswordInput.value = ""
         newPasswordInput.value = ""
@@ -78,6 +77,9 @@ saveBtnPassword.addEventListener('click', () => {
             retypeNewPassword.value = ""
             cancelBtnPassword.click();
         })
+        .then(() => {
+            throwSuccess("Success")
+        })
     }
 })
 
@@ -91,22 +93,3 @@ signOutBtn.addEventListener('click', () => {
     location.href = "../index.html";
 })
 
-function throwError(message) {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = message;
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwSuccess(message) {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = message;
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
