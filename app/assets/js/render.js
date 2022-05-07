@@ -102,6 +102,7 @@ function renderBoard(board) {
                         return;
                     } 
 
+
                     let taskHTML = `
                     <div
                         class="workspace__board-list-task

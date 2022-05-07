@@ -19,11 +19,6 @@ const listNameInput = $(".workspace__add-input");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
-// const userAvatar = $('.user-text-avatar');
-// userAvatar.addEventListener('click', () => {
-//     location.href = './profile.html'
-// })
-
 ////////////////////////////////////////////////////////////////////////////////
 // Board
 
@@ -36,6 +31,16 @@ board.addEventListener("wheel", (event) => {
         event.preventDefault();
     }
 });
+
+fetchOwner();
+function fetchOwner() {
+    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    .then(response => response.json())
+    .then(data => {
+        sessionStorage.setItem("currentOwnerId", data);
+    })
+
+}
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -187,9 +192,13 @@ const delListConfirmationDecline = $('.list-del__decline')
 let toBeDeleteListId = -1;
 
 function handleDeleteList(event) {
-    delListConfirmationBox.classList.remove('disable')
-    delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
-    toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
+    if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
+        throwError("Only owner could delete this list")
+    } else {
+        delListConfirmationBox.classList.remove('disable')
+        delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
+        toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
+    }
 
 }
 
@@ -381,6 +390,8 @@ let isUrgent = false;
 let currentTask = null;
 let currentTaskNode = null;
 let taskDelCount = 0;
+
+
 
 datepicker(taskSettingDatepicker);
 
@@ -647,8 +658,9 @@ function switchTheme(e) {
 }
 darkModeSwitch.addEventListener("change", switchTheme);
 
-////////////////////////////////////////////////////////////////////////////////////////////////
 
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Workspace status
 
 const statusBtn = $(".workspace__navbar-progress-btn");
@@ -710,7 +722,7 @@ postDeleteBtn.addEventListener("click", () => {
     }
 });
 
-///////////////////////////////////////////////////////////////
+
 // Collab
 
 const collaboratorList = $(".workspace__collaborator-list");
@@ -719,6 +731,8 @@ const addCollaboratorInput = $(".workspace__add-collaborator-input");
 
 fetchUserInWorkspace();
 
+
+
 function fetchUserInWorkspace() {
     let workspaceUrl =
         "http://localhost:8080/api/v1/workspace/get-workspace/" +
@@ -726,7 +740,6 @@ function fetchUserInWorkspace() {
     fetch(workspaceUrl)
         .then((response) => response.json())
         .then((workspace) => {
-            // workspaceStatusTitle.textContent = workspace.workspaceTitle;
             return workspace.users;
         })
         .then((users) => {
@@ -737,13 +750,16 @@ function fetchUserInWorkspace() {
 function renderUserInWorkspace(users) {
     if (users.length == 0) {
         collaboratorList.innerHTML = "";
-        // Warning to delete workspace
+        // Warning to delete workspace if there are no owners
         preDeleteInput.value = "delete this workspace";
         postDeleteBtn.click();
         location.assign("./dashboard.html");
     } else {
         collaboratorList.innerHTML = "";
         users.forEach((user) => {
+            if (user.userId == sessionStorage.getItem("currentOwnerId")) {
+                return;
+            }
             let tempHtml = `
         <div class="workspace__collaborator" id="user_${user.userId} ">
             <h3 class="workspace__collaborator-name" >${user.name}</h3>
@@ -830,4 +846,10 @@ function handleEmailUser(username) {
             'Content-Type': 'application/json'
         }
     })
+}
+
+//////////////////////////////////  
+
+if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
+    taskDelete.classList.add('disable')
 }
