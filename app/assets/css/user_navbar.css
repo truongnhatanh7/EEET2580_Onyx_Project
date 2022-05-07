@@ -30,9 +30,11 @@
     color: var(--black);
     margin-right: 32px;
     display: inline-block;
+    transition: 0.2s;
 }
 .user__navbar-link:hover {
     opacity: 0.7;
+    transform: scale(1.05);
 }
 
 .user__navbar-link-home {
@@ -96,13 +98,20 @@
 }
 
 .user-task__wrapper {
-    width: 40px;
-    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
     border-radius: 100%;
     overflow: hidden;
-    border: 1px solid var(--yellow);
-    display: grid;
-    place-items: center;
+    border: 2px solid var(--yellow);
+    position: relative;
+    transition: 0.2s;
+
+}
+
+.user-task__wrapper:hover {
+    transform: scale(1.1);
 }
 
 .user-text-avatar {
@@ -115,7 +124,6 @@
     overflow: hidden;
     place-items: center;
     font-size: 1.6rem;
-    position: relative;
 
 }
 
@@ -123,5 +131,5 @@
     width: 100%;
     height: auto;
     border-radius: 100%;
-    position: relative;
+
 }
