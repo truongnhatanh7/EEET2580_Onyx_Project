@@ -45,7 +45,10 @@
         transform: translateY(-50%) ;
         font-size: 12rem;
         /* animation: hueSwitch 1s infinite alternate; */
-        box-shadow: var(--box-engrave);
+        /* box-shadow: var(--box-engrave); */
+        color: #e4e6ff;
+        text-shadow: -5px 5px 0px #5965d4, -10px 10px 0px #4c57b7, -15px 15px 0px #3d4695;
+
 
     }
 
