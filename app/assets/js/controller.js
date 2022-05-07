@@ -849,7 +849,10 @@ function handleEmailUser(username) {
 }
 
 //////////////////////////////////  
+const workspaceStatusDeleteSection = $('.workspace__delete-section')
+
 
 if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
-    taskDelete.classList.add('disable')
+    taskDelete.remove();
+    workspaceStatusDeleteSection.remove();
 }
