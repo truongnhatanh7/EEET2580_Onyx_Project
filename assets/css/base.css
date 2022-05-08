@@ -223,11 +223,11 @@ textarea {
 }
 
 .loading-wrapper {
-    width: 100%; 
+    width: 100vw; 
     height: 100vh;
     display: grid;
-    position: absolute;
-    z-index: 2;
+    position: fixed;
+    z-index: 99999;
     place-items: center;
     background-color: var(--white);
     visibility: visible;
@@ -240,7 +240,22 @@ textarea {
     height: 100px;
     background-color: var(--purple);
     border-radius: 8px;
+    position: absolute;
+    right: 48px;
+    bottom: 48px;
+    z-index: 99999;
     animation: flip 1.2s ease-in-out infinite;
+}
+
+.loading {
+    position: absolute;
+    width: 48px;
+    height: 48px;
+    right: 48px;
+    bottom: 48px;
+    border-radius: 8px;
+    background-color: var(--soft-pink);
+    animation: flip 1s infinite alternate;
 }
 
 @keyframes fadeOut {
@@ -259,6 +274,7 @@ textarea {
 
    50% {
       transform: perspective(200px) rotateX(180deg) rotateY(0);
+      background-color: var(--yellow);
    }
 
    100% {

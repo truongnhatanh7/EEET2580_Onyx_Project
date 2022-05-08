@@ -16,6 +16,7 @@ const modifyNameTrigger = $('.modify-name-icon');
 const modifyNameWrapper = $('.user-form__modify-name-wrapper')
 const modifyAvatarTrigger = $('.modify-avatar-icon')
 const modifyAvatarWrapper = $('.user-form__modify-avatar-wrapper')
+const loading = $('.loading')
 
 const emailInput = $('.modify-email-input');
 const oldPasswordInput = $('.modify-old-password');
@@ -51,40 +52,45 @@ const saveBtnAvatar = $('.user-form__modify-btn--save-avatar')
 const cancelBtnAvatar = $('.user-form__modify-btn--cancel-avatar')
 
 saveBtnAvatar.addEventListener('click', () => {
+    loading.classList.remove('disable')
     const url = "https://api.cloudinary.com/v1_1/dbyasuo/image/upload";
-
     const formData = new FormData();
     console.log(avatarInput.files[0])
     formData.append("file", avatarInput.files[0])
     formData.append("upload_preset", "vdfx4jbe");
-    fetch(url, {
-        method: "POST",
-        body: formData
-    })
-    .then((response) => {
-        return response.json();
-    })
-    .then((data) => {
-        fetch("http://localhost:8080/api/v1/user/edit-avatar?" 
-        + new URLSearchParams({
-            userId: sessionStorage.getItem('userId'),
-            avatar: data.url
-        }), {
-            method: "PATCH"
+    if (avatarInput.files[0].type.includes('image')) {
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            fetch("http://localhost:8080/api/v1/user/edit-avatar?" 
+            + new URLSearchParams({
+                userId: sessionStorage.getItem('userId'),
+                avatar: data.url
+            }), {
+                method: "PATCH"
+            })
+            .then(() => {
+                sessionStorage.setItem("userAvatar", data.url)
+            })
         })
         .then(() => {
-            sessionStorage.setItem("userAvatar", data.url)
+            throwSuccess("Success")
         })
-    })
-    .then(() => {
-        throwSuccess("Success")
-    })
-    .catch(() => {
-        throwError("Unexpected error")
-    })
-    .finally(() => {
-        cancelBtnAvatar.click();
-    });
+        .catch(() => {
+            throwError("Unexpected error")
+        })
+        .finally(() => {
+            cancelBtnAvatar.click();
+            loading.classList.add('disable')
+        });
+    } else {
+        throwError("Invalid file type")
+    }
 })
 
 cancelBtnAvatar.addEventListener('click', () => {
@@ -93,6 +99,7 @@ cancelBtnAvatar.addEventListener('click', () => {
 
 saveBtnName.addEventListener('click', () => {
     if (firstNameInput.value != "" && lastNameInput.value != "") {
+        loading.classList.remove('disable')
         fetch("http://localhost:8080/api/v1/user/edit-name/" + sessionStorage.getItem("userId") + "/" + firstNameInput.value + " " + lastNameInput.value,
         {
                 method: 'PATCH'
@@ -102,7 +109,16 @@ saveBtnName.addEventListener('click', () => {
         })
         .then(() => {
             throwSuccess("Success")
+            loading.classList.add('disable')
+
         })
+        .catch(() => {
+            throwError("Unexpected error")
+        })
+        .finally(() => {
+            loading.classList.add('disable')
+        })
+        
     } else {
         throwError("Invalid input")
     }
@@ -113,6 +129,7 @@ cancelBtnName.addEventListener('click', () => {
 })
 
 saveBtnEmail.addEventListener('click', () => {
+    loading.classList.remove('disable')
     let uniqueEmailFlag = true;
     fetch("http://localhost:8080/api/v1/user/all-users/")
     .then(response => response.json())
@@ -135,6 +152,9 @@ saveBtnEmail.addEventListener('click', () => {
             .then(() => {
                 throwSuccess("Success")
             })
+            .catch(() => {
+                throwError("Unexpected error")
+            })
         } else {
             if (!uniqueEmailFlag) {
                 throwError("Please use another email address")
@@ -145,6 +165,12 @@ saveBtnEmail.addEventListener('click', () => {
     })
     .then(() => {
         emailInput.value = ""
+    })
+    .catch(() => {
+        throwError("Unexpected error")
+    })
+    .finally(() => {
+        loading.classList.add('disable')
     })
 })
 
@@ -195,7 +221,13 @@ saveBtnPassword.addEventListener('click', () => {
             .then(() => {
                 throwSuccess("Success")
             })
+            .catch(() => {
+                throwError("Unexpected error")
+            })
         }
+    })
+    .catch(() => {
+        throwError("Unexpected error")
     })
 })
 

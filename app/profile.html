@@ -11,8 +11,8 @@
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
         rel="stylesheet"
     />
-    <link rel="stylesheet" href="./assets/css/profile.css">
     <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
     <title>Profile setting</title>
 
     <script src="../assets/js/config.js" defer></script>
@@ -21,7 +21,10 @@
     <script src="./assets/js/profile.js" defer></script>
 </head>
 <body>
+
+    <div class="loading disable"></div>
     <main>
+
 
         <section class="toast-wrapper disable">
             <div class="toast">
@@ -61,7 +64,6 @@
                 </section>
                 <div class="user-form__modify-wrapper disable user-form__modify-avatar-wrapper">
                     <h3 class="user-form__sub-label">New avatar</h3>
-                    <label for="avatar-upload" class="upload-mask">Upload new Avatar</label>
                     <input id="avatar-upload" type="file" class="user-form__modify-input modify-avatar">
                     <button class="user-form__modify-btn user-form__modify-btn--save-avatar btn">Save</button>
                     <button class="user-form__modify-btn user-form__modify-btn--cancel-avatar btn secondary-btn">Cancel</button>

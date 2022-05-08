@@ -440,11 +440,11 @@ function handleTaskSetting(event) {
     taskSetting.classList.remove("disable");
     let windowHeight = window.outerHeight;
     let divisionBreakpoint = Math.floor(windowHeight / 2)
-    if (boundingClientRect.top > divisionBreakpoint) {
+    if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
         taskSettingInner.style.top = (boundingClientRect.top - 334 - 280 + 55) + "px";
         taskSettingInner.style.flexDirection = "column-reverse";
         taskSettingDesc.style.marginBottom = "8px";
-    } else {
+    } else { // Normal column
         taskSettingInner.style.flexDirection = "column";
         taskSettingDesc.style.marginBottom = "0px";
         taskSettingInner.style.top = boundingClientRect.top + "px";
