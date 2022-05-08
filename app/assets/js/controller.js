@@ -19,6 +19,8 @@ const listNameInput = $(".workspace__add-input");
 const darkIcon = $(".workspace-darkmode");
 const lightIcon = $(".workspace-lightmode");
 
+const loading = $('.loading')
+
 ////////////////////////////////////////////////////////////////////////////////
 // Board
 
@@ -430,6 +432,8 @@ function handleTaskSetting(event) {
     currentTask = event.target.parentNode.id.slice(5);
     currentTaskNode = event.target.parentNode;
     renderTaskSettingUrgent();
+    renderTaskDesc();
+    renderDeadline();
 
     prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
 
@@ -458,8 +462,7 @@ function handleTaskSetting(event) {
         .querySelector(".workspace__board-list-task-content")
         .innerText.trim();
     taskInput.focus();
-    renderTaskDesc();
-    renderDeadline();
+
 }
 
 function renderDeadline() {
@@ -501,6 +504,7 @@ taskSave.addEventListener("click", (event) => {
     } else if (newTaskContent != "" && newTaskContent.length > 25) {
         throwError("Empty task name!")
     } else {
+        loading.classList.remove('disable')
         sessionStorage.setItem("currentTaskContent", newTaskContent.trim());
         fetch(editTaskUrl, {
             method: "PUT",
@@ -569,12 +573,8 @@ taskSave.addEventListener("click", (event) => {
         })
         .then(() => {
             sessionStorage.setItem("isEditing", "0");
-            // taskSettingClose.click();
         })
         .then(() => {
-            // if (!datepickerJS.classList.contains('disable')) {
-            //     datepickerJS.classList.add('disable');
-            // }
             if (!hitSave) {
                 let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
                 if (prevPriority == "1") {
@@ -584,12 +584,18 @@ taskSave.addEventListener("click", (event) => {
                 }
             }
             currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
+            taskDelCount = 0;
+        })
+        .catch(() => {
+            throwError("Unexpected error")
+        })
+        .finally(() => {
             sessionStorage.setItem("isEditing", "0");
             taskInput.value = "";
+            taskDelete.innerText = "Delete task";
             taskSetting.classList.add("disable");
             taskSetting.classList.remove("enable");
-            taskDelete.innerText = "Delete task";
-            taskDelCount = 0;
+            loading.classList.add('disable')
         })
     }
 
