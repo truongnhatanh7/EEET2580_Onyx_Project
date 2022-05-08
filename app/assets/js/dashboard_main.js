@@ -27,7 +27,7 @@ let allWPUrl = "http://localhost:8080/api/v1/workspace/";
 let allUsers = "http://localhost:8080/api/v1/user/all-users/";
 let totalWorkspaces = 0;
 const finish = false;
-const loading = $(".loading-wrapper");
+
 
 var globalKeyword = "";
 let filterCondition = "latest";
@@ -151,10 +151,6 @@ function renderWorkspace(workspaces) {
         cur++;
     }
     paginationRender(newTotalWorkspaces);
-
-    loading.style.visibility = "hidden";
-    loading.style.opacity = "0";
-    loading.remove();
 }
 
 function handleCardClick(event) {

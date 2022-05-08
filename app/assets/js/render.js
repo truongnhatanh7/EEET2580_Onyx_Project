@@ -3,7 +3,6 @@ let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
 let boardObj;
 const workspaceBoard = $(".workspace__board");
 const workspaceName = $('.workspace__info-name')
-const loading = $('.loading-wrapper');
 const showOnlyUrgentCheckbox = $('#show-only-urgent')
 const showOnlyUrgentMask = $('.show-urgent-mask')
 const showOverdue = $('#show-overdue')
@@ -47,6 +46,7 @@ setInterval(function() {
 }, 1000)
 
 function fetchBoardInfo() {
+    
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
@@ -167,9 +167,7 @@ function renderBoard(board) {
         }
     });
 
-    loading.style.visibility = "hidden";
-    loading.style.opacity = "0";
-    loading.remove();
+
 }
 
 function setScrollRule(scrollRule) {

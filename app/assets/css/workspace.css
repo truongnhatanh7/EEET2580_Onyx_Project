@@ -396,7 +396,7 @@ input[type="text"] {
     background-color: var(--white);
     border-radius: 8px;
     min-width: 360px;
-    /* margin-left: 16px; */
+
     margin-right: 16px;
 }
 
@@ -410,11 +410,14 @@ input[type="text"] {
 .workspace__submit-btn {
     margin-bottom: 20px;
     width: 250.5px;
+    transition: 0.1s;
+
 }
 
 .workspace__submit-task-btn{
     width: 250.5px;
     margin-right: auto;
+    transition: 0.1s;
 }
 
 .workspace__add-list-btn {
@@ -423,7 +426,7 @@ input[type="text"] {
     min-width: 360px;
     margin-top: 0;
     padding: 16px 20px;
-    transition: 0.2s;
+    transition: 0.1s;
 
 }
 
@@ -458,6 +461,10 @@ input[type="text"] {
 
 }
 
+.workspace__add-task-btn {
+    transition: 0.1s;
+}
+
 .workspace__submit-title {
     font-size: 2rem;
     font-weight: 700;
@@ -480,6 +487,8 @@ input[type="text"] {
     color: var(--constant-white);
     background-color: var(--red-pastel);
     padding: 12px 20px;
+    transition: 0.1s;
+
 
 }
 
@@ -525,6 +534,8 @@ input[type="text"] {
     padding: 8px 18px;
     margin-top: 8px;
     font-size: 1.6rem;
+    transition: 0.1s;
+
 }
 
 .list-del__accept {
@@ -534,7 +545,7 @@ input[type="text"] {
 
 .list-del__decline {
     background-color: var(--gray);
-    color: var(--constant-white);
+    color: var(--black);
 
 }
 
