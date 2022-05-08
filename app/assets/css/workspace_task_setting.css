@@ -1,0 +1,124 @@
+@import "./workspace_navbar_user.css";
+.workspace__task-setting {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    animation: slideIn 0.2s;
+}
+
+.workspace__task-setting-wrapper {
+    position: absolute;
+    width: 324px;
+    height: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--border-sub);
+    align-items: flex-end;
+}
+
+.workspace__task-setting-close {
+    display: none;
+    background-color: var(--white);
+    color: var(--black);
+    width: fit-content;
+    height: 55px;
+    padding: 0 24px;
+    position: absolute;
+    right: -68px;
+    border-radius: var(--border-sub);
+}
+
+.workspace__task-setting-input {
+    padding: 16px 16px;
+    border: none;
+    border-radius: var(--border-sub);
+    outline: var(--soft-pink);
+    font-size: 1.6rem;
+    width: 100%;
+}
+
+.workspace__task-setting-desc {
+    resize: none;
+    min-width: 100%;
+    border-radius: var(--border-sub);
+    padding: 16px;
+    margin-top: 8px;
+    outline: none;
+    height: 120px;
+}
+
+.workspace__task-setting-btn {
+    z-index: -1;
+    margin-top: 8px;
+    width: 50%;
+    padding: 8px 0;
+    background-color: var(--soft-pink);
+    color: var(--constant-white);
+    animation: appearMagic 0.2s;
+    display: none;
+}
+
+.workspace__task-setting-urgent {
+    margin-top: 8px;
+    padding: 8px 16px;
+}
+
+.workspace__task-delete-btn {
+    margin-top: 8px;
+    padding: 8px 0;
+    background-color: var(--red);
+    color: var(--constant-white);
+    width: 50%;
+    animation: appearMagic 0.2s;
+}
+
+.workspace__board-list-task-edit {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--soft-pink);
+    padding: 4px;
+    display: none;
+}
+
+.workspace__task-setting-datepicker {
+    margin-top: 8px;
+    padding: 8px 16px;
+}
+
+.workspace__task-deadline {
+    padding: 8px 16px;
+    font-size: 1.6rem;
+    margin-top: 8px;
+    color: var(--constant-white);
+    border: 1px solid var(--constant-white);
+    width: 100%;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.workspace__task-deadline:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    
+}
+    
+.deadline-change-icon {
+    color: var(--soft-pink);
+    margin-left: auto;
+}

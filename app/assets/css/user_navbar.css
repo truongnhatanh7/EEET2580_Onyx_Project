@@ -1,0 +1,138 @@
+@import "workspace_navbar_user.css";
+
+.user__navbar {
+    padding: 0;
+    height: var(--user-nav-height);
+    border-radius: 0 !important;
+    position: fixed;
+    top: 0; 
+    right: 0;
+    left: 0;
+    width: 100%;
+    color: var(--black);
+    display: flex;
+    justify-content: space-between;
+    z-index: 3;
+    box-shadow: var(--task-shadow);
+    backdrop-filter: blur(28px);
+    background-color: var(--white);
+}
+
+.user__navbar-left-wrapper {
+    width: 100%;
+    padding-left: 48px;
+    
+    font-size: 1.6rem;
+    line-height: 64px;
+}
+.user__navbar-link {
+    text-decoration: none;
+    color: var(--black);
+    margin-right: 32px;
+    display: inline-block;
+    transition: 0.2s;
+}
+.user__navbar-link:hover {
+    opacity: 0.7;
+    transform: scale(1.05);
+}
+
+.user__navbar-link-home {
+    text-decoration: none;
+    color: var(--constant-white);
+
+}
+
+.user__navbar-home-btn {
+    padding: 8px 16px;
+    background-color: var(--soft-pink);
+    color: var(--constant-white);
+
+}
+
+@media (max-width: 767px) {
+    /* .user__navbar-right-wrapper {
+        display: none !important;
+    } */
+
+    /* .user__navbar-link:nth-child(1) {
+        display: none !important;
+    } */
+    /* .active{
+        display: none !important;
+    } */
+}
+
+.user__navbar-project-name {
+    color: var(--black);
+    display: block;
+}
+
+.user__navbar-right-wrapper {
+    width: 360px;
+    padding-right: 48px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.user__navbar-right-avatar-wrapper {
+    object-fit: contain;
+    width: 64px;
+    display: flex;
+    height: 64px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.active{
+    padding: 0 20px;
+    border-radius: var(--button-border);
+    text-decoration: none;
+    color: var(--black);
+    margin-right: 32px;
+    display: inline-block;
+    transition: 0.3s;
+    line-height: 40px;
+    background-color: var(--yellow);
+    transition: 1s;
+}
+
+.user-task__wrapper {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 40px;
+    max-height: 40px;
+    border-radius: 100%;
+    overflow: hidden;
+    border: 2px solid var(--yellow);
+    position: relative;
+    transition: 0.2s;
+
+}
+
+.user-task__wrapper:hover {
+    transform: scale(1.1);
+}
+
+.user-text-avatar {
+    min-width: 36px;
+    min-height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    border-radius: 100%;
+    background-color: var(--soft-pink);
+    display: grid;
+    color: var(--constant-white);
+    overflow: hidden;
+    place-items: center;
+    font-size: 1.4rem;
+
+}
+
+.user-avatar {
+    min-width: 36px;
+    max-width: 36px;
+    height: auto;
+    border-radius: 100%;
+
+}

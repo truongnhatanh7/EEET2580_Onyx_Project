@@ -1,0 +1,36 @@
+@media (max-width: 1040px) {
+    .faq__card-content p {
+        line-height: 2;
+        padding-left: 1.5em;
+    }
+}
+@media (max-width: 768px) {
+    
+    .faq__card > summary {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .faq__card  {
+        background-color: var(--white);
+        margin-bottom: 20px;
+        border-radius: 0;
+    }
+    /* wrapper of cards */
+    .faq__wrapper {
+        padding: 10em 0;
+        width: 100%;
+    }
+    /* content */
+    .faq__card-content {
+        flex-direction: column;
+        padding: 0.2em 0;
+    }
+    .faq__card-content p {
+        width: 100%;
+        padding: 0 2.5em 1.5em;
+        order: 2;
+    }
+    .faq__card-content img {
+        width: 90%;
+    }
+}

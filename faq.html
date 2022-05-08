@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link Poppins font for logo font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel = "icon" href = 
+    "https://deciem.com/on/demandware.static/Sites-deciem-Site/-/default/dw7f9915df/images/brands-logo/theordinary_black.svg" 
+            type = "image/x-icon">
+
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/faq.css">
+    <link rel="stylesheet" href="./assets/css/faq-responsive.css">
+    <link rel="stylesheet" href="./assets/css/homepage.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+
+    <script src="./assets/js/config.js" defer></script>
+    <script src="./assets/js/navbar.js" defer></script>
+    
+    <title>ONYX | FAQ</title>
+</head>
+<body class="page__wrapper">
+    <!-- Back to top button -->
+    <header class="home__header">
+        <header class="home__header">
+            <nav class="home__navbar">
+                <div class="navbar__logo">ONYX</div>
+
+                <ul class="navbar__list">
+                    <li class="navbar__item">
+                        <a href="index.html" class="navbar__link">home</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="about.html" class="navbar__link">about</a>
+                    </li>
+                    <li class="navbar__item">
+                        <a href="faq.html" class="navbar__link">faq</a>
+                    </li>
+                </ul>
+
+                <button class="navbar__login btn">Login</button>
+            </nav>
+            <div class="navbar__hamburger-wrapper">
+                <i class="fa-solid fa-bars navbar__hamburger"></i>
+            </div>
+        </header>
+    <main class="flex flex-center">
+        <a id="button" class="hide" onclick = "backToTopClick()"></a>
+        <h1 class="faq__title">Help center</h1>
+        <input type="text" class="faq__find" placeholder="Search for a topic" onkeyup="filterFaqCard()">
+        <div class="faq__wrapper flex flex-center">
+        </div>
+    </main>
+</body>
+<script src="./assets/js/faq.js"></script>
+</html>
+

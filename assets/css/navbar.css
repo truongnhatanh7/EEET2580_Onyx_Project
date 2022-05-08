@@ -1,69 +1,157 @@
-/* start of header or navbar */
-.header {
-    /* Position */
+.home__header {
+    width: 100%;
+}
+
+.home__navbar {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 48px;
+    width: 80%;
+    margin: 0;
+    height: 80px;
+    margin: 0 auto;
     position: fixed;
+    z-index: 1000;
     top: 0;
     left: 0;
     right: 0;
-    z-index: 100;
-    overflow: hidden;
+    border-radius: 0 0 16px 16px;
+    background-color: var(--white);
+    box-shadow: var(--task-shadow);
 }
-.header__navbar {
-    backdrop-filter: blur(28px);
-    background-color: #ffffff9a;
-    
-    /* size */
-    border-radius: 25px;
-    box-sizing: border-box;
-    height: 10rem;
-    padding: 5px 20px;
-    margin: 20px 60px;
 
-    /* display element on same line */
+.navbar__logo {
+    font-weight: bold;
+    font-size: 3rem;
+}
+
+.navbar__list {
+    list-style: none;
+    position: absolute;
+    right: 50%;
+    transform: translateX(50%);
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: rgba(138, 121, 211, 0.274) 6px 10px 15px -6px;
-}
-.navbar__name {
-    display: inline-block;
-    padding: 0 var(--position-horizon);
-    width: 15rem;
-}
-.navbar__menu {
-    height: 100%;
-    font-size: 2rem;
-    display: inline-block;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 3rem;
+    gap: 18px;
+    margin: 0 auto !important;
 }
 
-.navbar__icon{
-    color: var(--white);
+.navbar__item {
 }
-.navbar__menu-element-link {
-    /* make <a> become block */
-    display: inline-block;
-    height: auto;
 
+.navbar__link {
+    display: block;
     text-decoration: none;
-    color: black;
-    text-transform: uppercase;
-    letter-spacing: 0.2rem;
+    font-size: 1.8rem;
+    margin: 0 4px;
+    color: var(--black);
     font-weight: 400;
+    text-transform: capitalize;
+    transition: 0.2s;
 }
-.navbar__workspace {
-    width: 15rem;
-    background-color: var(--yellow);
 
-    color: var(--dark);
-    padding: 15px 0;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+.navbar__link:hover {
+    cursor: pointer;
+    color: var(--pink-color);
+    transform: scale(1.1);
+    /* opacity: 0.7; */
 }
-.navbar__workspace svg{
-    text-align: center;
-    height: 100%;
+
+.navbar__login {
+    font-size: 1.8rem;
+    text-transform: capitalize;
+
+    background-color: var(--yellow);
+    padding: 12px 24px;
+    transition: 0.2s;
+
 }
-/* end of header or navbar */
+
+.navbar__login:hover {
+    transform: scale(1.1);
+    
+}
+
+.navbar__hamburger-wrapper {
+    position: fixed;
+    font-size: 2rem;
+    color: var(--yellow);
+    background-color: var(--pink-color);
+    border-radius: 0 8px 8px 0;
+    left: 0;
+    display: none;
+    place-items: center;
+    z-index: 1000;
+    height: 48px;
+    width: 48px;
+    top: 12px;
+}
+
+.navbar__hamburger-wrapper i {
+    display: block;
+}
+
+.navbar__hamburger-wrapper:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 769px) {
+    .home__navbar {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar__hamburger-wrapper {
+        display: grid;
+    }
+
+    .home__navbar {
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        border-radius: 0;
+        box-shadow: none;
+        display: none;
+
+    }
+
+    .navbar__list {
+
+        position: fixed;
+        top: 80px;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--white);
+        gap: 0;
+    }
+
+    .navbar__item {
+        padding: 0 18px;
+        display: grid;
+        place-items: center;
+        width: 100%;
+        text-align: center;
+        height: 80px;
+        border-top: 1px solid var(--gray);
+    }
+
+    .navbar__link {
+        line-height: 80px;
+        width: 100%;
+    }
+
+    .navbar__login {
+
+        width: 100%;
+        position: fixed;
+        border-radius: 0 !important;
+        top: 320px;
+        height: 80px;
+        box-shadow: var(--task-shadow);
+
+
+    }
+
+    
+}
