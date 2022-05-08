@@ -1,6 +1,6 @@
 .datepicker {
     background-color: white;
-    position: absolute;
+    /* position: absolute; */
     /* right: -94%;
     top: 52%; */
     right: -88%;
@@ -8,6 +8,7 @@
     padding: 8px;
     font-size: 1.4rem;
     border-radius: 8px;
+    margin-top: 8px;
 
 }
 
