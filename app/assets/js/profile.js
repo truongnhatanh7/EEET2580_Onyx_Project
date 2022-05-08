@@ -237,7 +237,8 @@ saveBtnPassword.addEventListener('click', () => {
 
 const signOutBtn = $('.sign-out-btn')
 signOutBtn.addEventListener('click', () => {
-    sessionStorage.removeItem('userId');
+    // sessionStorage.removeItem('userId');
+    sessionStorage.clear();
     location.href = "../index.html";
 })
 
