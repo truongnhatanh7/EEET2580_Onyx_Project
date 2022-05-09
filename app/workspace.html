@@ -21,20 +21,26 @@
         <link rel="stylesheet" href="../assets/css/base.css" />
         <link rel="stylesheet" href="./assets/css/workspace.css" />
         <link rel="stylesheet" href="./assets/css/datepicker.css" />
+        <link rel="stylesheet" href="./assets/css/user_navbar.css">
+
+        <script src="../assets/js/config.js" defer></script>
+        <script src="../assets/js/toast.js" defer></script>
+        <script src="./assets/js/avatar.js" defer></script>
+        <script src="./assets/js/debounce.js" defer></script>
+        <script src="./assets/js/workspace_status.js" defer></script>
         <script src="./assets/js/datepicker.js" defer></script>
         <script src="./assets/js/dragndrop.js" defer></script>
+        <script src="./assets/js/task_setting.js" defer></script>
         <script src="./assets/js/controller.js" defer></script>
         <script src="./assets/js/render.js" defer></script>
-        <script src="./assets/js/debounce.js" defer></script>
+        <script src="./assets/js/darkmode.js" defer></script>
+
     </head>
     <body>
+        <div class="loading disable"></div>
         <main id="workspace-root">
-            <div class="loading-wrapper">
-                <div class="square-loading"></div>
-            </div>
             <nav class="user__navbar">
                 <div class="user__navbar-left-wrapper">
-                    <a href="../index.html" class="user__navbar-link">Home</a>
                     <a href="dashboard.html" class="user__navbar-link">
                         Dashboard
                     </a>
@@ -42,23 +48,8 @@
 
                 <div class="user__navbar-right-wrapper">
                     <div class="user-task__wrapper">
-                        <!-- <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img"> -->
-                        <div class="user-text-avatar"></div>
-                        <div class="user-list__wrapper">
-                            <div class="user-list-img__wrapper">
-                                <span class="user-list-img__name"
-                                    >"Thai Manh Phi"</span
-                                >
-                                <!-- <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img-active"> -->
-                            </div>
-                            <div class="user-list-table">
-                                <div class="list-content_wrapper user__navbar-progress-btn workspace__sign-out">
-                                    <a class="list-content">
-                                        Sign-out
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <img class="user-avatar" src="" />
+                        <div class="user-text-avatar disable"></div>
                     </div>
                 </div>
             </nav>
@@ -73,12 +64,9 @@
                 <div class="workspace__info__tittle">
                     <h1 class="workspace__info-name"></h1>
                 </div>
-                <div class="workspace__info-urgent">
-                    <div class="list-content_wrapper">
-                        <div class="user__navbar-darkmode-wrapper">
-                            <!-- <p class="user__navbar-darkmode-tittle">
-                                Dark mode
-                            </p> -->
+                <div class="workspace__info-ultility">
+                    <div class="ultility-wrapper">
+                        <div class="">
                             <input
                                 type="checkbox"
                                 id="darkmode-switch"
@@ -93,12 +81,13 @@
                             </label>
                         </div>
                     </div>
-                    <div class="list-content_wrapper flex flex-row flex-center relative">
+
+                    <div class="ultility-wrapper filter">
                         <i class="fa-solid fa-filter"></i>
-                        <p class="list-content-tittle">Filter</p>
+                        <p class="filter__title">Filter</p>
                         <div class="filter__wrapper">
                             <div class="filter-content__wrapper">
-                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
+                                <div class="filter-urgent-task__wrapper">
                                     <p class="workspace__info-urgent-desc">
                                         Urgent task
                                     </p>
@@ -107,7 +96,7 @@
                                         <label for="show-only-urgent" class="switch"></label>
                                     </div>
                                 </div>
-                                <div class="filter-urgent-task__wrapper flex flex-row flex-center-spacebtw">
+                                <div class="filter-urgent-task__wrapper">
                                     <p class="workspace__info-urgent-desc">
                                         Overdue task
                                     </p>
@@ -119,7 +108,7 @@
                             </div>
                         </div> 
                     </div>
-                    <div class="list-content_wrapper workspace__navbar-progress-btn">
+                    <div class="ultility-wrapper workspace__navbar-progress-btn">
                         <i class="fa-solid fa-gear"></i>
                     </div>
                 </div>
@@ -163,10 +152,7 @@
                         rows="3"
                     ></textarea>
                     <p class="workspace__task-deadline workspace__task-setting-datepicker"></p>
-                    <!-- <button class="workspace__task-setting-datepicker btn">
-                        Change deadline
-                    </button> -->
-                    <div class="datepicker disable">
+                    <div class="datepicker">
                         <div class="datepicker__header">
                             <p class="datepicker__prev"><</p>
                             <h1 class="datepicker__year">May 2022</h1>
@@ -298,6 +284,15 @@
                     </div>
                 </div>
             </section>
+
+            <section class="workspace__list-del-confirmation-wrapper disable">
+                <div class="workspace__list-del-confirmation">
+                    <p class="list-del__message">Do you want to delete this list?</p>
+                    <button class="list-del__accept btn">Accept</button>
+                    <button class="list-del__decline btn">Decline</button>
+                </div>
+            </section>
+
         </main>
     </body>
 </html>

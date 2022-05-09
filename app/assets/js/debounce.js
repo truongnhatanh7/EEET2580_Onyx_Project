@@ -1,5 +1,5 @@
 /**
-* Execute a function given a delay time
+* For debouncing purpose
 * 
 * @param {type} func
 * @param {type} wait

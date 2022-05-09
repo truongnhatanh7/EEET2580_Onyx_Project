@@ -13,25 +13,48 @@
     "https://deciem.com/on/demandware.static/Sites-deciem-Site/-/default/dw7f9915df/images/brands-logo/theordinary_black.svg" 
             type = "image/x-icon">
 
+    <title>ONYX | About</title>
     <!-- link font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <link rel="stylesheet" href="./assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/about.css">
     <link rel="stylesheet" href="./assets/css/homepage.css">
-    <link rel="stylesheet" href="./assets/css/hompage-responsive.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
 
-    <title>ONYX | About</title>
+    <script src="./assets/js/config.js" defer></script>
+    <script src="./assets/js/navbar.js" defer></script>
     
 
 </head>
 <body>
-    <div class="header"></div>
+    <header class="home__header">
+        <nav class="home__navbar">
+            <div class="navbar__logo">ONYX</div>
+
+            <ul class="navbar__list">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__link">home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__link">about</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="faq.html" class="navbar__link">FAQ</a>
+                </li>
+            </ul>
+
+            <button class="navbar__login btn">Login</button>
+        </nav>
+        <div class="navbar__hamburger-wrapper">
+            <i class="fa-solid fa-bars navbar__hamburger"></i>
+        </div>
+    </header>
     <main>
         <div class="member-tittle__wrapper">
             <div class="member-tittle">
                 <h1>Meet the team</h1>
-                <h4>Scroll down</h4>
+                <h4>Scroll up</h4>
                 <div class="scroll-downs">
                     <div class="mousey">
                         <div class="scroller"></div>
@@ -46,12 +69,12 @@
                     <!-- <p class="member-tag-content">NHAT ANH</p> -->
                 </div>
                 <div class="first-member-content__wrapper">
-                    <div class="member-content">
+                    <div class="member-content page__wrapper">
                         <img src="./assets/img/about/277028937_503012248052375_3064363415267662683_n.jpg" class="first-member-img" alt="first-member">
                         <div class="member__info">
                             <p class="member-name">TRUONG NHAT ANH</p>
                             <p class="member-bio">
-                                CEO, CAC, CFO, CTO, founder, fullstack developer, team leader, project manager, software architecture, scrum master, co-designer, treasurer, accountant, HR, marketing, sale, sale manager, cleaner, security, slave of ONYX
+                                Team leader, fullstack developer, co-designer of ONYX.
                             </p>
                         </div>
                     </div>
@@ -62,7 +85,7 @@
                     <!-- <p class="member-tag-content">TRI LAI</p> -->
                 </div>
                 <div class="second-member-content__wrapper">
-                    <div class="member-content">
+                    <div class="member-content page__wrapper">
                         <img src="./assets/img/about/tri-avatar.jpeg" class="first-member-img" alt="second-member">
                         <div class="member__info">
                             <p class="member-name">LAI NGHIEP TRI</p>
@@ -78,7 +101,7 @@
                     <!-- <p class="member-tag-content">MINH NHAT</p> -->
                 </div>
                 <div class="third-member-content__wrapper">
-                    <div class="member-content">
+                    <div class="member-content page__wrapper">
                         <img src="./assets/img/default-avatar.jpeg" class="first-member-img" alt="third-member">
                         <div class="member__info">
                             <p class="member-name">BUI MINH NHAT</p>
@@ -94,12 +117,12 @@
                     <!-- <p class="member-tag-content">MANH PHI</p> -->
                 </div>
                 <div class="fourth-member-content__wrapper">
-                    <div class="member-content">
-                        <img src="./assets/img/default-avatar.jpeg" class="first-member-img" alt="fourth-member">
+                    <div class="member-content page__wrapper">
+                        <img src="./assets/img/about/PhiThai.jpg" class="first-member-img" alt="fourth-member">
                         <div class="member__info">
                             <p class="member-name">THAI MANH PHI</p>
                             <p class="member-bio">
-                                Place-holder text 
+                                Lead designer as well as front-end developer at ONYX. My job is to ensure that ONYX will have the best user-interface that is both mordern and user-friendly!
                             </p>
                         </div>
                     </div>
@@ -111,7 +134,7 @@
                         <!-- <p class="member-tag-content">MAI NHUNG</p> -->
                     </div>
                     <div class="fifth-member-content__wrapper">
-                        <div class="member-content">
+                        <div class="member-content page__wrapper">
                             <img src="./assets/img/default-avatar.jpeg" class="first-member-img" alt="fifth-member">
                             <div class="member__info">
                                 <p class="member-name">TRAN MAI NHUNG</p>
@@ -121,10 +144,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="space"></div>
+                    <!-- <div class="space"></div>
                     <footer class="footer flex flex-center">
                         <div class="footer__logo flex flex-center logo-font">ONYX</div>
                         <div class="footer__copyrights flex flex-center">@ reserved 2020</div>
+                    </footer> -->
+
+                    <footer class="footer">
+                        <div class="footer-wrapper">
+                            <div class="footer__logo">ONYX</div>
+                            <div class="footer__text">@created by ONYX</div>
+                        </div>
                     </footer>
                 </div>
             </div>

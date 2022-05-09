@@ -1,9 +1,7 @@
 if (sessionStorage.getItem("userId") == null) {
-    location.href = "../login2.html";
+    location.href = "../login.html";
 }
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 const projectList = $(".dashboard__project-list");
 const modalOutter = $(".dashboard__modal-create");
 const modalWrapper = $(".dashboard__modal-wrapper");
@@ -28,11 +26,9 @@ let createUrl = "http://localhost:8080/api/v1/workspace/";
 let allWPUrl = "http://localhost:8080/api/v1/workspace/";
 let allUsers = "http://localhost:8080/api/v1/user/all-users/";
 let totalWorkspaces = 0;
-const toastBox = $(".toast-wrapper");
-const toastMessage = $(".toast-message");
 const finish = false;
-const loading = $(".loading-wrapper");
-const logOut = $(".user__navbar-progress-btn");
+
+
 var globalKeyword = "";
 let filterCondition = "latest";
 let isReversed = false;
@@ -40,19 +36,10 @@ let currentPage = 0;
 
 window.addEventListener("keyup", event => {
     event.preventDefault();
-    if (event.keyCode == 13) {
+    if (event.key == 'Enter') {
         searchBtn.click();
     }
 })
-
-document.addEventListener("click", (event) => {
-    if (
-        !event.target.classList.contains("dashboard__filter-option") &&
-        !event.target.classList.contains("dashboard__filter-btn")
-    ) {
-        // filterOptionsWrapper.classList.add('disable');
-    }
-});
 
 filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
@@ -61,36 +48,12 @@ filterOptions.forEach((option) => {
     });
 });
 
-logOut.addEventListener("click", () => {
-    sessionStorage.removeItem("userId");
-    location.href = "../index.html";
-});
-
 viewAllBtn.addEventListener("click", () => {
     currentPage = 0;
     searchInput.value = "";
     searchBtn.click();
 });
 
-// filterBtn.addEventListener("click", () => {
-//     filterOptionsWrapper.classList.toggle("disable");
-// });
-
-const userTaskWrapper = $(".user-task__wrapper");
-const userName = $(".user-list-img__name");
-function renderUserNavbar() {
-    userName.innerText = sessionStorage.getItem("userName");
-}
-
-const avatar = $(".user-text-avatar");
-function renderAvatarFromName() {
-    let nameList = sessionStorage.getItem("userName").split(" ");
-    let processedName = nameList[0][0] + nameList[nameList.length - 1][0];
-    avatar.innerText = processedName.toUpperCase();
-}
-
-renderUserNavbar();
-renderAvatarFromName();
 main();
 
 searchBtn.onclick = () => {
@@ -106,7 +69,7 @@ function main() {
         if (sessionStorage.getItem("isEditing") == "0") {
             getWorkspace(renderWorkspace);
         }
-    }, 1000);
+    }, 3000);
 }
 
 function getWorkspace(callback) {
@@ -139,7 +102,6 @@ function handleFilter(workspaces) {
             }
         });
         workspaces.reverse();
-        console.log(workspaces);
     } else if (filterCondition == "latest") {
         workspaces.reverse();
     } else {
@@ -159,9 +121,9 @@ function renderWorkspace(workspaces) {
     let cur = 0;
     handleFilter(workspaces);
     let newTotalWorkspaces = 0;
-
+    
     workspaces = workspaces.filter((workspace) =>
-        workspace.workspaceTitle.includes(globalKeyword)
+    workspace.workspaceTitle.includes(globalKeyword)
     );
 
     for (const workspace of workspaces) {
@@ -180,14 +142,6 @@ function renderWorkspace(workspaces) {
         cur++;
     }
     paginationRender(newTotalWorkspaces);
-
-    if (newTotalWorkspaces == 0) {
-        throwSearchNotFound();
-    }
-
-    loading.style.visibility = "hidden";
-    loading.style.opacity = "0";
-    loading.remove();
 }
 
 function handleCardClick(event) {
@@ -234,7 +188,6 @@ modalBtn.onclick = (event) => {
         let name = modalInput.value;
         modalOutter.classList.remove("dashboard__modal-create--enable");
         modalOutter.classList.add("dashboard__modal-create--disable");
-
         let options = {
             method: "POST",
             headers: {
@@ -254,12 +207,17 @@ modalBtn.onclick = (event) => {
                     workspace.workspaceId.toString() +
                     "/" +
                     currentUser.toString();
-                fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
+
+                fetch("http://localhost:8080/api/v1/workspace/edit-owner/" + workspace.workspaceId + "/" + currentUser, {
+                    method: 'PATCH'
                 })
+                .then(() => {
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
                     .then(() => {
                         let html = `
                     <div class="dashboard__project-card" onclick="handleCardClick(event)" >
@@ -276,46 +234,23 @@ modalBtn.onclick = (event) => {
                     .then(() => {
                         currentPage = 0;
                         getWorkspace(renderWorkspace);
-                    });
+                    })
+                    .catch(() => {
+                        throwError("Unexpected error")
+                    })
+                })
+                .catch(() => {
+                    throwError("Unexpected error")
+                })
             });
 
         modalInput.value = "";
     } else if (modalInput.value != "" && modalInput.value.length >= 25) {
-        throwLongListName();
+        throwError("List name is too long!")
     } else {
-        throwEmptyProjectName();
+        throwError("Empty project name!")
     }
 };
-
-function throwLongListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name is too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
-
-function throwEmptyProjectName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Project name cannot be empty";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
-
-function throwSearchNotFound() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Search not found";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 3000);
-}
 
 ////////////////////////////////
 // Pagination

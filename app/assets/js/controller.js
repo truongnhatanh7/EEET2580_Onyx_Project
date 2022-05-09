@@ -5,29 +5,14 @@ const addListBtnWrapper = $(".workspace__add-list-wrapper");
 const addTaskBtn = $(".workspace__add-task-btn");
 const board = $(".workspace__board");
 
-const darkModeSwitch = $(".workspace__switch-input");
-const darkModeBtn = $(".workspace__navbar-darkmode-wrapper");
-
-const currentTheme = localStorage.getItem("theme");
 const tasks = $$(".workspace__board-list-task");
 const lists = $$(".workspace__board-list");
 const addListSection = $(".workspace__add-wrapper");
 const submitList = $(".workspace__submit-btn");
 const closeSubmitList = $(".workspace__list-close");
 const listNameInput = $(".workspace__add-input");
-const toastBox = $(".toast-wrapper");
-const toastMessage = $(".toast-message");
 
-const darkIcon = $(".workspace-darkmode");
-const lightIcon = $(".workspace-lightmode");
-
-const signOut = $(".workspace__sign-out");
-////////////////////////////////////////////////////////////////////////////////
-
-signOut.addEventListener("click", (event) => {
-    sessionStorage.removeItem('userId');
-    location.href = "../index.html";
-})
+const loading = $('.loading')
 
 ////////////////////////////////////////////////////////////////////////////////
 // Board
@@ -42,6 +27,19 @@ board.addEventListener("wheel", (event) => {
     }
 });
 
+fetchOwner();
+function fetchOwner() {
+    loading.classList.remove('disable')
+    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    .then(response => response.json())
+    .then(data => {
+        sessionStorage.setItem("currentOwnerId", data);
+    })
+    .finally(() => {
+        loading.classList.add('disable')
+    })
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 document.addEventListener("onmousedown", (event) => {
@@ -53,6 +51,7 @@ document.addEventListener("onmouseup", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+    event.stopPropagation();
     if (
         event.target.closest(".workspace__add-list-wrapper") == null &&
         event.target != addListBtn
@@ -70,15 +69,22 @@ document.addEventListener("click", (event) => {
     lists.forEach((element) => {
         if (element == event.target) {
             outsideClick = true;
-        }
+        } 
     });
 
-    if (event.target == board) {
+    if (event.target == board 
+        || outsideClick
+        || event.target == addListBtn
+        || event.target.classList.contains("workspace__board-list-task-edit")
+        ) {
+        event.preventDefault();
         handleCloseTaskAdd();
-    } else if (outsideClick) {
-        handleCloseTaskAdd();
-    } else if (event.target == addListBtn) {
-        handleCloseTaskAdd();
+    // } else if (outsideClick) {
+    //     handleCloseTaskAdd();
+    // } else if (event.target == addListBtn) {
+    //     handleCloseTaskAdd();
+    // } else if (event.target.classList.contains("")) {
+    //     handleCloseTaskAdd();
     }
 });
 
@@ -113,7 +119,7 @@ submitList.addEventListener("click", (event) => {
     if (listNameInput.value != "" && listNameInput.value.length < 25) {
         let listName = listNameInput.value;
         if (listName.includes("<") || listName.includes(">")) {
-            throwInvalidInput();
+            throwError("Invalid input")
             return;
         }
         let createListUrl =
@@ -171,9 +177,9 @@ submitList.addEventListener("click", (event) => {
             });
         resetAddListBtn();
     } else if (listNameInput.value != "" && listNameInput.value.length >= 25) {
-        throwToastLongListName();
+        throwError("List name is too long!");
     } else {
-        throwToastEmptyListName();
+        throwError("Empty list name");
     }
 });
 
@@ -184,40 +190,48 @@ function resetAddListBtn() {
     addListBtn.classList.add("enable");
 }
 
-function throwToastLongListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name is too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwToastEmptyListName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "List name cannot be empty";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
+////////////////////////////////////////////////////////////////
+const delListConfirmationBox = $('.workspace__list-del-confirmation-wrapper')
+const delListConfirmationHeader = $('.list-del__message')
+const delListConfirmationAccept = $('.list-del__accept')
+const delListConfirmationDecline = $('.list-del__decline')
+let toBeDeleteListId = -1;
 
 function handleDeleteList(event) {
-    let deleteListUrl =
-        "http://localhost:8080/api/v1/list/" +
-        event.target.parentNode.parentNode.id.slice(5).toString();
+
+    delListConfirmationBox.classList.remove('disable')
+    delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
+    toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
+    
+
+}
+
+delListConfirmationAccept.addEventListener("click", () => {
+    let deleteListUrl = "http://localhost:8080/api/v1/list/" + toBeDeleteListId
     fetch(deleteListUrl, {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
         },
+    })
+    .then(() => {
+        delListConfirmationDecline.click();
+    })
+    .then(() => {
+        throwSuccess("Deleted")
     });
-    event.target.parentNode.parentNode.remove();
-}
+})
+
+delListConfirmationDecline.addEventListener("click", () => {
+    delListConfirmationBox.classList.add('disable')
+})
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
+// Task
+
 
 function handleCloseTaskAdd() {
     let currentModifier = board.querySelector(
@@ -343,9 +357,9 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
                     rapidInputTask(event, taskFactory, taskInput);
                 });
         } else if (taskInput.value != "" && taskInput.value.length >= 50) {
-            throwToastLongTaskName();
+            throwError("Long task name")
         } else {
-            throwToastEmptyTaskName();
+            throwError("Empty task name");
         }
     }, 150);
 }
@@ -358,533 +372,4 @@ function rapidInputTask(event, taskFactory, taskInput) {
     taskInput.value = "";
     event.target.parentNode.classList.remove("modifying");
     event.target.parentNode.querySelector(".workspace__add-task-btn").click();
-}
-
-function throwToastLongTaskName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Task content too long!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwToastEmptyTaskName() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Task content cannot be empty!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-////////////////////////////////
-// Task setting
-
-const taskSetting = $(".workspace__task-setting");
-const taskSettingInner = $(".workspace__task-setting-wrapper");
-const taskSave = $(".workspace__task-setting-btn");
-const taskDelete = $(".workspace__task-delete-btn");
-const taskInput = $(".workspace__task-setting-input");
-const taskSettingClose = $(".workspace__task-setting-close");
-const taskSettingUrgent = $('.workspace__task-setting-urgent')
-const taskSettingDesc = $('.workspace__task-setting-desc')
-const taskSettingDatepicker = $('.workspace__task-setting-datepicker')
-const taskDeadline = $('.workspace__task-deadline');
-const datepickerJS = $('.datepicker')
-let hitSave = false;
-let prevPriority;
-let descContent = ''
-let isUrgent = false;
-let currentTask = null;
-let currentTaskNode = null;
-
-datepicker(taskSettingDatepicker);
-taskSettingDatepicker.addEventListener('click', () => {
-    datepickerJS.classList.remove('disable');
-})
-
-taskSettingUrgent.addEventListener("click", (event) => {
-    let urgentIcon = currentTaskNode.querySelector('.task-urgent')
-    urgentIcon.classList.toggle('disable')
-    if (urgentIcon.classList.contains('disable')) {
-        taskSettingUrgent.innerText = "Mark as urgent"
-    } else {
-        taskSettingUrgent.innerText = "Unmark urgent"
-    }
-})
-
-taskSetting.addEventListener("click", (event) => {
-    taskSettingClose.click();
-});
-
-taskSettingInner.addEventListener("click", (event) => {
-    event.stopPropagation();
-});
-
-taskInput.addEventListener("keyup", (event) => {
-    event.preventDefault();
-    if (event.keyCode == 13) {
-        taskSave.click();
-    }
-});
-
-function handleTaskSetting(event) {
-    hitSave = false;
-    // Get current task content
-    currentTask = event.target.parentNode.id.slice(5);
-    currentTaskNode = event.target.parentNode;
-    renderTaskSettingUrgent();
-
-    prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
-
-    let boundingClientRect = currentTaskNode.getBoundingClientRect();
-    sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
-    sessionStorage.setItem("isEditing", "1");
-    taskSetting.classList.add("enable");
-    taskSetting.classList.remove("disable");
-    let windowHeight = window.outerHeight;
-    let divisionBreakpoint = Math.floor(windowHeight / 2)
-    if (boundingClientRect.top > divisionBreakpoint) {
-        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
-        taskSettingInner.style.flexDirection = "column-reverse";
-        taskSettingDesc.style.marginBottom = "8px";
-    } else {
-        taskSettingInner.style.flexDirection = "column";
-        taskSettingDesc.style.marginBottom = "0px";
-        taskSettingInner.style.top = boundingClientRect.top + "px";
-    }
-    // Reposition modal
-    taskSettingInner.style.left = boundingClientRect.left + "px";
-    taskSettingInner.style.transform = "translateX(0)";
-
-    // Take task clickcontent
-    taskInput.value = currentTaskNode
-        .querySelector(".workspace__board-list-task-content")
-        .innerText.trim();
-    taskInput.focus();
-    renderTaskDesc();
-    renderDeadline();
-}
-
-function renderDeadline() {
-    let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
-    if (deadline != undefined) {
-        taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
-    }
-}
-
-function renderTaskDesc() {
-    descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
-    taskSettingDesc.value = descContent;
-}
-
-function renderTaskSettingUrgent() {
-    isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
-    if (isUrgent) {
-        taskSettingUrgent.innerText = "Unmark urgent";
-    } else {
-        taskSettingUrgent.innerText = "Mark as urgent";
-    }
-
-}
-
-taskSettingClose.addEventListener("click", (event) => {
-    taskSave.click();
-    // if (!datepickerJS.classList.contains('disable')) {
-    //     datepickerJS.classList.add('disable');
-    // }
-    // if (!hitSave) {
-    //     let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
-    //     if (prevPriority == "1") {
-    //         tempTaskUrgent.classList.remove('disable');
-    //     } else {
-    //         tempTaskUrgent.classList.add('disable')
-    //     }
-    // }
-    // currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
-    // sessionStorage.setItem("isEditing", "0");
-    // taskInput.value = "";
-    // taskSetting.classList.add("disable");
-    // taskSetting.classList.remove("enable");
-    // currentTaskNode = null;
-});
-
-taskSave.addEventListener("click", (event) => {
-    hitSave = true;
-    let editTaskUrl = "http://localhost:8080/api/v1/task/";
-    let newTaskContent = taskInput.value;
-    if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
-        throwInvalidInput();
-        return;
-    } 
-    if (newTaskContent == "") {
-        throwToastEmptyTaskName();
-    } else if (newTaskContent != "" && newTaskContent.length > 25) {
-        throwToastLongTaskName();
-    } else {
-        sessionStorage.setItem("currentTaskContent", newTaskContent.trim());
-        fetch(editTaskUrl, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                taskId: sessionStorage.getItem("currentTask"),
-                taskContent: newTaskContent,
-            }),
-        }).then(() => {
-            currentTaskNode.querySelector(
-                ".workspace__board-list-task-content"
-            ).textContent = sessionStorage.getItem("currentTaskContent");
-
-        })
-        .then(() => {
-            if (taskSettingDesc.value != '') {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: taskSettingDesc.value.trim()
-                })
-            } else {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: " "
-                })
-            }
-        })
-        .then(() => {
-            let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
-            let time = sessionStorage.getItem("deadline");
-            if (time != "") {
-                fetch(editTaskDeadline + time, {
-                    method: 'PATCH' 
-                })
-                .then(() => {
-                    currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText = sessionStorage.getItem("deadline")
-                })
-                .then(() => {
-                    sessionStorage.setItem("deadline", "");
-        
-                })
-            }
-        })
-        .then(() => {
-            let priority = "1";
-            if (currentTaskNode.querySelector('.task-urgent').classList.contains("disable")) {
-                priority = "0"
-            }
-            let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority;
-            if (currentTask != null) {
-                fetch(url, {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                })
-            }
-        })
-        .then(() => {
-            sessionStorage.setItem("isEditing", "0");
-            // taskSettingClose.click();
-        })
-        .then(() => {
-            if (!datepickerJS.classList.contains('disable')) {
-                datepickerJS.classList.add('disable');
-            }
-            if (!hitSave) {
-                let tempTaskUrgent = currentTaskNode.querySelector('.task-urgent');
-                if (prevPriority == "1") {
-                    tempTaskUrgent.classList.remove('disable');
-                } else {
-                    tempTaskUrgent.classList.add('disable')
-                }
-            }
-            currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').textContent = descContent
-            sessionStorage.setItem("isEditing", "0");
-            taskInput.value = "";
-            taskSetting.classList.add("disable");
-            taskSetting.classList.remove("enable");
-        })
-    }
-
-    
-});
-
-taskDelete.addEventListener("click", () => {
-    let deleteTaskUrl =
-        "http://localhost:8080/api/v1/task/" +
-        sessionStorage.getItem("currentTask");
-    fetch(deleteTaskUrl, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    currentTaskNode.remove();
-    taskSettingClose.click();
-});
-
-function handleDeleteTask(event) {
-    let deleteTaskUrl =
-        "http://localhost:8080/api/v1/task/" +
-        event.target.parentNode.id.slice(5).toString();
-    fetch(deleteTaskUrl, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    });
-    event.target.parentNode.remove();
-}
-
-////////////////////////////////////////////////////////////////////////
-// Dark mode section
-////////////////////////////////////////////////////////////////////////
-
-if (currentTheme) {
-    document.documentElement.setAttribute("data-theme", currentTheme);
-    if (currentTheme === "dark") {
-        darkIcon.classList.add('disable');
-        darkModeSwitch.checked = true;
-    } else {
-        lightIcon.classList.add('disable');
-    }
-}
-
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute("data-theme", "dark");
-        localStorage.setItem("theme", "dark");
-        darkIcon.classList.add('disable');
-        lightIcon.classList.remove('disable');
-    } else {
-        document.documentElement.setAttribute("data-theme", "light");
-        localStorage.setItem("theme", "light");
-        darkIcon.classList.remove('disable');
-        lightIcon.classList.add('disable');
-    }
-}
-darkModeSwitch.addEventListener("change", switchTheme);
-
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-//Workspace status
-
-const statusBtn = $(".workspace__navbar-progress-btn");
-const workspaceStatus = $(".workspace__status");
-const workspaceStatusWrapper = $(".workspace__status-wrapper");
-const workspaceStatusTitle = $(".workspace__status-title");
-const closeWorkspaceStatus = $(".workspace__status-close-icon");
-const preDeleteBtn = $(".workspace__delete-workspace-btn-pre");
-const preDeleteWrapper = $(".workspace__delete-confirmation");
-const preDeleteInput = $(".workspace__delete-confirmation-input");
-const postDeleteBtn = $(".workspace__delete-workspace-btn-post");
-const deleteWorkspaceUrl =
-    "http://localhost:8080/api/v1/workspace/delete-workspace/";
-
-statusBtn.addEventListener("click", () => {
-    workspaceStatus.classList.add("enable");
-    workspaceStatus.classList.remove("disable");
-    workspaceStatusTitle.focus();
-});
-
-workspaceStatusWrapper.addEventListener("click", (event) => {
-    event.stopPropagation();
-});
-
-workspaceStatus.addEventListener("click", (event) => {
-    closeWorkspaceStatus.click();
-});
-
-closeWorkspaceStatus.addEventListener("click", () => {
-    workspaceStatus.classList.remove("enable");
-    workspaceStatus.classList.add("disable");
-
-    preDeleteWrapper.classList.remove("enable");
-    preDeleteWrapper.classList.add("disable");
-    preDeleteBtn.classList.remove("disable");
-    preDeleteBtn.classList.add("enable");
-    preDeleteInput.value = "";
-});
-
-preDeleteBtn.addEventListener("click", () => {
-    preDeleteWrapper.classList.add("enable");
-    preDeleteWrapper.classList.remove("disable");
-    preDeleteBtn.classList.add("disable");
-    preDeleteBtn.classList.remove("enable");
-});
-
-postDeleteBtn.addEventListener("click", () => {
-    if (preDeleteInput.value == "delete this workspace") {
-        let url = deleteWorkspaceUrl + sessionStorage.getItem("currentBoardId");
-
-        fetch(url, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        }).then(location.assign("./dashboard.html"));
-    } else {
-        throwInvalidInput();
-    }
-});
-
-function throwInvalidInput() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Invalid input";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-function throwUnknownError() {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Unknown error";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
-}
-
-///////////////////////////////////////////////////////////////
-// Collab
-
-const collaboratorList = $(".workspace__collaborator-list");
-const addCollaboratorBtn = $(".workspace__add-collaborator-btn");
-const addCollaboratorInput = $(".workspace__add-collaborator-input");
-
-fetchUserInWorkspace();
-
-function fetchUserInWorkspace() {
-    let workspaceUrl =
-        "http://localhost:8080/api/v1/workspace/get-workspace/" +
-        sessionStorage.getItem("currentBoardId");
-    fetch(workspaceUrl)
-        .then((response) => response.json())
-        .then((workspace) => {
-            // workspaceStatusTitle.textContent = workspace.workspaceTitle;
-            return workspace.users;
-        })
-        .then((users) => {
-            renderUserInWorkspace(users);
-        });
-}
-
-function renderUserInWorkspace(users) {
-    if (users.length == 0) {
-        collaboratorList.innerHTML = "";
-        // Warning to delete workspace
-        preDeleteInput.value = "delete this workspace";
-        postDeleteBtn.click();
-        location.assign("./dashboard.html");
-    } else {
-        collaboratorList.innerHTML = "";
-        users.forEach((user) => {
-            let tempHtml = `
-        <div class="workspace__collaborator" id="user_${user.userId} ">
-            <h3 class="workspace__collaborator-name" >${user.name}</h3>
-            <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
-        </div>
-        `;
-            let para = document
-                .createRange()
-                .createContextualFragment(tempHtml);
-            collaboratorList.appendChild(para);
-        });
-    }
-}
-
-document.addEventListener("click", (event) => {
-    if (event.target.classList.contains("workspace__collaborator-delete")) {
-        handleRemoveCollaborator(event.target.parentNode.id.slice(5));
-    }
-});
-
-function handleRemoveCollaborator(event) {
-    let id = event.target.parentNode.id.slice(5);
-    let removeCollaboratorUrl =
-        "http://localhost:8080/api/v1/user/remove-user-from-workspace/" +
-        sessionStorage.getItem("currentBoardId") +
-        "/" +
-        id;
-    fetch(removeCollaboratorUrl, {
-        method: "DELETE",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(() => {
-        fetchUserInWorkspace();
-    });
-}
-
-addCollaboratorBtn.addEventListener("click", () => {
-    if (addCollaboratorInput.value == "") {
-        throwInvalidInput();
-    } else {
-        let getAllUsersUrl = "http://localhost:8080/api/v1/user/all-users/";
-        fetch(getAllUsersUrl)
-            .then((response) => response.json())
-            .then((users) => {
-                let found = false;
-                users.forEach((user) => {
-                    if (user.username == addCollaboratorInput.value) {
-                        found = true;
-                        handleAddToWorkspace(user);
-                    }
-                });
-                if (!found) {
-                    throwUserNotFound();
-                }
-            });
-    }
-});
-
-function handleAddToWorkspace(user) {
-    let addCollaboratorUrl =
-        "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/" +
-        sessionStorage.getItem("currentBoardId") +
-        "/" +
-        user.userId;
-    fetch(addCollaboratorUrl, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-    }).then(() => {
-        fetchUserInWorkspace();
-    }).then(() => {
-        handleEmailUser(user.username);
-    })
-    ;
-}
-
-function handleEmailUser(username) {
-    let sendEmailUrl = "http://localhost:8080/api/v1/email/notifyUser/" + username
-    fetch(sendEmailUrl, {
-        method: "POST",
-        body: {
-            'Content-Type': 'application/json'
-        }
-    })
-}
-
-function throwUserNotFound(username) {
-    toastBox.classList.add("enable");
-    toastBox.classList.remove("disable");
-    toastMessage.innerHTML = "Username: " + username + " not found!";
-    setTimeout(() => {
-        toastBox.classList.remove("enable");
-        toastBox.classList.add("disable");
-    }, 2000);
 }

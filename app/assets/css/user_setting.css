@@ -1,0 +1,14 @@
+.user-setting-wrapper {
+    position: fixed;
+    height: 300px;
+    width: 300px;
+    background-color: var(--red-pastel);
+    z-index: 3000;
+    padding: 2rem;
+    font-size: 1.6rem;
+
+    top: 50%;
+    left: 50%;
+    right: 0;
+    transform: translateY(-50%) translateX(-50%);
+}

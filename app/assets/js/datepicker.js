@@ -114,7 +114,7 @@ function renderInnerDay(node, startingDay, currentDate) {
             let localISOTime = (new Date(tempDay.getTime() - tzoffset));
             sessionStorage.setItem("deadline", localISOTime.toISOString())
             // fetch patch
-            datepickerJS.classList.add('disable')
+            // datepickerJS.classList.add('disable')
             taskDeadline.innerHTML = "Deadline: " + localISOTime.getDate() + "/" + (localISOTime.getMonth() + 1) + "/" + localISOTime.getFullYear() + '<i class="fa-solid fa-pen deadline-change-icon"></i>';;
 
         }

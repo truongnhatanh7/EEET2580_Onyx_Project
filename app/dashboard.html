@@ -12,14 +12,15 @@
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
+    <script src="../assets/js/config.js" defer></script>
+    <script src="./assets/js/avatar.js" defer></script>
+    <script src="../assets/js/validator.js" defer></script>
+    <script src="../assets/js/toast.js" defer></script>
     <script src="./assets/js/dashboard_main.js" defer></script>
 
 
 </head>
 <body>
-    <div class="loading-wrapper">
-        <div class="square-loading"></div>
-    </div>
     <main id="dashboard-root">
         <nav class="user__navbar nav-colored">
             <div class="user__navbar-left-wrapper">
@@ -28,22 +29,8 @@
 
             <div class="user__navbar-right-wrapper">
                 <div class="user-task__wrapper">
-                    <!-- <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img"> -->
-                    <div class="user-text-avatar"></div>
-                    <div class="user-list__wrapper">
-                        <div class="user-list-img__wrapper">
-                            <span class="user-list-img__name">"Thai Manh Phi"</span>
-                            <!-- <div class="user-text-avatar"></div> -->
-
-                            <!-- <img src="../assets/img/default-avatar.jpeg" alt="default-avatar" class="user__img-active"> -->
-                        </div>
-                        <div class="user-list-table">
-                            <div class="list-content_wrapper user__navbar-progress-btn ">
-                                <a class="list-content">
-                                    Sign-out
-                                </a>
-                            </div>
-                        </div>
+                    <img class="user-avatar" src="" />
+                    <div class="user-text-avatar disable">
                     </div>
                 </div>
             </div>
@@ -67,7 +54,7 @@
             <section class="dashboard__search-workspace">
                 <button class="btn dashboard__project-add-btn"><i class="fa-solid fa-plus"></i> Add new workspace</button>
                 <div class="btn dashboard__filter-btn">
-                    <i class="fa-solid fa-filter"></i> Filter
+                    <i class="fa-solid fa-filter"></i> Sort
                     <div class="dashboard__filter-options">
                         <p class="btn dashboard__filter-option">A-Z</p>
                         <p class="btn dashboard__filter-option">Z-A</p>
@@ -78,19 +65,10 @@
             </section>
 
             <section class="dashboard__project-list">
-                <!-- <div class="dashboard__project-card" id="dashboard__add-card">
-                    <button class="dashboard__project-add-btn"><i class="fa-solid fa-plus dashboard__project-create"></i></button>
-                </div> -->
             </section>
 
             <section class="dashboard__pagination">
                 <div class="dashboard__pagination-wrapper">
-                    <!-- <button class="dashboard__pagination-prev dashboard__pagination-btn btn">Previous</button> -->
-                    <!-- <button class="dashboard__pagination-btn btn dashboard__pagination-btn--active">1</button>
-                    <button class="dashboard__pagination-btn btn">2</button>
-                    <button class="dashboard__pagination-btn btn">3</button> -->
-                    <!-- <button class="dashboard__pagination-next  dashboard__pagination-btn btn">Next</button> -->
-
                 </div>
             </section>
     

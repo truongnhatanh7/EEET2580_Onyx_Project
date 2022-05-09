@@ -10,11 +10,12 @@
 .tittle__wrapper{
     display: flex;
     justify-content: space-between;
+    margin-top: 2rem;
 
 }
 .dashboard__title {
     font-size: 5rem;
-    padding: 24px 0px;
+    padding: 7rem 0px;
     font-weight: 700;
 }
 
@@ -122,6 +123,7 @@
 }
 
 .dashboard__project-list {
+    margin-top: 48px;
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

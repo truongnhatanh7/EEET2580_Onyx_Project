@@ -65,9 +65,9 @@ class DetailObject {
       // store expanding state
       this.isExpanding = false;
       // check if user click summary (to expand or close)
-      this.summary.addEventListener('click', async (event) => {
+      this.summary.addEventListener('click', (event) => {
             //   close other details before display animation on detail
-            await this.closeOtherDetails(this.element);
+            this.closeOtherDetails(this.element);
             // display animation
             this.onClick(event);
         });
@@ -107,7 +107,7 @@ class DetailObject {
         // keyframes from start to end height
         height: [startHeight, endHeight]
       }, {
-        duration: 400,
+        duration: 200,
         easing: 'ease-out'
       });
       
@@ -143,7 +143,7 @@ class DetailObject {
         // keyframes
         height: [startHeight, endHeight]
       }, {
-        duration: 400,
+        duration: 200,
         easing: 'ease-out'
       });
       
@@ -175,15 +175,15 @@ class DetailObject {
  
 // search on input
 function filterFaqCard() {
-    let input = document.querySelector(".faq__find");
-    let filter = input.value.toUpperCase();
-    let summaryList = document.querySelectorAll(".faq__card summary");
-    summaryList.forEach(summary => {
-        summaryContent = summary.textContent || summary.innerText;
-        if (summaryContent.toUpperCase().indexOf(filter) > -1) {
-            summary.parentElement.style.display = "";
+  let input = document.querySelector(".faq__find");
+  let filter = input.value.toUpperCase();
+  let summaryList = document.querySelectorAll(".faq__card summary");
+  summaryList.forEach(summary => {
+        summaryContent = summary.textContent;
+        if (!summaryContent.toUpperCase().includes(filter)) {
+            summary.parentElement.classList.add('disable');
         } else {
-            summary.parentElement.style.display = "none";
+          summary.parentElement.classList.remove('disable');
         }
     });
 }

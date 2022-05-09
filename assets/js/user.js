@@ -39,6 +39,7 @@ signInBtn.addEventListener('click', (event) => {
                 data.every(user => {
                     if (user.username == username.value && user.password == password.value) {
                         sessionStorage.setItem("userId", user.userId.toString().trim());
+                        sessionStorage.setItem("userAvatar", user.avatarURL)
                         sessionStorage.setItem("userName", user.name)
                         location.assign("./app/dashboard.html")
 
@@ -116,6 +117,7 @@ function createNewUserAPI() {
     })
     .then(data => {
         sessionStorage.setItem("userId", data.userId.toString().trim());
+        sessionStorage.setItem("userAvatar", "")
         sessionStorage.setItem("userName", data.name)
         location.assign("./app/dashboard.html")
 
@@ -200,20 +202,4 @@ function throwToastEmptyField() {
     }, 1000);  
 }
 
-//////  //////////////////////////////////////////////////////////////////
-// Regex
-
-function emailCheck(email) {
-    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-        return true
-    }
-    return false
-}
-
-function passwordCheck(password) {
-    if (/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/.test(password)) {
-        return true
-    }
-    return false
-}
 

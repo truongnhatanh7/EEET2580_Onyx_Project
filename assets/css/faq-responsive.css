@@ -1,42 +1,24 @@
 @media (max-width: 1040px) {
-    main {
-        --gap: 0;
-    }
-    /* faq input to find */
-    .faq__find {
-        width: 80%;
-        padding: 1.7em 1.8em;
-        border-radius: 2.7rem;
-    }
-    /* wrapper of cards */
-    .faq__wrapper {
-        width: 100%;
-        padding: 15em 0;
-        --gap: 6em;
-    }
-    /* summary */
-    .faq__card > summary {
-        padding: 0 2em;
-        height: 3.5em;
-    }
-    /* content */
-    .faq__card-content {
-        padding: 1.5em 0 2em;
-    }
     .faq__card-content p {
         line-height: 2;
         padding-left: 1.5em;
-        /* font-size: 1.6rem; */
     }
 }
 @media (max-width: 768px) {
-    :root {
-        --border-radius: 1.5rem;
+    
+    .faq__card > summary {
+        box-shadow: none;
+        border-radius: 0;
+    }
+    .faq__card  {
+        background-color: var(--white);
+        margin-bottom: 20px;
+        border-radius: 0;
     }
     /* wrapper of cards */
     .faq__wrapper {
         padding: 10em 0;
-        --gap: 3em;
+        width: 100%;
     }
     /* content */
     .faq__card-content {

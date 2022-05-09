@@ -3,7 +3,6 @@ let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
 let boardObj;
 const workspaceBoard = $(".workspace__board");
 const workspaceName = $('.workspace__info-name')
-const loading = $('.loading-wrapper');
 const showOnlyUrgentCheckbox = $('#show-only-urgent')
 const showOnlyUrgentMask = $('.show-urgent-mask')
 const showOverdue = $('#show-overdue')
@@ -13,7 +12,7 @@ var showOverdueFlag = false;
 sessionStorage.setItem('isEditing', '0')
 
 if (sessionStorage.getItem('userId') == null) {
-    location.href = "../login2.html";
+    location.href = "../login.html";
 }
 
 function handleShowOnlyUrgent(event) {
@@ -47,6 +46,7 @@ setInterval(function() {
 }, 1000)
 
 function fetchBoardInfo() {
+    
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
@@ -87,7 +87,7 @@ function renderBoard(board) {
                     if (task.deadline !== undefined) {
                         let deadlineDay = new Date(task.deadline);
                         if (deadlineDay.getFullYear() == 1970) {
-                            dl = "No deadline for this task"
+                            dl = "No deadline"
                         } else {
                             dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
                         }
@@ -96,7 +96,7 @@ function renderBoard(board) {
                             dl += " (Late)"
                         }
                     } else {
-                        dl = "No deadline for this task"
+                        dl = "No deadline"
                     }
                     if (!isLate && showOverdueFlag) {
                         return;
@@ -166,9 +166,7 @@ function renderBoard(board) {
         }
     });
 
-    loading.style.visibility = "hidden";
-    loading.style.opacity = "0";
-    loading.remove();
+
 }
 
 function setScrollRule(scrollRule) {
@@ -342,23 +340,3 @@ class Task {
         return this.taskContent;
     }
 }
-
-
-/////   /   /   ////////////////////////    /       /   //////////////////////////////
-
-const userTaskWrapper = $(".user-task__wrapper");
-const userName = $('.user-list-img__name')
-function renderUserNavbar() {
-    userName.innerText = sessionStorage.getItem("userName")
-}
-
-
-const avatar = $('.user-text-avatar')
-function renderAvatarFromName() {
-    let nameList = sessionStorage.getItem('userName').split(' ')
-    let processedName = nameList[0][0] + nameList[nameList.length - 1][0]
-    avatar.innerText = processedName.toUpperCase();
-}
-
-renderUserNavbar()
-renderAvatarFromName()

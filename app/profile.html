@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/profile.css">
+    <title>Profile setting</title>
+
+    <script src="../assets/js/config.js" defer></script>
+    <script src="../assets/js/toast.js" defer></script>
+    <script src="../assets/js/validator.js" defer></script>
+    <script src="./assets/js/profile.js" defer></script>
+</head>
+<body>
+
+    <div class="loading disable"></div>
+    <main>
+
+
+        <section class="toast-wrapper disable">
+            <div class="toast">
+                <h2 class="toast-message">Toast message</h2>
+            </div>
+        </section>
+
+        <div class="page__wrapper">
+
+            <button class="return__wrapper btn">
+                <i class="fa-solid fa-arrow-left"></i>
+                Return back
+            </button>
+
+            <div class="grid-content header__wrapper">
+                <h1>Profile setting</h1>
+
+            </div>
+
+            <div class="user-form__wrapper">
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change name</h2>
+                        <button class="user-form__modify-icon modify-name-icon"><i class="fa-solid fa-pen"></i></button>
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-name-wrapper">
+                    <h3 class="user-form__sub-label">First name</h3>
+                    <input type="text" class="user-form__modify-input modify-first-name" placeholder="First name">
+                    <h3 class="user-form__sub-label">Last name</h3>
+                    <input type="text" class="user-form__modify-input modify-last-name" placeholder="Last name">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-name btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-name btn secondary-btn">Cancel</button>
+                </div>
+
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change avatar</h2>
+                        <button class="user-form__modify-icon modify-avatar-icon"><i class="fa-solid fa-pen"></i></button>
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-avatar-wrapper">
+                    <h3 class="user-form__sub-label">New avatar</h3>
+                    <input id="avatar-upload" type="file" class="user-form__modify-input modify-avatar">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-avatar btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-avatar btn secondary-btn">Cancel</button>
+                </div>
+
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change email</h2>
+                    <button class="user-form__modify-icon modify-email-icon"><i class="fa-solid fa-pen"></i></button>
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-email-wrapper">
+                    <h3 class="user-form__sub-label">New email</h3>
+                    <input type="text" class="user-form__modify-input modify-email-input" placeholder="Enter new email address">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-email btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-email btn secondary-btn">Cancel</button>
+                </div>
+
+
+                <section class="user-form__header">
+                    <h2 class="user-form__label">Change password</h2>
+                        <button class="user-form__modify-icon modify-password-icon"><i class="fa-solid fa-pen"></i></button>
+                </section>
+                <div class="user-form__modify-wrapper disable user-form__modify-password-wrapper">
+                    <h3 class="user-form__sub-label">Old password</h3>
+                    <input type="password" class="user-form__modify-input modify-old-password" placeholder="Enter old password">
+                    <h3 class="user-form__sub-label">New password</h3>
+                    <input type="password" class="user-form__modify-input modify-new-password" placeholder="Enter new password">
+                    <h3 class="user-form__sub-label">Retype new password</h3>
+                    <input type="password" class="user-form__modify-input modify-new-password-retype" placeholder="Retype new password">
+                    <button class="user-form__modify-btn user-form__modify-btn--save-password btn">Save</button>
+                    <button class="user-form__modify-btn user-form__modify-btn--cancel-password btn secondary-btn">Cancel</button>
+                </div>
+            </div>
+
+            <button class="sign-out-btn btn">Sign out</button>
+
+        </div>
+
+    </main>
+</body>
+</html>

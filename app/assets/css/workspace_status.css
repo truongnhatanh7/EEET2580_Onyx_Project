@@ -222,7 +222,10 @@
     .workspace__collaborator-list{
         padding: 22px;
     }
-
+    
+    .workspace__add-collaborator-input {
+        margin-right: 0;
+    }
 }
 
 @media (max-width: 768px) {
