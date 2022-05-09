@@ -141,6 +141,7 @@
     z-index: 30;
     white-space: nowrap;
     margin: 4rem 0;
+    transition: 0.1s;
 }
 
 .view__img-wrapper {

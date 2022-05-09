@@ -3,7 +3,6 @@ if (sessionStorage.getItem('userId') == null) {
 }
 
 const returnBtn = $('.return__wrapper')
-
 returnBtn.addEventListener('click', () => {
     history.back();
 })
@@ -16,6 +15,7 @@ const modifyNameTrigger = $('.modify-name-icon');
 const modifyNameWrapper = $('.user-form__modify-name-wrapper')
 const modifyAvatarTrigger = $('.modify-avatar-icon')
 const modifyAvatarWrapper = $('.user-form__modify-avatar-wrapper')
+
 const loading = $('.loading')
 
 const emailInput = $('.modify-email-input');
@@ -25,6 +25,9 @@ const retypeNewPassword = $('.modify-new-password-retype');
 const firstNameInput = $('.modify-first-name')
 const lastNameInput = $('.modify-last-name')
 const avatarInput = $('.modify-avatar')
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+// Trigger
 
 modifyAvatarTrigger.addEventListener('click', () => {
     modifyAvatarWrapper.classList.toggle('disable');
