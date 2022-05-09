@@ -1,10 +1,5 @@
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
-
 const username = $('#sign-in-username')
 const password = $('#sign-in-password')
-const toast = $('.toast-wrapper')
-const toastMessage = $('.toast-message')
 const signInBtn = $('#sign-in-btn')
 const allUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
 const createNewUser = "http://localhost:8080/api/v1/user"
@@ -27,10 +22,10 @@ signInBtn.addEventListener('click', (event) => {
     let canLogin = false;
 
     if (username.value == '' || password.value == '') {
-        throwToastEmptyFieldLogin();
+        throwError("You must fill all fields")
     } 
     else if (!emailCheck(username.value)) {
-        throwInvalidEmail();
+        throwError("Invalid email")
     }
     else {
         fetch(allUsersUrl)
@@ -51,8 +46,11 @@ signInBtn.addEventListener('click', (event) => {
                 })
                 
                 if (!canLogin) {
-                    throwToastWrongUsernameOrPassword();
+                    throwError("Wrong username or password")
                 }
+            })
+            .catch(() => {
+                throwError("The server is down for maintenance. Sorry about that")
             })
 
     }
@@ -73,14 +71,14 @@ signUpBtn.addEventListener('click', () => {
 
     let validCreateUser = true;
     if (signUpPassword.value != signUpPasswordConfirm.value) {
-        throwToastMismatchPassowrd()
+        throwError("Mismatch password confirmation")
 
     } else if (signUpFirstName.value == '' || signUpLastName.value == '' || signUpUsername.value == '' || signUpPassword.value == '' || signUpPasswordConfirm.value == '') {
-        throwToastEmptyField();
+        throwError("You must fill all fields")
     } else if (!emailCheck(signUpUsername.value)) {
-        throwInvalidEmail()
+        throwError("Invalid email")
     } else if (!passwordCheck(signUpPassword.value)) {
-        throwInvalidPassword()
+        throwError("Password must have normal characters, uppercase characters, digits, and special characters")
     }
     else {
         fetch(allUsersUrl)
@@ -97,6 +95,9 @@ signUpBtn.addEventListener('click', () => {
                 if (validCreateUser) {
                     createNewUserAPI()
                 }
+            })
+            .catch(() => {
+                throwError("The server is down for maintenance. Sorry about that")
             })
     }
 })
@@ -122,84 +123,7 @@ function createNewUserAPI() {
         location.assign("./app/dashboard.html")
 
     })
+    .catch(() => {
+        throwError("The server is down for maintenance. Sorry about that")
+    })
 }
-
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-// Toast
-
-function throwInvalidPassword() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "Password has to be between 8 to 15 characters which contain at least 1 lowercase letter, 1 uppercase letter, 1 numeric digit, 1 special character";
-    setTimeout(() => {
-
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 2000);        
-}
-
-function throwInvalidEmail() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "Invalid email format";
-    setTimeout(() => {
-
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 2000);    
-}
-
-function throwToastEmptyFieldLogin() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "You must fill all fields";
-    setTimeout(() => {
-
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
-
-function throwToastWrongUsernameOrPassword() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "Wrong username or password";
-    setTimeout(() => {
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
-function throwToastExistedUsername() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "This username is already in use";
-    setTimeout(() => {
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
-function throwToastMismatchPassowrd() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "Confirmation passward does not match";
-    setTimeout(() => {
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);
-}
-
-function throwToastEmptyField() {
-    toast.classList.add('enable');
-    toast.classList.remove('disable');
-    toastMessage.textContent = "You must fill all fields";
-    setTimeout(() => {
-        toast.classList.add('disable');
-        toast.classList.remove('enable');
-    }, 1000);  
-}
-
-

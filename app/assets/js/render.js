@@ -53,6 +53,9 @@ function fetchBoardInfo() {
         .then(data => {
             workspaceName.innerHTML = data.workspaceTitle.trim();
         })
+        .catch(() => {
+            throwError("The server is down for maintenance. Sorry about that")
+        })
 }
 
 function renderBoard(board) {

@@ -77,7 +77,10 @@ function getWorkspace(callback) {
         .then(function (response) {
             return response.json();
         })
-        .then(callback);
+        .then(callback)
+        .catch(() => {
+            throwError("The server is down for maintenance. Sorry about that")
+        });
 }
 
 function handleFilter(workspaces) {
