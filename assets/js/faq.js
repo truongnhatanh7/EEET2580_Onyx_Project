@@ -22,7 +22,32 @@ async function animateDetails() {
 }
 async function getFaqContent() {
     // fetch json and create element
-    const response = await (await fetch("http://localhost:5501/assets/js/faq.json")).json();
+    const response = [
+      {
+          "title": "How to set up your workspace",
+          "detail": [
+              "Log-in to your dashboard using your ONYX Account",
+              "Select “+” card to add new workspace",
+              "Enter a new name for your workspace.",
+              "Click at the newly created workspace.",
+              "You can now create a new task list for your project."
+          ],
+          "img": "./assets/img/faq/faq-setup.svg",
+          "alt": "Set Up in Faq"
+      },
+      {
+          "title": "How to create workspace list?",
+          "detail": [
+              "Log-in to your dashboard using your ONYX yasuo",
+              "Select a workspace to continue",
+              "An option to create new list will appeare",
+              "Enter a name and hit create"
+          ],
+          "img": "./assets/img/faq/faq-create.svg",
+          "alt": "Create Workspace in Faq"
+  
+      }
+  ]
     response.map(card => {
         faqContainer.innerHTML += `
         <details class="faq__card flex flex-center">
