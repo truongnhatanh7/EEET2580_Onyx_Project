@@ -7,13 +7,6 @@ let backToTopButton = document.querySelector("#button");
 
 // functions
 function backToTopClick() {
-  // document.querySelector("main").animate({
-  //   // keyframes from start to end height
-  //   scrollTop: [event.scrollTop, 0]
-  // }, {
-  //   duration: 400,
-  //   easing: 'ease-out'
-  // });
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
