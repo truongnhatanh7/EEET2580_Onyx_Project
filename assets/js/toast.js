@@ -12,7 +12,7 @@ function throwError(message) {
     setTimeout(() => {
         toastBox.classList.remove("enable");
         toastBox.classList.add("disable");
-    }, 2000);
+    }, 3000);
 }
 
 function throwSuccess(message) {
