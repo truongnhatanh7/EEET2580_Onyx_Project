@@ -41,18 +41,6 @@ window.addEventListener("keyup", event => {
     }
 })
 
-// sessionStorage.setItem("currentOwnerId", currentUser);
-
-
-// document.addEventListener("click", (event) => {
-//     if (
-//         !event.target.classList.contains("dashboard__filter-option") &&
-//         !event.target.classList.contains("dashboard__filter-btn")
-//     ) {
-//         // filterOptionsWrapper.classList.add('disable');
-//     }
-// });
-
 filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
         filterCondition = option.innerText.toLowerCase();
@@ -223,31 +211,36 @@ modalBtn.onclick = (event) => {
                 fetch("http://localhost:8080/api/v1/workspace/edit-owner/" + workspace.workspaceId + "/" + currentUser, {
                     method: 'PATCH'
                 })
-                fetch(url, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
                 .then(() => {
-                    let html = `
-                <div class="dashboard__project-card" onclick="handleCardClick(event)" >
-                    <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
-                        <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
-                    </a>
-                </div>
-                `;
-                    let para = document
-                        .createRange()
-                        .createContextualFragment(html);
-                    projectList.appendChild(para);
+                    fetch(url, {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    })
+                    .then(() => {
+                        let html = `
+                    <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                        <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                            <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
+                        </a>
+                    </div>
+                    `;
+                        let para = document
+                            .createRange()
+                            .createContextualFragment(html);
+                        projectList.appendChild(para);
+                    })
+                    .then(() => {
+                        currentPage = 0;
+                        getWorkspace(renderWorkspace);
+                    })
+                    .catch(() => {
+                        throwError("Unexpected error")
+                    })
                 })
-                .then(() => {
-                    currentPage = 0;
-                    getWorkspace(renderWorkspace);
-                })
-                .then(() => {
-                    // Add owner
+                .catch(() => {
+                    throwError("Unexpected error")
                 })
             });
 

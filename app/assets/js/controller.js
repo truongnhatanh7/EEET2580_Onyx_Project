@@ -51,6 +51,7 @@ document.addEventListener("onmouseup", (event) => {
 });
 
 document.addEventListener("click", (event) => {
+    event.stopPropagation();
     if (
         event.target.closest(".workspace__add-list-wrapper") == null &&
         event.target != addListBtn
@@ -68,15 +69,22 @@ document.addEventListener("click", (event) => {
     lists.forEach((element) => {
         if (element == event.target) {
             outsideClick = true;
-        }
+        } 
     });
 
-    if (event.target == board) {
+    if (event.target == board 
+        || outsideClick
+        || event.target == addListBtn
+        || event.target.classList.contains("workspace__board-list-task-edit")
+        ) {
+        event.preventDefault();
         handleCloseTaskAdd();
-    } else if (outsideClick) {
-        handleCloseTaskAdd();
-    } else if (event.target == addListBtn) {
-        handleCloseTaskAdd();
+    // } else if (outsideClick) {
+    //     handleCloseTaskAdd();
+    // } else if (event.target == addListBtn) {
+    //     handleCloseTaskAdd();
+    // } else if (event.target.classList.contains("")) {
+    //     handleCloseTaskAdd();
     }
 });
 
@@ -190,13 +198,11 @@ const delListConfirmationDecline = $('.list-del__decline')
 let toBeDeleteListId = -1;
 
 function handleDeleteList(event) {
-    if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
-        throwError("Only owner could delete this list")
-    } else {
-        delListConfirmationBox.classList.remove('disable')
-        delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
-        toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
-    }
+
+    delListConfirmationBox.classList.remove('disable')
+    delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
+    toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
+    
 
 }
 
@@ -219,6 +225,9 @@ delListConfirmationAccept.addEventListener("click", () => {
 delListConfirmationDecline.addEventListener("click", () => {
     delListConfirmationBox.classList.add('disable')
 })
+
+
+
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////
 // Task

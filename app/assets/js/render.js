@@ -87,7 +87,7 @@ function renderBoard(board) {
                     if (task.deadline !== undefined) {
                         let deadlineDay = new Date(task.deadline);
                         if (deadlineDay.getFullYear() == 1970) {
-                            dl = "No deadline for this task"
+                            dl = "No deadline"
                         } else {
                             dl = deadlineDay.getDate() + "/" + (deadlineDay.getMonth() + 1) + "/" + deadlineDay.getFullYear()
                         }
@@ -96,7 +96,7 @@ function renderBoard(board) {
                             dl += " (Late)"
                         }
                     } else {
-                        dl = "No deadline for this task"
+                        dl = "No deadline"
                     }
                     if (!isLate && showOverdueFlag) {
                         return;

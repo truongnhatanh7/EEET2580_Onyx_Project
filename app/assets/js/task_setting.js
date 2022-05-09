@@ -266,10 +266,3 @@ function handleDeleteTask(event) {
     });
     event.target.parentNode.remove();
 }
-
-
-
-
-if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
-    taskDelete.remove();
-}
