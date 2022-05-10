@@ -58,7 +58,7 @@ async function getFaqContent() {
             return totalLine + (index === 0? ("- " + line) : ("<br> - " + line));
         }, "")}</p>
 
-        ${card["img"] == ""? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
+        ${(card["img"] == "" || card.hasOwnProperty('img'))? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
         </div>
         </details>`;
     });
