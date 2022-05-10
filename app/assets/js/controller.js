@@ -82,13 +82,9 @@ document.addEventListener("click", (event) => {
         ) {
         event.preventDefault();
         handleCloseTaskAdd();
-    // } else if (outsideClick) {
-    //     handleCloseTaskAdd();
-    // } else if (event.target == addListBtn) {
-    //     handleCloseTaskAdd();
-    // } else if (event.target.classList.contains("")) {
-    //     handleCloseTaskAdd();
     }
+
+
 });
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -195,17 +191,22 @@ function resetAddListBtn() {
 
 ////////////////////////////////////////////////////////////////
 const delListConfirmationBox = $('.workspace__list-del-confirmation-wrapper')
+const delListConfirmation = $('.workspace__list-del-confirmation')
 const delListConfirmationHeader = $('.list-del__message')
 const delListConfirmationAccept = $('.list-del__accept')
 const delListConfirmationDecline = $('.list-del__decline')
 let toBeDeleteListId = -1;
 
-function handleDeleteList(event) {
+delListConfirmationBox.addEventListener('click', (event) => {
+    if (event.target.classList.contains("workspace__list-del-confirmation-wrapper")) {
+        delListConfirmationDecline.click();
+    }
+})
 
+function handleDeleteList(event) {
     delListConfirmationBox.classList.remove('disable')
     delListConfirmationHeader.innerText = "Do you want to remove \"" + event.target.parentNode.querySelector(".workspace__board-list-header").innerText + "\" ?" 
     toBeDeleteListId = event.target.parentNode.parentNode.id.slice(5).toString();
-    
 
 }
 
