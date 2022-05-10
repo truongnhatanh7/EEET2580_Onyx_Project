@@ -46,7 +46,7 @@
     border-radius: var(--border-sub);
     width: fit-content;
     height: fit-content;
-    transition: 0.3s;
+    transition: 0.2s;
 }
 
 .workspace__status-close-icon:hover {
@@ -71,7 +71,8 @@
 }
 .workspace__add-collaborator-btn {
     background-color: var(--soft-pink);
-    color: var(--constant-white)
+    color: var(--constant-white);
+    transition: 0.1s;
 }
 
 .workspace__collaborator-title{
@@ -107,6 +108,7 @@
     height: fit-content;
     width: fit-content;
     padding: 8px;
+    transition: 0.2s;
 }
 
 .workspace__collaborator-delete:hover {
@@ -138,6 +140,7 @@
     overflow: hidden;
     isolation: isolate;
     width: 100%;
+    transition: 0.1s;
 }
 
 .workspace__delete-instruction {
@@ -163,8 +166,6 @@
     border-radius: var(--border-sub);
     margin-top: 8px;
     width: 100%;
-
-
 }
 
 .workspace__delete-confirmation-input:focus {
