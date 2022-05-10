@@ -6,22 +6,25 @@ let backToTopButton = document.querySelector("#button");
 
 
 // functions
+// back to top button action
 function backToTopClick() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
 async function animateDetails() {
+    // take array of contents and create faq elements
     await getFaqContent();
 
-    // animation on details
-    document.querySelectorAll(".faq__card").forEach((el, index) => {
-        new DetailObject(el);
+    // create animation when using faq card
+    document.querySelectorAll(".faq__card").forEach((element, index) => {
+        new DetailObject(element);
     });
 
 
 }
 async function getFaqContent() {
-    // fetch json and create element
+    // fetch json and create element from content array
     const response = [
       {
           "title": "How to set up your workspace",
@@ -48,6 +51,7 @@ async function getFaqContent() {
   
       }
   ]
+  // create elements
     response.map(card => {
         faqContainer.innerHTML += `
         <details class="faq__card flex flex-center">
@@ -58,7 +62,7 @@ async function getFaqContent() {
             return totalLine + (index === 0? ("- " + line) : ("<br> - " + line));
         }, "")}</p>
 
-        ${(card["img"] == "" || card.hasOwnProperty('img'))? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
+        ${(card["img"] == "" || !card.hasOwnProperty('img'))? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
         </div>
         </details>`;
     });
@@ -198,6 +202,8 @@ class DetailObject {
       // remove overflow hidden and the fixed height
       this.element.style.height = this.element.style.overflow = '';
     }
+
+    // close other cards when open 1 card
     closeOtherDetails(currentTarget) {
         document.querySelectorAll(".faq__card").forEach(detail => {
             if (detail !== currentTarget) {
@@ -211,12 +217,13 @@ class DetailObject {
 function filterFaqCard() {
   let input = document.querySelector(".faq__find");
   let filter = input.value.toUpperCase();
-  let summaryList = document.querySelectorAll(".faq__card summary");
-  summaryList.forEach(summary => {
+  document.querySelectorAll(".faq__card summary").forEach(summary => {
         summaryContent = summary.textContent;
+        // if not found in input
         if (!summaryContent.toUpperCase().includes(filter)) {
             summary.parentElement.classList.add('disable');
         } else {
+          // found in input
           summary.parentElement.classList.remove('disable');
         }
     });
