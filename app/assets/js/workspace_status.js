@@ -83,7 +83,10 @@ function fetchUserInWorkspace() {
         })
         .then((users) => {
             renderUserInWorkspace(users);
-        });
+        })
+        .catch(() => {
+            throwError("Unexpected error, cannot fetch collaborator")
+        })
 }
 
 function renderUserInWorkspace(users) {
@@ -100,11 +103,11 @@ function renderUserInWorkspace(users) {
                 return;
             }
             let tempHtml = `
-        <div class="workspace__collaborator" id="user_${user.userId} ">
-            <h3 class="workspace__collaborator-name" >${user.name}</h3>
-            <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
-        </div>
-        `;
+            <div class="workspace__collaborator" id="user_${user.userId} ">
+                <h3 class="workspace__collaborator-name" >${user.name}</h3>
+                <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
+            </div>
+            `;
             let para = document
                 .createRange()
                 .createContextualFragment(tempHtml);
