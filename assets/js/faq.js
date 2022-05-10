@@ -64,6 +64,7 @@ async function getFaqContent() {
     });
 
 }
+
 // for animation on details + close other details when open 1 detail
 class DetailObject {
     constructor(element) {
@@ -78,6 +79,8 @@ class DetailObject {
   
       // store the animation state (can cancel if needed)
       this.animation = null;
+      // this.content.style.animation = null;
+
       // store closing state
       this.isClosing = false;
       // store expanding state
@@ -115,9 +118,11 @@ class DetailObject {
       const endHeight = `${this.summary.offsetHeight}px`;
       
       // if there is already an animation running
+      // if (this.content.style.animation) {
       if (this.animation) {
         // cancel the current animation
         this.animation.cancel();
+        // this.content.style.animation = null;
       }
       
       // animation
@@ -128,11 +133,15 @@ class DetailObject {
         duration: 200,
         easing: 'ease-out'
       });
+      // this.content.style.animation = "faq-slide-up 2s";
       
       // when the animation is complete
       this.animation.onfinish = () => this.onAnimationFinish(false);
+      // this.content.onanimationend = () => this.onAnimationFinish(false);
+
       // if animation is cancelled, isClosing false
       this.animation.oncancel = () => this.isClosing = false;
+      // this.content.onanimationcancel = () => this.isClosing = false;
     }
   
     open() {
@@ -151,9 +160,11 @@ class DetailObject {
       const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
       
       // if animation is running
+      // if (this.content.style.animation) {
       if (this.animation) {
         // cancel animation
         this.animation.cancel();
+        // this.content.style.animation = null;
       }
       
       // add animation
@@ -164,15 +175,20 @@ class DetailObject {
         duration: 200,
         easing: 'ease-out'
       });
+      // this.content.style.animation = "faq-slide-down 2s";
       
 
       this.animation.onfinish = () => this.onAnimationFinish(true);
+      // this.content.onanimationend = () => this.onAnimationFinish(true);
+      
       // if animation is cancelled
       this.animation.oncancel = () => this.isExpanding = false;
+      // this.content.onanimationcancel = () => this.isExpanding = false;
     }
   
     onAnimationFinish(open) {
       this.element.open = open;
+      // this.content.style.animation = null;
       this.animation = null;
 
       // reset
