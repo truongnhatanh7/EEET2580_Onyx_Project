@@ -1,9 +1,11 @@
 .datepicker {
     background-color: white;
-    /* position: absolute; */
-    /* right: -94%;
-    top: 52%; */
-    right: -88%;
+    position: absolute;
+    right: -94%;
+    /* top: 52%; */
+    top: -8px;
+    /* bottom: 0; */
+    right: -358px;
     width: 280px;
     padding: 8px;
     font-size: 1.4rem;

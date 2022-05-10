@@ -25,7 +25,7 @@ let oldTaskName = "";
 datepicker(taskSettingDatepicker);
 
 taskSettingDatepicker.addEventListener('click', () => {
-    datepickerJS.classList.remove('disable');
+    datepickerJS.classList.toggle('disable');
 })
 
 taskSettingUrgent.addEventListener("click", (event) => {
@@ -72,13 +72,16 @@ function handleTaskSetting(event) {
     let windowHeight = window.outerHeight;
     let divisionBreakpoint = Math.floor(windowHeight / 2)
     if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
-        taskSettingInner.style.top = (boundingClientRect.top - 334 - 280 + 55) + "px";
+        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
         taskSettingInner.style.flexDirection = "column-reverse";
         taskSettingDesc.style.marginBottom = "8px";
+        datepickerJS.style.top = "74px";
     } else { // Normal column
         taskSettingInner.style.flexDirection = "column";
         taskSettingDesc.style.marginBottom = "0px";
         taskSettingInner.style.top = boundingClientRect.top + "px";
+        datepickerJS.style.top = "-8px";
+
     }
     // Reposition modal
     taskSettingInner.style.left = boundingClientRect.left + "px";
@@ -227,6 +230,7 @@ taskSave.addEventListener("click", (event) => {
             taskSetting.classList.add("disable");
             taskSetting.classList.remove("enable");
             loading.classList.add('disable')
+            datepickerJS.classList.add('disable');
             taskInput.value = "";
         })
     }
