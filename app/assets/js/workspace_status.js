@@ -188,8 +188,8 @@ function handleEmailUser(username) {
 }
 
 //////////////////////////////////  
-const workspaceStatusDeleteSection = $('.workspace__delete-section')
+// const workspaceStatusDeleteSection = $('.workspace__delete-section')
 
-if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
-    workspaceStatusDeleteSection.remove();
-}
+// if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
+//     workspaceStatusDeleteSection.remove();
+// }

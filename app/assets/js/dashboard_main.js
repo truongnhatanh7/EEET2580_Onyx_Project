@@ -243,7 +243,7 @@ modalBtn.onclick = (event) => {
                     })
                 })
                 .catch(() => {
-                    throwError("Unexpected error")
+                    throwError("Unexpected error, cannot set owner for workspace")
                 })
             });
 

@@ -68,7 +68,6 @@ const signUpPasswordConfirm = $('#sign-up-password-retype')
 const signUpBtn = $('#sign-up-btn')
 
 signUpBtn.addEventListener('click', () => {
-
     let validCreateUser = true;
     if (signUpPassword.value != signUpPasswordConfirm.value) {
         throwError("Mismatch password confirmation")

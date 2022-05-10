@@ -35,6 +35,9 @@ function fetchOwner() {
     .then(data => {
         sessionStorage.setItem("currentOwnerId", data);
     })
+    .catch(() => {
+        throwError("Unexpected error, cannot fetch owner")
+    })
     .finally(() => {
         loading.classList.add('disable')
     })
