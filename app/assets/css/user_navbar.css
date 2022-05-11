@@ -47,6 +47,7 @@
     padding: 8px 16px;
     background-color: var(--soft-pink);
     color: var(--constant-white);
+    transition: 0.2s;
 
 }
 
