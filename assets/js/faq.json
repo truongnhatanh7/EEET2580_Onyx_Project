@@ -14,7 +14,7 @@
         "alt": "Login in Faq"
     },
     {
-        "title": "How to set up your workspace Project",
+        "title": "How to set up your workspace project",
         "detail": [
             "Log-in to your dashboard using your ONYX Account",
             "At dashboard page, select + in Your Project area",
@@ -38,27 +38,25 @@
 
     },
     {
-        "title": "How to create workspace list?",
+        "title": "How to add new task within workspace list?",
         "detail": [
-            "Log-in to your dashboard using your ONYX Account",
-            "Select a workspace to continue",
-            "An option to create new list will appeare",
-            "Enter a name and hit create"
+            "From the list, select the Add task button.",
+            "Type the name in the Enter new task field.",
+            "Click the Create button for creating a new task."
         ],
         "img": "./assets/img/faq/faq-create.svg",
-        "alt": "Create Workspace in Faq"
+        "alt": "Add new task within workspace list"
 
     },
     {
-        "title": "How to create workspace list?",
+        "title": "Edit a task within the workspace list",
         "detail": [
-            "Log-in to your dashboard using your ONYX Account",
-            "Select a workspace to continue",
-            "An option to create new list will appeare",
-            "Enter a name and hit create"
+            "From the list, find the task you want to make a change to and select the edit button.",
+            "Type the new name for the task.",
+            "Click the Save button for saving the new name."
         ],
         "img": "./assets/img/faq/faq-create.svg",
-        "alt": "Create Workspace in Faq"
+        "alt": "Edit Task in within workspace list"
 
     },
     {
