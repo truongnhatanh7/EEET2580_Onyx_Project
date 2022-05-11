@@ -14,6 +14,11 @@ const listNameInput = $(".workspace__add-input");
 
 const loading = $('.loading')
 
+
+
+
+
+
 ////////////////////////////////////////////////////////////////////////////////
 // Board
 

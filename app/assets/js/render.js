@@ -15,6 +15,31 @@ if (sessionStorage.getItem('userId') == null) {
     location.href = "../login.html";
 }
 
+let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
+let inhumanCount = 0;
+let firtMomentSetPos = 0;
+eventSource.onmessage = (message) => {
+    if (message.data.includes("setPos")) {
+        // console.log("mad");
+        if (firtMomentSetPos == 0) {
+            firtMomentSetPos = new Date();
+            return;
+        }
+        else if (new Date() - firtMomentSetPos > 200) {
+            console.log("fads")
+            getBoardInfo();
+            firtMomentSetPos = 0;
+        }
+
+    } else {
+        if (message.data.includes(sessionStorage.getItem("currentBoardId"))) {
+            getBoardInfo();
+        }
+    }
+
+}
+
+
 function handleShowOnlyUrgent(event) {
     if (showOnlyUrgentCheckbox.checked) {
         showOnlyUrgentFlag = true;
@@ -38,15 +63,8 @@ function handleShowOverdue(event) {
 fetchBoardInfo();
 getBoardInfo();
 
-setInterval(function() {
-    if (sessionStorage.getItem("isEditing") == '0') {
-        fetchBoardInfo();
-        getBoardInfo();
-    }
-}, 1000)
-
 function fetchBoardInfo() {
-    
+
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
@@ -59,6 +77,7 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
+    console.log("Rerender")
     let oldBoardLists = $$('.workspace__board-list-scrollable')
     let scrollRule = {}
     let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
@@ -67,19 +86,18 @@ function renderBoard(board) {
         scrollRule[element.parentNode.id] = element.scrollTop
         element.parentNode.remove();
     })
-
-    board.getAllList().forEach(function (list) {
+    board.forEach(list => {
         let listHTML = ``;
         if (list !== undefined) {
             list.tasks.sort(function (a, b) {
                 return a.pos - b.pos;
             })
-            list.tasks.forEach(function (task) {
+            list.tasks.forEach((task) => {
                 if (task !== undefined) {
                     let isLate = false;
                     let isUrgent = task.priority == 1 ? "" : "disable";
                     let hasNote = true
-                    if (task.desc == " " || task.desc == "") {
+                    if (task.description == " " || task.description == "") {
                         hasNote = false
                     }
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
@@ -127,7 +145,7 @@ function renderBoard(board) {
                     <p
                         class="workspace__board-list-task-desc disable"
                     >
-                        ${task.desc}
+                        ${task.description}
                     </p>
                     <p class="workspace__board-list-task-deadline-content disable"
                     >${dl}
@@ -142,7 +160,7 @@ function renderBoard(board) {
             <div class="workspace__board-list noselect" id="${"list_" + list.listId}" ondragover="handleDragOver(event)">
                 <div class="workspace__board-list-header-wrapper">
                 <h1 class="workspace__board-list-header">
-                    ${list.listName}
+                    ${list.name}
                 </h1>
                 <i class="fa-solid fa-xmark workspace__board-list-delete workspace__board-list-delete-icon" onclick="handleDeleteList(event)"></i>
                 </div>
@@ -196,150 +214,5 @@ function getBoardInfo() {
         .then(function (response) {
             return response.json();
         })
-        .then(createBoard)
         .then(renderBoard);
-}
-
-function createBoard(data) {
-
-    boardObj = new Board();
-
-    data.forEach(function (list) {
-        let tempList = new List();
-        tempList.setListId(list.listId)
-        tempList.setListName(list.name);
-
-        list.tasks.forEach(function (task) {
-            let tempTask = new Task()
-            tempTask.setPos(task.pos);
-            tempTask.setTaskId(task.taskId);
-            tempTask.setTaskContent(task.taskContent);
-            tempTask.setPriority(task.priority);
-            tempTask.setDesc(task.description);
-            tempTask.setDeadline(task.deadline);
-            tempList.addTask(tempTask);
-        });
-        boardObj.addList(tempList);
-    });
-
-    return boardObj;
-}
-
-class Board {
-    constructor(boardName, lists, boardId) {
-        this.lists = new Array(lists);
-        this.boardName = boardName;
-        this.boardId = boardId;
-    }
-
-    setBoardId(boardId) {
-        this.boardId = boardId;
-    }
-
-    setBoardName(boardName) {
-        this.boardName = boardName;
-    }
-
-    addList(list) {
-        this.lists.push(list);
-    }
-
-    getBoardName() {
-        return this.boardName;
-    }
-
-    getBoardId() {
-        return this.boardId;
-    }
-
-    getAllList() {
-        return this.lists;
-    }
-}
-
-class List {
-    constructor(listName, tasks, listId) {
-        this.listName = listName;
-        this.tasks = new Array(tasks);
-        this.listId = listId;
-    }
-
-    List(listName) {
-        this.listName = listName;
-    }
-
-    setListId(listId) {
-        this.listId = listId;
-    }
-
-    getListId(listId) {
-        return this.listId;
-    }
-
-    setListName(listName) {
-        this.listName = listName;
-    }
-
-    addTask(task) {
-        this.tasks.push(task);
-    }
-
-    getAllTasks() {
-        return this.tasks;
-    }
-}
-
-class Task {
-    constructor(taskContent, taskId, pos, priority, desc, deadline) {
-        this.taskContent = taskContent;
-        this.taskId = taskId;
-        this.pos = pos;
-        this.priority = priority;
-        this.desc = desc;
-        this.deadline = deadline
-    }
-
-    setDeadline(deadline) {
-        this.deadline = deadline;
-    }
-
-    setDesc(desc) {
-        this.desc = desc;
-    }
-
-    setPos(pos) {
-        this.pos = pos;
-    }
-
-    setPriority(priority) {
-        this.priority = priority;
-    }
-
-    getDeadline() {
-        return this.deadline;
-    }
-
-    getDesc() {
-        return this.desc;
-    }
-
-    getPriority() {
-        return this.priority;
-    }
-
-    getPos() {
-        return this.pos;
-    }
-
-    setTaskId(taskId) {
-        this.taskId = taskId;
-    }
-
-    setTaskContent(taskContent) {
-        this.taskContent = taskContent;
-    }
-
-    getTaskContent() {
-        return this.taskContent;
-    }
 }
