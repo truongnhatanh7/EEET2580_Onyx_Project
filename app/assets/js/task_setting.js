@@ -54,66 +54,81 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function handleTaskSetting(event) {
-    hitSave = false;
-    // Get current task content
-    currentTask = event.target.parentNode.id.slice(5);
-    currentTaskNode = event.target.parentNode;
-    renderTaskSettingUrgent();
-    renderTaskDesc();
-    renderDeadline();
-
-    prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
-
-    let boundingClientRect = currentTaskNode.getBoundingClientRect();
-    sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
-    sessionStorage.setItem("isEditing", "1");
-    taskSetting.classList.add("enable");
-    taskSetting.classList.remove("disable");
-    let windowHeight = window.outerHeight;
-    let divisionBreakpoint = Math.floor(windowHeight / 2)
-    if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
-        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
-        taskSettingInner.style.flexDirection = "column-reverse";
-        taskSettingDesc.style.marginBottom = "8px";
-        datepickerJS.style.top = "74px";
-    } else { // Normal column
-        taskSettingInner.style.flexDirection = "column";
-        taskSettingDesc.style.marginBottom = "0px";
-        taskSettingInner.style.top = boundingClientRect.top + "px";
-        datepickerJS.style.top = "-8px";
-
-    }
-    // Reposition modal
-    taskSettingInner.style.left = boundingClientRect.left + "px";
-    taskSettingInner.style.transform = "translateX(0)";
-
-    // Take task clickcontent
-    taskInput.value = oldTaskName = currentTaskNode
-        .querySelector(".workspace__board-list-task-content")
-        .innerText.trim();
+    try {
+        hitSave = false;
+        // Get current task content
+        currentTask = event.target.parentNode.id.slice(5);
+        currentTaskNode = event.target.parentNode;
+        renderTaskSettingUrgent();
+        renderTaskDesc();
+        renderDeadline();
+        prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
     
-    taskInput.focus();
+        let boundingClientRect = currentTaskNode.getBoundingClientRect();
+        sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
+        sessionStorage.setItem("isEditing", "1");
+        taskSetting.classList.add("enable");
+        taskSetting.classList.remove("disable");
+        let windowHeight = window.outerHeight;
+        let divisionBreakpoint = Math.floor(windowHeight / 2)
+        if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
+            taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
+            taskSettingInner.style.flexDirection = "column-reverse";
+            taskSettingDesc.style.marginBottom = "8px";
+            datepickerJS.style.top = "74px";
+        } else { // Normal column
+            taskSettingInner.style.flexDirection = "column";
+            taskSettingDesc.style.marginBottom = "0px";
+            taskSettingInner.style.top = boundingClientRect.top + "px";
+            datepickerJS.style.top = "-8px";
+    
+        }
+        // Reposition modal
+        taskSettingInner.style.left = boundingClientRect.left + "px";
+        taskSettingInner.style.transform = "translateX(0)";
+    
+        // Take task clickcontent
+        taskInput.value = oldTaskName = currentTaskNode
+            .querySelector(".workspace__board-list-task-content")
+            .innerText.trim();
+        
+        taskInput.focus();
+    } catch (e) {
+        console.log("Fremline close triggered")
+    }
 
 }
 
 function renderDeadline() {
-    let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
-    if (deadline != undefined) {
-        taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
+    try {
+        let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
+        if (deadline != undefined) {
+            taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
+        }
+    } catch (e) {
+        console.log("Fremline")
     }
 }
 
 function renderTaskDesc() {
-    descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
-    taskSettingDesc.value = descContent;
+    try {
+        descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+        taskSettingDesc.value = descContent;
+    } catch (e) {
+        console.log("Fremline")
+    }
 }
 
 function renderTaskSettingUrgent() {
-    isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
-    if (isUrgent) {
-        taskSettingUrgent.innerText = "Unmark urgent";
-    } else {
-        taskSettingUrgent.innerText = "Mark as urgent";
+    try {
+        isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
+        if (isUrgent) {
+            taskSettingUrgent.innerText = "Unmark urgent";
+        } else {
+            taskSettingUrgent.innerText = "Mark as urgent";
+        }
+    } catch (e) {
+        console.log("Fremline")
     }
 
 }
