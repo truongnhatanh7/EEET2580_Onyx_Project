@@ -35,6 +35,17 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
+let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification")
+let inhumanCount = 0;
+let firtMomentSetPos = 0;
+
+eventSource.onmessage = (message) => {
+    if (message.data.toLowerCase().includes("workspace")) {
+        getWorkspace(renderWorkspace);
+    }
+
+}
+
 renderAvatarFromName();
 renderWelcome();
 
@@ -84,11 +95,6 @@ searchBtn.onclick = () => {
 
 function main() {
     getWorkspace(renderWorkspace);
-    setInterval(function () {
-        if (sessionStorage.getItem("isEditing") == "0") {
-            getWorkspace(renderWorkspace);
-        }
-    }, 3000);
 }
 
 function getWorkspace(callback) {

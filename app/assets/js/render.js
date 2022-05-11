@@ -15,12 +15,10 @@ if (sessionStorage.getItem('userId') == null) {
 }
 
 let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
-let inhumanCount = 0;
 let firtMomentSetPos = 0;
 
 eventSource.onmessage = (message) => {
     if (message.data.includes("setPos")) {
-        // console.log("mad");
         if (firtMomentSetPos == 0) {
             firtMomentSetPos = new Date();
             return;
@@ -36,7 +34,6 @@ eventSource.onmessage = (message) => {
             getBoardInfo();
         }
     }
-
 }
 
 
