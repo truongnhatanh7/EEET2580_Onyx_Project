@@ -19,6 +19,9 @@ let currentTask = null;
 let currentTaskNode = null;
 let taskDelCount = 0;
 let oldTaskName = "";
+let oldDescription = "";
+let oldDeadline = "";
+let oldUrgent = "";
 
 
 
@@ -54,66 +57,89 @@ taskInput.addEventListener("keyup", (event) => {
 });
 
 function handleTaskSetting(event) {
-    hitSave = false;
-    // Get current task content
-    currentTask = event.target.parentNode.id.slice(5);
-    currentTaskNode = event.target.parentNode;
-    renderTaskSettingUrgent();
-    renderTaskDesc();
-    renderDeadline();
+    try {
+        hitSave = false;
+        sessionStorage.setItem("deadline", "")
 
-    prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
-
-    let boundingClientRect = currentTaskNode.getBoundingClientRect();
-    sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
-    sessionStorage.setItem("isEditing", "1");
-    taskSetting.classList.add("enable");
-    taskSetting.classList.remove("disable");
-    let windowHeight = window.outerHeight;
-    let divisionBreakpoint = Math.floor(windowHeight / 2)
-    if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
-        taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
-        taskSettingInner.style.flexDirection = "column-reverse";
-        taskSettingDesc.style.marginBottom = "8px";
-        datepickerJS.style.top = "74px";
-    } else { // Normal column
-        taskSettingInner.style.flexDirection = "column";
-        taskSettingDesc.style.marginBottom = "0px";
-        taskSettingInner.style.top = boundingClientRect.top + "px";
-        datepickerJS.style.top = "-8px";
-
-    }
-    // Reposition modal
-    taskSettingInner.style.left = boundingClientRect.left + "px";
-    taskSettingInner.style.transform = "translateX(0)";
-
-    // Take task clickcontent
-    taskInput.value = oldTaskName = currentTaskNode
-        .querySelector(".workspace__board-list-task-content")
-        .innerText.trim();
+        // Get current task content
+        currentTask = event.target.parentNode.id.slice(5);
+        currentTaskNode = event.target.parentNode;
+        renderTaskSettingUrgent();
+        renderTaskDesc();
+        renderDeadline();
+        prevPriority = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? "0" : "1";
     
-    taskInput.focus();
+        let boundingClientRect = currentTaskNode.getBoundingClientRect();
+        sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
+        taskSetting.classList.add("enable");
+        taskSetting.classList.remove("disable");
+        let windowHeight = window.outerHeight;
+        let divisionBreakpoint = Math.floor(windowHeight / 2)
+        if (boundingClientRect.top > divisionBreakpoint) { // Reverse column
+            taskSettingInner.style.top = (boundingClientRect.top - 334 + 55) + "px";
+            taskSettingInner.style.flexDirection = "column-reverse";
+            taskSettingDesc.style.marginBottom = "8px";
+            datepickerJS.style.top = "74px";
+        } else { // Normal column
+            taskSettingInner.style.flexDirection = "column";
+            taskSettingDesc.style.marginBottom = "0px";
+            taskSettingInner.style.top = boundingClientRect.top + "px";
+            datepickerJS.style.top = "-8px";
+    
+        }
+        // Reposition modal
+        taskSettingInner.style.left = boundingClientRect.left + "px";
+        taskSettingInner.style.transform = "translateX(0)";
+    
+        // Take task clickcontent
+        memoizeTask()
+        
+        taskInput.focus();
+    } catch (e) {
+        console.log("Fremline close triggered")
+    }
 
 }
 
+function memoizeTask() {
+    taskInput.value = oldTaskName = currentTaskNode
+        .querySelector(".workspace__board-list-task-content")
+        .innerText.trim();
+    oldDescription = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+    oldDeadline = "";
+    oldUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
+}
+
 function renderDeadline() {
-    let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
-    if (deadline != undefined) {
-        taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
+    try {
+        let deadline = currentTaskNode.querySelector('.workspace__board-list-task-deadline-content.disable').innerText;
+        if (deadline != undefined) {
+            taskDeadline.innerHTML = "Deadline: " + deadline + '<i class="fa-solid fa-pen deadline-change-icon"></i>';
+        }
+    } catch (e) {
+        console.log("Fremline")
     }
 }
 
 function renderTaskDesc() {
-    descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
-    taskSettingDesc.value = descContent;
+    try {
+        descContent = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+        taskSettingDesc.value = descContent;
+    } catch (e) {
+        console.log("Fremline")
+    }
 }
 
 function renderTaskSettingUrgent() {
-    isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
-    if (isUrgent) {
-        taskSettingUrgent.innerText = "Unmark urgent";
-    } else {
-        taskSettingUrgent.innerText = "Mark as urgent";
+    try {
+        isUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
+        if (isUrgent) {
+            taskSettingUrgent.innerText = "Unmark urgent";
+        } else {
+            taskSettingUrgent.innerText = "Mark as urgent";
+        }
+    } catch (e) {
+        console.log("Fremline")
     }
 
 }
@@ -123,8 +149,6 @@ taskSettingClose.addEventListener("click", (event) => {
 });
 
 taskSave.addEventListener("click", (event) => {
-    console.log(oldTaskName)
-    let invalidTaskName = false;
     hitSave = true;
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
     let newTaskContent = taskInput.value;
@@ -157,23 +181,14 @@ taskSave.addEventListener("click", (event) => {
 
         })
         .then(() => {
-            if (taskSettingDesc.value != '') {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: taskSettingDesc.value.trim()
-                })
-            } else {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: " "
-                })
-            }
+            let toBeSentDesc = taskSettingDesc.value != '' ? taskSettingDesc.value.trim() : " ";
+            fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: toBeSentDesc
+            })
         })
         .then(() => {
             let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
@@ -187,7 +202,9 @@ taskSave.addEventListener("click", (event) => {
                 })
                 .then(() => {
                     sessionStorage.setItem("deadline", "");
-        
+                })
+                .catch(() => {
+                    throwError("Unexpected error when saving deadline")
                 })
             }
         })
@@ -204,10 +221,10 @@ taskSave.addEventListener("click", (event) => {
                         'Content-Type': 'application/json'
                     }
                 })
+                .catch(() => {
+                    throwError("Unexpected error when change task's priority")
+                })
             }
-        })
-        .then(() => {
-            sessionStorage.setItem("isEditing", "0");
         })
         .then(() => {
             if (!hitSave) {
@@ -225,7 +242,6 @@ taskSave.addEventListener("click", (event) => {
             throwError("Unexpected error")
         })
         .finally(() => {
-            sessionStorage.setItem("isEditing", "0");
             taskDelete.innerText = "Delete task";
             taskSetting.classList.add("disable");
             taskSetting.classList.remove("enable");

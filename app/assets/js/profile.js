@@ -200,7 +200,10 @@ saveBtnPassword.addEventListener('click', () => {
             }
         })
     }).then(() => {
-        if (oldPasswordInput.value == '' 
+        if (correctOldPassword && newPasswordInput.value == oldPasswordInput.value) {
+            throwError("New password is the old password")
+        }
+        else if (oldPasswordInput.value == '' 
             || newPasswordInput.value == '' 
             || retypeNewPassword.value == ''
             || !passwordCheck(newPasswordInput.value)

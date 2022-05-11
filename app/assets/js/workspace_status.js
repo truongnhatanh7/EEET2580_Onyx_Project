@@ -40,10 +40,24 @@ closeWorkspaceStatus.addEventListener("click", () => {
 });
 
 preDeleteBtn.addEventListener("click", () => {
-    preDeleteWrapper.classList.add("enable");
-    preDeleteWrapper.classList.remove("disable");
-    preDeleteBtn.classList.add("disable");
-    preDeleteBtn.classList.remove("enable");
+    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    .then(
+        response => {
+            response.text().then(
+                text => {
+                    if (text != sessionStorage.getItem("userId")) {
+                        throwError("Only owner could delete this workspace")
+                    } else {
+                        preDeleteWrapper.classList.add("enable");
+                        preDeleteWrapper.classList.remove("disable");
+                        preDeleteBtn.classList.add("disable");
+                        preDeleteBtn.classList.remove("enable");
+
+                    }
+                }
+            )
+        }
+    )
 });
 
 postDeleteBtn.addEventListener("click", () => {
@@ -157,7 +171,14 @@ addCollaboratorBtn.addEventListener("click", () => {
                 if (!found) {
                     throwError("User not found!")
                 }
-            });
+            })
+            .then(() => {
+                addCollaboratorInput.value = "";
+                addCollaboratorInput.focus();
+            })
+            .catch(() => {
+                throwError("Unexpected error")
+            })
     }
 });
 

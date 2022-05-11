@@ -15,6 +15,7 @@ const viewAllBtn = $(".dashboard__view-all-btn");
 const filterBtn = $(".dashboard__filter-btn");
 const filterOptionsWrapper = $(".dashboard__filter-options");
 const filterOptions = $$(".dashboard__filter-option");
+const welcomeText = $('.dashboard__user-name')
 let latestWorkspaceId = -1;
 let currentUser = sessionStorage.getItem("userId"); // Current user id
 let linkWorkspaceUserUrl =
@@ -34,7 +35,33 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
-renderAvatarFromName()
+let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification")
+let inhumanCount = 0;
+let firtMomentSetPos = 0;
+
+eventSource.onmessage = (message) => {
+    if (message.data.toLowerCase().includes("workspace")) {
+        getWorkspace(renderWorkspace);
+    }
+
+}
+
+renderAvatarFromName();
+renderWelcome();
+
+function renderWelcome() {
+    welcomeText.innerHTML = "Welcome back, " + capitalize(sessionStorage.getItem("userName")) + " 👋"
+}
+
+function capitalize(str) {
+    let ar = str.split(' ')
+    for (let i = 0; i < ar.length; i++) {
+        let u = ar[i].charAt(0).toUpperCase() + ar[i].slice(1).toLowerCase()
+        ar[i] = u
+    }
+    return ar.join(' ')
+
+}
 
 window.addEventListener("keyup", event => {
     event.preventDefault();
@@ -68,11 +95,6 @@ searchBtn.onclick = () => {
 
 function main() {
     getWorkspace(renderWorkspace);
-    setInterval(function () {
-        if (sessionStorage.getItem("isEditing") == "0") {
-            getWorkspace(renderWorkspace);
-        }
-    }, 3000);
 }
 
 function getWorkspace(callback) {
@@ -226,12 +248,12 @@ modalBtn.onclick = (event) => {
                     })
                     .then(() => {
                         let html = `
-                    <div class="dashboard__project-card" onclick="handleCardClick(event)" >
-                        <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
-                            <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
-                        </a>
-                    </div>
-                    `;
+                        <div class="dashboard__project-card" onclick="handleCardClick(event)" >
+                            <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
+                                <h2 class="dashboard__project-card-name" id="${workspace.workspaceId}">${workspace.workspaceTitle}</h2>
+                            </a>
+                        </div>
+                        `;
                         let para = document
                             .createRange()
                             .createContextualFragment(html);
