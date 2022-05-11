@@ -34,6 +34,8 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
+renderAvatarFromName()
+
 window.addEventListener("keyup", event => {
     event.preventDefault();
     if (event.key == 'Enter') {
@@ -45,6 +47,7 @@ filterOptions.forEach((option) => {
     option.addEventListener("click", () => {
         filterCondition = option.innerText.toLowerCase();
         getWorkspace(renderWorkspace);
+        currentPage = 0;
     });
 });
 
