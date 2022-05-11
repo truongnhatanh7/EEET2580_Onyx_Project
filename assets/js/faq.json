@@ -60,15 +60,15 @@
 
     },
     {
-        "title": "How to create workspace list?",
+        "title": "Drag and Drop a task to another list",
         "detail": [
-            "Log-in to your dashboard using your ONYX Account",
-            "Select a workspace to continue",
-            "An option to create new list will appeare",
-            "Enter a name and hit create"
+            "From the list, find the task you want to move ",
+            "Hold a click on the task",
+            "Then, drag the task to the list where you want to place it",
+            "Drop a task into the list"
         ],
         "img": "./assets/img/faq/faq-create.svg",
-        "alt": "Create Workspace in Faq"
+        "alt": "Drag and Drop task"
 
     },
     {
