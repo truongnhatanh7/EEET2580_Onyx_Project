@@ -9,7 +9,6 @@ const showOverdue = $('#show-overdue')
 const showOnlyUrgentMaskTick = $('.show-urgent-mask::after')
 var showOnlyUrgentFlag = false;
 var showOverdueFlag = false;
-sessionStorage.setItem('isEditing', '0')
 
 if (sessionStorage.getItem('userId') == null) {
     location.href = "../login.html";
@@ -18,6 +17,7 @@ if (sessionStorage.getItem('userId') == null) {
 let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
 let inhumanCount = 0;
 let firtMomentSetPos = 0;
+
 eventSource.onmessage = (message) => {
     if (message.data.includes("setPos")) {
         // console.log("mad");
@@ -77,7 +77,7 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
-    console.log("Rerender")
+    console.log("Re-render")
     let oldBoardLists = $$('.workspace__board-list-scrollable')
     let scrollRule = {}
     let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
@@ -195,7 +195,7 @@ function setScrollRule(scrollRule) {
         let temp = workspaceBoard.querySelector('#' + key)
         if (temp != null) {
             let list = temp.querySelector('.workspace__board-list-scrollable')
-            list.scrollTop = value
+            list.scrollTop = value;
         }
     }
 }

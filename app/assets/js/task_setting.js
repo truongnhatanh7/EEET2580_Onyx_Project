@@ -19,6 +19,9 @@ let currentTask = null;
 let currentTaskNode = null;
 let taskDelCount = 0;
 let oldTaskName = "";
+let oldDescription = "";
+let oldDeadline = "";
+let oldUrgent = "";
 
 
 
@@ -56,6 +59,8 @@ taskInput.addEventListener("keyup", (event) => {
 function handleTaskSetting(event) {
     try {
         hitSave = false;
+        sessionStorage.setItem("deadline", "")
+
         // Get current task content
         currentTask = event.target.parentNode.id.slice(5);
         currentTaskNode = event.target.parentNode;
@@ -66,7 +71,6 @@ function handleTaskSetting(event) {
     
         let boundingClientRect = currentTaskNode.getBoundingClientRect();
         sessionStorage.setItem("currentTask", currentTask); // Save current editing task's id
-        sessionStorage.setItem("isEditing", "1");
         taskSetting.classList.add("enable");
         taskSetting.classList.remove("disable");
         let windowHeight = window.outerHeight;
@@ -88,15 +92,22 @@ function handleTaskSetting(event) {
         taskSettingInner.style.transform = "translateX(0)";
     
         // Take task clickcontent
-        taskInput.value = oldTaskName = currentTaskNode
-            .querySelector(".workspace__board-list-task-content")
-            .innerText.trim();
+        memoizeTask()
         
         taskInput.focus();
     } catch (e) {
         console.log("Fremline close triggered")
     }
 
+}
+
+function memoizeTask() {
+    taskInput.value = oldTaskName = currentTaskNode
+        .querySelector(".workspace__board-list-task-content")
+        .innerText.trim();
+    oldDescription = currentTaskNode.querySelector('.workspace__board-list-task-desc.disable').innerText.trim();
+    oldDeadline = "";
+    oldUrgent = currentTaskNode.querySelector('.task-urgent').classList.contains('disable') ? false : true;
 }
 
 function renderDeadline() {
@@ -138,8 +149,6 @@ taskSettingClose.addEventListener("click", (event) => {
 });
 
 taskSave.addEventListener("click", (event) => {
-    console.log(oldTaskName)
-    let invalidTaskName = false;
     hitSave = true;
     let editTaskUrl = "http://localhost:8080/api/v1/task/";
     let newTaskContent = taskInput.value;
@@ -172,23 +181,14 @@ taskSave.addEventListener("click", (event) => {
 
         })
         .then(() => {
-            if (taskSettingDesc.value != '') {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: taskSettingDesc.value.trim()
-                })
-            } else {
-                fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
-                    method: "PATCH",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: " "
-                })
-            }
+            let toBeSentDesc = taskSettingDesc.value != '' ? taskSettingDesc.value.trim() : " ";
+            fetch(editTaskUrl + "setDesc/" + sessionStorage.getItem("currentTask"), {
+                method: "PATCH",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: toBeSentDesc
+            })
         })
         .then(() => {
             let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
@@ -202,7 +202,9 @@ taskSave.addEventListener("click", (event) => {
                 })
                 .then(() => {
                     sessionStorage.setItem("deadline", "");
-        
+                })
+                .catch(() => {
+                    throwError("Unexpected error when saving deadline")
                 })
             }
         })
@@ -219,10 +221,10 @@ taskSave.addEventListener("click", (event) => {
                         'Content-Type': 'application/json'
                     }
                 })
+                .catch(() => {
+                    throwError("Unexpected error when change task's priority")
+                })
             }
-        })
-        .then(() => {
-            sessionStorage.setItem("isEditing", "0");
         })
         .then(() => {
             if (!hitSave) {
@@ -240,7 +242,6 @@ taskSave.addEventListener("click", (event) => {
             throwError("Unexpected error")
         })
         .finally(() => {
-            sessionStorage.setItem("isEditing", "0");
             taskDelete.innerText = "Delete task";
             taskSetting.classList.add("disable");
             taskSetting.classList.remove("enable");

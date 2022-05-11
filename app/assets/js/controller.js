@@ -14,11 +14,6 @@ const listNameInput = $(".workspace__add-input");
 
 const loading = $('.loading')
 
-
-
-
-
-
 ////////////////////////////////////////////////////////////////////////////////
 // Board
 
@@ -50,13 +45,6 @@ function fetchOwner() {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-document.addEventListener("onmousedown", (event) => {
-    sessionStorage.setItem("isEditing", "1");
-});
-
-document.addEventListener("onmouseup", (event) => {
-    sessionStorage.setItem("isEditing", "0");
-});
 
 document.addEventListener("click", (event) => {
     event.stopPropagation();
@@ -258,7 +246,6 @@ function handleCloseTaskAdd() {
         addTaskBtn.classList.add("enable");
         addTaskBtn.classList.remove("disable");
         currentModifier.classList.remove("modifying");
-        sessionStorage.setItem("isEditing", "0");
     }
 }
 
@@ -267,7 +254,6 @@ function triggerModifying(event) {
     event.target.parentNode.classList.add("modifying");
     event.target.classList.add("disable");
     event.target.classList.remove("enable");
-    sessionStorage.setItem("isEditing", "1");
 }
 
 function submitTaskByKeyboard(event, taskBtn) {
