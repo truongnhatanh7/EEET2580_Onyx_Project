@@ -14,11 +14,11 @@
         "alt": "Login in Faq"
     },
     {
-        "title": "How to set up your workspace",
+        "title": "How to set up your workspace Project",
         "detail": [
             "Log-in to your dashboard using your ONYX Account",
-            "Select “+” card to add new workspace",
-            "Enter a new name for your workspace.",
+            "At dashboard page, select + in Your Project area",
+            "Enter a new name for your workspace",
             "Click at the newly created workspace.",
             "You can now create a new task list for your project."
         ],
