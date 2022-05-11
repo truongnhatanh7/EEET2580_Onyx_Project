@@ -119,8 +119,10 @@ saveBtnName.addEventListener('click', () => {
             throwError("Unexpected error")
         })
         .finally(() => {
+            sessionStorage.setItem("userName", firstNameInput.value + " " + lastNameInput.value)
             loading.classList.add('disable')
         })
+        
         
     } else {
         throwError("Invalid input")

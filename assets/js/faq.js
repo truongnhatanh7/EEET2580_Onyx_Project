@@ -6,30 +6,52 @@ let backToTopButton = document.querySelector("#button");
 
 
 // functions
+// back to top button action
 function backToTopClick() {
-  // document.querySelector("main").animate({
-  //   // keyframes from start to end height
-  //   scrollTop: [event.scrollTop, 0]
-  // }, {
-  //   duration: 400,
-  //   easing: 'ease-out'
-  // });
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
 async function animateDetails() {
+    // take array of contents and create faq elements
     await getFaqContent();
 
-    // animation on details
-    document.querySelectorAll(".faq__card").forEach((el, index) => {
-        new DetailObject(el);
+    // create animation when using faq card
+    document.querySelectorAll(".faq__card").forEach((element, index) => {
+        new DetailObject(element);
     });
 
 
 }
 async function getFaqContent() {
-    // fetch json and create element
-    const response = await (await fetch("http://localhost:5501/assets/js/faq.json")).json();
+    // fetch json and create element from content array
+    const response = [
+      {
+          "title": "How to set up your workspace",
+          "detail": [
+              "Log-in to your dashboard using your ONYX Account",
+              "Select “+” card to add new workspace",
+              "Enter a new name for your workspace.",
+              "Click at the newly created workspace.",
+              "You can now create a new task list for your project."
+          ],
+          "img": "./assets/img/faq/faq-setup.svg",
+          "alt": "Set Up in Faq"
+      },
+      {
+          "title": "How to create workspace list?",
+          "detail": [
+              "Log-in to your dashboard using your ONYX yasuo",
+              "Select a workspace to continue",
+              "An option to create new list will appeare",
+              "Enter a name and hit create"
+          ],
+          "img": "./assets/img/faq/faq-create.svg",
+          "alt": "Create Workspace in Faq"
+  
+      }
+  ]
+  // create elements
     response.map(card => {
         faqContainer.innerHTML += `
         <details class="faq__card flex flex-center">
@@ -40,12 +62,13 @@ async function getFaqContent() {
             return totalLine + (index === 0? ("- " + line) : ("<br> - " + line));
         }, "")}</p>
 
-        ${card["img"] == ""? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
+        ${(card["img"] == "" || !card.hasOwnProperty('img'))? "" : `<img src="${card["img"]}" alt="Setup in faq">`}
         </div>
         </details>`;
     });
 
 }
+
 // for animation on details + close other details when open 1 detail
 class DetailObject {
     constructor(element) {
@@ -60,6 +83,8 @@ class DetailObject {
   
       // store the animation state (can cancel if needed)
       this.animation = null;
+      // this.content.style.animation = null;
+
       // store closing state
       this.isClosing = false;
       // store expanding state
@@ -97,9 +122,11 @@ class DetailObject {
       const endHeight = `${this.summary.offsetHeight}px`;
       
       // if there is already an animation running
+      // if (this.content.style.animation) {
       if (this.animation) {
         // cancel the current animation
         this.animation.cancel();
+        // this.content.style.animation = null;
       }
       
       // animation
@@ -110,11 +137,15 @@ class DetailObject {
         duration: 200,
         easing: 'ease-out'
       });
+      // this.content.style.animation = "faq-slide-up 2s";
       
       // when the animation is complete
       this.animation.onfinish = () => this.onAnimationFinish(false);
+      // this.content.onanimationend = () => this.onAnimationFinish(false);
+
       // if animation is cancelled, isClosing false
       this.animation.oncancel = () => this.isClosing = false;
+      // this.content.onanimationcancel = () => this.isClosing = false;
     }
   
     open() {
@@ -133,9 +164,11 @@ class DetailObject {
       const endHeight = `${this.summary.offsetHeight + this.content.offsetHeight}px`;
       
       // if animation is running
+      // if (this.content.style.animation) {
       if (this.animation) {
         // cancel animation
         this.animation.cancel();
+        // this.content.style.animation = null;
       }
       
       // add animation
@@ -146,15 +179,20 @@ class DetailObject {
         duration: 200,
         easing: 'ease-out'
       });
+      // this.content.style.animation = "faq-slide-down 2s";
       
 
       this.animation.onfinish = () => this.onAnimationFinish(true);
+      // this.content.onanimationend = () => this.onAnimationFinish(true);
+      
       // if animation is cancelled
       this.animation.oncancel = () => this.isExpanding = false;
+      // this.content.onanimationcancel = () => this.isExpanding = false;
     }
   
     onAnimationFinish(open) {
       this.element.open = open;
+      // this.content.style.animation = null;
       this.animation = null;
 
       // reset
@@ -164,6 +202,8 @@ class DetailObject {
       // remove overflow hidden and the fixed height
       this.element.style.height = this.element.style.overflow = '';
     }
+
+    // close other cards when open 1 card
     closeOtherDetails(currentTarget) {
         document.querySelectorAll(".faq__card").forEach(detail => {
             if (detail !== currentTarget) {
@@ -177,12 +217,13 @@ class DetailObject {
 function filterFaqCard() {
   let input = document.querySelector(".faq__find");
   let filter = input.value.toUpperCase();
-  let summaryList = document.querySelectorAll(".faq__card summary");
-  summaryList.forEach(summary => {
+  document.querySelectorAll(".faq__card summary").forEach(summary => {
         summaryContent = summary.textContent;
+        // if not found in input
         if (!summaryContent.toUpperCase().includes(filter)) {
             summary.parentElement.classList.add('disable');
         } else {
+          // found in input
           summary.parentElement.classList.remove('disable');
         }
     });
