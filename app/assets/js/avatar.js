@@ -7,6 +7,13 @@ userAvatar.onerror = () => {
     avatar.classList.remove('disable');
 }
 
+userAvatar.onload = () => {
+    if (userAvatar.width > userAvatar.height) {
+        userAvatar.style.height = "36px";
+        userAvatar.style.width = "auto";
+    }
+}
+
 
 // Routing
 const avatar = $(".user-text-avatar")
