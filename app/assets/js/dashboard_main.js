@@ -39,10 +39,8 @@ renderAvatarFromName();
 renderWelcome();
 
 function renderWelcome() {
-    welcomeText.innerHTML = "Welcome back, " + capitalize(sessionStorage.getItem("userName"))
+    welcomeText.innerHTML = "Welcome back, " + capitalize(sessionStorage.getItem("userName")) + " 👋"
 }
-
-capitalize("anh truong")
 
 function capitalize(str) {
     let ar = str.split(' ')
