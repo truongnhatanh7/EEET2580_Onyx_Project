@@ -87,6 +87,8 @@ h1{
     border: 1px solid var(--soft-pink);
     outline: 1px solid var(--soft-pink);
     display: block;
+    color: var(--black);
+    background-color: var(--white-color);
 }
 
 .user-form__modify-btn {
