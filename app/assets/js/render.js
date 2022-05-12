@@ -17,34 +17,42 @@ if (sessionStorage.getItem('userId') == null) {
 }
 
 let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
-let firtMomentSetPos = 0;
+let totalPosToFetch = 0;
 let currentPosToFetch = 0;
 let firstTimeSetPos = false;
+let setPosStarting = false;
 
+// How I hack this SSE:
+// SSE just send information in 1 direction
+// So I use frontend to trigger backend SSE with a message
+// Then I decode this message and do some manipulation on it
+// The result is the 'pos' might be fetched intensely, but the UI
+// just update for 1 time, ONE TIME!
 eventSource.onmessage = (message) => {
-    // if (message.data.includes("setPos")) {
-    //     console.log("event source setpos")
-    //     currentPosToFetch++;
-    //     if (currentPosToFetch >= allPosToFetch) {
-    //         console.log("lets fucking re render setPos");
-    //         getBoardInfo();
-    //         allPosToFetch = 0;
-    //     }
-    //     // if (firtMomentSetPos == 0) {
-    //     //     firtMomentSetPos = new Date();
-    //     //     return;
-    //     // }
-    //     // else if (new Date() - firtMomentSetPos > 200) {
-    //     //     console.log("fads")
-    //     //     getBoardInfo();
-    //     //     firtMomentSetPos = 0;
-    //     // }
-
-    // } else {
-        if (message.data.includes(sessionStorage.getItem("currentBoardId"))) {
-            getBoardInfo();
+    console.log("message: ", message.data)
+    if (message.data.includes("switchList")) {
+        // Starting the checking procedure
+        // Why?
+        // after switchList -> setPos for x time
+        setPosStarting = true;
+    }
+    else if (message.data.includes("setPos") && setPosStarting) {
+        // In this step
+        // I count for x time
+        // Then render only 1
+        // This way, there will be NO GLITCH in UI, and crazy data in backend
+        currentPosToFetch += 1
+        if (currentPosToFetch == message.data.split(' ')[2]) {
+            getBoardInfo()
+            setPosStarting = false;
+            currentPosToFetch = 0;
         }
-    // }
+    }
+    else if (!setPosStarting && message.data.includes(sessionStorage.getItem("currentBoardId"))) {
+        // Other operation
+        getBoardInfo();
+    }
+
 }
 
 

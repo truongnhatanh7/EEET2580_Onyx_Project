@@ -36,11 +36,19 @@ function handleDragEnd(event) {
     })
     .then(() => {
         let allTasks = parent.querySelectorAll(".workspace__board-list-task");
+        console.log("all tasks", allTasks.length)
         let cur = 0;
-        allPosToFetch = allTasks.length;
-        allTasks.forEach((task) => {
-            setPos(task.id.slice(5), cur++)
-        });
+        fetch("http://localhost:8080/api/v1/sse/num-setpos/" + allTasks.length, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            }
+        })
+        .then(() => {
+            allTasks.forEach((task) => {
+                setPos(task.id.slice(5), cur++)
+            });
+        })
     })
     .finally(() => {
         console.log("set pos done")
