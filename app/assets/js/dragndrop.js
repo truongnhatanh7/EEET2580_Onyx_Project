@@ -1,6 +1,7 @@
 "use strict";
 const draggables = $$(".workspace__board-list-task");
 const containers = $$(".workspace__board-list");
+var allPosToFetch = 0;
 
 function handleDragStart(event) {
     event.target.classList.add("workspace__board-list-task--dragging");
@@ -9,6 +10,7 @@ function handleDragStart(event) {
 }
 
 function handleDragEnd(event) {
+    console.log("drag end")
     event.target.classList.remove("workspace__board-list-task--dragging");
     let parent = event.target.parentNode;
     let listId = parent.id.slice(5);
@@ -31,15 +33,19 @@ function handleDragEnd(event) {
         body: JSON.stringify({
             taskId: event.target.id.slice(5),
         }),
-    });
+    })
+    .then(() => {
+        let allTasks = parent.querySelectorAll(".workspace__board-list-task");
+        let cur = 0;
+        allPosToFetch = allTasks.length;
+        allTasks.forEach((task) => {
+            setPos(task.id.slice(5), cur++)
+        });
+    })
+    .finally(() => {
+        console.log("set pos done")
+    })
 
-    let allTasks = parent.querySelectorAll(".workspace__board-list-task");
-    let cur = 0;
-    allTasks.forEach((task) => {
-        setPos(task.id.slice(5), cur++)
-    });
-
-    sessionStorage.setItem("isEditing", "0");
 }
 
 function setPos(taskId, pos) {
