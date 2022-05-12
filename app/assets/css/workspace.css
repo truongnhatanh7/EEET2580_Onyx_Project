@@ -6,6 +6,10 @@ html {
     overflow: hidden;
 }
 
+#darkmode-switch {
+    display: none;
+}
+
 .workspace-root {
     min-height: 100vh;
     color: var(--black);
@@ -52,11 +56,6 @@ input[type="text"] {
     display: flex;
     gap: 8px;
 }
-
-.ultility-wrapper:nth-child(1) {
-    padding: 0;
-}
-
 .ultility-wrapper:hover {
     cursor: pointer;
     transform: scale(1.05);
@@ -64,7 +63,7 @@ input[type="text"] {
 
 .ultility-wrapper {
     display: flex;
-    padding: 8px 20px;
+    padding: 8px 24px;
     background-color: var(--white);
     border-radius: 8px;
     font-size: 1.4rem;
@@ -72,6 +71,8 @@ input[type="text"] {
     align-items: center;
     position: relative;
     transition: 0.2s;
+    height: 56px;
+    box-shadow: var(--box-shadow-engrave);
 }
 
 .workspace__info-urgent {
@@ -230,6 +231,7 @@ input[type="text"] {
     transition: 0.1s;
     display: flex;
     flex-direction: column;
+    box-shadow: var(--box-shadow);
 
 }
 
@@ -248,7 +250,12 @@ input[type="text"] {
     background-color: var(--soft-pink);
     border: 1px solid var(--white);
     border-radius: 8px;
-}   
+    transition: 0.2s;
+} 
+
+.workspace__add-task-btn:hover {
+    /* box-shadow: var(--task-shadow); */
+}
 
 .workspace__board-list ~ .workspace__add-task-wrapper {
 }
@@ -374,6 +381,7 @@ input[type="text"] {
     padding: 6px;
     border-radius: 8px;
     border: 1px solid var(--soft-pink);
+    transition: 0.2s;
 }
 
 .workspace__board-list-task:hover .workspace__board-list-task-edit {
@@ -427,6 +435,9 @@ input[type="text"] {
     margin-top: 0;
     padding: 16px 20px;
     transition: 0.1s;
+    box-shadow: var(--box-shadow);
+    position: relative;
+    z-index: 300;
 
 }
 
@@ -459,10 +470,6 @@ input[type="text"] {
     display: none;
     transition: 0.1s;
 
-}
-
-.workspace__add-task-btn {
-    transition: 0.1s;
 }
 
 .workspace__submit-title {

@@ -109,6 +109,8 @@
     position: relative;
     transition: 0.2s;
 
+
+
 }
 
 .user-task__wrapper:hover {
@@ -128,12 +130,14 @@
     place-items: center;
     font-size: 1.4rem;
 
+
 }
 
 .user-avatar {
     min-width: 36px;
     max-width: 36px;
     height: auto;
-    /* border-radius: 100%; */
+
+
 
 }

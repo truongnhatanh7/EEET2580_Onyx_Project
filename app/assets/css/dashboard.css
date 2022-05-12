@@ -66,9 +66,10 @@
     opacity: 50%;
 
     background-color: var(--gray);
-    /* padding: 8px; */
     border-radius: 100px;
     transform: scale(0.8);
+    transition: 0.2s;
+
 }
 .dashboard__view-all-btn:hover{
     opacity: 100%;
@@ -83,6 +84,9 @@
     color: var(--black);
     font-size: 1.4rem;
     border-radius: 8px;
+    transition: 0.2s;
+
+    
 }
 
 .dashboard__search-workspace-btn:hover {
@@ -98,6 +102,8 @@
 
     border-radius: 8px;
     position: relative;
+    transition: 0.2s;
+
 }
 
 .dashboard__filter-btn:hover .dashboard__filter-options{
@@ -181,7 +187,7 @@
     border-radius: var(--border-main);
     display: grid;
     place-items: center;
-    transition: 0s;
+    transition: 0.2s;
 }
 
 .dashboard__project-card:hover {
@@ -189,7 +195,6 @@
     margin-top: 4px;
     margin-bottom: 0px;
     box-shadow: rgba(50, 50, 93, 0.335) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-    transition: 0s;
 }
 .dashboard__project-card:hover .dashboard__project-card-name {
     transform: scale(1.2);
@@ -201,11 +206,6 @@
 
 .dashboard__project-add-btn:hover {
     cursor: pointer;
-}
-
-.dashboard__project-create {
-    font-size: 3rem;
-    transition: 0.3s;
 }
 
 .dashboard__project-add-btn:hover .dashboard__project-create {
@@ -230,7 +230,7 @@
     max-height: 70%;
     text-overflow: ellipsis;
     overflow: hidden;
-    transition: 0s;
+    transition: 0.3s;
     word-wrap: break-word;
     text-align: center;
 }
@@ -305,6 +305,7 @@
     color: var(--white);
     background-color: var(--soft-pink);
     border-radius: var(--button-border);
+    transition: 0.2s;
 }
 
 .dashboard__modal-create.dashboard__modal-create--disable {
@@ -329,6 +330,8 @@
 .dashboard__pagination-btn {
     padding: 8px 16px;
     /* margin: 4px; */
+    transition: 0.2s;
+
 
 }
 
