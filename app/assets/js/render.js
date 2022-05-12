@@ -18,24 +18,33 @@ if (sessionStorage.getItem('userId') == null) {
 
 let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
 let firtMomentSetPos = 0;
+let currentPosToFetch = 0;
+let firstTimeSetPos = false;
 
 eventSource.onmessage = (message) => {
-    if (message.data.includes("setPos")) {
-        if (firtMomentSetPos == 0) {
-            firtMomentSetPos = new Date();
-            return;
-        }
-        else if (new Date() - firtMomentSetPos > 200) {
-            console.log("fads")
-            getBoardInfo();
-            firtMomentSetPos = 0;
-        }
+    // if (message.data.includes("setPos")) {
+    //     console.log("event source setpos")
+    //     currentPosToFetch++;
+    //     if (currentPosToFetch >= allPosToFetch) {
+    //         console.log("lets fucking re render setPos");
+    //         getBoardInfo();
+    //         allPosToFetch = 0;
+    //     }
+    //     // if (firtMomentSetPos == 0) {
+    //     //     firtMomentSetPos = new Date();
+    //     //     return;
+    //     // }
+    //     // else if (new Date() - firtMomentSetPos > 200) {
+    //     //     console.log("fads")
+    //     //     getBoardInfo();
+    //     //     firtMomentSetPos = 0;
+    //     // }
 
-    } else {
+    // } else {
         if (message.data.includes(sessionStorage.getItem("currentBoardId"))) {
             getBoardInfo();
         }
-    }
+    // }
 }
 
 
@@ -195,8 +204,17 @@ function renderBoard(board) {
             setScrollRule(scrollRule);
         }
     });
+    continuePreviousWork();
+}
 
-
+function continuePreviousWork() {
+    // console.log(isCreating)
+    const tempNode = $('#list_' + sessionStorage.getItem("currentList"))
+    if (isCreating) {
+        console.log(tempNode.childNodes[5].click())
+        // tempNode.querySelector(".workspace__add-task-btn").click();
+        console.log("clicked")
+    }
 }
 
 function setScrollRule(scrollRule) {
