@@ -2,6 +2,8 @@ const featureImage = $('.feature__img')
 const featureParagraph = $('.feature__paragraph')
 const featureImageHelper = $('.feature__img-helper')
 
+const navbarLogo = $('.navbar__logo')
+
 const pickerDragAndDrop = $('.picker__dragndrop')
 const pickerDarkmode = $('.picker__darkmode')
 const pickerCollaboration = $('.picker__collaboration')
@@ -15,7 +17,9 @@ discoverBtns.forEach(btn => {
     })
 })
 
-
+navbarLogo.addEventListener('click', () => {
+    location.href = "./"
+})
 
 
 pickerDragAndDrop.addEventListener('click', () => {

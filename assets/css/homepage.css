@@ -10,6 +10,24 @@
     z-index: 1000;
 }
 
+.navbar__logo {
+    transition: 0.2s;
+}
+
+.navbar__logo:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    animation: hueHack 2s ease-in-out infinite alternate;
+}
+
+@keyframes hueHack {
+    from {
+        color: var(--yellow);
+    } to {
+        color: var(--soft-pink);
+    }
+}
+
 .space{
     height: 100vh;
 }
