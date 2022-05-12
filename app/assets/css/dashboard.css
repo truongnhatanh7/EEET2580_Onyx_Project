@@ -321,7 +321,7 @@
     margin-top: 32px;
     padding: 12px;
     font-size: 1.8rem;
-    color: var(--black);
+    color: var(--constant-white);
     background-color: var(--soft-pink);
     border-radius: var(--button-border);
     transition: 0.2s;
