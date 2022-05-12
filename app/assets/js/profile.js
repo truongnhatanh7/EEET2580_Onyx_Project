@@ -15,6 +15,7 @@ const modifyNameTrigger = $('.modify-name-icon');
 const modifyNameWrapper = $('.user-form__modify-name-wrapper')
 const modifyAvatarTrigger = $('.modify-avatar-icon')
 const modifyAvatarWrapper = $('.user-form__modify-avatar-wrapper')
+const modifyThemeTrigger = $('.modify-theme-icon')
 
 const loading = $('.loading')
 
@@ -25,9 +26,14 @@ const retypeNewPassword = $('.modify-new-password-retype');
 const firstNameInput = $('.modify-first-name')
 const lastNameInput = $('.modify-last-name')
 const avatarInput = $('.modify-avatar')
+const themeInput = $('#darkmode-switch')
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 // Trigger
+
+modifyThemeTrigger.addEventListener('click', () => {
+    themeInput.click();
+})
 
 modifyAvatarTrigger.addEventListener('click', () => {
     modifyAvatarWrapper.classList.toggle('disable');
@@ -249,4 +255,5 @@ signOutBtn.addEventListener('click', () => {
     sessionStorage.clear();
     location.href = "../index.html";
 })
+
 
