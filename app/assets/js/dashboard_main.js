@@ -191,6 +191,9 @@ modalOutter.onclick = (event) => {
     sessionStorage.setItem("isEditing", "0");
 };
 
+const closeModal = $('.dashboard__close-modal');
+closeModal.onclick = () => { modalOutter.click(); }
+
 ////////////////////////////////////////////////////////////////////////
 // Add wp handling
 // Call post API create new wp

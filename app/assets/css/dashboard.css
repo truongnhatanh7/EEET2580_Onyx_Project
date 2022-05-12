@@ -58,27 +58,29 @@
     background-color: var(--white-color);
     color: var(--black);
 }
-.fa-x{
-    font-size: 1.2rem;
+.fa-xmark{
+    /* font-size: 0.5rem; */
     color: var(--constant-white);
 }
 
 .dashboard__view-all-btn {
-    height: 30px;
-    width: 30px;
+    height: 32px;
+    width: 32px;
     position: absolute;
     right: 90px;
     top: 24%;
     background-color: var(--focus-gray);
     border-radius: 100px;
-    transform: scale(0.8);
+    transform: scale(0.6);
     transition: 0.2s;
+    opacity: 70%;
+
 
 
 }
 .dashboard__view-all-btn:hover{
     opacity: 100%;
-    transform: scale(0.8);
+    transform: scale(0.7);
 }
 .dashboard__search-workspace-btn{
     position: absolute;
@@ -90,6 +92,7 @@
     font-size: 1.4rem;
     border-radius: 8px;
     transition: 0.2s;
+    color: var(--constant-black);
 
     
 }
@@ -102,7 +105,7 @@
 .dashboard__project-add-btn {
     padding: 18px 20px;
     background-color: var(--yellow);
-    color: var(--black);
+    color: var(--constant-black);
     font-size: 1.4rem;
 
     border-radius: 8px;
@@ -267,6 +270,8 @@
     padding: 64px 8px;
     border-radius: var(--border-main);
     align-items: center;
+    position: relative;
+
 }
 
 .dashboard__modal-title {
@@ -330,6 +335,23 @@
     display: grid;
 }
 
+.dashboard__close-modal {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    font-size: 2rem;
+    max-height: 14px;
+    width: 14px;
+    color: var(--black);
+    transition: 0.2s;
+}
+
+.dashboard__close-modal:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    color: var(--red-pastel);
+}
+
 .dashboard__pagination {
     margin-top: 32px;
     width: 100%;
@@ -345,8 +367,14 @@
     padding: 8px 16px;
     /* margin: 4px; */
     transition: 0.2s;
+    background-color: var(--white-color);
+    color: var(--black);
 
 
+}
+
+.dashboard__pagination-btn:hover {
+    transform: translateY(-2px);
 }
 
 .dashboard__pagination-btn.dashboard__pagination-btn--active {
