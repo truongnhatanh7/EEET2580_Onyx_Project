@@ -76,7 +76,7 @@
 .workspace__task-delete-btn {
     margin-top: 8px;
     padding: 8px 0;
-    background-color: var(--red);
+    background-color: var(--red-pastel);
     color: var(--constant-white);
     width: 50%;
     transition: 0.1s;

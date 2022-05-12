@@ -4,11 +4,13 @@ let boardObj;
 const workspaceBoard = $(".workspace__board");
 const workspaceName = $('.workspace__info-name')
 const showOnlyUrgentCheckbox = $('#show-only-urgent')
+const showNotedCheckbox = $('#show-noted')
 const showOnlyUrgentMask = $('.show-urgent-mask')
 const showOverdue = $('#show-overdue')
 const showOnlyUrgentMaskTick = $('.show-urgent-mask::after')
 var showOnlyUrgentFlag = false;
 var showOverdueFlag = false;
+var showNotedFlag = false;
 
 if (sessionStorage.getItem('userId') == null) {
     location.href = "../login.html";
@@ -43,7 +45,15 @@ function handleShowOnlyUrgent(event) {
     } else {
         showOnlyUrgentFlag = false;
     }
-    fetchBoardInfo();
+    getBoardInfo();
+}
+
+function handleShowNoted(event) {
+    if (showNotedCheckbox.checked) {
+        showNotedFlag = true;
+    } else {
+        showNotedFlag = false;
+    }
     getBoardInfo();
 }
 
@@ -53,7 +63,6 @@ function handleShowOverdue(event) {
     } else {
         showOverdueFlag = false;
     }
-    fetchBoardInfo();
     getBoardInfo();
 }
 
@@ -96,6 +105,9 @@ function renderBoard(board) {
                     let hasNote = true
                     if (task.description == " " || task.description == "") {
                         hasNote = false
+                    }
+                    if (!hasNote && showNotedFlag) {
+                        return;
                     }
                     let dl = task.deadline == undefined ? "No deadline for this task" : new Date(task.deadline).toString().trim();
                     if (showOnlyUrgentFlag && task.priority == 0) {

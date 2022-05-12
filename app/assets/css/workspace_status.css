@@ -100,7 +100,7 @@
 }
 
 .workspace__delete-title{
-    color: var(--red-pastel)
+    color: var(--red-pastel);
 }
 
 .workspace__collaborator-delete {
