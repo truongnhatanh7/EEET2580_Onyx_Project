@@ -253,6 +253,7 @@ const signOutBtn = $('.sign-out-btn')
 signOutBtn.addEventListener('click', () => {
     // sessionStorage.removeItem('userId');
     sessionStorage.clear();
+    localStorage.clear();
     location.href = "../index.html";
 })
 
