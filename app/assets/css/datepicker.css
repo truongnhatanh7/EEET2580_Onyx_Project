@@ -63,7 +63,7 @@
 
 .datepicker__numday.numday_disable {
     opacity: 0.5;
-    background-color: #ccc;
+    /* background-color: #ccc; */
     color: var(--black) !important;
 
 }
@@ -76,7 +76,7 @@
 }
 
 .datepicker__numday {
-    border: 0.5px solid #ccc;
+    /* border: 0.5px solid #ccc; */
     text-align: center;
     border-radius: 4px;
     padding: 2px;
