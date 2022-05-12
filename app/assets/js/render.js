@@ -212,17 +212,6 @@ function renderBoard(board) {
             setScrollRule(scrollRule);
         }
     });
-    continuePreviousWork();
-}
-
-function continuePreviousWork() {
-    // console.log(isCreating)
-    const tempNode = $('#list_' + sessionStorage.getItem("currentList"))
-    if (isCreating) {
-        console.log(tempNode.childNodes[5].click())
-        // tempNode.querySelector(".workspace__add-task-btn").click();
-        console.log("clicked")
-    }
 }
 
 function setScrollRule(scrollRule) {
