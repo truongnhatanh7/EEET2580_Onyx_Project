@@ -56,7 +56,6 @@ document.addEventListener("click", (event) => {
         closeSubmitList.click();
     }
 
-    // let currentList = board.querySelector('.modifying');
     let outsideClick = false;
     let lists = board.querySelectorAll(
         ".workspace__board-list:not(.modifying)"
