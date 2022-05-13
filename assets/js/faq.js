@@ -27,6 +27,18 @@ async function getFaqContent() {
     // fetch json and create element from content array
     const response = [
       {
+        "title": "Login to the application ",
+        "detail": [
+              "From the login page, type your registered username in the Username field",
+              "Type the registered password in the Password field.",
+              "Select the Log in button.",
+              "In contrast, if the user has not registered for the account, select the signup button and fill in all the fields of the registration form then click the Sign up button for logging in.",
+              "You can now create a new task list for your project."
+        ],
+        "img": "./assets/img/faq/faq-setup.svg",
+        "alt": "Login in Faq"
+      },
+      {
           "title": "How to set up your workspace",
           "detail": [
               "Log-in to your dashboard using your ONYX Account",
@@ -49,6 +61,9 @@ async function getFaqContent() {
           "img": "./assets/img/faq/faq-create.svg",
           "alt": "Create Workspace in Faq"
   
+      },
+      {
+          
       }
   ]
   // create elements
