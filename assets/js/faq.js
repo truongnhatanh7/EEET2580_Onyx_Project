@@ -60,10 +60,19 @@ async function getFaqContent() {
           ],
           "img": "./assets/img/faq/faq-create.svg",
           "alt": "Create Workspace in Faq"
-  
       },
       {
-          
+          "title": "How to add new task within workspace list?",
+          "detail": [
+            "From the list, select the Add task button.",
+            "Type the name in the Enter new task field.",
+            "Click the Create button for creating a new task."
+          ],
+          "img": "./assets/img/faq/faq-create.svg",
+          "alt": "Add new task within workspace list"
+      },
+      {
+        
       }
   ]
   // create elements
