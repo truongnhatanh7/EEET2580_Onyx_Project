@@ -72,7 +72,14 @@ async function getFaqContent() {
           "alt": "Add new task within workspace list"
       },
       {
-        
+        "title": "Edit a task within the workspace list",
+        "detail": [
+          "From the list, find the task you want to make a change to and select the edit button.",
+          "Type the new name for the task.",
+          "Click the Save button for saving the new name."
+        ],
+        "img": "./assets/img/faq/faq-create.svg",
+        "alt": "Edit Task in within workspace list"
       }
   ]
   // create elements
