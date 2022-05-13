@@ -53,7 +53,7 @@ async function getFaqContent() {
       {
           "title": "How to create workspace list?",
           "detail": [
-              "Log-in to your dashboard using your ONYX yasuo",
+              "Log-in to your dashboard using your ONYX",
               "Select a workspace to continue",
               "An option to create new list will appeare",
               "Enter a name and hit create"

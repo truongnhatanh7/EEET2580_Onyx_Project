@@ -3,8 +3,6 @@
     --font-size-input: clamp(1.01rem, calc(0.71rem + 1.49vw), 2.05rem);
     /* static title size: 8rem  */
     --font-size-title: clamp(3.60rem, calc(1.84rem + 8.81vw), 9.77rem);
-    /* static content font size: 1.6rem */
-    --font-size-content: clamp(1.21rem, calc(0.82rem + 1.93vw), 2.56rem);
 }
 main {
     padding-top: 220px;
@@ -83,6 +81,7 @@ main {
 }
 .faq__card > summary {
     box-shadow: -22px 22px 44px rgba(219, 219, 219, 0.2), 22px -22px 44px rgba(219, 219, 219, 0.2), -22px -22px 44px rgba(255, 255, 255, 0.9), 22px 22px 55px rgba(219, 219, 219, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(219, 219, 219, 0.5);
+
     border-radius: var(--border-main);
     padding: 2em 4em;
     height: 3.5em;
@@ -121,9 +120,10 @@ main {
 }
 .faq__card p {
     width: 50%;
-    line-height: 2;
-    /* font-size: 1.6rem; */
-    font-size: var(--font-size-content);
+    line-height: 2.5;
+    letter-spacing: 1;
+    font-size: 1.6rem;
+    padding: 1.5em 0.7em;
 }
 .faq__card img {
     width: 50%;
