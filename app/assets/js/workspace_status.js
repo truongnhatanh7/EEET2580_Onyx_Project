@@ -12,7 +12,7 @@ const preDeleteWrapper = $(".workspace__delete-confirmation");
 const preDeleteInput = $(".workspace__delete-confirmation-input");
 const postDeleteBtn = $(".workspace__delete-workspace-btn-post");
 const deleteWorkspaceUrl =
-    "http://localhost:8080/api/v1/workspace/delete-workspace/";
+    "https://onyx2-backend.herokuapp.com/api/v1/workspace/delete-workspace/";
 
 statusBtn.addEventListener("click", () => {
     workspaceStatus.classList.add("enable");
@@ -40,7 +40,7 @@ closeWorkspaceStatus.addEventListener("click", () => {
 });
 
 preDeleteBtn.addEventListener("click", () => {
-    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
     .then(
         response => {
             response.text().then(
@@ -88,7 +88,7 @@ fetchUserInWorkspace();
 
 function fetchUserInWorkspace() {
     let workspaceUrl =
-        "http://localhost:8080/api/v1/workspace/get-workspace/" +
+        "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
         sessionStorage.getItem("currentBoardId");
     fetch(workspaceUrl)
         .then((response) => response.json())
@@ -104,13 +104,7 @@ function fetchUserInWorkspace() {
 }
 
 function renderUserInWorkspace(users) {
-    if (users.length == 0) {
-        collaboratorList.innerHTML = "";
-        // Warning to delete workspace if there are no owners
-        preDeleteInput.value = "delete this workspace";
-        postDeleteBtn.click();
-        location.assign("./dashboard.html");
-    } else {
+
         collaboratorList.innerHTML = "";
         users.forEach((user) => {
             if (user.userId == sessionStorage.getItem("currentOwnerId")) {
@@ -127,7 +121,7 @@ function renderUserInWorkspace(users) {
                 .createContextualFragment(tempHtml);
             collaboratorList.appendChild(para);
         });
-    }
+    
 }
 
 document.addEventListener("click", (event) => {
@@ -139,7 +133,7 @@ document.addEventListener("click", (event) => {
 function handleRemoveCollaborator(event) {
     let id = event.target.parentNode.id.slice(5);
     let removeCollaboratorUrl =
-        "http://localhost:8080/api/v1/user/remove-user-from-workspace/" +
+        "https://onyx2-backend.herokuapp.com/api/v1/user/remove-user-from-workspace/" +
         sessionStorage.getItem("currentBoardId") +
         "/" +
         id;
@@ -157,7 +151,7 @@ addCollaboratorBtn.addEventListener("click", () => {
     if (addCollaboratorInput.value == "") {
         throwError("Invalid input")
     } else {
-        let getAllUsersUrl = "http://localhost:8080/api/v1/user/all-users/";
+        let getAllUsersUrl = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/";
         fetch(getAllUsersUrl)
             .then((response) => response.json())
             .then((users) => {
@@ -184,7 +178,7 @@ addCollaboratorBtn.addEventListener("click", () => {
 
 function handleAddToWorkspace(user) {
     let addCollaboratorUrl =
-        "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/" +
+        "https://onyx2-backend.herokuapp.com/api/v1/user/add-workspace-for-user-by-id/" +
         sessionStorage.getItem("currentBoardId") +
         "/" +
         user.userId;
@@ -202,7 +196,7 @@ function handleAddToWorkspace(user) {
 }
 
 function handleEmailUser(username) {
-    let sendEmailUrl = "http://localhost:8080/api/v1/email/notifyUser/" + username
+    let sendEmailUrl = "https://onyx2-backend.herokuapp.com/api/v1/email/notifyUser/" + username
     fetch(sendEmailUrl, {
         method: "POST",
         body: {

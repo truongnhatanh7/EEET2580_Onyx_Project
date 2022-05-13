@@ -30,7 +30,7 @@ board.addEventListener("wheel", (event) => {
 fetchOwner();
 function fetchOwner() {
     loading.classList.remove('disable')
-    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
     .then(response => response.json())
     .then(data => {
         sessionStorage.setItem("currentOwnerId", data);
@@ -114,7 +114,7 @@ submitList.addEventListener("click", (event) => {
             return;
         }
         let createListUrl =
-            "http://localhost:8080/api/v1/list/" +
+            "https://onyx2-backend.herokuapp.com/api/v1/list/" +
             sessionStorage.getItem("currentBoardId").toString();
         fetch(createListUrl, {
             method: "POST",
@@ -203,7 +203,7 @@ function handleDeleteList(event) {
 }
 
 delListConfirmationAccept.addEventListener("click", () => {
-    let deleteListUrl = "http://localhost:8080/api/v1/list/" + toBeDeleteListId
+    let deleteListUrl = "https://onyx2-backend.herokuapp.com/api/v1/list/" + toBeDeleteListId
     fetch(deleteListUrl, {
         method: "DELETE",
         headers: {
@@ -305,14 +305,15 @@ function handleAddTask(event) {
 
 function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
     return debounce(function () {
+
         let currentList = $("#list_" + currentListId);
         let allTasks = currentList.querySelectorAll(
             ".workspace__board-list-task"
         );
-
+        handleCloseTaskAdd();
         if (taskInput.value != "" && taskInput.value.length < 50) {
             let createTaskUrl =
-                "http://localhost:8080/api/v1/task/" + currentListId.toString();
+                "https://onyx2-backend.herokuapp.com/api/v1/task/" + currentListId.toString();
             fetch(createTaskUrl, {
                 method: "POST",
                 headers: {
@@ -359,11 +360,11 @@ function debounceTaskAdd(event, taskFactory, taskInput, currentListId) {
 }
 
 function rapidInputTask(event, taskFactory, taskInput) {
-    event.target.classList.remove("disable");
-    event.target.classList.add("enable");
-    taskFactory.classList.add("disable");
-    taskFactory.classList.remove("enable");
-    taskInput.value = "";
-    event.target.parentNode.classList.remove("modifying");
-    event.target.parentNode.querySelector(".workspace__add-task-btn").click();
+    // event.target.classList.remove("disable");
+    // event.target.classList.add("enable");
+    // taskFactory.classList.add("disable");
+    // taskFactory.classList.remove("enable");
+    // taskInput.value = "";
+    // event.target.parentNode.classList.remove("modifying");
+    // event.target.parentNode.querySelector(".workspace__add-task-btn").click();
 }

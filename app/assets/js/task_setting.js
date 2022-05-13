@@ -150,7 +150,7 @@ taskSettingClose.addEventListener("click", (event) => {
 
 taskSave.addEventListener("click", (event) => {
     hitSave = true;
-    let editTaskUrl = "http://localhost:8080/api/v1/task/";
+    let editTaskUrl = "https://onyx2-backend.herokuapp.com/api/v1/task/";
     let newTaskContent = taskInput.value;
     if (newTaskContent.includes("<") || newTaskContent.includes(">")) {
         throwError("Invalid input")
@@ -191,7 +191,7 @@ taskSave.addEventListener("click", (event) => {
             })
         })
         .then(() => {
-            let editTaskDeadline = "http://localhost:8080/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
+            let editTaskDeadline = "https://onyx2-backend.herokuapp.com/api/v1/task/setDeadline/" + sessionStorage.getItem("currentTask") + "?time=";
             let time = sessionStorage.getItem("deadline");
             if (time != "") {
                 fetch(editTaskDeadline + time, {
@@ -213,7 +213,7 @@ taskSave.addEventListener("click", (event) => {
             if (currentTaskNode.querySelector('.task-urgent').classList.contains("disable")) {
                 priority = "0"
             }
-            let url = 'http://localhost:8080/api/v1/task/setPriority/' + currentTask + "/" + priority;
+            let url = 'https://onyx2-backend.herokuapp.com/api/v1/task/setPriority/' + currentTask + "/" + priority;
             if (currentTask != null) {
                 fetch(url, {
                     method: 'PATCH',
@@ -257,7 +257,7 @@ taskSave.addEventListener("click", (event) => {
 taskDelete.addEventListener("click", () => {
     if (taskDelCount > 0) {
         let deleteTaskUrl =
-            "http://localhost:8080/api/v1/task/" +
+            "https://onyx2-backend.herokuapp.com/api/v1/task/" +
             sessionStorage.getItem("currentTask");
         fetch(deleteTaskUrl, {
             method: "DELETE",
@@ -276,7 +276,7 @@ taskDelete.addEventListener("click", () => {
 
 function handleDeleteTask(event) {
     let deleteTaskUrl =
-        "http://localhost:8080/api/v1/task/" +
+        "https://onyx2-backend.herokuapp.com/api/v1/task/" +
         event.target.parentNode.id.slice(5).toString();
     fetch(deleteTaskUrl, {
         method: "DELETE",

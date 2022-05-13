@@ -1,5 +1,5 @@
 let currentBoardId = sessionStorage.getItem("currentBoardId");
-let url = "http://localhost:8080/api/v1/list/" + currentBoardId.toString();
+let url = "https://onyx2-backend.herokuapp.com/api/v1/list/" + currentBoardId.toString();
 let boardObj;
 const workspaceBoard = $(".workspace__board");
 const workspaceName = $('.workspace__info-name')
@@ -16,7 +16,7 @@ if (sessionStorage.getItem('userId') == null) {
     location.href = "../login.html";
 }
 
-let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
+let eventSource = new EventSource("https://onyx2-backend.herokuapp.com/api/v1/sse/notification/" + sessionStorage.getItem("currentBoardId"))
 let totalPosToFetch = 0;
 let currentPosToFetch = 0;
 let firstTimeSetPos = false;
@@ -88,7 +88,7 @@ getBoardInfo();
 
 function fetchBoardInfo() {
 
-    let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
+    let boardUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
         .then(data => {
@@ -100,7 +100,7 @@ function fetchBoardInfo() {
 }
 
 function renderBoard(board) {
-    console.log("Re-render")
+
     let oldBoardLists = $$('.workspace__board-list-scrollable')
     let scrollRule = {}
     let horizontalBoardScrollRule = workspaceBoard.scrollLeft;
@@ -212,6 +212,8 @@ function renderBoard(board) {
             setScrollRule(scrollRule);
         }
     });
+    loading.classList.add('disable')
+    window.style.pointerEvents = "auto";
 }
 
 function setScrollRule(scrollRule) {
@@ -222,9 +224,15 @@ function setScrollRule(scrollRule) {
             list.scrollTop = value;
         }
     }
+
+
+
 }
 
 function getBoardInfo() {
+    console.log("Re-render")
+    loading.classList.remove('disable')
+    // window.style.pointerEvents = "none";
     fetch(url, {
 		cache: "no-cache",
 		method: 'GET',

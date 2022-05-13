@@ -15,17 +15,18 @@ const viewAllBtn = $(".dashboard__view-all-btn");
 const filterBtn = $(".dashboard__filter-btn");
 const filterOptionsWrapper = $(".dashboard__filter-options");
 const filterOptions = $$(".dashboard__filter-option");
-const welcomeText = $('.dashboard__user-name')
+const welcomeText = $('.dashboard__user-name');
+const loading = $('.loading')
 let latestWorkspaceId = -1;
 let currentUser = sessionStorage.getItem("userId"); // Current user id
 let linkWorkspaceUserUrl =
-    "http://localhost:8080/api/v1/user/add-workspace-for-user-by-id/";
+    "https://onyx2-backend.herokuapp.com/api/v1/user/add-workspace-for-user-by-id/";
 let workspaceByUserId =
-    "http://localhost:8080/api/v1/workspace/get-workspace-by-user-id/" +
+    "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace-by-user-id/" +
     currentUser.toString();
-let createUrl = "http://localhost:8080/api/v1/workspace/";
-let allWPUrl = "http://localhost:8080/api/v1/workspace/";
-let allUsers = "http://localhost:8080/api/v1/user/all-users/";
+let createUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
+let allWPUrl = "https://onyx2-backend.herokuapp.com/api/v1/workspace/";
+let allUsers = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/";
 let totalWorkspaces = 0;
 const finish = false;
 
@@ -35,7 +36,7 @@ let filterCondition = "latest";
 let isReversed = false;
 let currentPage = 0;
 
-let eventSource = new EventSource("http://localhost:8080/api/v1/sse/notification")
+let eventSource = new EventSource("https://onyx2-backend.herokuapp.com/api/v1/sse/notification")
 let inhumanCount = 0;
 let firtMomentSetPos = 0;
 
@@ -98,6 +99,7 @@ function main() {
 }
 
 function getWorkspace(callback) {
+    loading.classList.remove('disable')
     fetch(workspaceByUserId)
         .then(function (response) {
             return response.json();
@@ -169,6 +171,7 @@ function renderWorkspace(workspaces) {
         newTotalWorkspaces += 1;
         cur++;
     }
+    loading.classList.add('disable')
     paginationRender(newTotalWorkspaces);
 }
 
@@ -239,7 +242,7 @@ modalBtn.onclick = (event) => {
                     "/" +
                     currentUser.toString();
 
-                fetch("http://localhost:8080/api/v1/workspace/edit-owner/" + workspace.workspaceId + "/" + currentUser, {
+                fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/edit-owner/" + workspace.workspaceId + "/" + currentUser, {
                     method: 'PATCH'
                 })
                 .then(() => {

@@ -76,7 +76,7 @@ saveBtnAvatar.addEventListener('click', () => {
             return response.json();
         })
         .then((data) => {
-            fetch("http://localhost:8080/api/v1/user/edit-avatar?" 
+            fetch("https://onyx2-backend.herokuapp.com/api/v1/user/edit-avatar?" 
             + new URLSearchParams({
                 userId: sessionStorage.getItem('userId'),
                 avatar: data.url
@@ -109,7 +109,7 @@ cancelBtnAvatar.addEventListener('click', () => {
 saveBtnName.addEventListener('click', () => {
     if (firstNameInput.value != "" && lastNameInput.value != "") {
         loading.classList.remove('disable')
-        fetch("http://localhost:8080/api/v1/user/edit-name/" + sessionStorage.getItem("userId") + "/" + firstNameInput.value + " " + lastNameInput.value,
+        fetch("https://onyx2-backend.herokuapp.com/api/v1/user/edit-name/" + sessionStorage.getItem("userId") + "/" + firstNameInput.value + " " + lastNameInput.value,
         {
                 method: 'PATCH'
         })
@@ -142,7 +142,7 @@ cancelBtnName.addEventListener('click', () => {
 saveBtnEmail.addEventListener('click', () => {
     loading.classList.remove('disable')
     let uniqueEmailFlag = true;
-    fetch("http://localhost:8080/api/v1/user/all-users/")
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/user/all-users/")
     .then(response => response.json())
     .then((users) => {
         console.log(users)
@@ -154,7 +154,7 @@ saveBtnEmail.addEventListener('click', () => {
     })
     .then(() => {
         if (emailInput.value != "" && emailCheck(emailInput.value) && uniqueEmailFlag) { // TODO: check valid email
-            fetch("http://localhost:8080/api/v1/user/edit-username/" + sessionStorage.getItem("userId") + "/" + emailInput.value, {
+            fetch("https://onyx2-backend.herokuapp.com/api/v1/user/edit-username/" + sessionStorage.getItem("userId") + "/" + emailInput.value, {
                 method: 'PATCH'
             })
             .then(() => {
@@ -195,7 +195,7 @@ cancelBtnPassword.addEventListener('click', () => {
 
 saveBtnPassword.addEventListener('click', () => {
     let correctOldPassword = true;
-    fetch("http://localhost:8080/api/v1/user/all-users/")
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/user/all-users/")
     .then(response => response.json())
     .then((users) => {
         users.forEach(user => {
@@ -223,7 +223,7 @@ saveBtnPassword.addEventListener('click', () => {
                 throwError("Invalid password")
             }
         } else {
-            fetch("http://localhost:8080/api/v1/user/edit-password/" + sessionStorage.getItem("userId") + "/" + newPasswordInput.value, {
+            fetch("https://onyx2-backend.herokuapp.com/api/v1/user/edit-password/" + sessionStorage.getItem("userId") + "/" + newPasswordInput.value, {
                 method: 'PATCH'
             })
             .then(() => {

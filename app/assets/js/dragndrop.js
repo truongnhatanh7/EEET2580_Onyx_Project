@@ -11,6 +11,7 @@ function handleDragStart(event) {
 
 function handleDragEnd(event) {
     console.log("drag end")
+    loading.classList.remove('disable')
     event.target.classList.remove("workspace__board-list-task--dragging");
     let parent = event.target.parentNode;
     let listId = parent.id.slice(5);
@@ -24,7 +25,7 @@ function handleDragEnd(event) {
         return;
     }
 
-    let moveTaskUrl = "http://localhost:8080/api/v1/task/switchList/" + listId;
+    let moveTaskUrl = "https://onyx2-backend.herokuapp.com/api/v1/task/switchList/" + listId;
     fetch(moveTaskUrl, {
         method: "PUT",
         headers: {
@@ -38,7 +39,7 @@ function handleDragEnd(event) {
         let allTasks = parent.querySelectorAll(".workspace__board-list-task");
         console.log("all tasks", allTasks.length)
         let cur = 0;
-        fetch("http://localhost:8080/api/v1/sse/num-setpos/" + allTasks.length, {
+        fetch("https://onyx2-backend.herokuapp.com/api/v1/sse/num-setpos/" + allTasks.length, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -57,12 +58,14 @@ function handleDragEnd(event) {
 }
 
 function setPos(taskId, pos) {
-    fetch("http://localhost:8080/api/v1/task/setPos/" + taskId + "/" + pos, {
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/task/setPos/" + taskId + "/" + pos, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
         },
-    });
+    }).then(() => {
+        loading.classList.add('disable')
+    })
 }
 
 function handleOnDrag(event) {

@@ -1,8 +1,8 @@
 const username = $('#sign-in-username')
 const password = $('#sign-in-password')
 const signInBtn = $('#sign-in-btn')
-const allUsersUrl = "http://localhost:8080/api/v1/user/all-users/"
-const createNewUser = "http://localhost:8080/api/v1/user"
+const allUsersUrl = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/"
+const createNewUser = "https://onyx2-backend.herokuapp.com/api/v1/user"
 const showPassword = $('.show-password')
 let isShownPassword = false;
 
