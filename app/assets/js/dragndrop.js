@@ -57,7 +57,7 @@ function handleDragEnd(event) {
 
 }
 
-async function setPos(taskId, pos) {
+function setPos(taskId, pos) {
     fetch("https://onyx2-backend.herokuapp.com/api/v1/task/setPos/" + taskId + "/" + pos, {
         method: "PATCH",
         headers: {
