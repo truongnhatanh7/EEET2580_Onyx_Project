@@ -1,7 +1,9 @@
 :root {
+    /* static input search font size: 4rem */
     --font-size-input: clamp(1.01rem, calc(0.71rem + 1.49vw), 2.05rem);
+    /* static title size: 8rem  */
     --font-size-title: clamp(3.60rem, calc(1.84rem + 8.81vw), 9.77rem);
-    --font-size-summary: clamp(1.45rem, calc(0.95rem + 2.50vw), 3.20rem);
+    /* static content font size: 1.6rem */
     --font-size-content: clamp(1.21rem, calc(0.82rem + 1.93vw), 2.56rem);
 }
 main {
