@@ -43,9 +43,12 @@ eventSource.onmessage = (message) => {
         // This way, there will be NO GLITCH in UI, and crazy data in backend
         currentPosToFetch += 1
         if (currentPosToFetch == message.data.split(' ')[2]) {
-            getBoardInfo()
-            setPosStarting = false;
-            currentPosToFetch = 0;
+            setTimeout(() => {
+                getBoardInfo()
+                setPosStarting = false;
+                currentPosToFetch = 0;
+
+            }, 10)   
         }
     }
     else if (!setPosStarting && message.data.includes(sessionStorage.getItem("currentBoardId"))) {
