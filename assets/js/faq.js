@@ -79,7 +79,18 @@ async function getFaqContent() {
           "Click the Save button for saving the new name."
         ],
         "img": "./assets/img/faq/faq-create.svg",
-        "alt": "Edit Task in within workspace list"
+        "alt": "Edit Task in within workspace list in FAQ"
+      },
+      {
+        "title": "Drag and Drop a task to another list",
+        "detail": [
+          "From the list, find the task you want to move ",
+          "Hold a click on the task",
+          "Then, drag the task to the list where you want to place it",
+          "Drop a task into the list"
+        ],
+        "img": "./assets/img/faq/faq-create.svg",
+        "alt": "Drag Drop task in faq"
       }
   ]
   // create elements
