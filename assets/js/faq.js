@@ -113,6 +113,15 @@ async function getFaqContent() {
         "img": "",
         "alt": "Invite collab in faq"
       },
+      {
+        "title": "Sign out of the project",
+        "detail": [
+          "From the dashboard, select the avatar icon in the top right corner.",
+          "Select the Sign-out button for logging out of the project."
+        ],
+        "img": "",
+        "alt": "Sign out in faq"
+      }
   ]
   // create elements
     response.map(card => {
