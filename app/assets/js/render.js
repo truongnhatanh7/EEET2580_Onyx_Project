@@ -213,7 +213,6 @@ function renderBoard(board) {
         }
     });
     loading.classList.add('disable')
-    window.style.pointerEvents = "auto";
 }
 
 function setScrollRule(scrollRule) {
@@ -232,7 +231,6 @@ function setScrollRule(scrollRule) {
 function getBoardInfo() {
     console.log("Re-render")
     loading.classList.remove('disable')
-    // window.style.pointerEvents = "none";
     fetch(url, {
 		cache: "no-cache",
 		method: 'GET',

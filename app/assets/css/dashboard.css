@@ -107,7 +107,6 @@
     background-color: var(--yellow);
     color: var(--constant-black);
     font-size: 1.4rem;
-
     border-radius: 8px;
     position: relative;
     transition: 0.2s;
