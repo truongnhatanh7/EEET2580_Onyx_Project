@@ -18,14 +18,19 @@
     .faq__wrapper {
         padding: 10em 0;
     }
+    /* summary on faq card */
+    .faq__card > summary {
+        padding: 2em;
+    }
     /* content */
     .faq__card-content {
         flex-direction: column;
         padding: 0.2em 0;
     }
     .faq__card-content p {
-        padding: 0 2.5em 1.5em;
+        padding: 2em 1.5em;
         order: 2;
+        width: 100%;
     }
     .faq__card-content img {
         width: 90%;
