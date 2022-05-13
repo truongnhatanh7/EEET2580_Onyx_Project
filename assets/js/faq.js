@@ -99,7 +99,19 @@ async function getFaqContent() {
           "Click the Delete task button for deleting the task."
         ],
         "img": "",
-        "alt": "Drag and Drop task"
+        "alt": "Delete Task in faq"
+      },
+      {
+        "title": "How to invite collaborators?",
+        "detail": [
+          "From the workspace, select the avatar icon in the top right corner.",
+          "Select the Project status",
+          "In the Project status dialogue, type the username of the collaborators that you want to add.",
+          "Select Add button for adding a new collaborator.",
+          "In contrast, click the X button next to the collaborator's name to remove them from the project. "
+        ],
+        "img": "",
+        "alt": "Invite collab in faq"
       },
   ]
   // create elements
