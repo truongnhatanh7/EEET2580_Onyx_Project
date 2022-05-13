@@ -87,7 +87,6 @@ fetchBoardInfo();
 getBoardInfo();
 
 function fetchBoardInfo() {
-
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
