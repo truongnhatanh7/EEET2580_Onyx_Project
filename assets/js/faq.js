@@ -35,7 +35,7 @@ async function getFaqContent() {
               "In contrast, if the user has not registered for the account, select the signup button and fill in all the fields of the registration form then click the Sign up button for logging in.",
               "You can now create a new task list for your project."
         ],
-        "img": "./assets/img/faq/faq-setup.svg",
+        "img": "",
         "alt": "Login in Faq"
       },
       {
@@ -68,7 +68,7 @@ async function getFaqContent() {
             "Type the name in the Enter new task field.",
             "Click the Create button for creating a new task."
           ],
-          "img": "./assets/img/faq/faq-create.svg",
+          "img": "",
           "alt": "Add new task within workspace list"
       },
       {
@@ -78,7 +78,7 @@ async function getFaqContent() {
           "Type the new name for the task.",
           "Click the Save button for saving the new name."
         ],
-        "img": "./assets/img/faq/faq-create.svg",
+        "img": "",
         "alt": "Edit Task in within workspace list in FAQ"
       },
       {
@@ -89,9 +89,18 @@ async function getFaqContent() {
           "Then, drag the task to the list where you want to place it",
           "Drop a task into the list"
         ],
-        "img": "./assets/img/faq/faq-create.svg",
+        "img": "",
         "alt": "Drag Drop task in faq"
-      }
+      },
+      {
+        "title": "How to delete task within the list",
+        "detail": [
+          "From the list, find the task you want to make a change to and select the button.",
+          "Click the Delete task button for deleting the task."
+        ],
+        "img": "",
+        "alt": "Drag and Drop task"
+      },
   ]
   // create elements
     response.map(card => {
