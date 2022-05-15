@@ -13,7 +13,11 @@ const discoverBtns = $$('.discover-btn')
 
 discoverBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        location.href = "./login.html"
+        if (sessionStorage.getItem('userId')) {
+            location.href = "./app/dashboard.html"
+        } else {
+            location.href = "./login.html"
+        }
     })
 })
 

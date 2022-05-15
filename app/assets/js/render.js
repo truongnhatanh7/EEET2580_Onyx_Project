@@ -43,9 +43,12 @@ eventSource.onmessage = (message) => {
         // This way, there will be NO GLITCH in UI, and crazy data in backend
         currentPosToFetch += 1
         if (currentPosToFetch == message.data.split(' ')[2]) {
-            getBoardInfo()
-            setPosStarting = false;
-            currentPosToFetch = 0;
+            setTimeout(() => {
+                getBoardInfo()
+                setPosStarting = false;
+                currentPosToFetch = 0;
+
+            }, 10)        
         }
     }
     else if (!setPosStarting && message.data.includes(sessionStorage.getItem("currentBoardId"))) {
@@ -87,7 +90,6 @@ fetchBoardInfo();
 getBoardInfo();
 
 function fetchBoardInfo() {
-
     let boardUrl = "http://localhost:8080/api/v1/workspace/get-workspace/" + currentBoardId.toString();
     fetch(boardUrl)
         .then(response => response.json())
@@ -212,17 +214,6 @@ function renderBoard(board) {
             setScrollRule(scrollRule);
         }
     });
-    continuePreviousWork();
-}
-
-function continuePreviousWork() {
-    // console.log(isCreating)
-    const tempNode = $('#list_' + sessionStorage.getItem("currentList"))
-    if (isCreating) {
-        console.log(tempNode.childNodes[5].click())
-        // tempNode.querySelector(".workspace__add-task-btn").click();
-        console.log("clicked")
-    }
 }
 
 function setScrollRule(scrollRule) {

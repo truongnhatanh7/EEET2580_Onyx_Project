@@ -58,7 +58,8 @@ input[type="text"] {
 }
 .ultility-wrapper:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    box-shadow: var(--box-shadow);
 }
 
 .ultility-wrapper {
