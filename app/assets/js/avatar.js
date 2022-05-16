@@ -1,6 +1,6 @@
 const userTaskWrapper = $(".user-task__wrapper");
 const userAvatar = $(".user-avatar");
-
+var lastLocation = '';
 // No avatar or unable to load avatar
 userAvatar.onerror = () => {
     userAvatar.classList.add('disable');
@@ -18,7 +18,9 @@ userAvatar.onload = () => {
 // Routing
 const avatar = $(".user-text-avatar")
 userTaskWrapper.addEventListener('click', () => {
-    location.href = './profile.html'
+    lastLocation = location.href.toString();
+    sessionStorage.setItem("lastLocation", location.href.toString());
+    location.replace('./profile.html')
 })
 
 

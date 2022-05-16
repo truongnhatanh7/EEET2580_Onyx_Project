@@ -1,10 +1,16 @@
 if (sessionStorage.getItem('userId') == null) {
-    location.href = "../login.html";
+    location.replace("../login.html");
 }
-
+let lastLocation = sessionStorage.getItem('lastLocation')
 const returnBtn = $('.return__wrapper')
 returnBtn.addEventListener('click', () => {
-    history.back();
+    if (lastLocation.includes('dashboard')) {
+        location.replace('./dashboard.html')
+    } else if (lastLocation.includes('workspace')) {
+        location.replace('./workspace.html')
+    } else {
+        //
+    }
 })
 
 const modifyEmailTrigger = $('.modify-email-icon');
