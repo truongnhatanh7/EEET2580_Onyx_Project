@@ -13,12 +13,12 @@ Onyx is a collaboration tool for companies which organizes projects into boards 
 ### Dependencies
 
 * Working on OS platforms: Windows 10, MacOS and Ubuntu (Linux)
-* Libraries: <Waiting for any modifications>
 
 ### Installing
 
 * Download the zip file **EEET2580_Onyx_Project-main.zip** for Front-end usage and **Onyx_Backend-master.zip** for Back-end usage.
 * Download Postgres to setup the database at [here](https://www.postgresql.org/download/).
+* Create database in Postgres, name it as: onyx2
 * Go to application.properties file in Back-end folder with the following path (Onyx_Backend > src > main > resources) and configure the **spring.datasource.url** field with **jdbc:postgresql://localhost:5432/onyx2**.
 
 ### Executing program
@@ -34,20 +34,15 @@ During the application usage, there is a **FAQ** tab at the Homepage which guide
 
 The Onyx application is built by talented students at SSET program.
 
-* **Leader**: Anh Truong ([@truongnhatanh7](https://github.com/truongnhatanh7))
+* **Leader/Fullstack developer**: Anh Truong ([@truongnhatanh7](https://github.com/truongnhatanh7))
 
-* **Designer**: Phi Thai ([@PhiThai1309](https://github.com/PhiThai1309))
+* **Designer/Frontend developer**: Phi Thai ([@PhiThai1309](https://github.com/PhiThai1309))
 
-* **Designer**: Nhung Tran ([@Puppychan](https://github.com/Puppychan))
+* **Designer/Frontend developer**: Nhung Tran ([@Puppychan](https://github.com/Puppychan))
 
-* **Back-end constructor**: Nhat Bui ([@nhat117](https://github.com/nhat117))
+* **Backend developer**: Nhat Bui ([@nhat117](https://github.com/nhat117))
 
 * **Tester**: Tri Lai ([@Tri-Lai](https://github.com/Tri-Lai))
-
-
-## Version History
-* 0.1
-    * Initial Release
 
 ## Acknowledgments
 These below website is used to code learning, inspiration and improvement on both Front-end and Back-end
@@ -55,3 +50,4 @@ These below website is used to code learning, inspiration and improvement on bot
 * [Loda](https://loda.me/courses/spring-boot)
 * [F8 Official](https://www.youtube.com/c/F8VNOfficial)
 * [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified)
+* [Stackoverflow](https://stackoverflow.com)
