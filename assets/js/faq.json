@@ -2,13 +2,14 @@
   {
     "title": "Login to the application ",
     "detail": [
+      "Click on the login button in the navigation bar",
       "From the login page, type your registered username in the Username field",
       "Type the registered password in the Password field.",
       "Select the Log in button.",
       "In contrast, if the user has not registered for the account, select the signup button and fill in all the fields of the registration form then click the Sign up button for logging in.",
       "You can now create a new task list for your project."
     ],
-    "img": "./assets/img/faq/faq-setup.svg",
+    "img": "./assets/img/faq/faq-login.svg",
     "alt": "Login in Faq"
   },
   {
@@ -41,7 +42,7 @@
       "Type the name in the Enter new task field.",
       "Click the Create button for creating a new task."
     ],
-    "img": "./assets/img/faq/faq-create.svg",
+    "img": "./assets/img/faq/faq-edittask.svg",
     "alt": "Add new task within workspace list"
   },
   {
@@ -51,7 +52,7 @@
       "Type the new name for the task.",
       "Click the Save button for saving the new name."
     ],
-    "img": "./assets/img/faq/faq-create.svg",
+    "img": "./assets/img/faq/faq-edittask.svg",
     "alt": "Edit Task in within workspace list"
   },
   {
@@ -62,7 +63,7 @@
       "Then, drag the task to the list where you want to place it",
       "Drop a task into the list"
     ],
-    "img": "./assets/img/faq/faq-create.svg",
+    "img": "./assets/img/faq/faq-drag.svg",
     "alt": "Drag and Drop task"
   },
   {
@@ -71,7 +72,7 @@
       "From the list, find the task you want to make a change to and select the button.",
       "Click the Delete task button for deleting the task."
     ],
-    "img": "./assets/img/faq/faq-create.svg",
+    "img": "./assets/img/faq/faq-deletetask.svg",
     "alt": "Drag and Drop task"
   },
   {
