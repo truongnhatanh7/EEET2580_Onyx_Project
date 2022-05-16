@@ -27,6 +27,18 @@ async function getFaqContent() {
     // fetch json and create element from content array
     const response = [
       {
+        "title": "Login to the application ",
+        "detail": [
+              "From the login page, type your registered username in the Username field",
+              "Type the registered password in the Password field.",
+              "Select the Log in button.",
+              "In contrast, if the user has not registered for the account, select the signup button and fill in all the fields of the registration form then click the Sign up button for logging in.",
+              "You can now create a new task list for your project."
+        ],
+        "img": "",
+        "alt": "Login in Faq"
+      },
+      {
           "title": "How to set up your workspace",
           "detail": [
               "Log-in to your dashboard using your ONYX Account",
@@ -41,14 +53,74 @@ async function getFaqContent() {
       {
           "title": "How to create workspace list?",
           "detail": [
-              "Log-in to your dashboard using your ONYX yasuo",
+              "Log-in to your dashboard using your ONYX",
               "Select a workspace to continue",
               "An option to create new list will appeare",
               "Enter a name and hit create"
           ],
           "img": "./assets/img/faq/faq-create.svg",
           "alt": "Create Workspace in Faq"
-  
+      },
+      {
+          "title": "How to add new task within workspace list?",
+          "detail": [
+            "From the list, select the Add task button.",
+            "Type the name in the Enter new task field.",
+            "Click the Create button for creating a new task."
+          ],
+          "img": "",
+          "alt": "Add new task within workspace list"
+      },
+      {
+        "title": "Edit a task within the workspace list",
+        "detail": [
+          "From the list, find the task you want to make a change to and select the edit button.",
+          "Type the new name for the task.",
+          "Click the Save button for saving the new name."
+        ],
+        "img": "",
+        "alt": "Edit Task in within workspace list in FAQ"
+      },
+      {
+        "title": "Drag and Drop a task to another list",
+        "detail": [
+          "From the list, find the task you want to move ",
+          "Hold a click on the task",
+          "Then, drag the task to the list where you want to place it",
+          "Drop a task into the list"
+        ],
+        "img": "",
+        "alt": "Drag Drop task in faq"
+      },
+      {
+        "title": "How to delete task within the list",
+        "detail": [
+          "From the list, find the task you want to make a change to and select the button.",
+          "Click the Delete task button for deleting the task."
+        ],
+        "img": "",
+        "alt": "Delete Task in faq"
+      },
+      {
+        "title": "How to invite collaborators?",
+        "detail": [
+          "From the workspace, select the avatar icon in the top right corner.",
+          "Select the Project status",
+          "In the Project status dialogue, type the username of the collaborators that you want to add.",
+          "Select Add button for adding a new collaborator.",
+          "In contrast, click the X button next to the collaborator's name to remove them from the project. "
+        ],
+        "img": "",
+        "alt": "Invite collab in faq"
+      },
+      {
+        "title": "Sign out of the project",
+        "detail": [
+          "From the dashboard, select the avatar icon in the top right corner.",
+          "Select the Sign-out button for logging out of the project."
+        ],
+        "img": "",
+        "alt": "Sign out in faq"
       }
   ]
   // create elements

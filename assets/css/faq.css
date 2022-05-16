@@ -1,3 +1,9 @@
+:root {
+    /* static input search font size: 4rem */
+    --font-size-input: clamp(1.01rem, calc(0.71rem + 1.49vw), 2.05rem);
+    /* static title size: 8rem  */
+    --font-size-title: clamp(3.60rem, calc(1.84rem + 8.81vw), 9.77rem);
+}
 main {
     padding-top: 220px;
     flex-direction: column;
@@ -32,7 +38,8 @@ main {
 
 /* header */
 .faq__title {
-    font-size: 8rem;
+    /* font-size: 8rem; */
+    font-size: var(--font-size-title);
     font-weight: bold;
     margin-bottom: 40px;
 }
@@ -40,7 +47,8 @@ main {
 .faq__find {
     width: 60%;
     padding: 1em 2em;
-    font-size: 1.6rem;
+    /* font-size: 1.6rem; */
+    font-size: var(--font-size-input);
     border-radius: 2rem;
     border: none;
     outline: none;
@@ -58,7 +66,7 @@ main {
 /* start of details */
 .faq__card {
     width: 100%;
-    font-size: 4rem;
+    /* font-size: 4rem; */
     background-color: var(--white-color);
     border-radius: var(--border-main);
     margin-bottom: 44px;
@@ -73,6 +81,7 @@ main {
 }
 .faq__card > summary {
     box-shadow: -22px 22px 44px rgba(219, 219, 219, 0.2), 22px -22px 44px rgba(219, 219, 219, 0.2), -22px -22px 44px rgba(255, 255, 255, 0.9), 22px 22px 55px rgba(219, 219, 219, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(219, 219, 219, 0.5);
+
     border-radius: var(--border-main);
     padding: 2em 4em;
     height: 3.5em;
@@ -80,6 +89,7 @@ main {
     list-style-type: none;
     cursor: pointer;
     font-size: 2rem;
+    /* font-size: var(--font-size-summary); */
     font-weight: 600;
     --gap: 40px;
 }
@@ -110,9 +120,10 @@ main {
 }
 .faq__card p {
     width: 50%;
-    line-height: 2;
+    line-height: 2.5;
+    letter-spacing: 1;
     font-size: 1.6rem;
-
+    padding: 1.5em 0.7em;
 }
 .faq__card img {
     width: 50%;
