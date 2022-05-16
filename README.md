@@ -13,6 +13,7 @@ Onyx is a collaboration tool for companies which organizes projects into boards 
 ### Dependencies
 
 * Working on OS platforms: Windows 10, MacOS and Ubuntu (Linux)
+* Link to Back-end: [Onyx Back-end](https://github.com/truongnhatanh7/Onyx_Backend)
 
 ### Installing
 
@@ -30,6 +31,13 @@ Onyx is a collaboration tool for companies which organizes projects into boards 
 
 During the application usage, there is a **FAQ** tab at the Homepage which guide the user of utilizing features.
 
+## Version
+* 2.0
+
+    * Final Release for users
+* 1.0
+
+    * Initial Release for test usage (only Developers)
 ## Authors
 
 The Onyx application is built by talented students at SSET program.
@@ -50,4 +58,3 @@ These below website is used to code learning, inspiration and improvement on bot
 * [Loda](https://loda.me/courses/spring-boot)
 * [F8 Official](https://www.youtube.com/c/F8VNOfficial)
 * [Web Dev Simplified](https://www.youtube.com/c/WebDevSimplified)
-* [Stackoverflow](https://stackoverflow.com)
