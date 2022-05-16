@@ -1,0 +1,27 @@
+footer {
+    height: 160px;
+    width: 100%;
+    background-color: var(--white-color);
+}
+
+.footer-wrapper {
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.footer__logo {
+    font-size: 8rem;
+    font-weight: bold;
+}
+
+.footer__text {
+    font-size: 1.8rem;
+}
+
+.footer__logo {
+    font-size: 4rem;
+}

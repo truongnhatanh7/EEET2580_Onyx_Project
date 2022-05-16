@@ -285,3 +285,7 @@ main{
         display: none;
     }
 }
+
+.footer-wrapper {
+    /* width: 100% !important; */
+}
