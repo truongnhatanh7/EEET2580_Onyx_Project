@@ -60,7 +60,6 @@ function capitalize(str) {
         ar[i] = u
     }
     return ar.join(' ')
-
 }
 
 window.addEventListener("keyup", event => {

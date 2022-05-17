@@ -87,6 +87,7 @@ fetchUserInWorkspace();
 
 
 function fetchUserInWorkspace() {
+    fetchOwner();
     let workspaceUrl =
         "http://localhost:8080/api/v1/workspace/get-workspace/" +
         sessionStorage.getItem("currentBoardId");
