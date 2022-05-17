@@ -6,8 +6,9 @@ The objective of Onyx application is to fulfill task organization's intentions t
 
 ## Description
 
-Onyx is a collaboration tool for companies which organizes projects into boards and follows the Kanban board paradigm. The application function can be simplified as giving a user with a project workspace that they can create multiple to-dos lists from which to create corresponding tasks to maximize productivity. Furthermore, the application allows Users to invite collaborators to allocate works and drag and drop tasks into respective lists to track progress.
+Onyx is a product of the Group Assignment of the course EEET2580 - Enterprise Application Development, the topic ideas have been proposed to lecturer and approved. Our objective in this project is to utilize materials learnt in web technologies such as Spring Framework, Hibernate and Spring MVC in order to deliver a full stack web-application.
 
+Inspired by project management tools (Trello, Jira, etc.) that allow users to organize their projects subject to the SDLC paradigms (Waterfall, Agile, Scrum, etc.) by generating backlogs, assigning tasks, arranging team members, and tracking collaborators' progress. Due to the complexity of current project management tools, as well as limitations in technology usage and understanding, the team decided to develop a simpler application based on the Kanban board model that also included essential features such as backlog management, collaborator invitation, drag-and-drop progress tracking.
 ## Getting Started
 
 ### Dependencies
