@@ -58,7 +58,7 @@
 }
 
 .navbar__login {
-    font-size: 1.8rem !important;
+    font-size: 1.6rem !important;
     text-transform: capitalize;
     background-color: var(--yellow);
     padding: 12px 24px;
@@ -68,6 +68,8 @@
 
 .navbar__login:hover {
     transform: scale(1.1);
+    background-color: var(--soft-pink);
+    color: var(--white-color);
     
 }
 
