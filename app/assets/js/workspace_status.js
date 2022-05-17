@@ -96,27 +96,30 @@ function fetchOwner() {
         throwError("Unexpected error, cannot fetch owner")
     })
     .finally(() => {
-
+        return new Promise((resolve, reject))
     })
 }
 
 
 function fetchUserInWorkspace() {
-    fetchOwner();
-    let workspaceUrl =
-        "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
-        sessionStorage.getItem("currentBoardId");
-    fetch(workspaceUrl)
-        .then((response) => response.json())
-        .then((workspace) => {
-            return workspace.users;
-        })
-        .then((users) => {
-            renderUserInWorkspace(users);
-        })
-        .catch(() => {
-            throwError("Unexpected error, cannot fetch collaborator")
-        })
+
+    fetchOwner()
+    .then(() => {
+        let workspaceUrl =
+            "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
+            sessionStorage.getItem("currentBoardId");
+        fetch(workspaceUrl)
+            .then((response) => response.json())
+            .then((workspace) => {
+                return workspace.users;
+            })
+            .then((users) => {
+                renderUserInWorkspace(users);
+            })
+            .catch(() => {
+                throwError("Unexpected error, cannot fetch collaborator")
+            })
+    })
 }
 
 function renderUserInWorkspace(users) {
