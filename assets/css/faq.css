@@ -102,8 +102,8 @@ main {
     transform: rotate(90deg) translateX(-3px);
 }
 .faq__card[open] > summary {
-    box-shadow: none;
-    background-color: var(--hard-pink);
+    /* box-shadow: var(--box-shadow); */
+    background-color: var(--white-color);
     color: var(--yellow);
     list-style-type: none;
 }
@@ -116,7 +116,7 @@ main {
     border-radius: var(--border-main);
     background: var(--white);
     width: 100%;
-    padding: 0.8em 0 1em 0.9em;
+    padding: 1em 0 1em 5em;
 }
 .faq__card p {
     width: 50%;

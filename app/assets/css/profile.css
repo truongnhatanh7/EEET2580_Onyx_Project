@@ -35,6 +35,7 @@ h1{
 .user-form__label {
     font-weight: 500;
     font-size: 2rem;
+
 }
 
 .user-form__sub-label {
@@ -68,7 +69,8 @@ h1{
 
 .user-form__modify-icon:hover {
     cursor: pointer;
-    transform: scale(1.05);
+    transform: scale(1.02);
+    color: var(--yellow);
 }
 
 .user-form__modify-wrapper {
