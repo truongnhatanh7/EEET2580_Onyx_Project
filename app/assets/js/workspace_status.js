@@ -96,14 +96,15 @@ function fetchOwner() {
         throwError("Unexpected error, cannot fetch owner")
     })
     .finally(() => {
-        return new Promise()
+
     })
 }
 
 
-function fetchUserInWorkspace() {
-
-    fetchOwner()
+async function fetchUserInWorkspace() {
+    return new Promise((resolve, reject) => {
+        fetchOwner()
+    })
     .then(() => {
         let workspaceUrl =
             "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
