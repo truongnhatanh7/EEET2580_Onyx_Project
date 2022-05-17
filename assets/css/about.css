@@ -281,8 +281,19 @@ main{
 }
 
 @media (max-width: 768px){
+
+
     .member-tittle__wrapper h4, .scroll-downs{
         display: none;
+    }
+
+    .member-tittle {
+        width: 80%;
+    }
+
+    .member-tittle__wrapper {
+        margin: 0;
+        height: 100vh;
     }
 }
 
