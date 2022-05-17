@@ -46,7 +46,7 @@ pickerDarkmode.addEventListener('click', () => {
 })
 
 pickerCollaboration.addEventListener('click', () => {
-    featureImage.src = "./assets/img/homepage/collaboration.svg";
+    featureImage.src = "./assets/img/homepage/collab.svg";
     featureImageHelper.style.display = "none";
     featureParagraph.innerText = "Real-time sync enable better collaboration and boost productivity"
     pickerDragAndDrop.classList.remove("pick");
