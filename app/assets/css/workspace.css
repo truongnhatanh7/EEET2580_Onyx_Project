@@ -233,7 +233,7 @@ input[type="text"] {
     transition: 0.1s;
     display: flex;
     flex-direction: column;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--list-shadow);
 
 }
 
@@ -437,7 +437,7 @@ input[type="text"] {
     margin-top: 0;
     padding: 16px 20px;
     transition: 0.1s;
-    box-shadow: var(--box-shadow);
+    box-shadow: var(--list-shadow);
     position: relative;
     z-index: 300;
 

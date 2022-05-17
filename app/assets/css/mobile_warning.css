@@ -1,0 +1,26 @@
+.mobile-warning {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--white-color);
+    place-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10000;
+
+}
+
+.mobile-warning__text {
+    color: var(--black);
+    padding: 8px 48px;
+    font-size: 2rem;
+}
+
+@media (max-width: 768px) {
+    .mobile-warning {
+        display: grid;
+    }
+}

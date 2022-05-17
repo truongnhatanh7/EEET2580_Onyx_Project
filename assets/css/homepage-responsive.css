@@ -9,6 +9,10 @@
         left: 100px;
     }
 
+    .view__img-wrapper {
+        margin-top: 12rem;
+    }
+
     @keyframes flyTask {
         from {
         } to {
@@ -101,27 +105,26 @@
     }
 
     .view__img-wrapper {
+        margin-top: 24rem;
         padding-top: 2rem;
     }
 
     .view__img {
-
-
         width: 60%;
     }
 
     .view__img:nth-child(1) {
-        transform: scale(1.5);
+        transform: scale(1.6);
     
     }
     
     .view__img:nth-child(2) {
-        transform: scale(1.8);
+        transform: scale(2);
 
     }
     
     .view__img:nth-child(3) {
-        transform: scale(1.5);
+        transform: scale(1.6);
 
     }
 

@@ -7,12 +7,18 @@
     <meta http-equiv='cache-control' content='no-cache'>
     <meta http-equiv='expires' content='-1'>
     <meta http-equiv='pragma' content='no-cache'>
+    <link
+    rel="icon"
+    href="../assets/img/logo.png"
+    type="image/x-icon"
+    />
     <title>Dashboard</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/mobile_warning.css">
     <link rel="stylesheet" href="./assets/css/dashboard.css">
     <link rel="stylesheet" href="../assets/css/navbar.css">
     <script src="../assets/js/config.js" defer></script>
@@ -28,6 +34,11 @@
 <body>
     <div class="loading disable"></div>
 
+    <section class="mobile-warning">
+        <h1 class="mobile-warning__text">
+            Sorry, our app is not suitable for mobile devices, please switch to laptop or similar devices to continue
+        </h1>
+    </section>
     <main id="dashboard-root">
         <nav class="user__navbar nav-colored">
             <div class="user__navbar-left-wrapper">

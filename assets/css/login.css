@@ -15,8 +15,8 @@
     background-color: var(--pink-color);
     width: 100%;
     height: 800px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
     position: relative;
 }
 
@@ -52,7 +52,6 @@
     left: -240px;
     bottom: -400px;
     z-index: 4;
-    /* animation: flyIn 0.5s; */
     animation: hovering 4.5s infinite alternate;
 
 
@@ -62,7 +61,6 @@
     left: -400px;
     bottom: -400px;
     z-index: 3;
-    /* animation: flyIn 0.6s; */
     animation: hovering 5.5s infinite alternate;
 
 }
@@ -90,8 +88,6 @@
     letter-spacing: 2px;
     font-weight: 600;
     animation: slideIn 0.3s;
-
-
 }
 
 .form-label {
@@ -147,7 +143,7 @@
     font-size: 1.6rem;
     width: 600px;
     min-width: 90%;
-    border-radius: 20px;
+    border-radius: var(--border-main);
     margin-top: 18px;
     animation: slideIn 0.4s;
     position: relative;
@@ -161,7 +157,7 @@
     font-size: 1.6rem;
     width: 292px;
     min-width: 90%;
-    border-radius: 20px;
+    border-radius: var(--border-main);
     /* margin-top: 18px; */
     animation: slideIn 0.4s;
     position: relative;
@@ -287,14 +283,10 @@
     padding: 12px 16px;
     width: 55px;
     height: fit-content;
-    /* display: inline-block; */
-    /* background-color: var(--gray); */
     float: left;
-
     place-items: center;
-    border-radius: 20px;
+    border-radius: 8px;
     transition: 0.3s;
-    /* animation: flyLeft 0.2s; */
     translate: translateX(0%);
     overflow: hidden;
 }

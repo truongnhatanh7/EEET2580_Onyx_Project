@@ -84,8 +84,8 @@ signUpBtn.addEventListener('click', () => {
             .then(response => response.json())
             .then(data => {
                 data.forEach(user => {
+
                     if (user.username == signUpUsername.value) {
-                        throwToastExistedUsername()
                         validCreateUser = false;
                     } 
                 })
@@ -93,6 +93,8 @@ signUpBtn.addEventListener('click', () => {
             .then(() => {
                 if (validCreateUser) {
                     createNewUserAPI()
+                } else {
+                    throwError("Invalid information, this account information is already in used")
                 }
             })
             .catch(() => {

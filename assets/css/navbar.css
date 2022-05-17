@@ -52,15 +52,14 @@
 
 .navbar__link:hover {
     cursor: pointer;
-    color: var(--pink-color);
+    color: var(--yellow);
     transform: scale(1.1);
     /* opacity: 0.7; */
 }
 
 .navbar__login {
-    font-size: 1.8rem;
+    font-size: 1.6rem !important;
     text-transform: capitalize;
-
     background-color: var(--yellow);
     padding: 12px 24px;
     transition: 0.2s;
@@ -69,6 +68,8 @@
 
 .navbar__login:hover {
     transform: scale(1.1);
+    background-color: var(--soft-pink);
+    color: var(--white-color);
     
 }
 

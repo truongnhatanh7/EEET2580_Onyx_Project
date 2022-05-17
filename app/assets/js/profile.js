@@ -1,10 +1,17 @@
 if (sessionStorage.getItem('userId') == null) {
-    location.href = "../login.html";
+    location.assign("../login.html");
 }
 
+let lastLocation = sessionStorage.getItem('lastLocation')
 const returnBtn = $('.return__wrapper')
 returnBtn.addEventListener('click', () => {
-    history.back();
+    if (lastLocation.includes('dashboard')) {
+        location.assign('./dashboard.html')
+    } else if (lastLocation.includes('workspace')) {
+        location.assign('./workspace.html')
+    } else {
+        history.back();
+    }
 })
 
 const modifyEmailTrigger = $('.modify-email-icon');
@@ -99,6 +106,7 @@ saveBtnAvatar.addEventListener('click', () => {
         });
     } else {
         throwError("Invalid file type")
+        loading.classList.add('disable')
     }
 })
 

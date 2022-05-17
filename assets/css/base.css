@@ -45,6 +45,7 @@ body {
     --box-shadow-engrave: 1px 1px 2px rgba(255, 255, 255, 0.3), -1px -1px 2px rgba(217, 217, 217, 0.5), inset -15px 15px 30px rgba(217, 217, 217, 0.2), inset 15px -15px 30px rgba(217, 217, 217, 0.2), inset -15px -15px 30px rgba(255, 255, 255, 0.9), inset 15px 15px 38px rgba(217, 217, 217, 0.9);
     --task-shadow: rgba(0, 0, 0, 0.034) 0px 3px 12px;
     --nav-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+    --list-shadow: -14px 14px 28px rgba(224, 224, 224, 0.2), 14px -14px 28px rgba(224, 224, 224, 0.2), -14px -14px 28px rgba(255, 255, 255, 0.9), 14px 14px 35px rgba(224, 224, 224, 0.9), inset 1px 1px 2px rgba(255, 255, 255, 0.3), inset -1px -1px 2px rgba(224, 224, 224, 0.5);
 
     /* Default color */
     --white-color: #ffffff;
@@ -83,7 +84,7 @@ body {
           -ms-user-select: none; /* Internet Explorer/Edge */
                 user-select: none; /* Non-prefixed version, currently
                                     supported by Chrome, Edge, Opera and Firefox */
-  }
+}
 
 .white{
     color: var(--white) !important;
@@ -223,31 +224,6 @@ textarea {
     background: var(--purple) !important;
 }
 
-.loading-wrapper {
-    width: 100vw; 
-    height: 100vh;
-    display: grid;
-    position: fixed;
-    z-index: 99999;
-    place-items: center;
-    background-color: var(--white);
-    visibility: visible;
-    /* opacity: 1; */
-    transition: all 0.3s linear;
-}
-
-.square-loading {
-    width: 100px;
-    height: 100px;
-    background-color: var(--purple);
-    border-radius: 8px;
-    position: absolute;
-    right: 48px;
-    bottom: 48px;
-    z-index: 99999;
-    animation: flip 1.2s ease-in-out infinite;
-}
-
 .loading {
     position: absolute;
     width: 48px;
@@ -283,25 +259,25 @@ textarea {
 }
 
 @keyframes flip {
-   0% {
-      transform: perspective(200px) rotateX(0) rotateY(0);
-   }
+    0% {
+        transform: perspective(200px) rotateX(0) rotateY(0);
+    }
 
-   50% {
-      transform: perspective(200px) rotateX(180deg) rotateY(0);
-      background-color: var(--yellow);
-   }
+    50% {
+        transform: perspective(200px) rotateX(180deg) rotateY(0);
+        background-color: var(--yellow);
+    }
 
-   100% {
-      transform: perspective(200px) rotateX(180deg) rotateY(180deg);
-   }
+    100% {
+        transform: perspective(200px) rotateX(180deg) rotateY(180deg);
+    }
 }
-.input-field{
+.input-field {
     width: 100%;
     box-sizing: border-box;
     height: 1rem;
-    border-radius: 25px;
-    font-size: 17px;
+    border-radius: var(--border-main);
+    font-size: 1.8rem;
     font-weight: 300;
     padding: 2.5rem;
 }

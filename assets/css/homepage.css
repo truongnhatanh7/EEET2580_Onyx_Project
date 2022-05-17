@@ -1,3 +1,4 @@
+@import "./footer.css";
 
 .line{
     /* display: none; */
@@ -112,7 +113,7 @@
     animation: fadeIn 1.2s ease-in-out;
     position: relative;
     z-index: 1;
-    margin-top: 11px;
+    margin-top: 12.5px;
 }
 
 .home__view-wrapper {
@@ -219,13 +220,11 @@
 .feature__picker-wrapper {
     background-color: var(--white-color);
     display: grid;
-    /* height: auto; */
     grid-template-columns: 1fr 1fr 1fr;
     margin: 0 auto;
     border-radius: 20px;
     padding: 12px 14px;
     width: 50%;
-    /* gap: 18px; */
     box-shadow: -40px 40px 80px rgba(231, 231, 231, 0.2), 40px -40px 80px rgba(231, 231, 231, 0.2), -40px -40px 80px rgba(251, 251, 251, 0.9), 40px 40px 100px rgba(231, 231, 231, 0.9), inset 2px 2px 3px rgba(251, 251, 251, 0.3), inset -2px -2px 3px rgba(231, 231, 231, 0.5);
 }
 
@@ -241,7 +240,7 @@
     cursor: pointer;
     opacity: 0.7;
 }
-.pick{
+.pick {
     background-color: var(--gray);
     border-radius: 12px;
     transition: 0.3s;
@@ -318,31 +317,6 @@
 .prefooter__btn {
     background-color: var(--soft-pink);
     margin: 0;
-}
-
-
-footer {
-    height: 160px;
-    width: 100%;
-    background-color: var(--white-color);
-}
-
-.footer-wrapper {
-    width: 80%;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.footer__logo {
-    font-size: 8rem;
-    font-weight: bold;
-}
-
-.footer__text {
-    font-size: 1.8rem;
 }
 
 @keyframes flyTask {
