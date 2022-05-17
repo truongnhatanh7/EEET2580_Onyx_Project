@@ -86,7 +86,6 @@ const addCollaboratorInput = $(".workspace__add-collaborator-input");
 
 fetchUserInWorkspace();
 function fetchOwner() {
-
     fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
     .then(response => response.json())
     .then(data => {
@@ -101,22 +100,26 @@ function fetchOwner() {
 }
 
 
-function fetchUserInWorkspace() {
-    fetchOwner();
-    let workspaceUrl =
-        "http://localhost:8080/api/v1/workspace/get-workspace/" +
-        sessionStorage.getItem("currentBoardId");
-    fetch(workspaceUrl)
-        .then((response) => response.json())
-        .then((workspace) => {
-            return workspace.users;
-        })
-        .then((users) => {
-            renderUserInWorkspace(users);
-        })
-        .catch(() => {
-            throwError("Unexpected error, cannot fetch collaborator")
-        })
+async function fetchUserInWorkspace() {
+    return new Promise((resolve, reject) => {
+        fetchOwner()
+    })
+    .then(() => {
+        let workspaceUrl =
+            "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
+            sessionStorage.getItem("currentBoardId");
+        fetch(workspaceUrl)
+            .then((response) => response.json())
+            .then((workspace) => {
+                return workspace.users;
+            })
+            .then((users) => {
+                renderUserInWorkspace(users);
+            })
+            .catch(() => {
+                throwError("Unexpected error, cannot fetch collaborator")
+            })
+    })
 }
 
 function renderUserInWorkspace(users) {
