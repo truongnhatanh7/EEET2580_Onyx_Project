@@ -8,11 +8,25 @@
     background-color: var(--white-color);
 }
 
-.tittle__wrapper{
+.tittle__wrapper {
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
 
+}
+
+@media (max-width: 968px) {
+    .tittle__wrapper {
+        flex-direction: column;
+    }
+
+    .dashboard__search-box {
+        min-width: 100% !important;
+        
+    }
+    .dashboard__search-workspace-input {
+        min-width: 100% !important;
+    }
 }
 
 .dashboard__user-name-wrapper {
