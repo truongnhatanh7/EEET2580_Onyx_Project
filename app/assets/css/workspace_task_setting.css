@@ -50,6 +50,9 @@
     resize: none;
     min-width: 100%;
     border-radius: var(--border-sub);
+    background-color: var(--white-color);
+    color: var(--black);
+    border: none;
     padding: 16px;
     margin-top: 8px;
     outline: none;

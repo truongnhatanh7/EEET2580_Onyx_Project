@@ -106,6 +106,7 @@ saveBtnAvatar.addEventListener('click', () => {
         });
     } else {
         throwError("Invalid file type")
+        loading.classList.add('disable')
     }
 })
 
