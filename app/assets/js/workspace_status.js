@@ -100,12 +100,13 @@ function fetchOwner() {
 }
 
 
-function fetchUserInWorkspace() {
+async function fetchUserInWorkspace() {
     return new Promise((resolve, reject) => {
-        fetchOwner();
-    }).then(() => {
+        fetchOwner()
+    })
+    .then(() => {
         let workspaceUrl =
-            "http://localhost:8080/api/v1/workspace/get-workspace/" +
+            "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
             sessionStorage.getItem("currentBoardId");
         fetch(workspaceUrl)
             .then((response) => response.json())
