@@ -27,22 +27,6 @@ board.addEventListener("wheel", (event) => {
     }
 });
 
-fetchOwner();
-function fetchOwner() {
-    loading.classList.remove('disable')
-    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
-    .then(response => response.json())
-    .then(data => {
-        sessionStorage.setItem("currentOwnerId", data);
-    })
-    .catch(() => {
-        throwError("Unexpected error, cannot fetch owner")
-    })
-    .finally(() => {
-        loading.classList.add('disable')
-    })
-}
-
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 

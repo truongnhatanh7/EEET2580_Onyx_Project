@@ -11,6 +11,8 @@ const preDeleteBtn = $(".workspace__delete-workspace-btn-pre");
 const preDeleteWrapper = $(".workspace__delete-confirmation");
 const preDeleteInput = $(".workspace__delete-confirmation-input");
 const postDeleteBtn = $(".workspace__delete-workspace-btn-post");
+
+
 const deleteWorkspaceUrl =
     "http://localhost:8080/api/v1/workspace/delete-workspace/";
 
@@ -83,7 +85,20 @@ const addCollaboratorBtn = $(".workspace__add-collaborator-btn");
 const addCollaboratorInput = $(".workspace__add-collaborator-input");
 
 fetchUserInWorkspace();
+function fetchOwner() {
 
+    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    .then(response => response.json())
+    .then(data => {
+        sessionStorage.setItem("currentOwnerId", data);
+    })
+    .catch(() => {
+        throwError("Unexpected error, cannot fetch owner")
+    })
+    .finally(() => {
+
+    })
+}
 
 
 function fetchUserInWorkspace() {
