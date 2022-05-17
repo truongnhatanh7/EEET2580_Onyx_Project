@@ -96,7 +96,7 @@ function fetchOwner() {
         throwError("Unexpected error, cannot fetch owner")
     })
     .finally(() => {
-        return new Promise((resolve, reject))
+        return new Promise()
     })
 }
 
