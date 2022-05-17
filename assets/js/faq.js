@@ -111,7 +111,7 @@ async function getFaqContent() {
           "Select Add button for adding a new collaborator.",
           "In contrast, click the X button next to the collaborator's name to remove them from the project. "
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-addcollab.svg",
         "alt": "Invite collab in faq"
       },
       {
@@ -120,7 +120,7 @@ async function getFaqContent() {
           "From the dashboard, select the avatar icon in the top right corner.",
           "Select the Sign-out button for logging out of the project."
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-signout.svg",
         "alt": "Sign out in faq"
       }
   ]
