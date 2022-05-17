@@ -29,13 +29,14 @@ async function getFaqContent() {
       {
         "title": "Login to the application ",
         "detail": [
+              "Click on the login button in the navigation bar",
               "From the login page, type your registered username in the Username field",
               "Type the registered password in the Password field.",
               "Select the Log in button.",
               "In contrast, if the user has not registered for the account, select the signup button and fill in all the fields of the registration form then click the Sign up button for logging in.",
               "You can now create a new task list for your project."
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-login.svg",
         "alt": "Login in Faq"
       },
       {
@@ -68,7 +69,7 @@ async function getFaqContent() {
             "Type the name in the Enter new task field.",
             "Click the Create button for creating a new task."
           ],
-          "img": "",
+          "img": "./assets/img/faq/faq-addtask.svg",
           "alt": "Add new task within workspace list"
       },
       {
@@ -78,7 +79,7 @@ async function getFaqContent() {
           "Type the new name for the task.",
           "Click the Save button for saving the new name."
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-edittask.svg",
         "alt": "Edit Task in within workspace list in FAQ"
       },
       {
@@ -89,7 +90,7 @@ async function getFaqContent() {
           "Then, drag the task to the list where you want to place it",
           "Drop a task into the list"
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-drag.svg",
         "alt": "Drag Drop task in faq"
       },
       {
@@ -98,7 +99,7 @@ async function getFaqContent() {
           "From the list, find the task you want to make a change to and select the button.",
           "Click the Delete task button for deleting the task."
         ],
-        "img": "",
+        "img": "./assets/img/faq/faq-deletetask.svg",
         "alt": "Delete Task in faq"
       },
       {
