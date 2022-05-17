@@ -87,7 +87,7 @@ const addCollaboratorInput = $(".workspace__add-collaborator-input");
 fetchUserInWorkspace();
 function fetchOwner() {
 
-    fetch("http://localhost:8080/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
+    fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
     .then(response => response.json())
     .then(data => {
         sessionStorage.setItem("currentOwnerId", data);
