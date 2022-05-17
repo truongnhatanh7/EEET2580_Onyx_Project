@@ -1,15 +1,16 @@
 if (sessionStorage.getItem('userId') == null) {
-    location.replace("../login.html");
+    location.assign("../login.html");
 }
+
 let lastLocation = sessionStorage.getItem('lastLocation')
 const returnBtn = $('.return__wrapper')
 returnBtn.addEventListener('click', () => {
     if (lastLocation.includes('dashboard')) {
-        location.replace('./dashboard.html')
+        location.assign('./dashboard.html')
     } else if (lastLocation.includes('workspace')) {
-        location.replace('./workspace.html')
+        location.assign('./workspace.html')
     } else {
-        //
+        history.back();
     }
 })
 

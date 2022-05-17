@@ -1,5 +1,5 @@
 if (sessionStorage.getItem("userId") == null) {
-    location.href = "../login.html";
+    location.assign("../login.html");
 }
 
 const projectList = $(".dashboard__project-list");

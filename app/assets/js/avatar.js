@@ -20,7 +20,7 @@ const avatar = $(".user-text-avatar")
 userTaskWrapper.addEventListener('click', () => {
     lastLocation = location.href.toString();
     sessionStorage.setItem("lastLocation", location.href.toString());
-    location.replace('./profile.html')
+    location.assign('./profile.html')
 })
 
 

@@ -12,7 +12,7 @@ if (currentTheme) {
     if (currentTheme === "dark") {
         darkModeSwitch.checked = true;
     } else {
-
+        darkModeSwitch.checked = false;
     }
 }
 
