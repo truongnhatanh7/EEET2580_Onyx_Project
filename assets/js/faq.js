@@ -208,8 +208,7 @@ class DetailObject {
         // keyframes from start to end height
         height: [startHeight, endHeight]
       }, {
-        duration: 100,
-        easing: 'ease-out'
+        duration: 100
       });
       // this.content.style.animation = "faq-slide-up 2s";
       
@@ -250,8 +249,7 @@ class DetailObject {
         // keyframes
         height: [startHeight, endHeight]
       }, {
-        duration: 100,
-        easing: 'ease-out'
+        duration: 100
       });
       // this.content.style.animation = "faq-slide-down 2s";
       
