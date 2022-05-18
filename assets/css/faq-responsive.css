@@ -6,7 +6,6 @@
 }
 @media (max-width: 768px) {
     .faq__card > summary {
-        box-shadow: none;
         border-radius: 0;
     }
     .faq__card  {
