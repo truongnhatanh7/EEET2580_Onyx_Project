@@ -200,17 +200,13 @@
 }
 
 .home__feature-wrapper {
-    /* height: 100vh; */
     display: flex;
     flex-direction: column;
-    /* width: 80%; */
-    /* margin: 0 auto; */
     padding: 8rem 2rem;
     background-color: var(--white-color);
 }
 
 .feature__heading {
-
     font-size: 8rem;
     color: var(--pink-color);
     text-align: center;

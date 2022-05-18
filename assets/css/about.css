@@ -295,8 +295,12 @@ main{
         margin: 0;
         height: 100vh;
     }
-}
 
-.footer-wrapper {
-    /* width: 100% !important; */
+    .member-content {
+        padding: 0 24px;
+    }
+    .footer-wrapper {
+        margin: 0;
+        width: 100% !important;
+    }
 }
