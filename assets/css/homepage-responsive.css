@@ -13,11 +13,73 @@
         margin-top: 12rem;
     }
 
+
+
     @keyframes flyTask {
         from {
         } to {
             transform: translateY(48px) translateX(190px);
         }
+    }
+}
+
+@media (max-width: 1280px) {
+    .view__img:nth-child(1) {
+        display: none;
+    
+    }
+    
+    .view__img:nth-child(2) {
+    width: 80%;
+    /* transform: scale(2); */
+
+    }
+    
+    .view__img:nth-child(3) {
+        display: none;
+
+
+    }
+
+    .discover-btn {
+        box-shadow: var(--box-shadow-dark);
+    }
+
+    .home__feature-wrapper {
+        width: 100%;
+        padding: 2rem;
+    }
+
+
+
+    .view__text-wrapper {
+        transform: translateY(22vh);
+        flex-direction: column;
+        position: relative;
+        z-index: 30;
+    }
+
+    .view__text-quote {
+        width: 100%;
+        padding-bottom: 8px;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .view__text-credit {
+        text-align: center;
+    }
+
+    .view__img {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        
+    filter: blur(1px) brightness(50%);
+        
+    }
+
+    .prefooter__btn {
+        box-shadow: none;
     }
 }
 
@@ -76,57 +138,8 @@
         display: none;
     }
 
-    .home__feature-wrapper {
-        width: 100%;
-        padding: 2rem;
-    }
 
-    .home__view-wrapper {
-        padding-top: 2rem;
-        padding-bottom: 8rem;
-        
-    }
 
-    .view__text-wrapper {
-        /* padding-top: 10rem; */
-        flex-direction: column;
-    }
-
-    .view__text-quote {
-        width: 100%;
-        padding-bottom: 8px;
-        text-align: center;
-        margin: 0 auto;
-    }
-
-    .view__text-credit {
-        text-align: center;
-        margin-bottom: 18px;
-    }
-
-    .view__img-wrapper {
-        margin-top: 24rem;
-        padding-top: 2rem;
-    }
-
-    .view__img {
-        width: 60%;
-    }
-
-    .view__img:nth-child(1) {
-        transform: scale(1.6);
-    
-    }
-    
-    .view__img:nth-child(2) {
-        transform: scale(2);
-
-    }
-    
-    .view__img:nth-child(3) {
-        transform: scale(1.6);
-
-    }
 
     .feature__picker-wrapper {
         gap: 4px;
