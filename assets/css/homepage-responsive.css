@@ -77,6 +77,10 @@
     filter: blur(1px) brightness(50%);
         
     }
+
+    .prefooter__btn {
+        box-shadow: none;
+    }
 }
 
 @media (max-width: 767px) {
