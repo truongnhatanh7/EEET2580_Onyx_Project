@@ -156,7 +156,7 @@ function renderWorkspace(workspaces) {
     );
 
     for (const workspace of workspaces) {
-        if (cur >= currentPage * 4 && cur < currentPage * 4 + 4) {
+        if (cur >= currentPage * 8 && cur < currentPage * 8 + 8) {
             let html = `
             <div class="dashboard__project-card" onclick="handleCardClick(event)" >
                 <a href="./workspace.html" class="dashboard__project-card-link" id="${workspace.workspaceId}">
@@ -292,7 +292,7 @@ modalBtn.onclick = (event) => {
 const pagination = $(".dashboard__pagination-wrapper");
 let pages = 0;
 function paginationRender(totalPages) {
-    totalPages = Math.ceil(totalPages / 4);
+    totalPages = Math.ceil(totalPages / 8);
     pages = totalPages;
     pagination.innerHTML = "";
     if (totalPages > 1) {
