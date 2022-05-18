@@ -1,4 +1,3 @@
-
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Workspace status
 
@@ -11,7 +10,6 @@ const preDeleteBtn = $(".workspace__delete-workspace-btn-pre");
 const preDeleteWrapper = $(".workspace__delete-confirmation");
 const preDeleteInput = $(".workspace__delete-confirmation-input");
 const postDeleteBtn = $(".workspace__delete-workspace-btn-post");
-
 
 const deleteWorkspaceUrl =
     "https://onyx2-backend.herokuapp.com/api/v1/workspace/delete-workspace/";
@@ -42,24 +40,21 @@ closeWorkspaceStatus.addEventListener("click", () => {
 });
 
 preDeleteBtn.addEventListener("click", () => {
-    fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
-    .then(
-        response => {
-            response.text().then(
-                text => {
-                    if (text != sessionStorage.getItem("userId")) {
-                        throwError("Only owner could delete this workspace")
-                    } else {
-                        preDeleteWrapper.classList.add("enable");
-                        preDeleteWrapper.classList.remove("disable");
-                        preDeleteBtn.classList.add("disable");
-                        preDeleteBtn.classList.remove("enable");
-
-                    }
-                }
-            )
-        }
-    )
+    fetch(
+        "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" +
+            sessionStorage.getItem("currentBoardId")
+    ).then((response) => {
+        response.text().then((text) => {
+            if (text != sessionStorage.getItem("userId")) {
+                throwError("Only owner could delete this workspace");
+            } else {
+                preDeleteWrapper.classList.add("enable");
+                preDeleteWrapper.classList.remove("disable");
+                preDeleteBtn.classList.add("disable");
+                preDeleteBtn.classList.remove("enable");
+            }
+        });
+    });
 });
 
 postDeleteBtn.addEventListener("click", () => {
@@ -73,10 +68,9 @@ postDeleteBtn.addEventListener("click", () => {
             },
         }).then(location.assign("./dashboard.html"));
     } else {
-        throwError("Invalid input")
+        throwError("Invalid input");
     }
 });
-
 
 // Collab
 
@@ -84,55 +78,55 @@ const collaboratorList = $(".workspace__collaborator-list");
 const addCollaboratorBtn = $(".workspace__add-collaborator-btn");
 const addCollaboratorInput = $(".workspace__add-collaborator-input");
 
-fetchUserInWorkspace();
+fetchOwner();
 function fetchOwner() {
-
-    fetch("https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" + sessionStorage.getItem("currentBoardId"))
-    .then(response => response.json())
-    .then(data => {
-        sessionStorage.setItem("currentOwnerId", data);
-    })
-    .catch(() => {
-        throwError("Unexpected error, cannot fetch owner")
-    })
-    .finally(() => {
-
-    })
+    fetch(
+        "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-owner/" +
+            sessionStorage.getItem("currentBoardId")
+    )
+        .then((response) => response.json())
+        .then((data) => {
+            sessionStorage.setItem("currentOwnerId", data);
+        })
+        .then(() => {
+            fetchUserInWorkspace();
+        })
+        .catch(() => {
+            throwError("Unexpected error");
+        })
 }
 
+function fetchUserInWorkspace() {
+    let workspaceUrl =
+        "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
+        sessionStorage.getItem("currentBoardId");
+    fetch(workspaceUrl)
+        .then((response) => response.json())
+        .then((workspace) => {
+            return workspace.users;
+        })
+        .then((users) => {
+            renderUserInWorkspace(users);
+        });
 
-async function fetchUserInWorkspace() {
-    return new Promise((resolve, reject) => {
-        fetchOwner()
-    })
-    .then(() => {
-        let workspaceUrl =
-            "https://onyx2-backend.herokuapp.com/api/v1/workspace/get-workspace/" +
-            sessionStorage.getItem("currentBoardId");
-        fetch(workspaceUrl)
-            .then((response) => response.json())
-            .then((workspace) => {
-                return workspace.users;
-            })
-            .then((users) => {
-                renderUserInWorkspace(users);
-            })
-            .catch(() => {
-                throwError("Unexpected error, cannot fetch collaborator")
-            })
-    })
 }
 
 function renderUserInWorkspace(users) {
-
+    if (users.length == 0) {
         collaboratorList.innerHTML = "";
-        users.forEach((user) => {
-            if (user.userId == sessionStorage.getItem("currentOwnerId")) {
-                return;
+        // Warning to delete workspace if there are no owners
+        preDeleteInput.value = "delete this workspace";
+        postDeleteBtn.click();
+        location.assign("./dashboard.html");
+    } else {
+        collaboratorList.innerHTML = ""; // Reset collaborators
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].userId == sessionStorage.getItem("currentOwnerId")) {
+                continue;
             }
             let tempHtml = `
-            <div class="workspace__collaborator" id="user_${user.userId} ">
-                <h3 class="workspace__collaborator-name" >${user.name}</h3>
+            <div class="workspace__collaborator" id="user_${users[i].userId} ">
+                <h3 class="workspace__collaborator-name" >${users[i].name}</h3>
                 <i class="fa-solid fa-xmark workspace__collaborator-delete" onclick=handleRemoveCollaborator(event)></i>
             </div>
             `;
@@ -140,8 +134,8 @@ function renderUserInWorkspace(users) {
                 .createRange()
                 .createContextualFragment(tempHtml);
             collaboratorList.appendChild(para);
-        });
-    
+        }
+    }
 }
 
 document.addEventListener("click", (event) => {
@@ -163,13 +157,13 @@ function handleRemoveCollaborator(event) {
             "Content-Type": "application/json",
         },
     }).then(() => {
-        fetchUserInWorkspace();
+        fetchOwner()
     });
 }
 
 addCollaboratorBtn.addEventListener("click", () => {
     if (addCollaboratorInput.value == "") {
-        throwError("Invalid input")
+        throwError("Invalid input");
     } else {
         let getAllUsersUrl = "https://onyx2-backend.herokuapp.com/api/v1/user/all-users/";
         fetch(getAllUsersUrl)
@@ -183,7 +177,7 @@ addCollaboratorBtn.addEventListener("click", () => {
                     }
                 });
                 if (!found) {
-                    throwError("User not found!")
+                    throwError("User not found!");
                 }
             })
             .then(() => {
@@ -191,8 +185,8 @@ addCollaboratorBtn.addEventListener("click", () => {
                 addCollaboratorInput.focus();
             })
             .catch(() => {
-                throwError("Unexpected error")
-            })
+                throwError("Unexpected error");
+            });
     }
 });
 
@@ -207,27 +201,22 @@ function handleAddToWorkspace(user) {
         headers: {
             "Content-Type": "application/json",
         },
-    }).then(() => {
-        fetchUserInWorkspace();
-    }).then(() => {
-        handleEmailUser(user.username);
     })
-    ;
+        .then(() => {
+            fetchOwner();
+        })
+        .then(() => {
+            handleEmailUser(user.username);
+        });
 }
 
 function handleEmailUser(username) {
-    let sendEmailUrl = "https://onyx2-backend.herokuapp.com/api/v1/email/notifyUser/" + username
+    let sendEmailUrl =
+        "https://onyx2-backend.herokuapp.com/api/v1/email/notifyUser/" + username;
     fetch(sendEmailUrl, {
         method: "POST",
         body: {
-            'Content-Type': 'application/json'
-        }
-    })
+            "Content-Type": "application/json",
+        },
+    });
 }
-
-//////////////////////////////////  
-// const workspaceStatusDeleteSection = $('.workspace__delete-section')
-
-// if (sessionStorage.getItem("userId") != sessionStorage.getItem("currentOwnerId")) {
-//     workspaceStatusDeleteSection.remove();
-// }
