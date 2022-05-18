@@ -26,43 +26,41 @@
         referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/faq.css">
     <link rel="stylesheet" href="./assets/css/faq-responsive.css">
-    <!-- <link rel="stylesheet" href="./assets/css/homepage.css"> -->
-    <link rel="stylesheet" href="./assets/css/footer.css">
-    <link rel="stylesheet" href="./assets/css/navbar.css" />
 
     <script src="./assets/js/config.js" defer></script>
     <script src="./assets/js/navbar.js" defer></script>
     
     <title>ONYX | FAQ</title>
 </head>
-<body class="page__wrapper">
+<body>
     <!-- Back to top button -->
+    
     <header class="home__header">
-        <header class="home__header">
-            <nav class="home__navbar">
-                <div class="navbar__logo">ONYX</div>
+        <nav class="home__navbar">
+            <div class="navbar__logo">ONYX</div>
+            <ul class="navbar__list">
+                <li class="navbar__item">
+                    <a href="index.html" class="navbar__link">home</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__link">about</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="faq.html" class="navbar__link">FAQ</a>
+                </li>
+            </ul>
 
-                <ul class="navbar__list">
-                    <li class="navbar__item">
-                        <a href="index.html" class="navbar__link">home</a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="about.html" class="navbar__link">about</a>
-                    </li>
-                    <li class="navbar__item">
-                        <a href="faq.html" class="navbar__link">FAQ</a>
-                    </li>
-                </ul>
-
-                <button class="navbar__login btn">Login</button>
-            </nav>
-            <div class="navbar__hamburger-wrapper">
-                <i class="fa-solid fa-bars navbar__hamburger"></i>
-            </div>
-        </header>
-    <main class="flex flex-center">
+            <button class="navbar__login btn">Login</button>
+        </nav>
+        <div class="navbar__hamburger-wrapper">
+            <i class="fa-solid fa-bars navbar__hamburger"></i>
+        </div>
+    </header>
+    <main class="flex flex-center page__wrapper">
         <a id="button" class="hide" onclick = "backToTopClick()"></a>
         <h1 class="faq__title">Help center</h1>
         <input type="text" class="faq__find" placeholder="Search for a topic" onkeyup="filterFaqCard()">
