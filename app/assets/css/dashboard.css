@@ -1,5 +1,9 @@
 @import "./user_navbar.css";
 
+html {
+    background-color: var(--white-color);
+}
+
 .dashboard__wrapper {
     padding: 64px 240px;
     width: 100%;
