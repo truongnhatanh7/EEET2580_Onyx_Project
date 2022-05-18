@@ -30,7 +30,7 @@
     }
     
     .view__img:nth-child(2) {
-    width: 80%;
+        width: 80%;
     /* transform: scale(2); */
 
     }
@@ -55,8 +55,6 @@
     .view__text-wrapper {
         transform: translateY(22vh);
         flex-direction: column;
-        position: relative;
-        z-index: 30;
     }
 
     .view__text-quote {

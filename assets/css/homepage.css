@@ -131,6 +131,9 @@
     max-width: 1000px;
     margin: 0 auto;
     width: 80%;
+    position: relative;
+    z-index: 30;
+    height: 8vh;
 }
 
 .view__text-quote {
