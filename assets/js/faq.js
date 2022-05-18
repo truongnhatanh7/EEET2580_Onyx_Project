@@ -25,6 +25,7 @@ async function animateDetails() {
 }
 async function getFaqContent() {
     // fetch json and create element from content array
+    // for card information
     const response = [
       {
         "title": "Login to the application ",
@@ -289,10 +290,14 @@ class DetailObject {
 // search on input
 function filterFaqCard() {
   let input = document.querySelector(".faq__find");
+  // ts-ignore for typescript error
+  // @ts-ignore
   let filter = input.value.toUpperCase();
   document.querySelectorAll(".faq__card summary").forEach(summary => {
+        // @ts-ignore
         summaryContent = summary.textContent;
         // if not found in input
+        // @ts-ignore
         if (!summaryContent.toUpperCase().includes(filter)) {
             summary.parentElement.classList.add('disable');
         } else {
