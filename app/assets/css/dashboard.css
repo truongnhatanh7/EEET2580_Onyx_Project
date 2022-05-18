@@ -12,6 +12,9 @@
     display: flex;
     justify-content: space-between;
     margin: 2rem 0;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 
 }
 
@@ -31,6 +34,10 @@
 
 .dashboard__user-name-wrapper {
     margin-top: 1;
+    max-width: 1024px;
+
+        margin-left: auto;
+    margin-right: auto;
 }
 
 .dashboard__user-name {
@@ -52,6 +59,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
     
 }
 .dashboard__search-box{
@@ -172,6 +182,9 @@
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: max-content;
     gap: 18px;
+    max-width: 1024px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 @media (max-width: 1200px) {
