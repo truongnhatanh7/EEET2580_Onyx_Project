@@ -23,6 +23,7 @@ const modifyNameWrapper = $('.user-form__modify-name-wrapper')
 const modifyAvatarTrigger = $('.modify-avatar-icon')
 const modifyAvatarWrapper = $('.user-form__modify-avatar-wrapper')
 const modifyThemeTrigger = $('.modify-theme-icon')
+const modifyThemeWrapper = $('.user-form__darkmode')
 
 const loading = $('.loading')
 
@@ -39,7 +40,7 @@ const themeInput = $('#darkmode-switch')
 // Trigger
 
 modifyThemeTrigger.addEventListener('click', () => {
-    themeInput.click();
+    modifyThemeWrapper.classList.toggle('disable');
 })
 
 modifyAvatarTrigger.addEventListener('click', () => {
